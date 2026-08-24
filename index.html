@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marc Lastra</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 8px;
+            color: #aaa;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            margin-bottom: 30px;
+        }
+
+        .welcome h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-decoration: none;
+            color: #222;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>MARCLASTRA EVENTS</h1>
+    <p>Private Management Portal</p>
+</header>
+
+<main>
+
+    <section class="welcome">
+        <h2>Bienvenido, Marc</h2>
+        <p>Este es tu espacio privado de gestión.</p>
+    </section>
+
+    <section class="cards">
+
+        <a href="#" class="card">
+            <div class="icon">📅</div>
+            <h3>Eventos</h3>
+            <p>Gestiona tus próximos eventos.</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon">📄</div>
+            <h3>Documentos</h3>
+            <p>Accede a tus documentos privados.</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon">💰</div>
+            <h3>Presupuestos</h3>
+            <p>Consulta y organiza presupuestos.</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon">📑</div>
+            <h3>Contratos</h3>
+            <p>Gestiona tus contratos.</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon">🧾</div>
+            <h3>Facturas</h3>
+            <p>Consulta tus facturas.</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="icon">⚙️</div>
+            <h3>Ajustes</h3>
+            <p>Configuración del portal.</p>
+        </a>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Marc Lastra
+</footer>
+
+</body>
+</html>
