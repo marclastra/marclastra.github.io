@@ -530,7 +530,52 @@
         <!-- =========================
              DOCUMENTOS
         ========================= -->
+<!-- =========================
+     EVENTOS
+========================= -->
 
+<section id="events-section" style="display:none;">
+
+    <button
+        class="back-button"
+        id="events-back-button"
+    >
+        ← Volver
+    </button>
+
+
+    <div class="documents-header">
+
+        <div>
+
+            <h2>📁 Eventos</h2>
+
+            <p>
+                Gestiona tus eventos y sus documentos
+            </p>
+
+        </div>
+
+
+        <button id="new-event-button">
+            + Nuevo evento
+        </button>
+
+    </div>
+
+
+    <div
+        id="events-list"
+        class="cards"
+    >
+
+        <div class="empty">
+            Cargando eventos...
+        </div>
+
+    </div>
+
+</section>
         <section id="documents-section">
 
 
@@ -792,35 +837,175 @@
             }
         );
 
+/* =========================
+   EVENTOS
+========================= */
+
+const eventsSection =
+    document.getElementById("events-section");
+
+const eventsList =
+    document.getElementById("events-list");
+
+const newEventButton =
+    document.getElementById("new-event-button");
 
 
-    /* =========================
-       ABRIR DOCUMENTOS
-    ========================= */
+async function loadEvents() {
+
+    eventsList.innerHTML =
+        '<div class="empty">Cargando eventos...</div>';
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("eventos")
+            .select("*")
+            .order("fecha", { ascending: true });
+
+    if (error) {
+
+        eventsList.innerHTML =
+            '<div class="empty">No se han podido cargar los eventos.</div>';
+
+        console.error(error);
+
+        return;
+    }
+
+    if (!data || data.length === 0) {
+
+        eventsList.innerHTML =
+            '<div class="empty">Todavía no tienes eventos.</div>';
+
+        return;
+    }
+
+    eventsList.innerHTML = "";
+
+    data.forEach(function(evento) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "event-card";
+
+        const date =
+            evento.fecha
+                ? new Date(evento.fecha + "T00:00:00")
+                    .toLocaleDateString("es-ES", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    })
+                : "Sin fecha";
+
+        card.innerHTML = `
+            <div class="event-icon">📁</div>
+
+            <h3>
+                ${escapeHtml(evento.nombre)}
+            </h3>
+
+            <p>
+                ${date}
+            </p>
+        `;
+
+        eventsList.appendChild(card);
+
+    });
+
+}
 
 
-    document
-        .getElementById("documents-card")
-        .addEventListener(
-            "click",
-            async function() {
+newEventButton.addEventListener(
+    "click",
+    async function() {
+
+        const nombre =
+            prompt("Nombre del evento:");
+
+        if (!nombre) return;
+
+        const fecha =
+            prompt("Fecha del evento (AAAA-MM-DD):");
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("eventos")
+                .insert({
+
+                    nombre: nombre,
+
+                    fecha: fecha || null
+
+                });
+
+        if (error) {
+
+            alert(
+                "No se ha podido crear el evento."
+            );
+
+            console.error(error);
+
+            return;
+        }
+
+        await loadEvents();
+
+    }
+);
+
+/* =========================
+   ABRIR DOCUMENTOS
+========================= */
+
+document
+    .getElementById("documents-card")
+    .addEventListener(
+        "click",
+        async function() {
+
+            dashboard.style.display =
+                "none";
+
+            documentsSection.style.display =
+                "none";
+
+            eventsSection.style.display =
+                "block";
+
+            await loadEvents();
+
+        }
+    );
 
 
-                dashboard.style.display =
-                    "none";
+/* =========================
+   VOLVER DESDE EVENTOS
+========================= */
 
+document
+    .getElementById("events-back-button")
+    .addEventListener(
+        "click",
+        function() {
 
-                documentsSection.style.display =
-                    "block";
+            eventsSection.style.display =
+                "none";
 
+            dashboard.style.display =
+                "block";
 
-                await loadDocuments();
-
-            }
-        );
-
-
-
+        }
+    );
+    
     /* =========================
        VOLVER
     ========================= */
