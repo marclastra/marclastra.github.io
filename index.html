@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,7 +14,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
     <style>
 
         * {
@@ -28,6 +26,20 @@
         body {
             background: #f5f5f5;
             color: #222;
+        }
+
+        button {
+            padding: 12px 18px;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
         }
 
 
@@ -84,20 +96,6 @@
             font-size: 15px;
         }
 
-        button {
-            padding: 13px 18px;
-            background: #111;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #333;
-        }
-
         #error {
             color: #d33;
             margin-top: 15px;
@@ -143,6 +141,11 @@
             padding: 20px;
         }
 
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
         .welcome {
             margin-bottom: 30px;
         }
@@ -156,58 +159,52 @@
             color: #777;
         }
 
-
-        /* =========================
-           TARJETAS
-        ========================= */
-
         .cards {
             display: grid;
             grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
+                repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
         .card {
             background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
             cursor: pointer;
             transition: 0.2s;
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .icon {
-            font-size: 35px;
-            margin-bottom: 15px;
+            font-size: 42px;
+            margin-bottom: 18px;
         }
 
         .card h3 {
+            font-size: 20px;
             margin-bottom: 8px;
         }
 
         .card p {
             color: #777;
             font-size: 14px;
+            line-height: 1.5;
         }
 
 
         /* =========================
-           EVENTOS
+           SECCIONES
         ========================= */
 
-        #events-section {
-            display: none;
-        }
-
-        #event-folders-section {
+        #events-section,
+        #event-folders-section,
+        #documents-section,
+        #calendar-section {
             display: none;
         }
 
@@ -233,16 +230,16 @@
             color: #777;
         }
 
-        .new-event-button {
-            white-space: nowrap;
-        }
+
+        /* =========================
+           EVENTOS
+        ========================= */
 
         .event-card {
             background: white;
             padding: 30px;
             border-radius: 16px;
-            box-shadow:
-                0 4px 18px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
             cursor: pointer;
             transition: 0.2s;
             min-height: 180px;
@@ -250,8 +247,6 @@
 
         .event-card:hover {
             transform: translateY(-4px);
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.12);
         }
 
         .event-icon {
@@ -266,15 +261,6 @@
 
         .event-card p {
             color: #777;
-            font-size: 14px;
-        }
-
-        .empty {
-            padding: 40px;
-            text-align: center;
-            color: #888;
-            background: white;
-            border-radius: 12px;
         }
 
 
@@ -282,20 +268,12 @@
            DOCUMENTOS
         ========================= */
 
-        #documents-section {
-            display: none;
-        }
-
         .documents-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
             gap: 15px;
-        }
-
-        .documents-header h2 {
-            margin-bottom: 5px;
         }
 
         .documents-header p {
@@ -324,8 +302,7 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .document {
@@ -373,19 +350,335 @@
 
 
         /* =========================
+           CALENDARIO
+        ========================= */
+
+        .calendar-toolbar {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        .calendar-toolbar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-navigation {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calendar-navigation button {
+            min-width: 45px;
+        }
+
+        .calendar-title {
+            font-size: 22px;
+            font-weight: bold;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .calendar-views {
+            display: flex;
+            gap: 8px;
+        }
+
+        .calendar-views button {
+            background: #ddd;
+            color: #222;
+        }
+
+        .calendar-views button.active {
+            background: #111;
+            color: white;
+        }
+
+        .calendar-legend {
+            display: flex;
+            gap: 18px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        }
+
+        .legend-work {
+            background: #c8f7d0;
+        }
+
+        .legend-party {
+            background: #ffd0d0;
+        }
+
+        .legend-empty {
+            background: white;
+        }
+
+
+        /* =========================
+           VISTA AÑO
+        ========================= */
+
+        .year-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .month {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .month-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .weekday-row {
+            display: grid;
+            grid-template-columns:
+                repeat(7, 1fr);
+            gap: 4px;
+            margin-bottom: 5px;
+        }
+
+        .weekday {
+            text-align: center;
+            font-size: 11px;
+            color: #888;
+            font-weight: bold;
+        }
+
+        .month-days {
+            display: grid;
+            grid-template-columns:
+                repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day {
+            min-height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            position: relative;
+        }
+
+        .day:hover {
+            border-color: #111;
+        }
+
+        .day.empty-day {
+            cursor: default;
+        }
+
+        .day.today {
+            border: 2px solid #111;
+            font-weight: bold;
+        }
+
+        .day.work {
+            background: #c8f7d0;
+        }
+
+        .day.party {
+            background: #ffd0d0;
+        }
+
+        .day-number {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================
+           SEMANA
+        ========================= */
+
+        .week-view {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(7, 1fr);
+        }
+
+        .week-day {
+            min-height: 300px;
+            border-right: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .week-day:last-child {
+            border-right: none;
+        }
+
+        .week-day-header {
+            padding: 15px 8px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+        }
+
+        .week-day-number {
+            font-size: 24px;
+            margin-top: 5px;
+        }
+
+        .week-day-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .week-status {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .week-status-text {
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           VISTA DÍA
+        ========================= */
+
+        .day-view {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .day-view-date {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .day-view-status {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .day-view-status-text {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .status-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-work {
+            background: #27853b;
+        }
+
+        .status-party {
+            background: #b3261e;
+        }
+
+        .status-clear {
+            background: #666;
+        }
+
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: #888;
+            background: white;
+            border-radius: 12px;
+        }
+
+
+        /* =========================
            RESPONSIVE
         ========================= */
 
+        @media (max-width: 900px) {
+
+            .year-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
         @media (max-width: 600px) {
 
+            main {
+                margin-top: 20px;
+            }
+
             .section-header,
-            .documents-header {
+            .documents-header,
+            .calendar-toolbar-top {
                 align-items: flex-start;
                 flex-direction: column;
             }
 
-            .event-card {
-                min-height: auto;
+            .year-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .week-day {
+                min-height: 150px;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .calendar-title {
+                text-align: left;
             }
 
             .document {
@@ -399,6 +692,10 @@
 
             .document-actions button {
                 flex: 1;
+            }
+
+            .day-view {
+                padding: 30px 15px;
             }
 
         }
@@ -522,6 +819,8 @@
             <section class="cards">
 
 
+                <!-- DOCUMENTOS -->
+
                 <div
                     class="card"
                     id="documents-card"
@@ -536,13 +835,19 @@
                     </h3>
 
                     <p>
-                        Accede a tus documentos privados.
+                        Organiza contratos, presupuestos,
+                        facturas y otros documentos.
                     </p>
 
                 </div>
 
 
-                <div class="card">
+                <!-- EVENTOS -->
+
+                <div
+                    class="card"
+                    id="calendar-card"
+                >
 
                     <div class="icon">
                         📅
@@ -553,61 +858,12 @@
                     </h3>
 
                     <p>
-                        Gestiona tus próximos eventos.
+                        Consulta y organiza tu calendario
+                        de trabajo y fiestas.
                     </p>
 
                 </div>
 
-
-                <div class="card">
-
-                    <div class="icon">
-                        💰
-                    </div>
-
-                    <h3>
-                        Presupuestos
-                    </h3>
-
-                    <p>
-                        Consulta tus presupuestos.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="icon">
-                        📑
-                    </div>
-
-                    <h3>
-                        Contratos
-                    </h3>
-
-                    <p>
-                        Gestiona tus contratos.
-                    </p>
-
-                </div>
-
-
-                <div class="card">
-
-                    <div class="icon">
-                        🧾
-                    </div>
-
-                    <h3>
-                        Facturas
-                    </h3>
-
-                    <p>
-                        Consulta tus facturas.
-                    </p>
-
-                </div>
 
             </section>
 
@@ -616,7 +872,7 @@
 
 
         <!-- =========================
-             EVENTOS
+             EVENTOS / DOCUMENTOS
         ========================= -->
 
         <section id="events-section">
@@ -638,7 +894,8 @@
                     </h2>
 
                     <p>
-                        Gestiona tus eventos y sus documentos.
+                        Selecciona un evento para acceder
+                        a sus documentos.
                     </p>
 
                 </div>
@@ -673,7 +930,9 @@
              CARPETAS DEL EVENTO
         ========================= -->
 
-        <section id="event-folders-section">
+        <section
+            id="event-folders-section"
+        >
 
             <button
                 class="back-button"
@@ -790,7 +1049,7 @@
 
 
         <!-- =========================
-             DOCUMENTOS DE CARPETA
+             DOCUMENTOS
         ========================= -->
 
         <section id="documents-section">
@@ -851,6 +1110,135 @@
         </section>
 
 
+
+        <!-- =========================
+             CALENDARIO
+        ========================= -->
+
+        <section id="calendar-section">
+
+            <button
+                class="back-button"
+                id="calendar-back-button"
+            >
+                ← Volver
+            </button>
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        📅 Calendario
+                    </h2>
+
+                    <p>
+                        Marca tus días de trabajo y fiesta.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="calendar-toolbar">
+
+
+                <div class="calendar-toolbar-top">
+
+
+                    <div class="calendar-navigation">
+
+                        <button id="calendar-prev">
+                            ←
+                        </button>
+
+
+                        <div
+                            class="calendar-title"
+                            id="calendar-title"
+                        >
+                        </div>
+
+
+                        <button id="calendar-next">
+                            →
+                        </button>
+
+                    </div>
+
+
+                    <div class="calendar-views">
+
+                        <button
+                            id="view-year"
+                            class="active"
+                        >
+                            Año
+                        </button>
+
+                        <button
+                            id="view-week"
+                        >
+                            Semana
+                        </button>
+
+                        <button
+                            id="view-day"
+                        >
+                            Día
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="calendar-legend">
+
+                    <div class="legend-item">
+
+                        <span
+                            class="legend-dot legend-work"
+                        ></span>
+
+                        Trabajo
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span
+                            class="legend-dot legend-party"
+                        ></span>
+
+                        Fiesta
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span
+                            class="legend-dot legend-empty"
+                        ></span>
+
+                        Sin marcar
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="calendar-content"></div>
+
+        </section>
+
+
     </main>
 
 </section>
@@ -863,6 +1251,7 @@
 /* =========================
    SUPABASE
 ========================= */
+
 
 const SUPABASE_URL =
     "https://xcyqbqegaklxpcbxwjia.supabase.co";
@@ -884,6 +1273,7 @@ const supabaseClient =
    ELEMENTOS
 ========================= */
 
+
 const loginScreen =
     document.getElementById("login-screen");
 
@@ -896,26 +1286,26 @@ const dashboard =
 const eventsSection =
     document.getElementById("events-section");
 
+const eventFoldersSection =
+    document.getElementById("event-folders-section");
+
+const documentsSection =
+    document.getElementById("documents-section");
+
+const calendarSection =
+    document.getElementById("calendar-section");
+
+const loginForm =
+    document.getElementById("login-form");
+
+const error =
+    document.getElementById("error");
+
 const eventsList =
     document.getElementById("events-list");
 
 const newEventButton =
     document.getElementById("new-event-button");
-
-const eventFoldersSection =
-    document.getElementById("event-folders-section");
-
-const eventFoldersTitle =
-    document.getElementById("event-folders-title");
-
-const documentsSection =
-    document.getElementById("documents-section");
-
-const documentsTitle =
-    document.getElementById("documents-title");
-
-const documentsSubtitle =
-    document.getElementById("documents-subtitle");
 
 const documentsError =
     document.getElementById("documents-error");
@@ -926,22 +1316,65 @@ const documentList =
 const uploadInput =
     document.getElementById("upload-input");
 
-const loginForm =
-    document.getElementById("login-form");
+const eventFoldersTitle =
+    document.getElementById("event-folders-title");
 
-const error =
-    document.getElementById("error");
+const documentsTitle =
+    document.getElementById("documents-title");
+
+const documentsSubtitle =
+    document.getElementById("documents-subtitle");
+
+const calendarContent =
+    document.getElementById("calendar-content");
+
+const calendarTitle =
+    document.getElementById("calendar-title");
+
+
+
+/* =========================
+   ESTADO
+========================= */
 
 
 let currentEvent = null;
 
 let currentFolder = null;
 
+let currentCalendarDate =
+    new Date();
+
+let currentCalendarView =
+    "year";
+
+
+/*
+   Los estados del calendario
+   se guardan en el navegador.
+
+   Ejemplo:
+
+   {
+       "2026-08-24": "work",
+       "2026-08-25": "party"
+   }
+*/
+
+
+let calendarStatuses =
+    JSON.parse(
+        localStorage.getItem(
+            "marclastra_calendar_statuses"
+        ) || "{}"
+    );
+
 
 
 /* =========================
    LOGIN
 ========================= */
+
 
 loginForm.addEventListener(
     "submit",
@@ -951,17 +1384,15 @@ loginForm.addEventListener(
 
         error.textContent = "";
 
-
         const email =
-            document
-                .getElementById("email")
-                .value;
-
+            document.getElementById(
+                "email"
+            ).value;
 
         const password =
-            document
-                .getElementById("password")
-                .value;
+            document.getElementById(
+                "password"
+            ).value;
 
 
         const {
@@ -983,6 +1414,8 @@ loginForm.addEventListener(
             error.textContent =
                 "Email o contraseña incorrectos.";
 
+            console.error(loginError);
+
             return;
 
         }
@@ -998,6 +1431,7 @@ loginForm.addEventListener(
 /* =========================
    MOSTRAR PORTAL
 ========================= */
+
 
 function showPortal() {
 
@@ -1015,6 +1449,7 @@ function showPortal() {
    CERRAR SESIÓN
 ========================= */
 
+
 document
     .getElementById("logout")
     .addEventListener(
@@ -1026,17 +1461,7 @@ document
                 .signOut();
 
 
-            dashboard.style.display =
-                "block";
-
-            eventsSection.style.display =
-                "none";
-
-            eventFoldersSection.style.display =
-                "none";
-
-            documentsSection.style.display =
-                "none";
+            hideAllSections();
 
             portal.style.display =
                 "none";
@@ -1050,8 +1475,51 @@ document
 
 
 /* =========================
-   ABRIR EVENTOS
+   OCULTAR SECCIONES
 ========================= */
+
+
+function hideAllSections() {
+
+    dashboard.style.display =
+        "none";
+
+    eventsSection.style.display =
+        "none";
+
+    eventFoldersSection.style.display =
+        "none";
+
+    documentsSection.style.display =
+        "none";
+
+    calendarSection.style.display =
+        "none";
+
+}
+
+
+
+/* =========================
+   ABRIR DASHBOARD
+========================= */
+
+
+function openDashboard() {
+
+    hideAllSections();
+
+    dashboard.style.display =
+        "block";
+
+}
+
+
+
+/* =========================
+   DOCUMENTOS → EVENTOS
+========================= */
+
 
 document
     .getElementById("documents-card")
@@ -1059,14 +1527,7 @@ document
         "click",
         async function() {
 
-            dashboard.style.display =
-                "none";
-
-            eventFoldersSection.style.display =
-                "none";
-
-            documentsSection.style.display =
-                "none";
+            hideAllSections();
 
             eventsSection.style.display =
                 "block";
@@ -1079,8 +1540,38 @@ document
 
 
 /* =========================
+   EVENTOS → CALENDARIO
+========================= */
+
+
+document
+    .getElementById("calendar-card")
+    .addEventListener(
+        "click",
+        function() {
+
+            hideAllSections();
+
+            calendarSection.style.display =
+                "block";
+
+            currentCalendarDate =
+                new Date();
+
+            currentCalendarView =
+                "year";
+
+            updateCalendarView();
+
+        }
+    );
+
+
+
+/* =========================
    CARGAR EVENTOS
 ========================= */
+
 
 async function loadEvents() {
 
@@ -1136,7 +1627,6 @@ async function loadEvents() {
                     "div"
                 );
 
-
             card.className =
                 "event-card";
 
@@ -1144,7 +1634,8 @@ async function loadEvents() {
             const date =
                 evento.fecha
                     ? new Date(
-                        evento.fecha + "T00:00:00"
+                        evento.fecha +
+                        "T00:00:00"
                     ).toLocaleDateString(
                         "es-ES",
                         {
@@ -1192,10 +1683,14 @@ async function loadEvents() {
         }
     );
 
-    
+}
+
+
+
 /* =========================
    CREAR EVENTO
 ========================= */
+
 
 newEventButton.addEventListener(
     "click",
@@ -1207,7 +1702,9 @@ newEventButton.addEventListener(
             );
 
 
-        if (!nombre) return;
+        if (!nombre) {
+            return;
+        }
 
 
         const fecha =
@@ -1246,11 +1743,14 @@ newEventButton.addEventListener(
                 .from("eventos")
                 .insert({
 
-                    nombre: nombre,
+                    nombre:
+                        nombre,
 
-                    fecha: fecha || null,
+                    fecha:
+                        fecha || null,
 
-                    user_id: user.id
+                    user_id:
+                        user.id
 
                 });
 
@@ -1279,22 +1779,18 @@ newEventButton.addEventListener(
    ABRIR EVENTO
 ========================= */
 
+
 async function openEventFolders(
     evento
 ) {
 
-    currentEvent =
-        evento;
-
-
-    eventsSection.style.display =
-        "none";
-
-    documentsSection.style.display =
-        "none";
+    hideAllSections();
 
     eventFoldersSection.style.display =
         "block";
+
+    currentEvent =
+        evento;
 
 
     eventFoldersTitle.textContent =
@@ -1313,6 +1809,7 @@ async function openEventFolders(
    CARGAR CARPETAS DEL EVENTO
 ========================= */
 
+
 async function loadEventFolders(
     eventoId
 ) {
@@ -1328,7 +1825,9 @@ async function loadEventFolders(
                 "evento_id",
                 eventoId
             )
-            .order("nombre");
+            .order(
+                "nombre"
+            );
 
 
     if (error) {
@@ -1348,7 +1847,8 @@ async function loadEventFolders(
 
 
     for (
-        const card of folderCards
+        const card
+        of folderCards
     ) {
 
         const folderName =
@@ -1374,7 +1874,9 @@ async function loadEventFolders(
                 error: insertError
             } =
                 await supabaseClient
-                    .from("evento_carpetas")
+                    .from(
+                        "evento_carpetas"
+                    )
                     .insert({
 
                         evento_id:
@@ -1403,8 +1905,9 @@ async function loadEventFolders(
 
 
 /* =========================
-   ABRIR CARPETAS
+   ABRIR CARPETA
 ========================= */
+
 
 const folderCards =
     eventFoldersSection
@@ -1418,13 +1921,13 @@ folderCards.forEach(
 
         card.addEventListener(
             "click",
-            async function() {
+            function() {
 
                 const folderName =
                     card.dataset.folder;
 
 
-                await openEventFolder(
+                openEventFolder(
                     folderName
                 );
 
@@ -1437,17 +1940,17 @@ folderCards.forEach(
 
 
 /* =========================
-   ABRIR CARPETA
+   ABRIR DOCUMENTOS
+   DE UNA CARPETA
 ========================= */
+
 
 async function openEventFolder(
     folderName
 ) {
 
     if (!currentEvent) {
-
         return;
-
     }
 
 
@@ -1455,9 +1958,7 @@ async function openEventFolder(
         folderName;
 
 
-    eventFoldersSection.style.display =
-        "none";
-
+    hideAllSections();
 
     documentsSection.style.display =
         "block";
@@ -1471,27 +1972,88 @@ async function openEventFolder(
         currentEvent.nombre;
 
 
-    await loadEventDocuments();
+    await loadEventDocuments(
+        currentEvent.id,
+        folderName
+    );
 
 }
 
 
 
 /* =========================
-   CARGAR DOCUMENTOS DEL EVENTO
+   VOLVER DESDE EVENTOS
 ========================= */
 
-async function loadEventDocuments() {
 
-    if (
-        !currentEvent ||
-        !currentFolder
-    ) {
+document
+    .getElementById("events-back-button")
+    .addEventListener(
+        "click",
+        function() {
 
-        return;
+            openDashboard();
 
-    }
+        }
+    );
 
+
+
+/* =========================
+   VOLVER DESDE CARPETAS
+========================= */
+
+
+document
+    .getElementById(
+        "event-folders-back-button"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            hideAllSections();
+
+            eventsSection.style.display =
+                "block";
+
+            loadEvents();
+
+        }
+    );
+
+
+
+/* =========================
+   VOLVER DESDE DOCUMENTOS
+========================= */
+
+
+document
+    .getElementById("back-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            hideAllSections();
+
+            eventFoldersSection.style.display =
+                "block";
+
+        }
+    );
+
+
+
+/* =========================
+   CARGAR DOCUMENTOS
+========================= */
+
+
+async function loadEventDocuments(
+    eventoId,
+    folderName
+) {
 
     documentsError.textContent =
         "";
@@ -1502,9 +2064,9 @@ async function loadEventDocuments() {
 
 
     const folderPath =
-        currentEvent.nombre +
+        eventoId +
         "/" +
-        currentFolder;
+        folderName;
 
 
     const {
@@ -1518,8 +2080,10 @@ async function loadEventDocuments() {
                 folderPath,
                 {
                     sortBy: {
-                        column: "created_at",
-                        order: "desc"
+                        column:
+                            "created_at",
+                        order:
+                            "desc"
                     }
                 }
             );
@@ -1540,7 +2104,10 @@ async function loadEventDocuments() {
     }
 
 
-    if (!data || data.length === 0) {
+    if (
+        !data ||
+        data.length === 0
+    ) {
 
         documentList.innerHTML =
             '<div class="empty">Todavía no hay documentos en esta carpeta.</div>';
@@ -1550,20 +2117,22 @@ async function loadEventDocuments() {
     }
 
 
-    documentList.innerHTML = "";
+    documentList.innerHTML =
+        "";
 
 
     data.forEach(
         function(file) {
 
-            if (!file.name) return;
+            if (!file.name) {
+                return;
+            }
 
 
             const row =
                 document.createElement(
                     "div"
                 );
-
 
             row.className =
                 "document";
@@ -1573,7 +2142,6 @@ async function loadEventDocuments() {
                 document.createElement(
                     "div"
                 );
-
 
             name.className =
                 "document-name";
@@ -1586,7 +2154,9 @@ async function loadEventDocuments() {
                 </span>
 
                 <span>
-                    ${escapeHtml(file.name)}
+                    ${escapeHtml(
+                        file.name
+                    )}
                 </span>
 
             `;
@@ -1597,7 +2167,6 @@ async function loadEventDocuments() {
                     "div"
                 );
 
-
             actions.className =
                 "document-actions";
 
@@ -1607,10 +2176,8 @@ async function loadEventDocuments() {
                     "button"
                 );
 
-
             viewButton.className =
                 "view-button";
-
 
             viewButton.textContent =
                 "👁️ Ver";
@@ -1621,6 +2188,8 @@ async function loadEventDocuments() {
                 function() {
 
                     openDocument(
+                        folderPath +
+                        "/" +
                         file.name
                     );
 
@@ -1633,10 +2202,8 @@ async function loadEventDocuments() {
                     "button"
                 );
 
-
             deleteButton.className =
                 "delete-button";
-
 
             deleteButton.textContent =
                 "🗑️ Eliminar";
@@ -1647,6 +2214,8 @@ async function loadEventDocuments() {
                 function() {
 
                     deleteDocument(
+                        folderPath +
+                        "/" +
                         file.name
                     );
 
@@ -1658,7 +2227,6 @@ async function loadEventDocuments() {
                 viewButton
             );
 
-
             actions.appendChild(
                 deleteButton
             );
@@ -1667,7 +2235,6 @@ async function loadEventDocuments() {
             row.appendChild(
                 name
             );
-
 
             row.appendChild(
                 actions
@@ -1689,27 +2256,10 @@ async function loadEventDocuments() {
    ABRIR DOCUMENTO
 ========================= */
 
+
 async function openDocument(
-    fileName
+    filePath
 ) {
-
-    if (
-        !currentEvent ||
-        !currentFolder
-    ) {
-
-        return;
-
-    }
-
-
-    const filePath =
-        currentEvent.nombre +
-        "/" +
-        currentFolder +
-        "/" +
-        fileName;
-
 
     const {
         data,
@@ -1750,6 +2300,7 @@ async function openDocument(
    SUBIR DOCUMENTO
 ========================= */
 
+
 uploadInput.addEventListener(
     "change",
     async function() {
@@ -1758,7 +2309,9 @@ uploadInput.addEventListener(
             uploadInput.files[0];
 
 
-        if (!file) return;
+        if (!file) {
+            return;
+        }
 
 
         if (
@@ -1766,11 +2319,9 @@ uploadInput.addEventListener(
             !currentFolder
         ) {
 
-            documentsError.textContent =
-                "Primero debes seleccionar un evento y una carpeta.";
-
-            uploadInput.value =
-                "";
+            alert(
+                "No se ha seleccionado una carpeta."
+            );
 
             return;
 
@@ -1778,21 +2329,21 @@ uploadInput.addEventListener(
 
 
         documentsError.textContent =
-            "Subiendo documento...";
+            "";
 
 
-        const safeFileName =
+        const fileName =
             Date.now() +
             "_" +
             file.name;
 
 
         const filePath =
-            currentEvent.nombre +
+            currentEvent.id +
             "/" +
             currentFolder +
             "/" +
-            safeFileName;
+            fileName;
 
 
         const {
@@ -1823,11 +2374,10 @@ uploadInput.addEventListener(
             "";
 
 
-        documentsError.textContent =
-            "";
-
-
-        await loadEventDocuments();
+        await loadEventDocuments(
+            currentEvent.id,
+            currentFolder
+        );
 
     }
 );
@@ -1838,8 +2388,9 @@ uploadInput.addEventListener(
    ELIMINAR DOCUMENTO
 ========================= */
 
+
 async function deleteDocument(
-    fileName
+    filePath
 ) {
 
     const confirmed =
@@ -1849,28 +2400,8 @@ async function deleteDocument(
 
 
     if (!confirmed) {
-
         return;
-
     }
-
-
-    if (
-        !currentEvent ||
-        !currentFolder
-    ) {
-
-        return;
-
-    }
-
-
-    const filePath =
-        currentEvent.nombre +
-        "/" +
-        currentFolder +
-        "/" +
-        fileName;
 
 
     const {
@@ -1879,9 +2410,11 @@ async function deleteDocument(
         await supabaseClient
             .storage
             .from("Documentos")
-            .remove([
-                filePath
-            ]);
+            .remove(
+                [
+                    filePath
+                ]
+            );
 
 
     if (error) {
@@ -1897,27 +2430,1043 @@ async function deleteDocument(
     }
 
 
-    await loadEventDocuments();
+    await loadEventDocuments(
+        currentEvent.id,
+        currentFolder
+    );
+
+}
+
+
+
+/* =========================================================
+   CALENDARIO
+========================================================= */
+
+
+/* =========================
+   FORMATEAR FECHA
+========================= */
+
+
+function dateKey(
+    date
+) {
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
 
 }
 
 
 
 /* =========================
-   VOLVER DESDE DOCUMENTOS
+   GUARDAR CALENDARIO
 ========================= */
 
+
+function saveCalendarStatuses() {
+
+    localStorage.setItem(
+        "marclastra_calendar_statuses",
+        JSON.stringify(
+            calendarStatuses
+        )
+    );
+
+}
+
+
+
+/* =========================
+   OBTENER ESTADO
+========================= */
+
+
+function getStatus(
+    date
+) {
+
+    return (
+        calendarStatuses[
+            dateKey(date)
+        ] ||
+        null
+    );
+
+}
+
+
+
+/* =========================
+   CAMBIAR ESTADO
+========================= */
+
+
+function setDayStatus(
+    date,
+    status
+) {
+
+    const key =
+        dateKey(date);
+
+
+    if (status) {
+
+        calendarStatuses[key] =
+            status;
+
+    } else {
+
+        delete calendarStatuses[key];
+
+    }
+
+
+    saveCalendarStatuses();
+
+    updateCalendarView();
+
+}
+
+
+
+/* =========================
+   NOMBRES
+========================= */
+
+
+const monthNames = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+];
+
+
+const weekdayNames = [
+    "L",
+    "M",
+    "X",
+    "J",
+    "V",
+    "S",
+    "D"
+];
+
+
+const weekdayLongNames = [
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado",
+    "Domingo"
+];
+
+
+
+/* =========================
+   CALENDARIO
+========================= */
+
+
+function updateCalendarView() {
+
+    if (
+        currentCalendarView ===
+        "year"
+    ) {
+
+        renderYear();
+
+    }
+
+
+    if (
+        currentCalendarView ===
+        "week"
+    ) {
+
+        renderWeek();
+
+    }
+
+
+    if (
+        currentCalendarView ===
+        "day"
+    ) {
+
+        renderDay();
+
+    }
+
+}
+
+
+
+/* =========================
+   VISTA ANUAL
+========================= */
+
+
+function renderYear() {
+
+    const year =
+        currentCalendarDate
+            .getFullYear();
+
+
+    calendarTitle.textContent =
+        String(year);
+
+
+    calendarContent.innerHTML =
+        "";
+
+
+    const yearGrid =
+        document.createElement(
+            "div"
+        );
+
+    yearGrid.className =
+        "year-grid";
+
+
+    for (
+        let month = 0;
+        month < 12;
+        month++
+    ) {
+
+        const monthElement =
+            document.createElement(
+                "div"
+            );
+
+        monthElement.className =
+            "month";
+
+
+        const title =
+            document.createElement(
+                "div"
+            );
+
+        title.className =
+            "month-title";
+
+        title.textContent =
+            monthNames[month];
+
+
+        monthElement.appendChild(
+            title
+        );
+
+
+        const weekdays =
+            document.createElement(
+                "div"
+            );
+
+        weekdays.className =
+            "weekday-row";
+
+
+        weekdayNames.forEach(
+            function(name) {
+
+                const weekday =
+                    document.createElement(
+                        "div"
+                    );
+
+                weekday.className =
+                    "weekday";
+
+                weekday.textContent =
+                    name;
+
+                weekdays.appendChild(
+                    weekday
+                );
+
+            }
+        );
+
+
+        monthElement.appendChild(
+            weekdays
+        );
+
+
+        const days =
+            document.createElement(
+                "div"
+            );
+
+        days.className =
+            "month-days";
+
+
+        const firstDay =
+            new Date(
+                year,
+                month,
+                1
+            );
+
+
+        let startDay =
+            firstDay.getDay();
+
+
+        /*
+           JavaScript:
+           Domingo = 0
+
+           Nosotros queremos:
+           Lunes = 0
+        */
+
+        startDay =
+            startDay === 0
+                ? 6
+                : startDay - 1;
+
+
+        for (
+            let i = 0;
+            i < startDay;
+            i++
+        ) {
+
+            const empty =
+                document.createElement(
+                    "div"
+                );
+
+            empty.className =
+                "day empty-day";
+
+            days.appendChild(
+                empty
+            );
+
+        }
+
+
+        const daysInMonth =
+            new Date(
+                year,
+                month + 1,
+                0
+            ).getDate();
+
+
+        for (
+            let dayNumber = 1;
+            dayNumber <= daysInMonth;
+            dayNumber++
+        ) {
+
+            const date =
+                new Date(
+                    year,
+                    month,
+                    dayNumber
+                );
+
+
+            const dayElement =
+                document.createElement(
+                    "div"
+                );
+
+            dayElement.className =
+                "day";
+
+
+            const status =
+                getStatus(date);
+
+
+            if (
+                status ===
+                "work"
+            ) {
+
+                dayElement.classList.add(
+                    "work"
+                );
+
+            }
+
+
+            if (
+                status ===
+                "party"
+            ) {
+
+                dayElement.classList.add(
+                    "party"
+                );
+
+            }
+
+
+            const today =
+                new Date();
+
+
+            if (
+                dateKey(date) ===
+                dateKey(today)
+            ) {
+
+                dayElement.classList.add(
+                    "today"
+                );
+
+            }
+
+
+            dayElement.innerHTML = `
+
+                <span class="day-number">
+                    ${dayNumber}
+                </span>
+
+            `;
+
+
+            dayElement.addEventListener(
+                "click",
+                function() {
+
+                    cycleDayStatus(
+                        date
+                    );
+
+                }
+            );
+
+
+            days.appendChild(
+                dayElement
+            );
+
+        }
+
+
+        monthElement.appendChild(
+            days
+        );
+
+
+        yearGrid.appendChild(
+            monthElement
+        );
+
+    }
+
+
+    calendarContent.appendChild(
+        yearGrid
+    );
+
+}
+
+
+
+/* =========================
+   CICLO DEL DÍA
+========================= */
+
+
+function cycleDayStatus(
+    date
+) {
+
+    const current =
+        getStatus(date);
+
+
+    if (!current) {
+
+        setDayStatus(
+            date,
+            "work"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        current ===
+        "work"
+    ) {
+
+        setDayStatus(
+            date,
+            "party"
+        );
+
+        return;
+
+    }
+
+
+    setDayStatus(
+        date,
+        null
+    );
+
+}
+
+
+
+/* =========================
+   VISTA SEMANAL
+========================= */
+
+
+function getMonday(
+    date
+) {
+
+    const result =
+        new Date(date);
+
+
+    const day =
+        result.getDay();
+
+
+    const difference =
+        day === 0
+            ? -6
+            : 1 - day;
+
+
+    result.setDate(
+        result.getDate() +
+        difference
+    );
+
+
+    result.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    return result;
+
+}
+
+
+
+function renderWeek() {
+
+    const monday =
+        getMonday(
+            currentCalendarDate
+        );
+
+
+    const sunday =
+        new Date(monday);
+
+
+    sunday.setDate(
+        monday.getDate() +
+        6
+    );
+
+
+    calendarTitle.textContent =
+        monday.toLocaleDateString(
+            "es-ES",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        ) +
+        " — " +
+        sunday.toLocaleDateString(
+            "es-ES",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+
+    calendarContent.innerHTML =
+        "";
+
+
+    const weekView =
+        document.createElement(
+            "div"
+        );
+
+    weekView.className =
+        "week-view";
+
+
+    const weekGrid =
+        document.createElement(
+            "div"
+        );
+
+    weekGrid.className =
+        "week-grid";
+
+
+    for (
+        let i = 0;
+        i < 7;
+        i++
+    ) {
+
+        const date =
+            new Date(monday);
+
+
+        date.setDate(
+            monday.getDate() +
+            i
+        );
+
+
+        const status =
+            getStatus(date);
+
+
+        const dayElement =
+            document.createElement(
+                "div"
+            );
+
+        dayElement.className =
+            "week-day";
+
+
+        const header =
+            document.createElement(
+                "div"
+            );
+
+        header.className =
+            "week-day-header";
+
+
+        header.innerHTML = `
+
+            ${weekdayLongNames[i]}
+
+            <div class="week-day-number">
+                ${date.getDate()}
+            </div>
+
+        `;
+
+
+        const content =
+            document.createElement(
+                "div"
+            );
+
+        content.className =
+            "week-day-content";
+
+
+        let icon =
+            "⚪";
+
+        let text =
+            "Sin marcar";
+
+
+        if (
+            status ===
+            "work"
+        ) {
+
+            icon =
+                "🟢";
+
+            text =
+                "Trabajo";
+
+        }
+
+
+        if (
+            status ===
+            "party"
+        ) {
+
+            icon =
+                "🔴";
+
+            text =
+                "Fiesta";
+
+        }
+
+
+        content.innerHTML = `
+
+            <div class="week-status">
+                ${icon}
+            </div>
+
+            <div class="week-status-text">
+                ${text}
+            </div>
+
+        `;
+
+
+        dayElement.appendChild(
+            header
+        );
+
+        dayElement.appendChild(
+            content
+        );
+
+
+        dayElement.addEventListener(
+            "click",
+            function() {
+
+                openSpecificDay(
+                    date
+                );
+
+            }
+        );
+
+
+        weekGrid.appendChild(
+            dayElement
+        );
+
+    }
+
+
+    weekView.appendChild(
+        weekGrid
+    );
+
+
+    calendarContent.appendChild(
+        weekView
+    );
+
+}
+
+
+
+/* =========================
+   VISTA DIARIA
+========================= */
+
+
+function renderDay() {
+
+    const date =
+        currentCalendarDate;
+
+
+    calendarTitle.textContent =
+        date.toLocaleDateString(
+            "es-ES",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    calendarContent.innerHTML =
+        "";
+
+
+    const status =
+        getStatus(date);
+
+
+    let icon =
+        "⚪";
+
+    let text =
+        "Sin marcar";
+
+
+    if (
+        status ===
+        "work"
+    ) {
+
+        icon =
+            "🟢";
+
+        text =
+            "Trabajo";
+
+    }
+
+
+    if (
+        status ===
+        "party"
+    ) {
+
+        icon =
+            "🔴";
+
+        text =
+            "Fiesta";
+
+    }
+
+
+    const container =
+        document.createElement(
+            "div"
+        );
+
+    container.className =
+        "day-view";
+
+
+    container.innerHTML = `
+
+        <div class="day-view-date">
+            ${date.toLocaleDateString(
+                "es-ES",
+                {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                }
+            )}
+        </div>
+
+        <div class="day-view-status">
+            ${icon}
+        </div>
+
+        <div class="day-view-status-text">
+            ${text}
+        </div>
+
+        <div class="status-buttons">
+
+            <button
+                class="status-work"
+                id="set-work"
+            >
+                🟢 Trabajo
+            </button>
+
+            <button
+                class="status-party"
+                id="set-party"
+            >
+                🔴 Fiesta
+            </button>
+
+            <button
+                class="status-clear"
+                id="set-clear"
+            >
+                ⚪ Limpiar
+            </button>
+
+        </div>
+
+    `;
+
+
+    calendarContent.appendChild(
+        container
+    );
+
+
+    document
+        .getElementById("set-work")
+        .addEventListener(
+            "click",
+            function() {
+
+                setDayStatus(
+                    date,
+                    "work"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("set-party")
+        .addEventListener(
+            "click",
+            function() {
+
+                setDayStatus(
+                    date,
+                    "party"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("set-clear")
+        .addEventListener(
+            "click",
+            function() {
+
+                setDayStatus(
+                    date,
+                    null
+                );
+
+            }
+        );
+
+}
+
+
+
+/* =========================
+   ABRIR DÍA
+========================= */
+
+
+function openSpecificDay(
+    date
+) {
+
+    currentCalendarDate =
+        new Date(date);
+
+    currentCalendarView =
+        "day";
+
+    updateCalendarView();
+
+    updateViewButtons();
+
+}
+
+
+
+/* =========================
+   CAMBIAR VISTA
+========================= */
+
+
 document
-    .getElementById("back-button")
+    .getElementById("view-year")
     .addEventListener(
         "click",
         function() {
 
-            documentsSection.style.display =
-                "none";
+            currentCalendarView =
+                "year";
 
-            eventFoldersSection.style.display =
-                "block";
+            updateViewButtons();
+
+            updateCalendarView();
+
+        }
+    );
+
+
+document
+    .getElementById("view-week")
+    .addEventListener(
+        "click",
+        function() {
+
+            currentCalendarView =
+                "week";
+
+            updateViewButtons();
+
+            updateCalendarView();
+
+        }
+    );
+
+
+document
+    .getElementById("view-day")
+    .addEventListener(
+        "click",
+        function() {
+
+            currentCalendarView =
+                "day";
+
+            updateViewButtons();
+
+            updateCalendarView();
 
         }
     );
@@ -1925,22 +3474,147 @@ document
 
 
 /* =========================
-   VOLVER DESDE CARPETAS
+   BOTONES DE VISTA
 ========================= */
 
+
+function updateViewButtons() {
+
+    document
+        .getElementById("view-year")
+        .classList.remove(
+            "active"
+        );
+
+    document
+        .getElementById("view-week")
+        .classList.remove(
+            "active"
+        );
+
+    document
+        .getElementById("view-day")
+        .classList.remove(
+            "active"
+        );
+
+
+    document
+        .getElementById(
+            "view-" +
+            currentCalendarView
+        )
+        .classList.add(
+            "active"
+        );
+
+}
+
+
+
+/* =========================
+   NAVEGACIÓN CALENDARIO
+========================= */
+
+
 document
-    .getElementById("event-folders-back-button")
+    .getElementById("calendar-prev")
     .addEventListener(
         "click",
         function() {
 
-            eventFoldersSection.style.display =
-                "none";
+            if (
+                currentCalendarView ===
+                "year"
+            ) {
 
-            eventsSection.style.display =
-                "block";
+                currentCalendarDate.setFullYear(
+                    currentCalendarDate.getFullYear() -
+                    1
+                );
 
-            loadEvents();
+            }
+
+
+            if (
+                currentCalendarView ===
+                "week"
+            ) {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() -
+                    7
+                );
+
+            }
+
+
+            if (
+                currentCalendarView ===
+                "day"
+            ) {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() -
+                    1
+                );
+
+            }
+
+
+            updateCalendarView();
+
+        }
+    );
+
+
+
+document
+    .getElementById("calendar-next")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (
+                currentCalendarView ===
+                "year"
+            ) {
+
+                currentCalendarDate.setFullYear(
+                    currentCalendarDate.getFullYear() +
+                    1
+                );
+
+            }
+
+
+            if (
+                currentCalendarView ===
+                "week"
+            ) {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() +
+                    7
+                );
+
+            }
+
+
+            if (
+                currentCalendarView ===
+                "day"
+            ) {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() +
+                    1
+                );
+
+            }
+
+
+            updateCalendarView();
 
         }
     );
@@ -1948,20 +3622,19 @@ document
 
 
 /* =========================
-   VOLVER DESDE EVENTOS
+   VOLVER DEL CALENDARIO
 ========================= */
 
+
 document
-    .getElementById("events-back-button")
+    .getElementById(
+        "calendar-back-button"
+    )
     .addEventListener(
         "click",
         function() {
 
-            eventsSection.style.display =
-                "none";
-
-            dashboard.style.display =
-                "block";
+            openDashboard();
 
         }
     );
@@ -1972,6 +3645,7 @@ document
    SEGURIDAD HTML
 ========================= */
 
+
 function escapeHtml(
     text
 ) {
@@ -1981,10 +3655,8 @@ function escapeHtml(
             "div"
         );
 
-
     div.textContent =
         text;
-
 
     return div.innerHTML;
 
@@ -1996,6 +3668,7 @@ function escapeHtml(
    COMPROBAR SESIÓN
 ========================= */
 
+
 async function checkSession() {
 
     const {
@@ -2006,7 +3679,9 @@ async function checkSession() {
             .getSession();
 
 
-    if (data.session) {
+    if (
+        data.session
+    ) {
 
         showPortal();
 
@@ -2023,4 +3698,3 @@ checkSession();
 </body>
 
 </html>
-```
