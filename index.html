@@ -182,16 +182,84 @@
 
 
         /* =========================
-           DOCUMENTOS
+           EVENTOS
         ========================= */
 
-        #documents-section {
+        #events-section {
             display: none;
         }
 
         .back-button {
             margin-bottom: 25px;
             background: #666;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 30px;
+            margin-bottom: 6px;
+        }
+
+        .section-header p {
+            color: #777;
+        }
+
+        .new-event-button {
+            white-space: nowrap;
+        }
+
+        .event-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: 0.2s;
+            min-height: 180px;
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .event-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .event-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .event-card p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: #888;
+            background: white;
+            border-radius: 12px;
+        }
+
+
+        /* =========================
+           DOCUMENTOS
+        ========================= */
+
+        #documents-section {
+            display: none;
         }
 
         .documents-header {
@@ -273,22 +341,26 @@
             background: #b3261e;
         }
 
-        .empty {
-            padding: 40px;
-            text-align: center;
-            color: #888;
-        }
-
         #documents-error {
             color: #b3261e;
             margin: 15px 0;
         }
 
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
         @media (max-width: 600px) {
 
+            .section-header,
             .documents-header {
                 align-items: flex-start;
                 flex-direction: column;
+            }
+
+            .event-card {
+                min-height: auto;
             }
 
             .document {
@@ -346,7 +418,6 @@
                 required
             >
 
-
             <label for="password">
                 Contraseña
             </label>
@@ -358,11 +429,9 @@
                 required
             >
 
-
             <button type="submit">
                 Entrar
             </button>
-
 
             <div id="error"></div>
 
@@ -422,9 +491,6 @@
 
             <section class="cards">
 
-
-                <!-- DOCUMENTOS -->
-
                 <div
                     class="card"
                     id="documents-card"
@@ -445,8 +511,6 @@
                 </div>
 
 
-                <!-- EVENTOS -->
-
                 <div class="card">
 
                     <div class="icon">
@@ -463,8 +527,6 @@
 
                 </div>
 
-
-                <!-- PRESUPUESTOS -->
 
                 <div class="card">
 
@@ -483,8 +545,6 @@
                 </div>
 
 
-                <!-- CONTRATOS -->
-
                 <div class="card">
 
                     <div class="icon">
@@ -502,8 +562,6 @@
                 </div>
 
 
-                <!-- FACTURAS -->
-
                 <div class="card">
 
                     <div class="icon">
@@ -520,8 +578,61 @@
 
                 </div>
 
-
             </section>
+
+        </section>
+
+
+
+        <!-- =========================
+             EVENTOS
+        ========================= -->
+
+        <section id="events-section">
+
+            <button
+                class="back-button"
+                id="events-back-button"
+            >
+                ← Volver
+            </button>
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        📁 Eventos
+                    </h2>
+
+                    <p>
+                        Gestiona tus eventos y sus documentos.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="new-event-button"
+                    id="new-event-button"
+                >
+                    + Nuevo evento
+                </button>
+
+            </div>
+
+
+            <div
+                id="events-list"
+                class="cards"
+            >
+
+                <div class="empty">
+                    Cargando eventos...
+                </div>
+
+            </div>
 
         </section>
 
@@ -530,54 +641,8 @@
         <!-- =========================
              DOCUMENTOS
         ========================= -->
-<!-- =========================
-     EVENTOS
-========================= -->
 
-<section id="events-section" style="display:none;">
-
-    <button
-        class="back-button"
-        id="events-back-button"
-    >
-        ← Volver
-    </button>
-
-
-    <div class="documents-header">
-
-        <div>
-
-            <h2>📁 Eventos</h2>
-
-            <p>
-                Gestiona tus eventos y sus documentos
-            </p>
-
-        </div>
-
-
-        <button id="new-event-button">
-            + Nuevo evento
-        </button>
-
-    </div>
-
-
-    <div
-        id="events-list"
-        class="cards"
-    >
-
-        <div class="empty">
-            Cargando eventos...
-        </div>
-
-    </div>
-
-</section>
         <section id="documents-section">
-
 
             <button
                 class="back-button"
@@ -596,7 +661,7 @@
                     </h2>
 
                     <p>
-                        Tus documentos privados
+                        Tus documentos privados.
                     </p>
 
                 </div>
@@ -632,7 +697,6 @@
 
             </div>
 
-
         </section>
 
 
@@ -645,204 +709,52 @@
 <script>
 
 
-    /* =========================
-       SUPABASE
-    ========================= */
+/* =========================
+   SUPABASE
+========================= */
 
 
-    const SUPABASE_URL =
-        "https://xcyqbqegaklxpcbxwjia.supabase.co";
+const SUPABASE_URL =
+    "https://xcyqbqegaklxpcbxwjia.supabase.co";
 
 
-    const SUPABASE_KEY =
-        "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
+const SUPABASE_KEY =
+    "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
 
 
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-
-    /* =========================
-       ELEMENTOS
-    ========================= */
-
-
-    const loginScreen =
-        document.getElementById(
-            "login-screen"
-        );
-
-
-    const portal =
-        document.getElementById(
-            "portal"
-        );
-
-
-    const dashboard =
-        document.getElementById(
-            "dashboard"
-        );
-
-
-    const documentsSection =
-        document.getElementById(
-            "documents-section"
-        );
-
-
-    const loginForm =
-        document.getElementById(
-            "login-form"
-        );
-
-
-    const error =
-        document.getElementById(
-            "error"
-        );
-
-
-    const documentsError =
-        document.getElementById(
-            "documents-error"
-        );
-
-
-    const documentList =
-        document.getElementById(
-            "document-list"
-        );
-
-
-    const uploadInput =
-        document.getElementById(
-            "upload-input"
-        );
-
-
-
-    /* =========================
-       LOGIN
-    ========================= */
-
-
-    loginForm.addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            error.textContent = "";
-
-
-            const email =
-                document.getElementById(
-                    "email"
-                ).value;
-
-
-            const password =
-                document.getElementById(
-                    "password"
-                ).value;
-
-
-            const {
-                error: loginError
-            } =
-                await supabaseClient
-                    .auth
-                    .signInWithPassword({
-
-                        email: email,
-
-                        password: password
-
-                    });
-
-
-            if (loginError) {
-
-                error.textContent =
-                    "Email o contraseña incorrectos.";
-
-                return;
-
-            }
-
-
-            showPortal();
-
-        }
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
 
 
 
-    /* =========================
-       MOSTRAR PORTAL
-    ========================= */
-
-
-    function showPortal() {
-
-        loginScreen.style.display =
-            "none";
-
-
-        portal.style.display =
-            "block";
-
-    }
-
-
-
-    /* =========================
-       CERRAR SESIÓN
-    ========================= */
-
-
-    document
-        .getElementById("logout")
-        .addEventListener(
-            "click",
-            async function() {
-
-
-                await supabaseClient
-                    .auth
-                    .signOut();
-
-
-                portal.style.display =
-                    "none";
-
-
-                documentsSection.style.display =
-                    "none";
-
-
-                dashboard.style.display =
-                    "block";
-
-
-                loginScreen.style.display =
-                    "flex";
-
-            }
-        );
-
 /* =========================
-   EVENTOS
+   ELEMENTOS
 ========================= */
+
+
+const loginScreen =
+    document.getElementById("login-screen");
+
+const portal =
+    document.getElementById("portal");
+
+const dashboard =
+    document.getElementById("dashboard");
 
 const eventsSection =
     document.getElementById("events-section");
+
+const documentsSection =
+    document.getElementById("documents-section");
+
+const loginForm =
+    document.getElementById("login-form");
+
+const error =
+    document.getElementById("error");
 
 const eventsList =
     document.getElementById("events-list");
@@ -850,121 +762,118 @@ const eventsList =
 const newEventButton =
     document.getElementById("new-event-button");
 
+const documentsError =
+    document.getElementById("documents-error");
 
-async function loadEvents() {
+const documentList =
+    document.getElementById("document-list");
 
-    eventsList.innerHTML =
-        '<div class="empty">Cargando eventos...</div>';
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("eventos")
-            .select("*")
-            .order("fecha", { ascending: true });
-
-    if (error) {
-
-        eventsList.innerHTML =
-            '<div class="empty">No se han podido cargar los eventos.</div>';
-
-        console.error(error);
-
-        return;
-    }
-
-    if (!data || data.length === 0) {
-
-        eventsList.innerHTML =
-            '<div class="empty">Todavía no tienes eventos.</div>';
-
-        return;
-    }
-
-    eventsList.innerHTML = "";
-
-    data.forEach(function(evento) {
-
-        const card =
-            document.createElement("div");
-
-        card.className = "event-card";
-
-        const date =
-            evento.fecha
-                ? new Date(evento.fecha + "T00:00:00")
-                    .toLocaleDateString("es-ES", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
-                    })
-                : "Sin fecha";
-
-        card.innerHTML = `
-            <div class="event-icon">📁</div>
-
-            <h3>
-                ${escapeHtml(evento.nombre)}
-            </h3>
-
-            <p>
-                ${date}
-            </p>
-        `;
-
-        eventsList.appendChild(card);
-
-    });
-
-}
+const uploadInput =
+    document.getElementById("upload-input");
 
 
-newEventButton.addEventListener(
-    "click",
-    async function() {
 
-        const nombre =
-            prompt("Nombre del evento:");
+/* =========================
+   LOGIN
+========================= */
 
-        if (!nombre) return;
 
-        const fecha =
-            prompt("Fecha del evento (AAAA-MM-DD):");
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+        error.textContent = "";
+
+        const email =
+            document.getElementById("email").value;
+
+        const password =
+            document.getElementById("password").value;
 
         const {
-            error
+            error: loginError
         } =
-            await supabaseClient
-                .from("eventos")
-                .insert({
+            await supabaseClient.auth.signInWithPassword({
 
-                    nombre: nombre,
+                email: email,
+                password: password
 
-                    fecha: fecha || null
+            });
 
-                });
 
-        if (error) {
+        if (loginError) {
 
-            alert(
-                "No se ha podido crear el evento."
-            );
-
-            console.error(error);
+            error.textContent =
+                "Email o contraseña incorrectos.";
 
             return;
+
         }
 
-        await loadEvents();
+
+        showPortal();
 
     }
 );
 
+
+
 /* =========================
-   ABRIR DOCUMENTOS
+   MOSTRAR PORTAL
 ========================= */
+
+
+function showPortal() {
+
+    loginScreen.style.display =
+        "none";
+
+    portal.style.display =
+        "block";
+
+}
+
+
+
+/* =========================
+   CERRAR SESIÓN
+========================= */
+
+
+document
+    .getElementById("logout")
+    .addEventListener(
+        "click",
+        async function() {
+
+            await supabaseClient.auth.signOut();
+
+            eventsSection.style.display =
+                "none";
+
+            documentsSection.style.display =
+                "none";
+
+            dashboard.style.display =
+                "block";
+
+            portal.style.display =
+                "none";
+
+            loginScreen.style.display =
+                "flex";
+
+        }
+    );
+
+
+
+/* =========================
+   ABRIR EVENTOS
+========================= */
+
 
 document
     .getElementById("documents-card")
@@ -987,9 +896,11 @@ document
     );
 
 
+
 /* =========================
    VOLVER DESDE EVENTOS
 ========================= */
+
 
 document
     .getElementById("events-back-button")
@@ -1005,251 +916,178 @@ document
 
         }
     );
-    
-    /* =========================
-       VOLVER
-    ========================= */
 
 
-    document
-        .getElementById("back-button")
-        .addEventListener(
-            "click",
-            function() {
 
+/* =========================
+   CARGAR EVENTOS
+========================= */
 
-                documentsSection.style.display =
-                    "none";
 
+async function loadEvents() {
 
-                dashboard.style.display =
-                    "block";
+    eventsList.innerHTML =
+        '<div class="empty">Cargando eventos...</div>';
 
-            }
-        );
 
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("eventos")
+            .select("*")
+            .order(
+                "fecha",
+                {
+                    ascending: true
+                }
+            );
 
 
-    /* =========================
-       CARGAR DOCUMENTOS
-    ========================= */
+    if (error) {
 
+        eventsList.innerHTML =
+            '<div class="empty">No se han podido cargar los eventos.</div>';
 
-    async function loadDocuments() {
+        console.error(error);
 
-
-        documentsError.textContent =
-            "";
-
-
-        documentList.innerHTML =
-            '<div class="empty">Cargando documentos...</div>';
-
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .storage
-                .from("Documentos")
-                .list(
-                    "",
-                    {
-
-                        sortBy: {
-
-                            column: "created_at",
-
-                            order: "desc"
-
-                        }
-
-                    }
-                );
-
-
-        if (error) {
-
-            documentsError.textContent =
-                "No se han podido cargar los documentos.";
-
-            documentList.innerHTML =
-                '<div class="empty">Error al cargar los documentos.</div>';
-
-            console.error(error);
-
-            return;
-
-        }
-
-
-        if (!data || data.length === 0) {
-
-            documentList.innerHTML =
-                '<div class="empty">Todavía no hay documentos.</div>';
-
-            return;
-
-        }
-
-
-        documentList.innerHTML =
-            "";
-
-
-        data.forEach(
-            function(file) {
-
-
-                if (!file.name) return;
-
-
-                const row =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                row.className =
-                    "document";
-
-
-                const name =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                name.className =
-                    "document-name";
-
-
-                name.innerHTML =
-                    `<span class="document-icon">📄</span>
-                     <span>${escapeHtml(file.name)}</span>`;
-
-
-                const actions =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                actions.className =
-                    "document-actions";
-
-
-                const viewButton =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                viewButton.className =
-                    "view-button";
-
-
-                viewButton.textContent =
-                    "👁️ Ver";
-
-
-                viewButton.addEventListener(
-                    "click",
-                    function() {
-
-                        openDocument(
-                            file.name
-                        );
-
-                    }
-                );
-
-
-                const deleteButton =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                deleteButton.className =
-                    "delete-button";
-
-
-                deleteButton.textContent =
-                    "🗑️ Eliminar";
-
-
-                deleteButton.addEventListener(
-                    "click",
-                    function() {
-
-                        deleteDocument(
-                            file.name
-                        );
-
-                    }
-                );
-
-
-                actions.appendChild(
-                    viewButton
-                );
-
-
-                actions.appendChild(
-                    deleteButton
-                );
-
-
-                row.appendChild(
-                    name
-                );
-
-
-                row.appendChild(
-                    actions
-                );
-
-
-                documentList.appendChild(
-                    row
-                );
-
-            }
-        );
+        return;
 
     }
 
 
+    if (!data || data.length === 0) {
 
-    /* =========================
-       ABRIR DOCUMENTO
-    ========================= */
+        eventsList.innerHTML =
+            '<div class="empty">Todavía no tienes eventos.</div>';
+
+        return;
+
+    }
 
 
-    async function openDocument(
-        fileName
-    ) {
+    eventsList.innerHTML = "";
+
+
+    data.forEach(
+        function(evento) {
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "event-card";
+
+
+            const date =
+                evento.fecha
+                    ? new Date(
+                        evento.fecha + "T00:00:00"
+                    ).toLocaleDateString(
+                        "es-ES",
+                        {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric"
+                        }
+                    )
+                    : "Sin fecha";
+
+
+            card.innerHTML = `
+
+                <div class="event-icon">
+                    📁
+                </div>
+
+                <h3>
+                    ${escapeHtml(evento.nombre)}
+                </h3>
+
+                <p>
+                    ${date}
+                </p>
+
+            `;
+
+
+            eventsList.appendChild(card);
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   CREAR EVENTO
+========================= */
+
+
+newEventButton.addEventListener(
+    "click",
+    async function() {
+
+
+        const nombre =
+            prompt(
+                "Nombre del evento:"
+            );
+
+
+        if (!nombre) return;
+
+
+        const fecha =
+            prompt(
+                "Fecha del evento (AAAA-MM-DD):"
+            );
 
 
         const {
-            data,
+            data: sessionData
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const user =
+            sessionData.session?.user;
+
+
+        if (!user) {
+
+            alert(
+                "Tu sesión ha caducado. Vuelve a iniciar sesión."
+            );
+
+            return;
+
+        }
+
+
+        const {
             error
         } =
             await supabaseClient
-                .storage
-                .from("Documentos")
-                .createSignedUrl(
-                    fileName,
-                    600
-                );
+                .from("eventos")
+                .insert({
+
+                    nombre: nombre,
+
+                    fecha: fecha || null,
+
+                    user_id: user.id
+
+                });
 
 
         if (error) {
 
             alert(
-                "No se ha podido abrir el documento."
+                "No se ha podido crear el evento."
             );
 
             console.error(error);
@@ -1259,94 +1097,289 @@ document
         }
 
 
-        window.open(
-            data.signedUrl,
-            "_blank"
-        );
+        await loadEvents();
 
     }
+);
 
 
 
-    /* =========================
-       SUBIR DOCUMENTO
-    ========================= */
+/* =========================
+   VOLVER DESDE DOCUMENTOS
+========================= */
 
 
-    uploadInput.addEventListener(
-        "change",
-        async function() {
+document
+    .getElementById("back-button")
+    .addEventListener(
+        "click",
+        function() {
 
+            documentsSection.style.display =
+                "none";
 
-            const file =
-                uploadInput.files[0];
+            eventsSection.style.display =
+                "block";
 
-
-            if (!file) return;
-
-
-            documentsError.textContent =
-                "";
-
-
-            const fileName =
-                Date.now()
-                + "_"
-                + file.name;
-
-
-            const {
-                error
-            } =
-                await supabaseClient
-                    .storage
-                    .from("Documentos")
-                    .upload(
-                        fileName,
-                        file
-                    );
-
-
-            if (error) {
-
-                documentsError.textContent =
-                    "No se ha podido subir el documento.";
-
-                console.error(error);
-
-                return;
-
-            }
-
-
-            uploadInput.value =
-                "";
-
-
-            await loadDocuments();
+            loadEvents();
 
         }
     );
 
 
 
-    /* =========================
-       ELIMINAR DOCUMENTO
-    ========================= */
+/* =========================
+   CARGAR DOCUMENTOS
+========================= */
 
 
-    async function deleteDocument(
-        fileName
-    ) {
+async function loadDocuments() {
+
+    documentsError.textContent =
+        "";
+
+    documentList.innerHTML =
+        '<div class="empty">Cargando documentos...</div>';
 
 
-        const confirmed =
-            confirm(
-                "¿Seguro que quieres eliminar este documento?"
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .storage
+            .from("Documentos")
+            .list(
+                "",
+                {
+                    sortBy: {
+                        column: "created_at",
+                        order: "desc"
+                    }
+                }
             );
 
 
-        if (!confirmed) return;
+    if (error) {
+
+        documentsError.textContent =
+            "No se han podido cargar los documentos.";
+
+        documentList.innerHTML =
+            '<div class="empty">Error al cargar los documentos.</div>';
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    if (!data || data.length === 0) {
+
+        documentList.innerHTML =
+            '<div class="empty">Todavía no hay documentos.</div>';
+
+        return;
+
+    }
+
+
+    documentList.innerHTML =
+        "";
+
+
+    data.forEach(
+        function(file) {
+
+            if (!file.name) return;
+
+
+            const row =
+                document.createElement("div");
+
+
+            row.className =
+                "document";
+
+
+            const name =
+                document.createElement("div");
+
+
+            name.className =
+                "document-name";
+
+
+            name.innerHTML =
+                `
+                <span class="document-icon">
+                    📄
+                </span>
+
+                <span>
+                    ${escapeHtml(file.name)}
+                </span>
+                `;
+
+
+            const actions =
+                document.createElement("div");
+
+
+            actions.className =
+                "document-actions";
+
+
+            const viewButton =
+                document.createElement("button");
+
+
+            viewButton.className =
+                "view-button";
+
+
+            viewButton.textContent =
+                "👁️ Ver";
+
+
+            viewButton.addEventListener(
+                "click",
+                function() {
+
+                    openDocument(
+                        file.name
+                    );
+
+                }
+            );
+
+
+            const deleteButton =
+                document.createElement("button");
+
+
+            deleteButton.className =
+                "delete-button";
+
+
+            deleteButton.textContent =
+                "🗑️ Eliminar";
+
+
+            deleteButton.addEventListener(
+                "click",
+                function() {
+
+                    deleteDocument(
+                        file.name
+                    );
+
+                }
+            );
+
+
+            actions.appendChild(
+                viewButton
+            );
+
+
+            actions.appendChild(
+                deleteButton
+            );
+
+
+            row.appendChild(
+                name
+            );
+
+
+            row.appendChild(
+                actions
+            );
+
+
+            documentList.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================
+   ABRIR DOCUMENTO
+========================= */
+
+
+async function openDocument(
+    fileName
+) {
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .storage
+            .from("Documentos")
+            .createSignedUrl(
+                fileName,
+                600
+            );
+
+
+    if (error) {
+
+        alert(
+            "No se ha podido abrir el documento."
+        );
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    window.open(
+        data.signedUrl,
+        "_blank"
+    );
+
+}
+
+
+
+/* =========================
+   SUBIR DOCUMENTO
+========================= */
+
+
+uploadInput.addEventListener(
+    "change",
+    async function() {
+
+
+        const file =
+            uploadInput.files[0];
+
+
+        if (!file) return;
+
+
+        documentsError.textContent =
+            "";
+
+
+        const fileName =
+            Date.now()
+            + "_"
+            + file.name;
 
 
         const {
@@ -1355,18 +1388,16 @@ document
             await supabaseClient
                 .storage
                 .from("Documentos")
-                .remove(
-                    [
-                        fileName
-                    ]
+                .upload(
+                    fileName,
+                    file
                 );
 
 
         if (error) {
 
-            alert(
-                "No se ha podido eliminar el documento."
-            );
+            documentsError.textContent =
+                "No se ha podido subir el documento.";
 
             console.error(error);
 
@@ -1375,64 +1406,115 @@ document
         }
 
 
+        uploadInput.value =
+            "";
+
+
         await loadDocuments();
 
     }
+);
 
 
 
-    /* =========================
-       SEGURIDAD HTML
-    ========================= */
+/* =========================
+   ELIMINAR DOCUMENTO
+========================= */
 
 
-    function escapeHtml(
-        text
-    ) {
+async function deleteDocument(
+    fileName
+) {
 
 
-        const div =
-            document.createElement(
-                "div"
+    const confirmed =
+        confirm(
+            "¿Seguro que quieres eliminar este documento?"
+        );
+
+
+    if (!confirmed) return;
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .storage
+            .from("Documentos")
+            .remove(
+                [
+                    fileName
+                ]
             );
 
 
-        div.textContent =
-            text;
+    if (error) {
 
+        alert(
+            "No se ha podido eliminar el documento."
+        );
 
-        return div.innerHTML;
+        console.error(error);
 
-    }
-
-
-
-    /* =========================
-       COMPROBAR SESIÓN
-    ========================= */
-
-
-    async function checkSession() {
-
-
-        const {
-            data
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
-
-
-        if (data.session) {
-
-            showPortal();
-
-        }
+        return;
 
     }
 
 
-    checkSession();
+    await loadDocuments();
+
+}
+
+
+
+/* =========================
+   SEGURIDAD HTML
+========================= */
+
+
+function escapeHtml(
+    text
+) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =========================
+   COMPROBAR SESIÓN
+========================= */
+
+
+async function checkSession() {
+
+
+    const {
+        data
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if (data.session) {
+
+        showPortal();
+
+    }
+
+}
+
+
+checkSession();
 
 
 </script>
