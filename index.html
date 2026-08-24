@@ -72,13 +72,12 @@
         }
 
         button {
-            width: 100%;
-            padding: 14px;
+            padding: 13px 18px;
             background: #111;
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
         }
 
@@ -120,8 +119,6 @@
 
         .logout {
             background: #333;
-            width: auto;
-            padding: 9px 16px;
         }
 
         main {
@@ -157,6 +154,10 @@
             cursor: pointer;
         }
 
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
         .icon {
             font-size: 35px;
             margin-bottom: 15px;
@@ -169,6 +170,109 @@
         .card p {
             color: #777;
             font-size: 14px;
+        }
+
+        /* DOCUMENTOS */
+
+        #documents-section {
+            display: none;
+        }
+
+        .back-button {
+            margin-bottom: 25px;
+            background: #666;
+        }
+
+        .documents-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
+
+        .upload-button {
+            background: #111;
+        }
+
+        .document-list {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .document {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border-bottom: 1px solid #eee;
+            gap: 15px;
+        }
+
+        .document:last-child {
+            border-bottom: none;
+        }
+
+        .document-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            word-break: break-word;
+        }
+
+        .document-icon {
+            font-size: 25px;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .view-button {
+            background: #444;
+        }
+
+        .delete-button {
+            background: #b3261e;
+        }
+
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: #888;
+        }
+
+        #documents-error {
+            color: #b3261e;
+            margin: 15px 0;
+        }
+
+        #upload-input {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .documents-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .document {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .document-actions {
+                width: 100%;
+            }
+
+            .document-actions button {
+                flex: 1;
+            }
         }
     </style>
 </head>
@@ -189,6 +293,7 @@
         <form id="login-form">
 
             <label for="email">Email</label>
+
             <input
                 type="email"
                 id="email"
@@ -197,6 +302,7 @@
             >
 
             <label for="password">Contraseña</label>
+
             <input
                 type="password"
                 id="password"
@@ -217,7 +323,7 @@
 </section>
 
 
-<!-- PRIVATE PORTAL -->
+<!-- PORTAL -->
 
 <section id="portal">
 
@@ -227,7 +333,7 @@
 
             <h1>MARCLASTRA</h1>
 
-            <button class="logout" id="logout">
+            <button id="logout">
                 Cerrar sesión
             </button>
 
@@ -235,48 +341,149 @@
 
     </header>
 
+
     <main>
 
-        <section class="welcome">
+        <!-- DASHBOARD -->
 
-            <h2>Bienvenido, Marc</h2>
+        <section id="dashboard">
 
-            <p>
-                Este es tu espacio privado de gestión.
-            </p>
+            <div class="welcome">
+
+                <h2>Bienvenido, Marc</h2>
+
+                <p>
+                    Este es tu espacio privado de gestión.
+                </p>
+
+            </div>
+
+
+            <section class="cards">
+
+                <div class="card" id="documents-card">
+
+                    <div class="icon">📄</div>
+
+                    <h3>Documentos</h3>
+
+                    <p>
+                        Accede a tus documentos privados.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">📅</div>
+
+                    <h3>Eventos</h3>
+
+                    <p>
+                        Gestiona tus próximos eventos.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">💰</div>
+
+                    <h3>Presupuestos</h3>
+
+                    <p>
+                        Consulta tus presupuestos.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">📑</div>
+
+                    <h3>Contratos</h3>
+
+                    <p>
+                        Gestiona tus contratos.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">🧾</div>
+
+                    <h3>Facturas</h3>
+
+                    <p>
+                        Consulta tus facturas.
+                    </p>
+
+                </div>
+
+            </section>
 
         </section>
 
-        <section class="cards">
 
-            <div class="card">
-                <div class="icon">📅</div>
-                <h3>Eventos</h3>
-                <p>Gestiona tus próximos eventos.</p>
+        <!-- DOCUMENTOS -->
+
+        <section id="documents-section">
+
+            <button class="back-button" id="back-button">
+                ← Volver
+            </button>
+
+
+            <div class="documents-header">
+
+                <div>
+
+                    <h2>📄 Documentos</h2>
+
+                    <p>
+                        Tus documentos privados
+                    </p>
+
+                </div>
+
+
+                <label
+                    for="upload-input"
+                    class="upload-button"
+                    style="
+                        padding:13px 18px;
+                        background:#111;
+                        color:white;
+                        border-radius:8px;
+                        cursor:pointer;
+                        font-size:14px;
+                    "
+                >
+                    ⬆️ Subir documento
+                </label>
+
+                <input
+                    type="file"
+                    id="upload-input"
+                >
+
             </div>
 
-            <div class="card">
-                <div class="icon">📄</div>
-                <h3>Documentos</h3>
-                <p>Accede a tus documentos privados.</p>
-            </div>
 
-            <div class="card">
-                <div class="icon">💰</div>
-                <h3>Presupuestos</h3>
-                <p>Consulta y organiza presupuestos.</p>
-            </div>
+            <div id="documents-error"></div>
 
-            <div class="card">
-                <div class="icon">📑</div>
-                <h3>Contratos</h3>
-                <p>Gestiona tus contratos.</p>
-            </div>
 
-            <div class="card">
-                <div class="icon">🧾</div>
-                <h3>Facturas</h3>
-                <p>Consulta tus facturas.</p>
+            <div class="document-list" id="document-list">
+
+                <div class="empty">
+                    Cargando documentos...
+                </div>
+
             </div>
 
         </section>
@@ -288,11 +495,16 @@
 
 <script>
 
+    /* =========================
+       SUPABASE
+    ========================= */
+
     const SUPABASE_URL =
         "https://xcyqbqegaklxpcbxwjia.supabase.co";
 
     const SUPABASE_KEY =
         "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
+
 
     const supabaseClient =
         window.supabase.createClient(
@@ -301,8 +513,9 @@
         );
 
 
-    const loginForm =
-        document.getElementById("login-form");
+    /* =========================
+       ELEMENTOS
+    ========================= */
 
     const loginScreen =
         document.getElementById("login-screen");
@@ -310,68 +523,457 @@
     const portal =
         document.getElementById("portal");
 
+    const dashboard =
+        document.getElementById("dashboard");
+
+    const documentsSection =
+        document.getElementById("documents-section");
+
+    const loginForm =
+        document.getElementById("login-form");
+
     const error =
         document.getElementById("error");
 
+    const documentsError =
+        document.getElementById("documents-error");
 
-    loginForm.addEventListener("submit", async function(event) {
+    const documentList =
+        document.getElementById("document-list");
 
-        event.preventDefault();
-
-        error.textContent = "";
-
-        const email =
-            document.getElementById("email").value;
-
-        const password =
-            document.getElementById("password").value;
+    const uploadInput =
+        document.getElementById("upload-input");
 
 
-        const { data, error: loginError } =
-            await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: password
-            });
+    /* =========================
+       LOGIN
+    ========================= */
+
+    loginForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+            error.textContent = "";
+
+            const email =
+                document.getElementById("email").value;
+
+            const password =
+                document.getElementById("password").value;
 
 
-        if (loginError) {
+            const { error: loginError } =
+                await supabaseClient.auth.signInWithPassword({
 
-            error.textContent =
-                "Email o contraseña incorrectos.";
+                    email: email,
 
-            return;
+                    password: password
+
+                });
+
+
+            if (loginError) {
+
+                error.textContent =
+                    "Email o contraseña incorrectos.";
+
+                return;
+
+            }
+
+
+            showPortal();
+
         }
+    );
 
 
-        showPortal();
-
-    });
-
+    /* =========================
+       MOSTRAR PORTAL
+    ========================= */
 
     function showPortal() {
 
         loginScreen.style.display = "none";
+
         portal.style.display = "block";
 
     }
 
 
+    /* =========================
+       CERRAR SESIÓN
+    ========================= */
+
     document
         .getElementById("logout")
-        .addEventListener("click", async function() {
+        .addEventListener(
+            "click",
+            async function() {
 
-            await supabaseClient.auth.signOut();
+                await supabaseClient.auth.signOut();
 
-            portal.style.display = "none";
-            loginScreen.style.display = "flex";
+                portal.style.display = "none";
+
+                documentsSection.style.display = "none";
+
+                dashboard.style.display = "block";
+
+                loginScreen.style.display = "flex";
+
+            }
+        );
+
+
+    /* =========================
+       ABRIR DOCUMENTOS
+    ========================= */
+
+    document
+        .getElementById("documents-card")
+        .addEventListener(
+            "click",
+            async function() {
+
+                dashboard.style.display = "none";
+
+                documentsSection.style.display = "block";
+
+                await loadDocuments();
+
+            }
+        );
+
+
+    /* =========================
+       VOLVER
+    ========================= */
+
+    document
+        .getElementById("back-button")
+        .addEventListener(
+            "click",
+            function() {
+
+                documentsSection.style.display = "none";
+
+                dashboard.style.display = "block";
+
+            }
+        );
+
+
+    /* =========================
+       CARGAR DOCUMENTOS
+    ========================= */
+
+    async function loadDocuments() {
+
+        documentsError.textContent = "";
+
+        documentList.innerHTML =
+            '<div class="empty">Cargando documentos...</div>';
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .storage
+                .from("documentos")
+                .list("", {
+
+                    sortBy: {
+                        column: "created_at",
+                        order: "desc"
+                    }
+
+                });
+
+
+        if (error) {
+
+            documentsError.textContent =
+                "No se han podido cargar los documentos.";
+
+            documentList.innerHTML =
+                '<div class="empty">Error al cargar los documentos.</div>';
+
+            console.error(error);
+
+            return;
+
+        }
+
+
+        if (!data || data.length === 0) {
+
+            documentList.innerHTML =
+                '<div class="empty">Todavía no hay documentos.</div>';
+
+            return;
+
+        }
+
+
+        documentList.innerHTML = "";
+
+
+        data.forEach(function(file) {
+
+            if (!file.name) return;
+
+
+            const row =
+                document.createElement("div");
+
+            row.className = "document";
+
+
+            const name =
+                document.createElement("div");
+
+            name.className = "document-name";
+
+            name.innerHTML =
+                `<span class="document-icon">📄</span>
+                 <span>${escapeHtml(file.name)}</span>`;
+
+
+            const actions =
+                document.createElement("div");
+
+            actions.className =
+                "document-actions";
+
+
+            const viewButton =
+                document.createElement("button");
+
+            viewButton.className =
+                "view-button";
+
+            viewButton.textContent =
+                "👁️ Ver";
+
+
+            viewButton.addEventListener(
+                "click",
+                function() {
+
+                    openDocument(file.name);
+
+                }
+            );
+
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.className =
+                "delete-button";
+
+            deleteButton.textContent =
+                "🗑️ Eliminar";
+
+
+            deleteButton.addEventListener(
+                "click",
+                function() {
+
+                    deleteDocument(file.name);
+
+                }
+            );
+
+
+            actions.appendChild(viewButton);
+
+            actions.appendChild(deleteButton);
+
+
+            row.appendChild(name);
+
+            row.appendChild(actions);
+
+
+            documentList.appendChild(row);
 
         });
 
+    }
+
+
+    /* =========================
+       ABRIR DOCUMENTO
+    ========================= */
+
+    async function openDocument(fileName) {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .storage
+                .from("documentos")
+                .createSignedUrl(
+                    fileName,
+                    60 * 10
+                );
+
+
+        if (error) {
+
+            alert(
+                "No se ha podido abrir el documento."
+            );
+
+            console.error(error);
+
+            return;
+
+        }
+
+
+        window.open(
+            data.signedUrl,
+            "_blank"
+        );
+
+    }
+
+
+    /* =========================
+       SUBIR DOCUMENTO
+    ========================= */
+
+    uploadInput.addEventListener(
+        "change",
+        async function() {
+
+            const file =
+                uploadInput.files[0];
+
+
+            if (!file) return;
+
+
+            documentsError.textContent = "";
+
+
+            const fileName =
+                Date.now() + "_" + file.name;
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .storage
+                    .from("documentos")
+                    .upload(
+                        fileName,
+                        file
+                    );
+
+
+            if (error) {
+
+                documentsError.textContent =
+                    "No se ha podido subir el documento.";
+
+                console.error(error);
+
+                return;
+
+            }
+
+
+            uploadInput.value = "";
+
+            await loadDocuments();
+
+        }
+    );
+
+
+    /* =========================
+       ELIMINAR DOCUMENTO
+    ========================= */
+
+    async function deleteDocument(fileName) {
+
+        const confirmed =
+            confirm(
+                "¿Seguro que quieres eliminar este documento?"
+            );
+
+
+        if (!confirmed) return;
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .storage
+                .from("documentos")
+                .remove([
+                    fileName
+                ]);
+
+
+        if (error) {
+
+            alert(
+                "No se ha podido eliminar el documento."
+            );
+
+            console.error(error);
+
+            return;
+
+        }
+
+
+        await loadDocuments();
+
+    }
+
+
+    /* =========================
+       SEGURIDAD HTML
+    ========================= */
+
+    function escapeHtml(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+
+    }
+
+
+    /* =========================
+       COMPROBAR SESIÓN
+    ========================= */
 
     async function checkSession() {
 
-        const { data } =
-            await supabaseClient.auth.getSession();
+        const {
+            data
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
 
         if (data.session) {
 
