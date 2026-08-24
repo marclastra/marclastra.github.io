@@ -96,6 +96,7 @@
             text-align: center;
         }
 
+
         /* =========================
            PORTAL
         ========================= */
@@ -163,7 +164,6 @@
 
         .card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
         .icon {
@@ -179,6 +179,7 @@
             color: #777;
             font-size: 14px;
         }
+
 
         /* =========================
            DOCUMENTOS
@@ -202,24 +203,24 @@
         }
 
         .documents-header h2 {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .documents-header p {
             color: #777;
         }
 
-        .upload-button {
+        .upload-label {
+            padding: 13px 18px;
             background: #111;
             color: white;
-            padding: 13px 18px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            display: inline-block;
+            white-space: nowrap;
         }
 
-        .upload-button:hover {
+        .upload-label:hover {
             background: #333;
         }
 
@@ -306,6 +307,7 @@
         }
 
     </style>
+
 </head>
 
 
@@ -378,7 +380,6 @@
 
 <section id="portal">
 
-
     <header>
 
         <div class="header-content">
@@ -387,10 +388,9 @@
                 MARCLASTRA
             </h1>
 
-
             <button
-                class="logout"
                 id="logout"
+                class="logout"
             >
                 Cerrar sesión
             </button>
@@ -400,14 +400,12 @@
     </header>
 
 
-
     <main>
 
 
         <!-- DASHBOARD -->
 
         <section id="dashboard">
-
 
             <div class="welcome">
 
@@ -420,7 +418,6 @@
                 </p>
 
             </div>
-
 
 
             <section class="cards">
@@ -448,7 +445,6 @@
                 </div>
 
 
-
                 <!-- EVENTOS -->
 
                 <div class="card">
@@ -466,7 +462,6 @@
                     </p>
 
                 </div>
-
 
 
                 <!-- PRESUPUESTOS -->
@@ -488,7 +483,6 @@
                 </div>
 
 
-
                 <!-- CONTRATOS -->
 
                 <div class="card">
@@ -506,7 +500,6 @@
                     </p>
 
                 </div>
-
 
 
                 <!-- FACTURAS -->
@@ -549,9 +542,7 @@
             </button>
 
 
-
             <div class="documents-header">
-
 
                 <div>
 
@@ -566,10 +557,9 @@
                 </div>
 
 
-
                 <label
                     for="upload-input"
-                    class="upload-button"
+                    class="upload-label"
                 >
                     ⬆️ Subir documento
                 </label>
@@ -580,15 +570,10 @@
                     id="upload-input"
                 >
 
-
             </div>
 
 
-
-            <div
-                id="documents-error"
-            ></div>
-
+            <div id="documents-error"></div>
 
 
             <div
@@ -597,9 +582,7 @@
             >
 
                 <div class="empty">
-
                     Cargando documentos...
-
                 </div>
 
             </div>
@@ -617,220 +600,542 @@
 <script>
 
 
-/* =========================
-   CONFIGURACIÓN SUPABASE
-========================= */
+    /* =========================
+       SUPABASE
+    ========================= */
 
 
-const SUPABASE_URL =
-    "https://xcyqbqegaklxpcbxwjia.supabase.co";
+    const SUPABASE_URL =
+        "https://xcyqbqegaklxpcbxwjia.supabase.co";
 
 
-const SUPABASE_KEY =
-    "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
+    const SUPABASE_KEY =
+        "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
 
 
-const BUCKET_NAME =
-    "DOCUMENTOS";
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
+
+    /* =========================
+       ELEMENTOS
+    ========================= */
+
+
+    const loginScreen =
+        document.getElementById(
+            "login-screen"
+        );
+
+
+    const portal =
+        document.getElementById(
+            "portal"
+        );
+
+
+    const dashboard =
+        document.getElementById(
+            "dashboard"
+        );
+
+
+    const documentsSection =
+        document.getElementById(
+            "documents-section"
+        );
+
+
+    const loginForm =
+        document.getElementById(
+            "login-form"
+        );
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    const documentsError =
+        document.getElementById(
+            "documents-error"
+        );
+
+
+    const documentList =
+        document.getElementById(
+            "document-list"
+        );
+
+
+    const uploadInput =
+        document.getElementById(
+            "upload-input"
+        );
+
+
+
+    /* =========================
+       LOGIN
+    ========================= */
+
+
+    loginForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            error.textContent = "";
+
+
+            const email =
+                document.getElementById(
+                    "email"
+                ).value;
+
+
+            const password =
+                document.getElementById(
+                    "password"
+                ).value;
+
+
+            const {
+                error: loginError
+            } =
+                await supabaseClient
+                    .auth
+                    .signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+            if (loginError) {
+
+                error.textContent =
+                    "Email o contraseña incorrectos.";
+
+                return;
+
+            }
+
+
+            showPortal();
+
+        }
     );
 
 
 
-/* =========================
-   ELEMENTOS
-========================= */
+    /* =========================
+       MOSTRAR PORTAL
+    ========================= */
 
 
-const loginScreen =
-    document.getElementById(
-        "login-screen"
-    );
+    function showPortal() {
+
+        loginScreen.style.display =
+            "none";
 
 
-const portal =
-    document.getElementById(
-        "portal"
-    );
+        portal.style.display =
+            "block";
 
-
-const dashboard =
-    document.getElementById(
-        "dashboard"
-    );
-
-
-const documentsSection =
-    document.getElementById(
-        "documents-section"
-    );
-
-
-const loginForm =
-    document.getElementById(
-        "login-form"
-    );
-
-
-const error =
-    document.getElementById(
-        "error"
-    );
-
-
-const documentsError =
-    document.getElementById(
-        "documents-error"
-    );
-
-
-const documentList =
-    document.getElementById(
-        "document-list"
-    );
-
-
-const uploadInput =
-    document.getElementById(
-        "upload-input"
-    );
+    }
 
 
 
-/* =========================
-   LOGIN
-========================= */
+    /* =========================
+       CERRAR SESIÓN
+    ========================= */
 
 
-loginForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-        error.textContent = "";
+    document
+        .getElementById("logout")
+        .addEventListener(
+            "click",
+            async function() {
 
 
-        const email =
-            document.getElementById(
-                "email"
-            ).value;
+                await supabaseClient
+                    .auth
+                    .signOut();
 
 
-        const password =
-            document.getElementById(
-                "password"
-            ).value;
+                portal.style.display =
+                    "none";
+
+
+                documentsSection.style.display =
+                    "none";
+
+
+                dashboard.style.display =
+                    "block";
+
+
+                loginScreen.style.display =
+                    "flex";
+
+            }
+        );
+
+
+
+    /* =========================
+       ABRIR DOCUMENTOS
+    ========================= */
+
+
+    document
+        .getElementById("documents-card")
+        .addEventListener(
+            "click",
+            async function() {
+
+
+                dashboard.style.display =
+                    "none";
+
+
+                documentsSection.style.display =
+                    "block";
+
+
+                await loadDocuments();
+
+            }
+        );
+
+
+
+    /* =========================
+       VOLVER
+    ========================= */
+
+
+    document
+        .getElementById("back-button")
+        .addEventListener(
+            "click",
+            function() {
+
+
+                documentsSection.style.display =
+                    "none";
+
+
+                dashboard.style.display =
+                    "block";
+
+            }
+        );
+
+
+
+    /* =========================
+       CARGAR DOCUMENTOS
+    ========================= */
+
+
+    async function loadDocuments() {
+
+
+        documentsError.textContent =
+            "";
+
+
+        documentList.innerHTML =
+            '<div class="empty">Cargando documentos...</div>';
 
 
         const {
-            error: loginError
+            data,
+            error
         } =
             await supabaseClient
-                .auth
-                .signInWithPassword({
+                .storage
+                .from("Documentos")
+                .list(
+                    "",
+                    {
 
-                    email: email,
+                        sortBy: {
 
-                    password: password
+                            column: "created_at",
 
-                });
+                            order: "desc"
+
+                        }
+
+                    }
+                );
 
 
-        if (loginError) {
+        if (error) {
 
-            error.textContent =
-                "Email o contraseña incorrectos.";
+            documentsError.textContent =
+                "No se han podido cargar los documentos.";
+
+            documentList.innerHTML =
+                '<div class="empty">Error al cargar los documentos.</div>';
+
+            console.error(error);
 
             return;
 
         }
 
 
-        showPortal();
+        if (!data || data.length === 0) {
 
-    }
-);
+            documentList.innerHTML =
+                '<div class="empty">Todavía no hay documentos.</div>';
 
-
-
-/* =========================
-   MOSTRAR PORTAL
-========================= */
-
-
-function showPortal() {
-
-    loginScreen.style.display =
-        "none";
-
-    portal.style.display =
-        "block";
-
-}
-
-
-
-/* =========================
-   CERRAR SESIÓN
-========================= */
-
-
-document
-    .getElementById("logout")
-    .addEventListener(
-        "click",
-        async function() {
-
-
-            await supabaseClient
-                .auth
-                .signOut();
-
-
-            portal.style.display =
-                "none";
-
-
-            documentsSection.style.display =
-                "none";
-
-
-            dashboard.style.display =
-                "block";
-
-
-            loginScreen.style.display =
-                "flex";
+            return;
 
         }
-    );
+
+
+        documentList.innerHTML =
+            "";
+
+
+        data.forEach(
+            function(file) {
+
+
+                if (!file.name) return;
+
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                row.className =
+                    "document";
+
+
+                const name =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                name.className =
+                    "document-name";
+
+
+                name.innerHTML =
+                    `<span class="document-icon">📄</span>
+                     <span>${escapeHtml(file.name)}</span>`;
+
+
+                const actions =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                actions.className =
+                    "document-actions";
+
+
+                const viewButton =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                viewButton.className =
+                    "view-button";
+
+
+                viewButton.textContent =
+                    "👁️ Ver";
+
+
+                viewButton.addEventListener(
+                    "click",
+                    function() {
+
+                        openDocument(
+                            file.name
+                        );
+
+                    }
+                );
+
+
+                const deleteButton =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                deleteButton.className =
+                    "delete-button";
+
+
+                deleteButton.textContent =
+                    "🗑️ Eliminar";
+
+
+                deleteButton.addEventListener(
+                    "click",
+                    function() {
+
+                        deleteDocument(
+                            file.name
+                        );
+
+                    }
+                );
+
+
+                actions.appendChild(
+                    viewButton
+                );
+
+
+                actions.appendChild(
+                    deleteButton
+                );
+
+
+                row.appendChild(
+                    name
+                );
+
+
+                row.appendChild(
+                    actions
+                );
+
+
+                documentList.appendChild(
+                    row
+                );
+
+            }
+        );
+
+    }
 
 
 
-/* =========================
-   ABRIR DOCUMENTOS
-========================= */
+    /* =========================
+       ABRIR DOCUMENTO
+    ========================= */
 
 
-document
-    .getElementById("documents-card")
-    .addEventListener(
-        "click",
+    async function openDocument(
+        fileName
+    ) {
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .storage
+                .from("Documentos")
+                .createSignedUrl(
+                    fileName,
+                    600
+                );
+
+
+        if (error) {
+
+            alert(
+                "No se ha podido abrir el documento."
+            );
+
+            console.error(error);
+
+            return;
+
+        }
+
+
+        window.open(
+            data.signedUrl,
+            "_blank"
+        );
+
+    }
+
+
+
+    /* =========================
+       SUBIR DOCUMENTO
+    ========================= */
+
+
+    uploadInput.addEventListener(
+        "change",
         async function() {
 
 
-            dashboard.style.display =
-                "none";
+            const file =
+                uploadInput.files[0];
 
 
-            documentsSection.style.display =
-                "block";
+            if (!file) return;
+
+
+            documentsError.textContent =
+                "";
+
+
+            const fileName =
+                Date.now()
+                + "_"
+                + file.name;
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .storage
+                    .from("Documentos")
+                    .upload(
+                        fileName,
+                        file
+                    );
+
+
+            if (error) {
+
+                documentsError.textContent =
+                    "No se ha podido subir el documento.";
+
+                console.error(error);
+
+                return;
+
+            }
+
+
+            uploadInput.value =
+                "";
 
 
             await loadDocuments();
@@ -840,300 +1145,23 @@ document
 
 
 
-/* =========================
-   VOLVER AL DASHBOARD
-========================= */
+    /* =========================
+       ELIMINAR DOCUMENTO
+    ========================= */
 
 
-document
-    .getElementById("back-button")
-    .addEventListener(
-        "click",
-        function() {
+    async function deleteDocument(
+        fileName
+    ) {
 
 
-            documentsSection.style.display =
-                "none";
-
-
-            dashboard.style.display =
-                "block";
-
-        }
-    );
-
-
-
-/* =========================
-   CARGAR DOCUMENTOS
-========================= */
-
-
-async function loadDocuments() {
-
-
-    documentsError.textContent =
-        "";
-
-
-    documentList.innerHTML =
-        '<div class="empty">Cargando documentos...</div>';
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from(BUCKET_NAME)
-            .list(
-                "",
-                {
-                    sortBy: {
-                        column: "created_at",
-                        order: "desc"
-                    }
-                }
+        const confirmed =
+            confirm(
+                "¿Seguro que quieres eliminar este documento?"
             );
 
 
-    if (error) {
-
-
-        documentsError.textContent =
-            "No se han podido cargar los documentos.";
-
-
-        documentList.innerHTML =
-            '<div class="empty">Error al cargar los documentos.</div>';
-
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    if (!data || data.length === 0) {
-
-
-        documentList.innerHTML =
-            '<div class="empty">Todavía no hay documentos.</div>';
-
-
-        return;
-
-    }
-
-
-    documentList.innerHTML =
-        "";
-
-
-    data.forEach(
-        function(file) {
-
-
-            if (!file.name) return;
-
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-
-            row.className =
-                "document";
-
-
-            const name =
-                document.createElement(
-                    "div"
-                );
-
-
-            name.className =
-                "document-name";
-
-
-            name.innerHTML =
-                `<span class="document-icon">📄</span>
-                 <span>${escapeHtml(file.name)}</span>`;
-
-
-            const actions =
-                document.createElement(
-                    "div"
-                );
-
-
-            actions.className =
-                "document-actions";
-
-
-            /* VER */
-
-            const viewButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            viewButton.className =
-                "view-button";
-
-
-            viewButton.textContent =
-                "👁️ Ver";
-
-
-            viewButton.addEventListener(
-                "click",
-                function() {
-
-                    openDocument(
-                        file.name
-                    );
-
-                }
-            );
-
-
-
-            /* ELIMINAR */
-
-            const deleteButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            deleteButton.className =
-                "delete-button";
-
-
-            deleteButton.textContent =
-                "🗑️ Eliminar";
-
-
-            deleteButton.addEventListener(
-                "click",
-                function() {
-
-                    deleteDocument(
-                        file.name
-                    );
-
-                }
-            );
-
-
-            actions.appendChild(
-                viewButton
-            );
-
-
-            actions.appendChild(
-                deleteButton
-            );
-
-
-            row.appendChild(
-                name
-            );
-
-
-            row.appendChild(
-                actions
-            );
-
-
-            documentList.appendChild(
-                row
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =========================
-   VER DOCUMENTO
-========================= */
-
-
-async function openDocument(
-    fileName
-) {
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from(BUCKET_NAME)
-            .createSignedUrl(
-                fileName,
-                600
-            );
-
-
-    if (error) {
-
-
-        alert(
-            "No se ha podido abrir el documento."
-        );
-
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    window.open(
-        data.signedUrl,
-        "_blank"
-    );
-
-}
-
-
-
-/* =========================
-   SUBIR DOCUMENTO
-========================= */
-
-
-uploadInput.addEventListener(
-    "change",
-    async function() {
-
-
-        const file =
-            uploadInput.files[0];
-
-
-        if (!file) return;
-
-
-        documentsError.textContent =
-            "";
-
-
-        const fileName =
-            Date.now() +
-            "_" +
-            file.name;
+        if (!confirmed) return;
 
 
         const {
@@ -1141,149 +1169,85 @@ uploadInput.addEventListener(
         } =
             await supabaseClient
                 .storage
-                .from(BUCKET_NAME)
-                .upload(
-                    fileName,
-                    file
+                .from("Documentos")
+                .remove(
+                    [
+                        fileName
+                    ]
                 );
 
 
         if (error) {
 
-
-            documentsError.textContent =
-                "No se ha podido subir el documento.";
-
-
-            console.error(
-                "ERROR AL SUBIR:",
-                error
+            alert(
+                "No se ha podido eliminar el documento."
             );
 
+            console.error(error);
 
             return;
 
         }
 
 
-        uploadInput.value =
-            "";
-
-
         await loadDocuments();
 
     }
-);
 
 
 
-/* =========================
-   ELIMINAR DOCUMENTO
-========================= */
+    /* =========================
+       SEGURIDAD HTML
+    ========================= */
 
 
-async function deleteDocument(
-    fileName
-) {
+    function escapeHtml(
+        text
+    ) {
 
 
-    const confirmed =
-        confirm(
-            "¿Seguro que quieres eliminar este documento?"
-        );
+        const div =
+            document.createElement(
+                "div"
+            );
 
 
-    if (!confirmed) return;
+        div.textContent =
+            text;
 
 
-    const {
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from(BUCKET_NAME)
-            .remove([
-                fileName
-            ]);
-
-
-    if (error) {
-
-
-        alert(
-            "No se ha podido eliminar el documento."
-        );
-
-
-        console.error(
-            "ERROR AL ELIMINAR:",
-            error
-        );
-
-
-        return;
+        return div.innerHTML;
 
     }
 
 
-    await loadDocuments();
 
-}
-
-
-
-/* =========================
-   ESCAPAR HTML
-========================= */
+    /* =========================
+       COMPROBAR SESIÓN
+    ========================= */
 
 
-function escapeHtml(
-    text
-) {
+    async function checkSession() {
 
 
-    const div =
-        document.createElement(
-            "div"
-        );
+        const {
+            data
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
 
 
-    div.textContent =
-        text;
+        if (data.session) {
 
+            showPortal();
 
-    return div.innerHTML;
-
-}
-
-
-
-/* =========================
-   COMPROBAR SESIÓN
-========================= */
-
-
-async function checkSession() {
-
-
-    const {
-        data
-    } =
-        await supabaseClient
-            .auth
-            .getSession();
-
-
-    if (data.session) {
-
-        showPortal();
+        }
 
     }
 
-}
 
-
-checkSession();
+    checkSession();
 
 
 </script>
