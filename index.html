@@ -1,12 +1,20 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>MARCLASTRA — Private Portal</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
     <style>
 
@@ -21,6 +29,7 @@
             background: #f5f5f5;
             color: #222;
         }
+
 
         /* =========================
            LOGIN
@@ -147,9 +156,15 @@
             color: #777;
         }
 
+
+        /* =========================
+           TARJETAS
+        ========================= */
+
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
@@ -157,13 +172,16 @@
             background: white;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.08);
             cursor: pointer;
             transition: 0.2s;
         }
 
         .card:hover {
             transform: translateY(-3px);
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.12);
         }
 
         .icon {
@@ -186,6 +204,10 @@
         ========================= */
 
         #events-section {
+            display: none;
+        }
+
+        #event-folders-section {
             display: none;
         }
 
@@ -219,7 +241,8 @@
             background: white;
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            box-shadow:
+                0 4px 18px rgba(0,0,0,0.08);
             cursor: pointer;
             transition: 0.2s;
             min-height: 180px;
@@ -227,7 +250,8 @@
 
         .event-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.12);
         }
 
         .event-icon {
@@ -300,7 +324,8 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.08);
         }
 
         .document {
@@ -418,6 +443,7 @@
                 required
             >
 
+
             <label for="password">
                 Contraseña
             </label>
@@ -429,9 +455,11 @@
                 required
             >
 
+
             <button type="submit">
                 Entrar
             </button>
+
 
             <div id="error"></div>
 
@@ -472,7 +500,9 @@
     <main>
 
 
-        <!-- DASHBOARD -->
+        <!-- =========================
+             DASHBOARD
+        ========================= -->
 
         <section id="dashboard">
 
@@ -490,6 +520,7 @@
 
 
             <section class="cards">
+
 
                 <div
                     class="card"
@@ -639,7 +670,127 @@
 
 
         <!-- =========================
-             DOCUMENTOS
+             CARPETAS DEL EVENTO
+        ========================= -->
+
+        <section id="event-folders-section">
+
+            <button
+                class="back-button"
+                id="event-folders-back-button"
+            >
+                ← Volver
+            </button>
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 id="event-folders-title">
+                        📁 Evento
+                    </h2>
+
+                    <p>
+                        Selecciona una carpeta.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <div
+                    class="card"
+                    data-folder="Contratos"
+                >
+
+                    <div class="icon">
+                        📑
+                    </div>
+
+                    <h3>
+                        Contratos
+                    </h3>
+
+                    <p>
+                        Contratos relacionados con este evento.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="card"
+                    data-folder="Facturas"
+                >
+
+                    <div class="icon">
+                        🧾
+                    </div>
+
+                    <h3>
+                        Facturas
+                    </h3>
+
+                    <p>
+                        Facturas del evento.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="card"
+                    data-folder="Presupuestos"
+                >
+
+                    <div class="icon">
+                        💰
+                    </div>
+
+                    <h3>
+                        Presupuestos
+                    </h3>
+
+                    <p>
+                        Presupuestos del evento.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="card"
+                    data-folder="Otros"
+                >
+
+                    <div class="icon">
+                        📂
+                    </div>
+
+                    <h3>
+                        Otros documentos
+                    </h3>
+
+                    <p>
+                        Otros documentos del evento.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DOCUMENTOS DE CARPETA
         ========================= -->
 
         <section id="documents-section">
@@ -656,11 +807,11 @@
 
                 <div>
 
-                    <h2>
+                    <h2 id="documents-title">
                         📄 Documentos
                     </h2>
 
-                    <p>
+                    <p id="documents-subtitle">
                         Tus documentos privados.
                     </p>
 
@@ -713,7 +864,6 @@
    SUPABASE
 ========================= */
 
-
 const SUPABASE_URL =
     "https://xcyqbqegaklxpcbxwjia.supabase.co";
 
@@ -734,7 +884,6 @@ const supabaseClient =
    ELEMENTOS
 ========================= */
 
-
 const loginScreen =
     document.getElementById("login-screen");
 
@@ -747,20 +896,26 @@ const dashboard =
 const eventsSection =
     document.getElementById("events-section");
 
-const documentsSection =
-    document.getElementById("documents-section");
-
-const loginForm =
-    document.getElementById("login-form");
-
-const error =
-    document.getElementById("error");
-
 const eventsList =
     document.getElementById("events-list");
 
 const newEventButton =
     document.getElementById("new-event-button");
+
+const eventFoldersSection =
+    document.getElementById("event-folders-section");
+
+const eventFoldersTitle =
+    document.getElementById("event-folders-title");
+
+const documentsSection =
+    document.getElementById("documents-section");
+
+const documentsTitle =
+    document.getElementById("documents-title");
+
+const documentsSubtitle =
+    document.getElementById("documents-subtitle");
 
 const documentsError =
     document.getElementById("documents-error");
@@ -771,12 +926,22 @@ const documentList =
 const uploadInput =
     document.getElementById("upload-input");
 
+const loginForm =
+    document.getElementById("login-form");
+
+const error =
+    document.getElementById("error");
+
+
+let currentEvent = null;
+
+let currentFolder = null;
+
 
 
 /* =========================
    LOGIN
 ========================= */
-
 
 loginForm.addEventListener(
     "submit",
@@ -786,21 +951,31 @@ loginForm.addEventListener(
 
         error.textContent = "";
 
+
         const email =
-            document.getElementById("email").value;
+            document
+                .getElementById("email")
+                .value;
+
 
         const password =
-            document.getElementById("password").value;
+            document
+                .getElementById("password")
+                .value;
+
 
         const {
             error: loginError
         } =
-            await supabaseClient.auth.signInWithPassword({
+            await supabaseClient
+                .auth
+                .signInWithPassword({
 
-                email: email,
-                password: password
+                    email: email,
 
-            });
+                    password: password
+
+                });
 
 
         if (loginError) {
@@ -824,7 +999,6 @@ loginForm.addEventListener(
    MOSTRAR PORTAL
 ========================= */
 
-
 function showPortal() {
 
     loginScreen.style.display =
@@ -841,23 +1015,28 @@ function showPortal() {
    CERRAR SESIÓN
 ========================= */
 
-
 document
     .getElementById("logout")
     .addEventListener(
         "click",
         async function() {
 
-            await supabaseClient.auth.signOut();
+            await supabaseClient
+                .auth
+                .signOut();
+
+
+            dashboard.style.display =
+                "block";
 
             eventsSection.style.display =
                 "none";
 
-            documentsSection.style.display =
+            eventFoldersSection.style.display =
                 "none";
 
-            dashboard.style.display =
-                "block";
+            documentsSection.style.display =
+                "none";
 
             portal.style.display =
                 "none";
@@ -874,7 +1053,6 @@ document
    ABRIR EVENTOS
 ========================= */
 
-
 document
     .getElementById("documents-card")
     .addEventListener(
@@ -882,6 +1060,9 @@ document
         async function() {
 
             dashboard.style.display =
+                "none";
+
+            eventFoldersSection.style.display =
                 "none";
 
             documentsSection.style.display =
@@ -898,31 +1079,8 @@ document
 
 
 /* =========================
-   VOLVER DESDE EVENTOS
-========================= */
-
-
-document
-    .getElementById("events-back-button")
-    .addEventListener(
-        "click",
-        function() {
-
-            eventsSection.style.display =
-                "none";
-
-            dashboard.style.display =
-                "block";
-
-        }
-    );
-
-
-
-/* =========================
    CARGAR EVENTOS
 ========================= */
-
 
 async function loadEvents() {
 
@@ -974,7 +1132,9 @@ async function loadEvents() {
         function(evento) {
 
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             card.className =
@@ -1013,7 +1173,21 @@ async function loadEvents() {
             `;
 
 
-            eventsList.appendChild(card);
+            card.addEventListener(
+                "click",
+                function() {
+
+                    openEventFolders(
+                        evento
+                    );
+
+                }
+            );
+
+
+            eventsList.appendChild(
+                card
+            );
 
         }
     );
@@ -1026,11 +1200,9 @@ async function loadEvents() {
    CREAR EVENTO
 ========================= */
 
-
 newEventButton.addEventListener(
     "click",
     async function() {
-
 
         const nombre =
             prompt(
@@ -1050,7 +1222,9 @@ newEventButton.addEventListener(
         const {
             data: sessionData
         } =
-            await supabaseClient.auth.getSession();
+            await supabaseClient
+                .auth
+                .getSession();
 
 
         const user =
@@ -1105,41 +1279,235 @@ newEventButton.addEventListener(
 
 
 /* =========================
-   VOLVER DESDE DOCUMENTOS
+   ABRIR EVENTO
 ========================= */
 
+async function openEventFolders(
+    evento
+) {
 
-document
-    .getElementById("back-button")
-    .addEventListener(
-        "click",
-        function() {
+    currentEvent =
+        evento;
 
-            documentsSection.style.display =
-                "none";
 
-            eventsSection.style.display =
-                "block";
+    eventsSection.style.display =
+        "none";
 
-            loadEvents();
+    documentsSection.style.display =
+        "none";
 
-        }
+    eventFoldersSection.style.display =
+        "block";
+
+
+    eventFoldersTitle.textContent =
+        "📁 " + evento.nombre;
+
+
+    await loadEventFolders(
+        evento.id
     );
+
+}
 
 
 
 /* =========================
-   CARGAR DOCUMENTOS
+   CARGAR CARPETAS DEL EVENTO
 ========================= */
 
+async function loadEventFolders(
+    eventoId
+) {
 
-async function loadDocuments() {
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("evento_carpetas")
+            .select("*")
+            .eq(
+                "evento_id",
+                eventoId
+            )
+            .order("nombre");
+
+
+    if (error) {
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    const folderCards =
+        eventFoldersSection
+            .querySelectorAll(
+                "[data-folder]"
+            );
+
+
+    for (
+        const card of folderCards
+    ) {
+
+        const folderName =
+            card.dataset.folder;
+
+
+        const existingFolder =
+            data.find(
+                function(folder) {
+
+                    return (
+                        folder.nombre ===
+                        folderName
+                    );
+
+                }
+            );
+
+
+        if (!existingFolder) {
+
+            const {
+                error: insertError
+            } =
+                await supabaseClient
+                    .from("evento_carpetas")
+                    .insert({
+
+                        evento_id:
+                            eventoId,
+
+                        nombre:
+                            folderName
+
+                    });
+
+
+            if (insertError) {
+
+                console.error(
+                    insertError
+                );
+
+            }
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================
+   ABRIR CARPETAS
+========================= */
+
+const folderCards =
+    eventFoldersSection
+        .querySelectorAll(
+            "[data-folder]"
+        );
+
+
+folderCards.forEach(
+    function(card) {
+
+        card.addEventListener(
+            "click",
+            async function() {
+
+                const folderName =
+                    card.dataset.folder;
+
+
+                await openEventFolder(
+                    folderName
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================
+   ABRIR CARPETA
+========================= */
+
+async function openEventFolder(
+    folderName
+) {
+
+    if (!currentEvent) {
+
+        return;
+
+    }
+
+
+    currentFolder =
+        folderName;
+
+
+    eventFoldersSection.style.display =
+        "none";
+
+
+    documentsSection.style.display =
+        "block";
+
+
+    documentsTitle.textContent =
+        "📁 " + folderName;
+
+
+    documentsSubtitle.textContent =
+        currentEvent.nombre;
+
+
+    await loadEventDocuments();
+
+}
+
+
+
+/* =========================
+   CARGAR DOCUMENTOS DEL EVENTO
+========================= */
+
+async function loadEventDocuments() {
+
+    if (
+        !currentEvent ||
+        !currentFolder
+    ) {
+
+        return;
+
+    }
+
 
     documentsError.textContent =
         "";
 
+
     documentList.innerHTML =
         '<div class="empty">Cargando documentos...</div>';
+
+
+    const folderPath =
+        currentEvent.nombre +
+        "/" +
+        currentFolder;
 
 
     const {
@@ -1150,7 +1518,7 @@ async function loadDocuments() {
             .storage
             .from("Documentos")
             .list(
-                "",
+                folderPath,
                 {
                     sortBy: {
                         column: "created_at",
@@ -1178,15 +1546,14 @@ async function loadDocuments() {
     if (!data || data.length === 0) {
 
         documentList.innerHTML =
-            '<div class="empty">Todavía no hay documentos.</div>';
+            '<div class="empty">Todavía no hay documentos en esta carpeta.</div>';
 
         return;
 
     }
 
 
-    documentList.innerHTML =
-        "";
+    documentList.innerHTML = "";
 
 
     data.forEach(
@@ -1196,7 +1563,9 @@ async function loadDocuments() {
 
 
             const row =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             row.className =
@@ -1204,15 +1573,17 @@ async function loadDocuments() {
 
 
             const name =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             name.className =
                 "document-name";
 
 
-            name.innerHTML =
-                `
+            name.innerHTML = `
+
                 <span class="document-icon">
                     📄
                 </span>
@@ -1220,11 +1591,14 @@ async function loadDocuments() {
                 <span>
                     ${escapeHtml(file.name)}
                 </span>
-                `;
+
+            `;
 
 
             const actions =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             actions.className =
@@ -1232,7 +1606,9 @@ async function loadDocuments() {
 
 
             const viewButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
 
             viewButton.className =
@@ -1256,7 +1632,9 @@ async function loadDocuments() {
 
 
             const deleteButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
 
             deleteButton.className =
@@ -1314,10 +1692,26 @@ async function loadDocuments() {
    ABRIR DOCUMENTO
 ========================= */
 
-
 async function openDocument(
     fileName
 ) {
+
+    if (
+        !currentEvent ||
+        !currentFolder
+    ) {
+
+        return;
+
+    }
+
+
+    const filePath =
+        currentEvent.nombre +
+        "/" +
+        currentFolder +
+        "/" +
+        fileName;
 
 
     const {
@@ -1328,7 +1722,7 @@ async function openDocument(
             .storage
             .from("Documentos")
             .createSignedUrl(
-                fileName,
+                filePath,
                 600
             );
 
@@ -1359,11 +1753,9 @@ async function openDocument(
    SUBIR DOCUMENTO
 ========================= */
 
-
 uploadInput.addEventListener(
     "change",
     async function() {
-
 
         const file =
             uploadInput.files[0];
@@ -1372,14 +1764,38 @@ uploadInput.addEventListener(
         if (!file) return;
 
 
+        if (
+            !currentEvent ||
+            !currentFolder
+        ) {
+
+            documentsError.textContent =
+                "Primero debes seleccionar un evento y una carpeta.";
+
+            uploadInput.value =
+                "";
+
+            return;
+
+        }
+
+
         documentsError.textContent =
-            "";
+            "Subiendo documento...";
 
 
-        const fileName =
-            Date.now()
-            + "_"
-            + file.name;
+        const safeFileName =
+            Date.now() +
+            "_" +
+            file.name;
+
+
+        const filePath =
+            currentEvent.nombre +
+            "/" +
+            currentFolder +
+            "/" +
+            safeFileName;
 
 
         const {
@@ -1389,7 +1805,7 @@ uploadInput.addEventListener(
                 .storage
                 .from("Documentos")
                 .upload(
-                    fileName,
+                    filePath,
                     file
                 );
 
@@ -1410,7 +1826,11 @@ uploadInput.addEventListener(
             "";
 
 
-        await loadDocuments();
+        documentsError.textContent =
+            "";
+
+
+        await loadEventDocuments();
 
     }
 );
@@ -1421,11 +1841,9 @@ uploadInput.addEventListener(
    ELIMINAR DOCUMENTO
 ========================= */
 
-
 async function deleteDocument(
     fileName
 ) {
-
 
     const confirmed =
         confirm(
@@ -1433,7 +1851,29 @@ async function deleteDocument(
         );
 
 
-    if (!confirmed) return;
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    if (
+        !currentEvent ||
+        !currentFolder
+    ) {
+
+        return;
+
+    }
+
+
+    const filePath =
+        currentEvent.nombre +
+        "/" +
+        currentFolder +
+        "/" +
+        fileName;
 
 
     const {
@@ -1442,11 +1882,9 @@ async function deleteDocument(
         await supabaseClient
             .storage
             .from("Documentos")
-            .remove(
-                [
-                    fileName
-                ]
-            );
+            .remove([
+                filePath
+            ]);
 
 
     if (error) {
@@ -1462,9 +1900,74 @@ async function deleteDocument(
     }
 
 
-    await loadDocuments();
+    await loadEventDocuments();
 
 }
+
+
+
+/* =========================
+   VOLVER DESDE DOCUMENTOS
+========================= */
+
+document
+    .getElementById("back-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            documentsSection.style.display =
+                "none";
+
+            eventFoldersSection.style.display =
+                "block";
+
+        }
+    );
+
+
+
+/* =========================
+   VOLVER DESDE CARPETAS
+========================= */
+
+document
+    .getElementById("event-folders-back-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            eventFoldersSection.style.display =
+                "none";
+
+            eventsSection.style.display =
+                "block";
+
+            loadEvents();
+
+        }
+    );
+
+
+
+/* =========================
+   VOLVER DESDE EVENTOS
+========================= */
+
+document
+    .getElementById("events-back-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            eventsSection.style.display =
+                "none";
+
+            dashboard.style.display =
+                "block";
+
+        }
+    );
 
 
 
@@ -1472,16 +1975,19 @@ async function deleteDocument(
    SEGURIDAD HTML
 ========================= */
 
-
 function escapeHtml(
     text
 ) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
@@ -1493,9 +1999,7 @@ function escapeHtml(
    COMPROBAR SESIÓN
 ========================= */
 
-
 async function checkSession() {
-
 
     const {
         data
@@ -1520,4 +2024,6 @@ checkSession();
 </script>
 
 </body>
+
 </html>
+```
