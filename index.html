@@ -13,10 +13,6 @@
 
 <style>
 
-/* =====================================================
-   GENERAL
-===================================================== */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,19 +29,36 @@ body {
     background: #fff;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+/* =====================================================
+   SUPABASE
+===================================================== */
 
-img {
-    max-width: 100%;
-    display: block;
+:root {
+    --black: #111;
+    --gray: #777;
+    --light: #f5f5f5;
 }
-
 
 /* =====================================================
-   NAVEGACIÓN
+   GENERAL
+===================================================== */
+
+section {
+    width: 100%;
+}
+
+.container {
+    width: min(1150px, 90%);
+    margin: auto;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+/* =====================================================
+   NAV
 ===================================================== */
 
 nav {
@@ -53,97 +66,98 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 100;
+    padding: 22px 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
+}
 
-    padding: 22px 40px;
+.nav-container {
+    width: min(1150px, 90%);
+    margin: auto;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    color: white;
-
-    background: linear-gradient(
-        rgba(0,0,0,0.45),
-        transparent
-    );
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 28px;
+    list-style: none;
 }
 
 .nav-links a {
+    color: #111;
+    text-decoration: none;
     font-size: 14px;
-    transition: 0.2s;
 }
 
 .nav-links a:hover {
-    opacity: 0.6;
+    opacity: 0.55;
 }
 
-
 /* =====================================================
-   INICIO
+   HERO
 ===================================================== */
 
-#inicio {
+.hero {
     min-height: 100vh;
 
-    background:
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    background-image:
         linear-gradient(
-            rgba(0,0,0,0.35),
-            rgba(0,0,0,0.45)
+            rgba(0,0,0,0.40),
+            rgba(0,0,0,0.40)
         ),
-        url("images/fondo-inicio.jpg");
+        url("");
 
     background-size: cover;
     background-position: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
     color: white;
-
-    padding: 40px;
 }
 
 .hero-content {
-    max-width: 900px;
+    width: min(1150px, 90%);
+    margin: auto;
 }
 
-.hero-content h1 {
-    font-size: clamp(50px, 9vw, 110px);
-    letter-spacing: 8px;
-    margin-bottom: 20px;
+.hero h1 {
+    font-size: clamp(55px, 10vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -5px;
+    margin-bottom: 30px;
 }
 
-.hero-content p {
-    font-size: clamp(18px, 3vw, 28px);
-    font-weight: 300;
+.hero p {
+    font-size: 20px;
+    max-width: 650px;
+    line-height: 1.5;
 }
 
 .hero-button {
     display: inline-block;
-
     margin-top: 35px;
 
-    padding: 15px 28px;
+    padding: 15px 24px;
 
     border: 1px solid white;
-    border-radius: 30px;
+    color: white;
+    text-decoration: none;
 
-    transition: 0.25s;
+    transition: 0.2s;
 }
 
 .hero-button:hover {
@@ -151,106 +165,81 @@ nav {
     color: #111;
 }
 
-
 /* =====================================================
-   SECCIONES
-===================================================== */
-
-section:not(#inicio) {
-    padding: 110px 40px;
-}
-
-.section-container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-.section-title {
-    font-size: 45px;
-    margin-bottom: 60px;
-}
-
-
-/* =====================================================
-   SOBRE MÍ
+   SOBRE MI
 ===================================================== */
 
 .about {
+    padding: 120px 0;
+}
+
+.about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 70px;
+    gap: 80px;
     align-items: center;
 }
 
 .about-image {
-    height: 600px;
+    width: 100%;
+    aspect-ratio: 4 / 5;
 
-    background:
-        url("images/foto-marc.jpg");
-
+    background-image: url("");
     background-size: cover;
     background-position: center;
 
-    border-radius: 4px;
+    background-color: #eee;
 }
 
-.about-text {
-    font-size: 20px;
-    line-height: 1.7;
+.about h2 {
+    font-size: 55px;
+    margin-bottom: 30px;
+}
+
+.about p {
+    font-size: 19px;
+    line-height: 1.8;
     color: #444;
 }
-
-.about-text p {
-    margin-bottom: 25px;
-}
-
-.about-number {
-    margin-top: 40px;
-
-    font-size: 50px;
-    font-weight: bold;
-
-    color: #111;
-}
-
-.about-number span {
-    display: block;
-
-    font-size: 14px;
-    font-weight: normal;
-
-    color: #777;
-}
-
 
 /* =====================================================
    PORTFOLIO
 ===================================================== */
 
-#portfolio {
+.portfolio {
+    padding: 120px 0;
     background: #f5f5f5;
+}
+
+.section-title {
+    margin-bottom: 55px;
+}
+
+.section-title h2 {
+    font-size: 55px;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #777;
+    font-size: 17px;
 }
 
 .portfolio-grid {
     display: grid;
-
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(300px, 1fr)
-        );
+        repeat(3, 1fr);
 
     gap: 25px;
 }
 
 .portfolio-card {
     background: white;
-
     overflow: hidden;
 
-    border-radius: 4px;
+    cursor: pointer;
 
-    transition: 0.3s;
+    transition: 0.25s;
 }
 
 .portfolio-card:hover {
@@ -259,89 +248,189 @@ section:not(#inicio) {
 
 .portfolio-image {
     width: 100%;
-    height: 320px;
-
+    aspect-ratio: 4 / 3;
     object-fit: cover;
+
+    display: block;
 }
 
-.portfolio-content {
-    padding: 25px;
+.portfolio-info {
+    padding: 22px;
 }
 
-.portfolio-content h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
+.portfolio-info h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
 }
 
 .portfolio-date {
-    font-size: 13px;
     color: #999;
-
-    margin-bottom: 15px;
+    font-size: 13px;
+    margin-bottom: 12px;
 }
 
 .portfolio-text {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #666;
+    color: #555;
+    line-height: 1.5;
+    font-size: 14px;
 }
+
+/* =====================================================
+   EMPTY PORTFOLIO
+===================================================== */
 
 .portfolio-empty {
-    color: #777;
-}
+    grid-column: 1 / -1;
 
+    text-align: center;
+    padding: 70px 20px;
+
+    color: #888;
+}
 
 /* =====================================================
    CONTACTO
 ===================================================== */
 
 .contact {
+    padding: 120px 0;
+}
+
+.contact-box {
+    background: #111;
+    color: white;
+
+    padding: 70px;
+
     text-align: center;
-
-    max-width: 800px;
-
-    margin: auto;
 }
 
-.contact h2 {
-    font-size: 50px;
-    margin-bottom: 25px;
+.contact-box h2 {
+    font-size: 55px;
+    margin-bottom: 20px;
 }
 
-.contact p {
-    color: #666;
+.contact-box p {
+    color: #bbb;
     font-size: 18px;
-    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 .email {
     display: inline-block;
 
-    margin-top: 35px;
+    color: white;
 
-    font-size: 24px;
+    font-size: 22px;
 
-    border-bottom: 1px solid #111;
+    text-decoration: none;
+
+    border-bottom: 1px solid white;
 
     padding-bottom: 5px;
 }
 
+.email:hover {
+    opacity: 0.65;
+}
 
 /* =====================================================
    FOOTER
 ===================================================== */
 
 footer {
-    background: #111;
-    color: white;
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+}
 
-    padding: 30px 40px;
+.footer-container {
+    width: min(1150px, 90%);
+    margin: auto;
 
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
 
+    color: #888;
     font-size: 13px;
 }
 
+/* =====================================================
+   MODAL PORTFOLIO
+===================================================== */
+
+.portfolio-modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.85);
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+.portfolio-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+
+    max-width: 950px;
+    width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.modal-info {
+    padding: 30px;
+}
+
+.modal-info h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.modal-info .date {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.modal-info p {
+    color: #444;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    background: none;
+    border: none;
+
+    color: white;
+
+    font-size: 35px;
+
+    cursor: pointer;
+}
 
 /* =====================================================
    RESPONSIVE
@@ -349,62 +438,68 @@ footer {
 
 @media (max-width: 800px) {
 
-    nav {
-        padding: 20px;
-    }
-
     .nav-links {
         gap: 15px;
     }
 
-    .nav-links a {
-        font-size: 12px;
-    }
-
-    section:not(#inicio) {
-        padding: 80px 20px;
-    }
-
-    .about {
+    .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .about-image {
-        height: 450px;
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .section-title {
-        font-size: 35px;
-        margin-bottom: 40px;
+    .about h2,
+    .section-title h2,
+    .contact-box h2 {
+        font-size: 42px;
     }
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
+
+    nav {
+        padding: 17px 0;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
 
     .nav-links {
         gap: 10px;
     }
 
     .nav-links a {
-        font-size: 11px;
+        font-size: 12px;
     }
 
-    .hero-content h1 {
-        letter-spacing: 4px;
+    .hero h1 {
+        letter-spacing: -3px;
     }
 
-    .about-text {
-        font-size: 17px;
+    .portfolio-grid {
+        grid-template-columns: 1fr;
     }
 
-    .contact h2 {
+    .contact-box {
+        padding: 45px 25px;
+    }
+
+    .contact-box h2 {
         font-size: 38px;
     }
 
     .email {
-        font-size: 18px;
+        font-size: 17px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
     }
 
 }
@@ -413,9 +508,7 @@ footer {
 
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      NAVEGACIÓN
@@ -423,106 +516,120 @@ footer {
 
 <nav>
 
-    <div class="logo">
-        MARCLASTRA
-    </div>
+<div class="nav-container">
 
-    <div class="nav-links">
+<div class="logo">
+MARCLASTRA
+</div>
 
-        <a href="#inicio">
-            Inicio
-        </a>
+<ul class="nav-links">
 
-        <a href="#sobre-mi">
-            Sobre mí
-        </a>
+<li>
+<a href="#inicio">
+Inicio
+</a>
+</li>
 
-        <a href="#portfolio">
-            Portfolio
-        </a>
+<li>
+<a href="#sobre-mi">
+Sobre mí
+</a>
+</li>
 
-        <a href="#contacto">
-            Contacto
-        </a>
+<li>
+<a href="#portfolio">
+Portfolio
+</a>
+</li>
 
-    </div>
+<li>
+<a href="#contacto">
+Contacto
+</a>
+</li>
+
+</ul>
+
+</div>
 
 </nav>
 
 
 <!-- =====================================================
-     INICIO
+     HERO
 ===================================================== -->
 
-<section id="inicio">
+<section
+    class="hero"
+    id="inicio"
+>
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h1>
-            MARCLASTRA
-        </h1>
+<h1>
+MARC<br>
+LASTRA
+</h1>
 
-        <p>
-            Producción y realización de eventos
-        </p>
+<p>
+Producción y realización de eventos.
+</p>
 
-        <a
-            href="#portfolio"
-            class="hero-button"
-        >
-            Ver proyectos
-        </a>
+<a
+    href="#portfolio"
+    class="hero-button"
+>
+Ver portfolio
+</a>
 
-    </div>
+</div>
 
 </section>
 
 
 <!-- =====================================================
-     SOBRE MÍ
+     SOBRE MI
 ===================================================== -->
 
-<section id="sobre-mi">
+<section
+    class="about"
+    id="sobre-mi"
+>
 
-    <div class="section-container">
+<div class="container">
 
-        <div class="about">
+<div class="about-grid">
 
-            <div class="about-image"></div>
+<div class="about-image">
+</div>
 
-            <div class="about-text">
+<div>
 
-                <h2 class="section-title">
-                    Sobre mí
-                </h2>
+<h2>
+Sobre mí
+</h2>
 
-                <p>
-                    Soy Marc Lastra, realizo tareas de producción y realización de eventos, con más de 100 clientes satisfechos.
-                </p>
+<p>
+Soy Marc Lastra, realizo tareas de producción y realización de eventos, con más de 100 clientes satisfechos.
+</p>
 
-                <p>
-                    Me adapto a las necesidades de cada proyecto y el evento es donde el cliente lo necesite.
-                </p>
+<br>
 
-                <p>
-                    Me gusta que las cosas salgan como tienen que salir: bien organizadas, bien ejecutadas y cuidando cada detalle.
-                </p>
+<p>
+Me adapto a las necesidades de cada proyecto y el evento es donde el cliente lo necesite.
+</p>
 
-                <div class="about-number">
+<br>
 
-                    +100
+<p>
+Me gusta que las cosas salgan como tienen que salir: bien organizadas, bien ejecutadas y cuidando cada detalle.
+</p>
 
-                    <span>
-                        clientes satisfechos
-                    </span>
+</div>
 
-                </div>
+</div>
 
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
@@ -531,26 +638,37 @@ footer {
      PORTFOLIO
 ===================================================== -->
 
-<section id="portfolio">
+<section
+    class="portfolio"
+    id="portfolio"
+>
 
-    <div class="section-container">
+<div class="container">
 
-        <h2 class="section-title">
-            Portfolio
-        </h2>
+<div class="section-title">
 
-        <div
-            id="portfolio-grid"
-            class="portfolio-grid"
-        >
+<h2>
+Portfolio
+</h2>
 
-            <p class="portfolio-empty">
-                Cargando proyectos...
-            </p>
+<p>
+Una selección de proyectos y eventos realizados.
+</p>
 
-        </div>
+</div>
 
-    </div>
+<div
+    class="portfolio-grid"
+    id="portfolio-grid"
+>
+
+<div class="portfolio-empty">
+Cargando portfolio...
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -559,31 +677,33 @@ footer {
      CONTACTO
 ===================================================== -->
 
-<section id="contacto">
+<section
+    class="contact"
+    id="contacto"
+>
 
-    <div class="section-container">
+<div class="container">
 
-        <div class="contact">
+<div class="contact-box">
 
-            <h2>
-                ¿Hablamos?
-            </h2>
+<h2>
+¿Hablamos?
+</h2>
 
-            <p>
-                ¿Tienes un proyecto en mente o necesitas más información?
-                Ponte en contacto conmigo y hablamos sobre tu evento.
-            </p>
+<p>
+Si quieres información sobre un proyecto, evento o colaboración, puedes contactar conmigo.
+</p>
 
-            <a
-                class="email"
-                href="mailto:lastramarc@gmail.com"
-            >
-                lastramarc@gmail.com
-            </a>
+<a
+    class="email"
+    href="mailto:lastramarc@gmail.com"
+>
+lastramarc@gmail.com
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
@@ -594,9 +714,65 @@ footer {
 
 <footer>
 
-    © 2026 Marc Lastra
+<div class="footer-container">
+
+<span>
+© 2026 Marc Lastra
+</span>
+
+<span>
+Producción · Realización · Eventos
+</span>
+
+</div>
 
 </footer>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="portfolio-modal"
+    id="portfolio-modal"
+>
+
+<button
+    class="modal-close"
+    id="modal-close"
+>
+×
+</button>
+
+<div class="modal-content">
+
+<img
+    id="modal-image"
+    class="modal-image"
+    src=""
+    alt=""
+>
+
+<div class="modal-info">
+
+<h2 id="modal-title">
+</h2>
+
+<div
+    class="date"
+    id="modal-date"
+>
+</div>
+
+<p id="modal-text">
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 
 <script>
@@ -606,60 +782,92 @@ footer {
 ===================================================== */
 
 const SUPABASE_URL =
-    "https://xcyqbqegaklxpcbxwjia.supabase.co";
+"https://xcyqbqegaklxpcbxwjia.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
+"sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
 
 const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const portfolioGrid =
+document.getElementById(
+    "portfolio-grid"
+);
+
+const portfolioModal =
+document.getElementById(
+    "portfolio-modal"
+);
+
+const modalImage =
+document.getElementById(
+    "modal-image"
+);
+
+const modalTitle =
+document.getElementById(
+    "modal-title"
+);
+
+const modalDate =
+document.getElementById(
+    "modal-date"
+);
+
+const modalText =
+document.getElementById(
+    "modal-text"
+);
 
 
 /* =====================================================
    CARGAR PORTFOLIO
 ===================================================== */
 
-async function cargarPortfolio() {
+async function loadPortfolio() {
 
-    const portfolioGrid =
-        document.getElementById(
-            "portfolio-grid"
-        );
+    portfolioGrid.innerHTML =
+    `
+    <div class="portfolio-empty">
+        Cargando portfolio...
+    </div>
+    `;
 
 
     const {
         data,
         error
     } =
-        await supabaseClient
-            .from("portfolio")
-            .select("*")
-            .eq(
-                "publicado",
-                true
-            )
-            .order(
-                "fecha",
-                {
-                    ascending: false
-                }
-            );
+    await supabaseClient
+        .from("portfolio")
+        .select("*")
+        .eq("publicado", true)
+        .order(
+            "fecha",
+            {
+                ascending: false
+            }
+        );
 
 
     if (error) {
 
-        console.error(
-            "Error cargando portfolio:",
-            error
-        );
+        console.error(error);
 
-        portfolioGrid.innerHTML = `
-            <p class="portfolio-empty">
-                No se han podido cargar los proyectos.
-            </p>
+        portfolioGrid.innerHTML =
+        `
+        <div class="portfolio-empty">
+            No se ha podido cargar el portfolio.
+        </div>
         `;
 
         return;
@@ -667,15 +875,14 @@ async function cargarPortfolio() {
     }
 
 
-    if (
-        !data ||
-        data.length === 0
-    ) {
+    if (!data || data.length === 0) {
 
-        portfolioGrid.innerHTML = `
-            <p class="portfolio-empty">
-                Próximamente podrás ver aquí algunos de mis proyectos.
-            </p>
+        portfolioGrid.innerHTML =
+        `
+        <div class="portfolio-empty">
+            Próximamente podrás ver aquí
+            algunos de mis proyectos.
+        </div>
         `;
 
         return;
@@ -686,93 +893,144 @@ async function cargarPortfolio() {
     portfolioGrid.innerHTML = "";
 
 
-    data.forEach(
-        function(proyecto) {
+    for (const item of data) {
 
-            const card =
-                document.createElement(
-                    "article"
+        const card =
+        document.createElement("article");
+
+        card.className =
+        "portfolio-card";
+
+
+        const image =
+        document.createElement("img");
+
+        image.className =
+        "portfolio-image";
+
+        image.alt =
+        item.titulo || "Proyecto";
+
+
+        /*
+         * La imagen está en un bucket privado.
+         * Generamos una URL firmada.
+         */
+
+        if (item.imagen) {
+
+            const {
+                data: signedData,
+                error: imageError
+            } =
+            await supabaseClient
+                .storage
+                .from("portfolio")
+                .createSignedUrl(
+                    item.imagen,
+                    3600
                 );
 
-            card.className =
-                "portfolio-card";
 
+            if (
+                !imageError &&
+                signedData
+            ) {
 
-            let imagenHTML = "";
-
-
-            if (proyecto.imagen) {
-
-                imagenHTML = `
-                    <img
-                        src="${proyecto.imagen}"
-                        class="portfolio-image"
-                        alt="${escapeHtml(
-                            proyecto.titulo || ""
-                        )}"
-                    >
-                `;
+                image.src =
+                signedData.signedUrl;
 
             }
 
-
-            let fechaHTML = "";
-
-
-            if (proyecto.fecha) {
-
-                const fecha =
-                    new Date(
-                        proyecto.fecha +
-                        "T00:00:00"
-                    );
+        }
 
 
-                fechaHTML = `
-                    <div class="portfolio-date">
-                        ${fecha.toLocaleDateString(
-                            "es-ES",
-                            {
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric"
-                            }
-                        )}
-                    </div>
-                `;
+        const info =
+        document.createElement("div");
+
+        info.className =
+        "portfolio-info";
+
+
+        const title =
+        document.createElement("h3");
+
+        title.textContent =
+        item.titulo || "Sin título";
+
+
+        const date =
+        document.createElement("div");
+
+        date.className =
+        "portfolio-date";
+
+        date.textContent =
+        formatDate(
+            item.fecha
+        );
+
+
+        const text =
+        document.createElement("div");
+
+        text.className =
+        "portfolio-text";
+
+        text.textContent =
+        item.texto || "";
+
+
+        info.appendChild(title);
+        info.appendChild(date);
+        info.appendChild(text);
+
+
+        card.appendChild(image);
+        card.appendChild(info);
+
+
+        card.addEventListener(
+            "click",
+            function() {
+
+                openPortfolioModal(
+                    item,
+                    image.src
+                );
 
             }
+        );
 
 
-            card.innerHTML = `
+        portfolioGrid.appendChild(card);
 
-                ${imagenHTML}
+    }
 
-                <div class="portfolio-content">
-
-                    <h3>
-                        ${escapeHtml(
-                            proyecto.titulo || ""
-                        )}
-                    </h3>
-
-                    ${fechaHTML}
-
-                    <div class="portfolio-text">
-                        ${escapeHtml(
-                            proyecto.texto || ""
-                        )}
-                    </div>
-
-                </div>
-
-            `;
+}
 
 
-            portfolioGrid.appendChild(
-                card
-            );
+/* =====================================================
+   FECHA
+===================================================== */
 
+function formatDate(dateString) {
+
+    if (!dateString) {
+        return "";
+    }
+
+    const date =
+    new Date(
+        dateString + "T00:00:00"
+    );
+
+    return date.toLocaleDateString(
+        "es-ES",
+        {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
         }
     );
 
@@ -780,29 +1038,76 @@ async function cargarPortfolio() {
 
 
 /* =====================================================
-   SEGURIDAD HTML
+   MODAL
 ===================================================== */
 
-function escapeHtml(text) {
+function openPortfolioModal(
+    item,
+    imageUrl
+) {
 
-    const div =
-        document.createElement(
-            "div"
-        );
+    modalTitle.textContent =
+    item.titulo || "";
 
-    div.textContent =
-        text || "";
 
-    return div.innerHTML;
+    modalDate.textContent =
+    formatDate(item.fecha);
+
+
+    modalText.textContent =
+    item.texto || "";
+
+
+    modalImage.src =
+    imageUrl || "";
+
+
+    portfolioModal.classList.add(
+        "active"
+    );
 
 }
 
 
+function closePortfolioModal() {
+
+    portfolioModal.classList.remove(
+        "active"
+    );
+
+}
+
+
+document
+.getElementById("modal-close")
+.addEventListener(
+    "click",
+    closePortfolioModal
+);
+
+
+portfolioModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            portfolioModal
+        ) {
+
+            closePortfolioModal();
+
+        }
+
+    }
+);
+
+
 /* =====================================================
-   INICIAR
+   INICIO
 ===================================================== */
 
-cargarPortfolio();
+loadPortfolio();
 
 </script>
 
