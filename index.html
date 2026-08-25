@@ -12,7 +12,18 @@
 
     <title>MARCLASTRA — Private Portal</title>
 
+    <!-- SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- FULLCALENDAR -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css"
+        rel="stylesheet"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"
+    ></script>
 
     <style>
 
@@ -28,79 +39,152 @@
             color: #222;
         }
 
-        button {
-            padding: 12px 18px;
-            background: #111;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #333;
-        }
-
 
         /* =========================
            LOGIN
         ========================= */
 
         #login-screen {
+
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             padding: 20px;
+
         }
+
 
         .login-box {
+
             width: 100%;
+
             max-width: 400px;
+
             background: white;
+
             padding: 40px;
+
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.10);
+
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.10);
+
         }
+
 
         .logo {
+
             text-align: center;
+
             margin-bottom: 35px;
+
         }
+
 
         .logo h1 {
+
             font-size: 30px;
+
             letter-spacing: 2px;
+
         }
+
 
         .logo p {
+
             margin-top: 8px;
+
             color: #888;
+
             font-size: 14px;
+
         }
+
 
         label {
+
             display: block;
+
             margin-bottom: 7px;
+
             font-size: 14px;
+
             font-weight: bold;
+
         }
 
-        input {
+
+        input,
+        textarea,
+        select {
+
             width: 100%;
+
             padding: 13px;
+
             margin-bottom: 20px;
+
             border: 1px solid #ddd;
+
             border-radius: 8px;
+
             font-size: 15px;
+
+            background: white;
+
         }
+
+
+        textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+
+        }
+
+
+        button {
+
+            padding: 13px 18px;
+
+            background: #111;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #333;
+
+        }
+
 
         #error {
+
             color: #d33;
+
             margin-top: 15px;
+
             font-size: 14px;
+
             text-align: center;
+
         }
 
 
@@ -109,91 +193,151 @@
         ========================= */
 
         #portal {
+
             display: none;
+
         }
+
 
         header {
+
             background: #111;
+
             color: white;
+
             padding: 25px;
+
         }
+
 
         .header-content {
+
             max-width: 1100px;
+
             margin: auto;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
         }
+
 
         header h1 {
+
             font-size: 24px;
+
             letter-spacing: 1px;
+
         }
+
 
         .logout {
+
             background: #333;
+
         }
 
+
         main {
+
             max-width: 1100px;
+
             margin: 40px auto;
+
             padding: 20px;
+
+        }
+
+
+        .welcome {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .welcome h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .welcome p {
+
+            color: #777;
+
         }
 
 
         /* =========================
-           DASHBOARD
+           TARJETAS PRINCIPALES
         ========================= */
 
-        .welcome {
-            margin-bottom: 30px;
-        }
-
-        .welcome h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .welcome p {
-            color: #777;
-        }
-
         .cards {
+
             display: grid;
+
             grid-template-columns:
                 repeat(auto-fit, minmax(240px, 1fr));
+
             gap: 20px;
+
         }
+
 
         .card {
+
             background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.08);
+
             cursor: pointer;
+
             transition: 0.2s;
+
         }
+
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+            transform: translateY(-3px);
+
         }
+
 
         .icon {
-            font-size: 42px;
-            margin-bottom: 18px;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+
         }
+
 
         .card h3 {
-            font-size: 20px;
+
             margin-bottom: 8px;
+
         }
 
+
         .card p {
+
             color: #777;
+
             font-size: 14px;
-            line-height: 1.5;
+
         }
 
 
@@ -203,64 +347,318 @@
 
         #events-section,
         #event-folders-section,
-        #documents-section,
-        #calendar-section {
+        #documents-section {
+
             display: none;
+
         }
+
 
         .back-button {
+
             margin-bottom: 25px;
+
             background: #666;
+
         }
+
 
         .section-header {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             margin-bottom: 30px;
+
             gap: 20px;
+
         }
+
 
         .section-header h2 {
+
             font-size: 30px;
+
             margin-bottom: 6px;
+
         }
 
+
         .section-header p {
+
             color: #777;
+
         }
 
 
         /* =========================
-           EVENTOS
+           CALENDARIO
+        ========================= */
+
+        .calendar-box {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 4px 18px rgba(0,0,0,0.08);
+
+        }
+
+
+        #calendar {
+
+            min-height: 700px;
+
+        }
+
+
+        .fc {
+
+            font-family: Arial, sans-serif;
+
+        }
+
+
+        .fc-toolbar-title {
+
+            font-size: 22px !important;
+
+        }
+
+
+        .fc-event {
+
+            cursor: pointer;
+
+            border-radius: 5px;
+
+            padding: 2px 4px;
+
+        }
+
+
+        /* =========================
+           MODAL EVENTO
+        ========================= */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.55);
+
+            z-index: 1000;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+        }
+
+
+        .modal-content {
+
+            background: white;
+
+            width: 100%;
+
+            max-width: 500px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            padding: 30px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.25);
+
+        }
+
+
+        .modal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .modal-header h2 {
+
+            font-size: 24px;
+
+        }
+
+
+        .close-button {
+
+            background: #eee;
+
+            color: #222;
+
+            width: 40px;
+
+            height: 40px;
+
+            padding: 0;
+
+            font-size: 20px;
+
+        }
+
+
+        .close-button:hover {
+
+            background: #ddd;
+
+        }
+
+
+        .form-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            justify-content: flex-end;
+
+            margin-top: 10px;
+
+        }
+
+
+        .cancel-button {
+
+            background: #777;
+
+        }
+
+
+        .delete-event-button {
+
+            background: #b3261e;
+
+            margin-right: auto;
+
+        }
+
+
+        .color-options {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .color-option {
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            border: 3px solid white;
+
+            box-shadow:
+                0 0 0 1px #ccc;
+
+            cursor: pointer;
+
+        }
+
+
+        .color-option.selected {
+
+            box-shadow:
+                0 0 0 3px #111;
+
+        }
+
+
+        /* =========================
+           EVENTOS / CARPETAS
         ========================= */
 
         .event-card {
+
             background: white;
+
             padding: 30px;
+
             border-radius: 16px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 4px 18px rgba(0,0,0,0.08);
+
             cursor: pointer;
+
             transition: 0.2s;
+
             min-height: 180px;
+
         }
+
 
         .event-card:hover {
+
             transform: translateY(-4px);
+
         }
+
 
         .event-icon {
+
             font-size: 50px;
+
             margin-bottom: 20px;
+
         }
+
 
         .event-card h3 {
+
             font-size: 20px;
+
             margin-bottom: 8px;
+
         }
 
+
         .event-card p {
+
             color: #777;
+
+            font-size: 14px;
+
         }
 
 
@@ -269,371 +667,171 @@
         ========================= */
 
         .documents-header {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             margin-bottom: 25px;
+
             gap: 15px;
+
         }
+
+
+        .documents-header h2 {
+
+            margin-bottom: 5px;
+
+        }
+
 
         .documents-header p {
+
             color: #777;
+
         }
+
 
         .upload-label {
+
             padding: 13px 18px;
+
             background: #111;
+
             color: white;
+
             border-radius: 8px;
+
             cursor: pointer;
+
             font-size: 14px;
+
             white-space: nowrap;
+
         }
+
 
         .upload-label:hover {
+
             background: #333;
+
         }
+
 
         #upload-input {
+
             display: none;
+
         }
+
 
         .document-list {
+
             background: white;
+
             border-radius: 12px;
+
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.08);
+
         }
+
 
         .document {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             padding: 18px 20px;
+
             border-bottom: 1px solid #eee;
+
             gap: 15px;
+
         }
+
 
         .document:last-child {
+
             border-bottom: none;
+
         }
+
 
         .document-name {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
+
             word-break: break-word;
+
         }
+
 
         .document-icon {
+
             font-size: 25px;
+
         }
+
 
         .document-actions {
+
             display: flex;
+
             gap: 8px;
+
             flex-shrink: 0;
+
         }
+
 
         .view-button {
+
             background: #444;
+
         }
+
 
         .delete-button {
+
             background: #b3261e;
+
         }
+
 
         #documents-error {
+
             color: #b3261e;
+
             margin: 15px 0;
+
         }
 
-
-        /* =========================
-           CALENDARIO
-        ========================= */
-
-        .calendar-toolbar {
-            background: white;
-            padding: 18px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            margin-bottom: 20px;
-        }
-
-        .calendar-toolbar-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .calendar-navigation {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .calendar-navigation button {
-            min-width: 45px;
-        }
-
-        .calendar-title {
-            font-size: 22px;
-            font-weight: bold;
-            min-width: 180px;
-            text-align: center;
-        }
-
-        .calendar-views {
-            display: flex;
-            gap: 8px;
-        }
-
-        .calendar-views button {
-            background: #ddd;
-            color: #222;
-        }
-
-        .calendar-views button.active {
-            background: #111;
-            color: white;
-        }
-
-        .calendar-legend {
-            display: flex;
-            gap: 18px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-            font-size: 14px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-        }
-
-        .legend-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-        }
-
-        .legend-work {
-            background: #c8f7d0;
-        }
-
-        .legend-party {
-            background: #ffd0d0;
-        }
-
-        .legend-empty {
-            background: white;
-        }
-
-
-        /* =========================
-           VISTA AÑO
-        ========================= */
-
-        .year-grid {
-            display: grid;
-            grid-template-columns:
-                repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .month {
-            background: white;
-            padding: 18px;
-            border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        }
-
-        .month-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .weekday-row {
-            display: grid;
-            grid-template-columns:
-                repeat(7, 1fr);
-            gap: 4px;
-            margin-bottom: 5px;
-        }
-
-        .weekday {
-            text-align: center;
-            font-size: 11px;
-            color: #888;
-            font-weight: bold;
-        }
-
-        .month-days {
-            display: grid;
-            grid-template-columns:
-                repeat(7, 1fr);
-            gap: 4px;
-        }
-
-        .day {
-            min-height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            cursor: pointer;
-            border: 1px solid transparent;
-            position: relative;
-        }
-
-        .day:hover {
-            border-color: #111;
-        }
-
-        .day.empty-day {
-            cursor: default;
-        }
-
-        .day.today {
-            border: 2px solid #111;
-            font-weight: bold;
-        }
-
-        .day.work {
-            background: #c8f7d0;
-        }
-
-        .day.party {
-            background: #ffd0d0;
-        }
-
-        .day-number {
-            position: relative;
-            z-index: 2;
-        }
-
-
-        /* =========================
-           SEMANA
-        ========================= */
-
-        .week-view {
-            background: white;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        }
-
-        .week-grid {
-            display: grid;
-            grid-template-columns:
-                repeat(7, 1fr);
-        }
-
-        .week-day {
-            min-height: 300px;
-            border-right: 1px solid #eee;
-            cursor: pointer;
-        }
-
-        .week-day:last-child {
-            border-right: none;
-        }
-
-        .week-day-header {
-            padding: 15px 8px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            font-weight: bold;
-        }
-
-        .week-day-number {
-            font-size: 24px;
-            margin-top: 5px;
-        }
-
-        .week-day-content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .week-status {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .week-status-text {
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           VISTA DÍA
-        ========================= */
-
-        .day-view {
-            background: white;
-            padding: 50px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            text-align: center;
-        }
-
-        .day-view-date {
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .day-view-status {
-            font-size: 70px;
-            margin-bottom: 20px;
-        }
-
-        .day-view-status-text {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .status-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .status-work {
-            background: #27853b;
-        }
-
-        .status-party {
-            background: #b3261e;
-        }
-
-        .status-clear {
-            background: #666;
-        }
-
-
-        /* =========================
-           EMPTY
-        ========================= */
 
         .empty {
+
             padding: 40px;
+
             text-align: center;
+
             color: #888;
+
             background: white;
+
             border-radius: 12px;
+
         }
 
 
@@ -641,61 +839,54 @@
            RESPONSIVE
         ========================= */
 
-        @media (max-width: 900px) {
-
-            .year-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-        }
-
-        @media (max-width: 600px) {
-
-            main {
-                margin-top: 20px;
-            }
+        @media (max-width: 700px) {
 
             .section-header,
-            .documents-header,
-            .calendar-toolbar-top {
+            .documents-header {
+
                 align-items: flex-start;
+
                 flex-direction: column;
+
             }
 
-            .year-grid {
-                grid-template-columns: 1fr;
+
+            #calendar {
+
+                min-height: 600px;
+
             }
 
-            .week-grid {
-                grid-template-columns: 1fr;
+
+            .fc-toolbar {
+
+                flex-direction: column;
+
+                gap: 10px;
+
             }
 
-            .week-day {
-                min-height: 150px;
-                border-right: none;
-                border-bottom: 1px solid #eee;
-            }
-
-            .calendar-title {
-                text-align: left;
-            }
 
             .document {
+
                 align-items: flex-start;
+
                 flex-direction: column;
+
             }
+
 
             .document-actions {
+
                 width: 100%;
+
             }
+
 
             .document-actions button {
-                flex: 1;
-            }
 
-            .day-view {
-                padding: 30px 15px;
+                flex: 1;
+
             }
 
         }
@@ -708,9 +899,9 @@
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      LOGIN
-========================= -->
+===================================================== -->
 
 <section id="login-screen">
 
@@ -768,9 +959,9 @@
 
 
 
-<!-- =========================
+<!-- =====================================================
      PORTAL
-========================= -->
+===================================================== -->
 
 <section id="portal">
 
@@ -797,9 +988,9 @@
     <main>
 
 
-        <!-- =========================
+        <!-- =================================================
              DASHBOARD
-        ========================= -->
+        ================================================== -->
 
         <section id="dashboard">
 
@@ -835,8 +1026,7 @@
                     </h3>
 
                     <p>
-                        Organiza contratos, presupuestos,
-                        facturas y otros documentos.
+                        Accede a tus documentos privados.
                     </p>
 
                 </div>
@@ -846,7 +1036,7 @@
 
                 <div
                     class="card"
-                    id="calendar-card"
+                    id="events-card"
                 >
 
                     <div class="icon">
@@ -858,12 +1048,10 @@
                     </h3>
 
                     <p>
-                        Consulta y organiza tu calendario
-                        de trabajo y fiestas.
+                        Organiza tus eventos y calendario.
                     </p>
 
                 </div>
-
 
             </section>
 
@@ -871,9 +1059,9 @@
 
 
 
-        <!-- =========================
-             EVENTOS / DOCUMENTOS
-        ========================= -->
+        <!-- =================================================
+             EVENTOS / CALENDARIO
+        ================================================== -->
 
         <section id="events-section">
 
@@ -890,20 +1078,18 @@
                 <div>
 
                     <h2>
-                        📁 Eventos
+                        📅 Eventos
                     </h2>
 
                     <p>
-                        Selecciona un evento para acceder
-                        a sus documentos.
+                        Organiza tu trabajo, fiestas y eventos.
                     </p>
 
                 </div>
 
 
                 <button
-                    class="new-event-button"
-                    id="new-event-button"
+                    id="new-calendar-event-button"
                 >
                     + Nuevo evento
                 </button>
@@ -911,14 +1097,9 @@
             </div>
 
 
-            <div
-                id="events-list"
-                class="cards"
-            >
+            <div class="calendar-box">
 
-                <div class="empty">
-                    Cargando eventos...
-                </div>
+                <div id="calendar"></div>
 
             </div>
 
@@ -926,12 +1107,13 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              CARPETAS DEL EVENTO
-        ========================= -->
+        ================================================== -->
 
         <section
             id="event-folders-section"
+            style="display:none;"
         >
 
             <button
@@ -1041,16 +1223,15 @@
 
                 </div>
 
-
             </div>
 
         </section>
 
 
 
-        <!-- =========================
+        <!-- =================================================
              DOCUMENTOS
-        ========================= -->
+        ================================================== -->
 
         <section id="documents-section">
 
@@ -1066,11 +1247,11 @@
 
                 <div>
 
-                    <h2 id="documents-title">
+                    <h2>
                         📄 Documentos
                     </h2>
 
-                    <p id="documents-subtitle">
+                    <p>
                         Tus documentos privados.
                     </p>
 
@@ -1109,148 +1290,184 @@
 
         </section>
 
-
-
-        <!-- =========================
-             CALENDARIO
-        ========================= -->
-
-        <section id="calendar-section">
-
-            <button
-                class="back-button"
-                id="calendar-back-button"
-            >
-                ← Volver
-            </button>
-
-
-            <div class="section-header">
-
-                <div>
-
-                    <h2>
-                        📅 Calendario
-                    </h2>
-
-                    <p>
-                        Marca tus días de trabajo y fiesta.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="calendar-toolbar">
-
-
-                <div class="calendar-toolbar-top">
-
-
-                    <div class="calendar-navigation">
-
-                        <button id="calendar-prev">
-                            ←
-                        </button>
-
-
-                        <div
-                            class="calendar-title"
-                            id="calendar-title"
-                        >
-                        </div>
-
-
-                        <button id="calendar-next">
-                            →
-                        </button>
-
-                    </div>
-
-
-                    <div class="calendar-views">
-
-                        <button
-                            id="view-year"
-                            class="active"
-                        >
-                            Año
-                        </button>
-
-                        <button
-                            id="view-week"
-                        >
-                            Semana
-                        </button>
-
-                        <button
-                            id="view-day"
-                        >
-                            Día
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="calendar-legend">
-
-                    <div class="legend-item">
-
-                        <span
-                            class="legend-dot legend-work"
-                        ></span>
-
-                        Trabajo
-
-                    </div>
-
-
-                    <div class="legend-item">
-
-                        <span
-                            class="legend-dot legend-party"
-                        ></span>
-
-                        Fiesta
-
-                    </div>
-
-
-                    <div class="legend-item">
-
-                        <span
-                            class="legend-dot legend-empty"
-                        ></span>
-
-                        Sin marcar
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div id="calendar-content"></div>
-
-        </section>
-
-
     </main>
 
 </section>
 
 
 
+<!-- =====================================================
+     MODAL CREAR / EDITAR EVENTO
+===================================================== -->
+
+<div
+    class="modal"
+    id="event-modal"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modal-title">
+                Nuevo evento
+            </h2>
+
+            <button
+                class="close-button"
+                id="close-modal-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <label for="event-title">
+            Nombre del evento
+        </label>
+
+        <input
+            type="text"
+            id="event-title"
+            placeholder="Ej. Boda de Marc"
+        >
+
+
+        <label for="event-date">
+            Fecha
+        </label>
+
+        <input
+            type="date"
+            id="event-date"
+        >
+
+
+        <label for="event-start">
+            Hora de inicio
+        </label>
+
+        <input
+            type="time"
+            id="event-start"
+        >
+
+
+        <label for="event-end">
+            Hora de finalización
+        </label>
+
+        <input
+            type="time"
+            id="event-end"
+        >
+
+
+        <label for="event-place">
+            Lugar
+        </label>
+
+        <input
+            type="text"
+            id="event-place"
+            placeholder="Ej. Barcelona"
+        >
+
+
+        <label>
+            Color
+        </label>
+
+        <div class="color-options">
+
+            <div
+                class="color-option selected"
+                data-color="#3788d8"
+                style="background:#3788d8;"
+            ></div>
+
+            <div
+                class="color-option"
+                data-color="#2e7d32"
+                style="background:#2e7d32;"
+            ></div>
+
+            <div
+                class="color-option"
+                data-color="#f57c00"
+                style="background:#f57c00;"
+            ></div>
+
+            <div
+                class="color-option"
+                data-color="#c62828"
+                style="background:#c62828;"
+            ></div>
+
+            <div
+                class="color-option"
+                data-color="#7b1fa2"
+                style="background:#7b1fa2;"
+            ></div>
+
+            <div
+                class="color-option"
+                data-color="#00838f"
+                style="background:#00838f;"
+            ></div>
+
+        </div>
+
+
+        <label for="event-notes">
+            Notas
+        </label>
+
+        <textarea
+            id="event-notes"
+            placeholder="Información adicional..."
+        ></textarea>
+
+
+        <div class="form-buttons">
+
+            <button
+                class="delete-event-button"
+                id="delete-event-button"
+                style="display:none;"
+            >
+                Eliminar
+            </button>
+
+
+            <button
+                class="cancel-button"
+                id="cancel-event-button"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                id="save-event-button"
+            >
+                Guardar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <script>
 
-
-/* =========================
+/* =====================================================
    SUPABASE
-========================= */
+===================================================== */
 
 
 const SUPABASE_URL =
@@ -1269,111 +1486,103 @@ const supabaseClient =
 
 
 
-/* =========================
+/* =====================================================
    ELEMENTOS
-========================= */
+===================================================== */
 
 
 const loginScreen =
-    document.getElementById("login-screen");
-
-const portal =
-    document.getElementById("portal");
-
-const dashboard =
-    document.getElementById("dashboard");
-
-const eventsSection =
-    document.getElementById("events-section");
-
-const eventFoldersSection =
-    document.getElementById("event-folders-section");
-
-const documentsSection =
-    document.getElementById("documents-section");
-
-const calendarSection =
-    document.getElementById("calendar-section");
-
-const loginForm =
-    document.getElementById("login-form");
-
-const error =
-    document.getElementById("error");
-
-const eventsList =
-    document.getElementById("events-list");
-
-const newEventButton =
-    document.getElementById("new-event-button");
-
-const documentsError =
-    document.getElementById("documents-error");
-
-const documentList =
-    document.getElementById("document-list");
-
-const uploadInput =
-    document.getElementById("upload-input");
-
-const eventFoldersTitle =
-    document.getElementById("event-folders-title");
-
-const documentsTitle =
-    document.getElementById("documents-title");
-
-const documentsSubtitle =
-    document.getElementById("documents-subtitle");
-
-const calendarContent =
-    document.getElementById("calendar-content");
-
-const calendarTitle =
-    document.getElementById("calendar-title");
-
-
-
-/* =========================
-   ESTADO
-========================= */
-
-
-let currentEvent = null;
-
-let currentFolder = null;
-
-let currentCalendarDate =
-    new Date();
-
-let currentCalendarView =
-    "year";
-
-
-/*
-   Los estados del calendario
-   se guardan en el navegador.
-
-   Ejemplo:
-
-   {
-       "2026-08-24": "work",
-       "2026-08-25": "party"
-   }
-*/
-
-
-let calendarStatuses =
-    JSON.parse(
-        localStorage.getItem(
-            "marclastra_calendar_statuses"
-        ) || "{}"
+    document.getElementById(
+        "login-screen"
     );
 
 
+const portal =
+    document.getElementById(
+        "portal"
+    );
 
-/* =========================
+
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
+
+
+const eventsSection =
+    document.getElementById(
+        "events-section"
+    );
+
+
+const eventFoldersSection =
+    document.getElementById(
+        "event-folders-section"
+    );
+
+
+const eventFoldersTitle =
+    document.getElementById(
+        "event-folders-title"
+    );
+
+
+const documentsSection =
+    document.getElementById(
+        "documents-section"
+    );
+
+
+const loginForm =
+    document.getElementById(
+        "login-form"
+    );
+
+
+const errorElement =
+    document.getElementById(
+        "error"
+    );
+
+
+const documentsError =
+    document.getElementById(
+        "documents-error"
+    );
+
+
+const documentList =
+    document.getElementById(
+        "document-list"
+    );
+
+
+const uploadInput =
+    document.getElementById(
+        "upload-input"
+    );
+
+
+let currentEvent =
+    null;
+
+
+let currentCalendarEvent =
+    null;
+
+
+let selectedColor =
+    "#3788d8";
+
+
+let calendar =
+    null;
+
+
+
+/* =====================================================
    LOGIN
-========================= */
+===================================================== */
 
 
 loginForm.addEventListener(
@@ -1382,12 +1591,16 @@ loginForm.addEventListener(
 
         event.preventDefault();
 
-        error.textContent = "";
+
+        errorElement.textContent =
+            "";
+
 
         const email =
             document.getElementById(
                 "email"
             ).value;
+
 
         const password =
             document.getElementById(
@@ -1411,10 +1624,8 @@ loginForm.addEventListener(
 
         if (loginError) {
 
-            error.textContent =
+            errorElement.textContent =
                 "Email o contraseña incorrectos.";
-
-            console.error(loginError);
 
             return;
 
@@ -1428,15 +1639,16 @@ loginForm.addEventListener(
 
 
 
-/* =========================
+/* =====================================================
    MOSTRAR PORTAL
-========================= */
+===================================================== */
 
 
 function showPortal() {
 
     loginScreen.style.display =
         "none";
+
 
     portal.style.display =
         "block";
@@ -1445,9 +1657,9 @@ function showPortal() {
 
 
 
-/* =========================
+/* =====================================================
    CERRAR SESIÓN
-========================= */
+===================================================== */
 
 
 document
@@ -1461,10 +1673,25 @@ document
                 .signOut();
 
 
-            hideAllSections();
+            eventsSection.style.display =
+                "none";
+
+
+            eventFoldersSection.style.display =
+                "none";
+
+
+            documentsSection.style.display =
+                "none";
+
+
+            dashboard.style.display =
+                "block";
+
 
             portal.style.display =
                 "none";
+
 
             loginScreen.style.display =
                 "flex";
@@ -1474,109 +1701,171 @@ document
 
 
 
-/* =========================
-   OCULTAR SECCIONES
-========================= */
-
-
-function hideAllSections() {
-
-    dashboard.style.display =
-        "none";
-
-    eventsSection.style.display =
-        "none";
-
-    eventFoldersSection.style.display =
-        "none";
-
-    documentsSection.style.display =
-        "none";
-
-    calendarSection.style.display =
-        "none";
-
-}
-
-
-
-/* =========================
-   ABRIR DASHBOARD
-========================= */
-
-
-function openDashboard() {
-
-    hideAllSections();
-
-    dashboard.style.display =
-        "block";
-
-}
-
-
-
-/* =========================
-   DOCUMENTOS → EVENTOS
-========================= */
+/* =====================================================
+   ABRIR EVENTOS
+===================================================== */
 
 
 document
-    .getElementById("documents-card")
+    .getElementById("events-card")
     .addEventListener(
         "click",
         async function() {
 
-            hideAllSections();
+            dashboard.style.display =
+                "none";
+
 
             eventsSection.style.display =
                 "block";
 
-            await loadEvents();
+
+            eventFoldersSection.style.display =
+                "none";
+
+
+            documentsSection.style.display =
+                "none";
+
+
+            await initializeCalendar();
 
         }
     );
 
 
 
-/* =========================
-   EVENTOS → CALENDARIO
-========================= */
+/* =====================================================
+   CALENDARIO
+===================================================== */
 
 
-document
-    .getElementById("calendar-card")
-    .addEventListener(
-        "click",
-        function() {
+async function initializeCalendar() {
 
-            hideAllSections();
+    if (calendar) {
 
-            calendarSection.style.display =
-                "block";
+        await loadCalendarEvents();
 
-            currentCalendarDate =
-                new Date();
+        calendar.render();
 
-            currentCalendarView =
-                "year";
+        return;
 
-            updateCalendarView();
-
-        }
-    );
+    }
 
 
+    const calendarElement =
+        document.getElementById(
+            "calendar"
+        );
 
-/* =========================
-   CARGAR EVENTOS
-========================= */
+
+    calendar =
+        new FullCalendar.Calendar(
+            calendarElement,
+            {
+
+                initialView:
+                    "dayGridMonth",
+
+                locale:
+                    "es",
+
+                firstDay:
+                    1,
+
+                height:
+                    "auto",
+
+                editable:
+                    false,
+
+                selectable:
+                    true,
+
+                dayMaxEvents:
+                    3,
+
+                headerToolbar: {
+
+                    left:
+                        "prev,next today",
+
+                    center:
+                        "title",
+
+                    right:
+                        "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+
+                },
 
 
-async function loadEvents() {
+                buttonText: {
 
-    eventsList.innerHTML =
-        '<div class="empty">Cargando eventos...</div>';
+                    today:
+                        "Hoy",
+
+                    month:
+                        "Mes",
+
+                    week:
+                        "Semana",
+
+                    day:
+                        "Día",
+
+                    list:
+                        "Lista"
+
+                },
+
+
+                dateClick:
+                    function(info) {
+
+                        openNewEventModal(
+                            info.dateStr
+                        );
+
+                    },
+
+
+                eventClick:
+                    function(info) {
+
+                        openEditEventModal(
+                            info.event
+                        );
+
+                    }
+
+            }
+        );
+
+
+    calendar.render();
+
+
+    await loadCalendarEvents();
+
+}
+
+
+
+/* =====================================================
+   CARGAR EVENTOS DEL CALENDARIO
+===================================================== */
+
+
+async function loadCalendarEvents() {
+
+    if (!calendar) {
+
+        return;
+
+    }
+
+
+    calendar.removeAllEvents();
 
 
     const {
@@ -1584,7 +1873,9 @@ async function loadEvents() {
         error
     } =
         await supabaseClient
-            .from("eventos")
+            .from(
+                "calendario_eventos"
+            )
             .select("*")
             .order(
                 "fecha",
@@ -1596,89 +1887,97 @@ async function loadEvents() {
 
     if (error) {
 
-        eventsList.innerHTML =
-            '<div class="empty">No se han podido cargar los eventos.</div>';
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    if (!data || data.length === 0) {
-
-        eventsList.innerHTML =
-            '<div class="empty">Todavía no tienes eventos.</div>';
+        console.error(
+            "Error cargando calendario:",
+            error
+        );
 
         return;
 
     }
 
 
-    eventsList.innerHTML = "";
+    if (!data) {
+
+        return;
+
+    }
 
 
     data.forEach(
         function(evento) {
 
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-            card.className =
-                "event-card";
+            let start =
+                evento.fecha;
 
 
-            const date =
-                evento.fecha
-                    ? new Date(
-                        evento.fecha +
-                        "T00:00:00"
-                    ).toLocaleDateString(
-                        "es-ES",
-                        {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric"
-                        }
-                    )
-                    : "Sin fecha";
+            let end =
+                null;
 
 
-            card.innerHTML = `
+            if (
+                evento.hora_inicio
+            ) {
 
-                <div class="event-icon">
-                    📁
-                </div>
+                start =
+                    evento.fecha
+                    + "T"
+                    + evento.hora_inicio;
 
-                <h3>
-                    ${escapeHtml(evento.nombre)}
-                </h3>
-
-                <p>
-                    ${date}
-                </p>
-
-            `;
+            }
 
 
-            card.addEventListener(
-                "click",
-                function() {
+            if (
+                evento.hora_fin
+            ) {
 
-                    openEventFolders(
-                        evento
-                    );
+                end =
+                    evento.fecha
+                    + "T"
+                    + evento.hora_fin;
+
+            }
+
+
+            calendar.addEvent({
+
+                id:
+                    evento.id,
+
+                title:
+                    evento.titulo,
+
+                start:
+                    start,
+
+                end:
+                    end,
+
+                backgroundColor:
+                    evento.color ||
+                    "#3788d8",
+
+                borderColor:
+                    evento.color ||
+                    "#3788d8",
+
+                extendedProps: {
+
+                    lugar:
+                        evento.lugar,
+
+                    notas:
+                        evento.notas,
+
+                    hora_inicio:
+                        evento.hora_inicio,
+
+                    hora_fin:
+                        evento.hora_fin
 
                 }
-            );
 
-
-            eventsList.appendChild(
-                card
-            );
+            });
 
         }
     );
@@ -1687,107 +1986,632 @@ async function loadEvents() {
 
 
 
-/* =========================
-   CREAR EVENTO
-========================= */
+/* =====================================================
+   ABRIR MODAL NUEVO
+===================================================== */
 
 
-newEventButton.addEventListener(
-    "click",
-    async function() {
+function openNewEventModal(
+    date
+) {
 
-        const nombre =
-            prompt(
-                "Nombre del evento:"
-            );
+    currentCalendarEvent =
+        null;
 
 
-        if (!nombre) {
-            return;
-        }
+    document.getElementById(
+        "modal-title"
+    ).textContent =
+        "Nuevo evento";
 
 
-        const fecha =
-            prompt(
-                "Fecha del evento (AAAA-MM-DD):"
-            );
+    document.getElementById(
+        "event-title"
+    ).value =
+        "";
 
 
-        const {
-            data: sessionData
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
+    document.getElementById(
+        "event-date"
+    ).value =
+        date;
 
 
-        const user =
-            sessionData.session?.user;
+    document.getElementById(
+        "event-start"
+    ).value =
+        "";
 
 
-        if (!user) {
-
-            alert(
-                "Tu sesión ha caducado. Vuelve a iniciar sesión."
-            );
-
-            return;
-
-        }
+    document.getElementById(
+        "event-end"
+    ).value =
+        "";
 
 
-        const {
-            error
-        } =
-            await supabaseClient
-                .from("eventos")
-                .insert({
-
-                    nombre:
-                        nombre,
-
-                    fecha:
-                        fecha || null,
-
-                    user_id:
-                        user.id
-
-                });
+    document.getElementById(
+        "event-place"
+    ).value =
+        "";
 
 
-        if (error) {
-
-            alert(
-                "No se ha podido crear el evento."
-            );
-
-            console.error(error);
-
-            return;
-
-        }
+    document.getElementById(
+        "event-notes"
+    ).value =
+        "";
 
 
-        await loadEvents();
+    selectedColor =
+        "#3788d8";
+
+
+    updateColorSelection();
+
+
+    document.getElementById(
+        "delete-event-button"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "event-modal"
+    ).style.display =
+        "flex";
+
+}
+
+
+
+/* =====================================================
+   ABRIR MODAL EDITAR
+===================================================== */
+
+
+async function openEditEventModal(
+    event
+) {
+
+    currentCalendarEvent =
+        event;
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from(
+                "calendario_eventos"
+            )
+            .select("*")
+            .eq(
+                "id",
+                event.id
+            )
+            .single();
+
+
+    if (error) {
+
+        console.error(error);
+
+        return;
 
     }
-);
+
+
+    document.getElementById(
+        "modal-title"
+    ).textContent =
+        "Editar evento";
+
+
+    document.getElementById(
+        "event-title"
+    ).value =
+        data.titulo || "";
+
+
+    document.getElementById(
+        "event-date"
+    ).value =
+        data.fecha || "";
+
+
+    document.getElementById(
+        "event-start"
+    ).value =
+        data.hora_inicio
+        ? data.hora_inicio.substring(
+            0,
+            5
+        )
+        : "";
+
+
+    document.getElementById(
+        "event-end"
+    ).value =
+        data.hora_fin
+        ? data.hora_fin.substring(
+            0,
+            5
+        )
+        : "";
+
+
+    document.getElementById(
+        "event-place"
+    ).value =
+        data.lugar || "";
+
+
+    document.getElementById(
+        "event-notes"
+    ).value =
+        data.notas || "";
+
+
+    selectedColor =
+        data.color ||
+        "#3788d8";
+
+
+    updateColorSelection();
+
+
+    document.getElementById(
+        "delete-event-button"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "event-modal"
+    ).style.display =
+        "flex";
+
+}
 
 
 
-/* =========================
-   ABRIR EVENTO
-========================= */
+/* =====================================================
+   COLORES
+===================================================== */
+
+
+document
+    .querySelectorAll(
+        ".color-option"
+    )
+    .forEach(
+        function(option) {
+
+            option.addEventListener(
+                "click",
+                function() {
+
+                    selectedColor =
+                        option.dataset.color;
+
+                    updateColorSelection();
+
+                }
+            );
+
+        }
+    );
+
+
+function updateColorSelection() {
+
+    document
+        .querySelectorAll(
+            ".color-option"
+        )
+        .forEach(
+            function(option) {
+
+                option.classList.remove(
+                    "selected"
+                );
+
+
+                if (
+                    option.dataset.color ===
+                    selectedColor
+                ) {
+
+                    option.classList.add(
+                        "selected"
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   GUARDAR EVENTO
+===================================================== */
+
+
+document
+    .getElementById(
+        "save-event-button"
+    )
+    .addEventListener(
+        "click",
+        async function() {
+
+            const titulo =
+                document.getElementById(
+                    "event-title"
+                ).value.trim();
+
+
+            const fecha =
+                document.getElementById(
+                    "event-date"
+                ).value;
+
+
+            const horaInicio =
+                document.getElementById(
+                    "event-start"
+                ).value;
+
+
+            const horaFin =
+                document.getElementById(
+                    "event-end"
+                ).value;
+
+
+            const lugar =
+                document.getElementById(
+                    "event-place"
+                ).value.trim();
+
+
+            const notas =
+                document.getElementById(
+                    "event-notes"
+                ).value.trim();
+
+
+            if (
+                !titulo ||
+                !fecha
+            ) {
+
+                alert(
+                    "Es necesario indicar el nombre y la fecha."
+                );
+
+                return;
+
+            }
+
+
+            const {
+                data: sessionData
+            } =
+                await supabaseClient
+                    .auth
+                    .getSession();
+
+
+            const user =
+                sessionData
+                    .session
+                    ?.user;
+
+
+            if (!user) {
+
+                alert(
+                    "Tu sesión ha caducado. Vuelve a iniciar sesión."
+                );
+
+                return;
+
+            }
+
+
+            const eventData = {
+
+                titulo:
+                    titulo,
+
+                fecha:
+                    fecha,
+
+                hora_inicio:
+                    horaInicio || null,
+
+                hora_fin:
+                    horaFin || null,
+
+                lugar:
+                    lugar || null,
+
+                notas:
+                    notas || null,
+
+                color:
+                    selectedColor,
+
+                user_id:
+                    user.id
+
+            };
+
+
+            let result;
+
+
+            if (
+                currentCalendarEvent
+            ) {
+
+                result =
+                    await supabaseClient
+                        .from(
+                            "calendario_eventos"
+                        )
+                        .update(
+                            eventData
+                        )
+                        .eq(
+                            "id",
+                            currentCalendarEvent.id
+                        );
+
+            } else {
+
+                result =
+                    await supabaseClient
+                        .from(
+                            "calendario_eventos"
+                        )
+                        .insert(
+                            eventData
+                        );
+
+            }
+
+
+            if (result.error) {
+
+                console.error(
+                    result.error
+                );
+
+
+                alert(
+                    "No se ha podido guardar el evento."
+                );
+
+                return;
+
+            }
+
+
+            closeEventModal();
+
+
+            await loadCalendarEvents();
+
+        }
+    );
+
+
+
+/* =====================================================
+   ELIMINAR EVENTO
+===================================================== */
+
+
+document
+    .getElementById(
+        "delete-event-button"
+    )
+    .addEventListener(
+        "click",
+        async function() {
+
+            if (
+                !currentCalendarEvent
+            ) {
+
+                return;
+
+            }
+
+
+            const confirmed =
+                confirm(
+                    "¿Seguro que quieres eliminar este evento?"
+                );
+
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from(
+                        "calendario_eventos"
+                    )
+                    .delete()
+                    .eq(
+                        "id",
+                        currentCalendarEvent.id
+                    );
+
+
+            if (error) {
+
+                console.error(error);
+
+                alert(
+                    "No se ha podido eliminar el evento."
+                );
+
+                return;
+
+            }
+
+
+            closeEventModal();
+
+
+            await loadCalendarEvents();
+
+        }
+    );
+
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+
+function closeEventModal() {
+
+    document.getElementById(
+        "event-modal"
+    ).style.display =
+        "none";
+
+
+    currentCalendarEvent =
+        null;
+
+}
+
+
+document
+    .getElementById(
+        "close-modal-button"
+    )
+    .addEventListener(
+        "click",
+        closeEventModal
+    );
+
+
+document
+    .getElementById(
+        "cancel-event-button"
+    )
+    .addEventListener(
+        "click",
+        closeEventModal
+    );
+
+
+document
+    .getElementById(
+        "new-calendar-event-button"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            const today =
+                new Date();
+
+
+            const year =
+                today.getFullYear();
+
+
+            const month =
+                String(
+                    today.getMonth() + 1
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const day =
+                String(
+                    today.getDate()
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            openNewEventModal(
+                `${year}-${month}-${day}`
+            );
+
+        }
+    );
+
+
+
+/* =====================================================
+   VOLVER DESDE EVENTOS
+===================================================== */
+
+
+document
+    .getElementById(
+        "events-back-button"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            eventsSection.style.display =
+                "none";
+
+
+            dashboard.style.display =
+                "block";
+
+        }
+    );
+
+
+
+/* =====================================================
+   EVENTOS → CARPETAS
+===================================================== */
 
 
 async function openEventFolders(
     evento
 ) {
 
-    hideAllSections();
+    eventsSection.style.display =
+        "none";
+
+
+    documentsSection.style.display =
+        "none";
+
 
     eventFoldersSection.style.display =
         "block";
+
 
     currentEvent =
         evento;
@@ -1805,9 +2629,9 @@ async function openEventFolders(
 
 
 
-/* =========================
+/* =====================================================
    CARGAR CARPETAS DEL EVENTO
-========================= */
+===================================================== */
 
 
 async function loadEventFolders(
@@ -1819,7 +2643,9 @@ async function loadEventFolders(
         error
     } =
         await supabaseClient
-            .from("evento_carpetas")
+            .from(
+                "evento_carpetas"
+            )
             .select("*")
             .eq(
                 "evento_id",
@@ -1847,8 +2673,7 @@ async function loadEventFolders(
 
 
     for (
-        const card
-        of folderCards
+        const card of folderCards
     ) {
 
         const folderName =
@@ -1868,7 +2693,9 @@ async function loadEventFolders(
             );
 
 
-        if (!existingFolder) {
+        if (
+            !existingFolder
+        ) {
 
             const {
                 error: insertError
@@ -1904,45 +2731,32 @@ async function loadEventFolders(
 
 
 
-/* =========================
+/* =====================================================
    ABRIR CARPETA
-========================= */
+===================================================== */
 
 
-const folderCards =
-    eventFoldersSection
-        .querySelectorAll(
-            "[data-folder]"
-        );
+eventFoldersSection
+    .querySelectorAll(
+        "[data-folder]"
+    )
+    .forEach(
+        function(card) {
 
+            card.addEventListener(
+                "click",
+                function() {
 
-folderCards.forEach(
-    function(card) {
+                    openEventFolder(
+                        card.dataset.folder
+                    );
 
-        card.addEventListener(
-            "click",
-            function() {
+                }
+            );
 
-                const folderName =
-                    card.dataset.folder;
+        }
+    );
 
-
-                openEventFolder(
-                    folderName
-                );
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =========================
-   ABRIR DOCUMENTOS
-   DE UNA CARPETA
-========================= */
 
 
 async function openEventFolder(
@@ -1950,25 +2764,37 @@ async function openEventFolder(
 ) {
 
     if (!currentEvent) {
+
         return;
+
     }
 
 
-    currentFolder =
-        folderName;
+    eventFoldersSection.style.display =
+        "none";
 
-
-    hideAllSections();
 
     documentsSection.style.display =
         "block";
 
 
-    documentsTitle.textContent =
+    const title =
+        documentsSection.querySelector(
+            ".documents-header h2"
+        );
+
+
+    const subtitle =
+        documentsSection.querySelector(
+            ".documents-header p"
+        );
+
+
+    title.textContent =
         "📁 " + folderName;
 
 
-    documentsSubtitle.textContent =
+    subtitle.textContent =
         currentEvent.nombre;
 
 
@@ -1981,27 +2807,9 @@ async function openEventFolder(
 
 
 
-/* =========================
-   VOLVER DESDE EVENTOS
-========================= */
-
-
-document
-    .getElementById("events-back-button")
-    .addEventListener(
-        "click",
-        function() {
-
-            openDashboard();
-
-        }
-    );
-
-
-
-/* =========================
+/* =====================================================
    VOLVER DESDE CARPETAS
-========================= */
+===================================================== */
 
 
 document
@@ -2012,42 +2820,24 @@ document
         "click",
         function() {
 
-            hideAllSections();
+            eventFoldersSection.style.display =
+                "none";
+
 
             eventsSection.style.display =
                 "block";
 
-            loadEvents();
+
+            initializeCalendar();
 
         }
     );
 
 
 
-/* =========================
-   VOLVER DESDE DOCUMENTOS
-========================= */
-
-
-document
-    .getElementById("back-button")
-    .addEventListener(
-        "click",
-        function() {
-
-            hideAllSections();
-
-            eventFoldersSection.style.display =
-                "block";
-
-        }
-    );
-
-
-
-/* =========================
-   CARGAR DOCUMENTOS
-========================= */
+/* =====================================================
+   DOCUMENTOS DE EVENTO
+===================================================== */
 
 
 async function loadEventDocuments(
@@ -2063,7 +2853,7 @@ async function loadEventDocuments(
         '<div class="empty">Cargando documentos...</div>';
 
 
-    const folderPath =
+    const path =
         eventoId +
         "/" +
         folderName;
@@ -2075,29 +2865,34 @@ async function loadEventDocuments(
     } =
         await supabaseClient
             .storage
-            .from("Documentos")
+            .from(
+                "Documentos"
+            )
             .list(
-                folderPath,
+                path,
                 {
+
                     sortBy: {
+
                         column:
                             "created_at",
+
                         order:
                             "desc"
+
                     }
+
                 }
             );
 
 
     if (error) {
 
-        documentsError.textContent =
-            "No se han podido cargar los documentos.";
+        console.error(error);
+
 
         documentList.innerHTML =
-            '<div class="empty">Error al cargar los documentos.</div>';
-
-        console.error(error);
+            '<div class="empty">No se han podido cargar los documentos.</div>';
 
         return;
 
@@ -2117,6 +2912,106 @@ async function loadEventDocuments(
     }
 
 
+    renderDocumentList(
+        data,
+        path
+    );
+
+}
+
+
+
+/* =====================================================
+   DOCUMENTOS PRINCIPALES
+===================================================== */
+
+
+async function loadDocuments() {
+
+    documentsError.textContent =
+        "";
+
+
+    documentList.innerHTML =
+        '<div class="empty">Cargando documentos...</div>';
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .storage
+            .from(
+                "Documentos"
+            )
+            .list(
+                "",
+                {
+
+                    sortBy: {
+
+                        column:
+                            "created_at",
+
+                        order:
+                            "desc"
+
+                    }
+
+                }
+            );
+
+
+    if (error) {
+
+        documentsError.textContent =
+            "No se han podido cargar los documentos.";
+
+
+        documentList.innerHTML =
+            '<div class="empty">Error al cargar los documentos.</div>';
+
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        documentList.innerHTML =
+            '<div class="empty">Todavía no hay documentos.</div>';
+
+        return;
+
+    }
+
+
+    renderDocumentList(
+        data,
+        ""
+    );
+
+}
+
+
+
+/* =====================================================
+   MOSTRAR DOCUMENTOS
+===================================================== */
+
+
+function renderDocumentList(
+    data,
+    folderPath
+) {
+
     documentList.innerHTML =
         "";
 
@@ -2125,7 +3020,9 @@ async function loadEventDocuments(
         function(file) {
 
             if (!file.name) {
+
                 return;
+
             }
 
 
@@ -2133,6 +3030,7 @@ async function loadEventDocuments(
                 document.createElement(
                     "div"
                 );
+
 
             row.className =
                 "document";
@@ -2143,29 +3041,29 @@ async function loadEventDocuments(
                     "div"
                 );
 
+
             name.className =
                 "document-name";
 
 
-            name.innerHTML = `
+            name.innerHTML =
 
+                `
                 <span class="document-icon">
                     📄
                 </span>
 
                 <span>
-                    ${escapeHtml(
-                        file.name
-                    )}
+                    ${escapeHtml(file.name)}
                 </span>
-
-            `;
+                `;
 
 
             const actions =
                 document.createElement(
                     "div"
                 );
+
 
             actions.className =
                 "document-actions";
@@ -2176,8 +3074,10 @@ async function loadEventDocuments(
                     "button"
                 );
 
+
             viewButton.className =
                 "view-button";
+
 
             viewButton.textContent =
                 "👁️ Ver";
@@ -2188,9 +3088,9 @@ async function loadEventDocuments(
                 function() {
 
                     openDocument(
-                        folderPath +
-                        "/" +
-                        file.name
+                        folderPath
+                            ? folderPath + "/" + file.name
+                            : file.name
                     );
 
                 }
@@ -2202,8 +3102,10 @@ async function loadEventDocuments(
                     "button"
                 );
 
+
             deleteButton.className =
                 "delete-button";
+
 
             deleteButton.textContent =
                 "🗑️ Eliminar";
@@ -2214,9 +3116,9 @@ async function loadEventDocuments(
                 function() {
 
                     deleteDocument(
-                        folderPath +
-                        "/" +
-                        file.name
+                        folderPath
+                            ? folderPath + "/" + file.name
+                            : file.name
                     );
 
                 }
@@ -2227,6 +3129,7 @@ async function loadEventDocuments(
                 viewButton
             );
 
+
             actions.appendChild(
                 deleteButton
             );
@@ -2235,6 +3138,7 @@ async function loadEventDocuments(
             row.appendChild(
                 name
             );
+
 
             row.appendChild(
                 actions
@@ -2252,9 +3156,9 @@ async function loadEventDocuments(
 
 
 
-/* =========================
+/* =====================================================
    ABRIR DOCUMENTO
-========================= */
+===================================================== */
 
 
 async function openDocument(
@@ -2267,7 +3171,9 @@ async function openDocument(
     } =
         await supabaseClient
             .storage
-            .from("Documentos")
+            .from(
+                "Documentos"
+            )
             .createSignedUrl(
                 filePath,
                 600
@@ -2279,6 +3185,7 @@ async function openDocument(
         alert(
             "No se ha podido abrir el documento."
         );
+
 
         console.error(error);
 
@@ -2296,9 +3203,9 @@ async function openDocument(
 
 
 
-/* =========================
+/* =====================================================
    SUBIR DOCUMENTO
-========================= */
+===================================================== */
 
 
 uploadInput.addEventListener(
@@ -2310,18 +3217,6 @@ uploadInput.addEventListener(
 
 
         if (!file) {
-            return;
-        }
-
-
-        if (
-            !currentEvent ||
-            !currentFolder
-        ) {
-
-            alert(
-                "No se ha seleccionado una carpeta."
-            );
 
             return;
 
@@ -2333,17 +3228,9 @@ uploadInput.addEventListener(
 
 
         const fileName =
-            Date.now() +
-            "_" +
-            file.name;
-
-
-        const filePath =
-            currentEvent.id +
-            "/" +
-            currentFolder +
-            "/" +
-            fileName;
+            Date.now()
+            + "_"
+            + file.name;
 
 
         const {
@@ -2351,9 +3238,11 @@ uploadInput.addEventListener(
         } =
             await supabaseClient
                 .storage
-                .from("Documentos")
+                .from(
+                    "Documentos"
+                )
                 .upload(
-                    filePath,
+                    fileName,
                     file
                 );
 
@@ -2362,6 +3251,7 @@ uploadInput.addEventListener(
 
             documentsError.textContent =
                 "No se ha podido subir el documento.";
+
 
             console.error(error);
 
@@ -2374,19 +3264,16 @@ uploadInput.addEventListener(
             "";
 
 
-        await loadEventDocuments(
-            currentEvent.id,
-            currentFolder
-        );
+        await loadDocuments();
 
     }
 );
 
 
 
-/* =========================
+/* =====================================================
    ELIMINAR DOCUMENTO
-========================= */
+===================================================== */
 
 
 async function deleteDocument(
@@ -2400,7 +3287,9 @@ async function deleteDocument(
 
 
     if (!confirmed) {
+
         return;
+
     }
 
 
@@ -2409,12 +3298,12 @@ async function deleteDocument(
     } =
         await supabaseClient
             .storage
-            .from("Documentos")
-            .remove(
-                [
-                    filePath
-                ]
-            );
+            .from(
+                "Documentos"
+            )
+            .remove([
+                filePath
+            ]);
 
 
     if (error) {
@@ -2423,6 +3312,7 @@ async function deleteDocument(
             "No se ha podido eliminar el documento."
         );
 
+
         console.error(error);
 
         return;
@@ -2430,1220 +3320,15 @@ async function deleteDocument(
     }
 
 
-    await loadEventDocuments(
-        currentEvent.id,
-        currentFolder
-    );
+    await loadDocuments();
 
 }
 
 
 
-/* =========================================================
-   CALENDARIO
-========================================================= */
-
-
-/* =========================
-   FORMATEAR FECHA
-========================= */
-
-
-function dateKey(
-    date
-) {
-
-    const year =
-        date.getFullYear();
-
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
-    );
-
-}
-
-
-
-/* =========================
-   GUARDAR CALENDARIO
-========================= */
-
-
-function saveCalendarStatuses() {
-
-    localStorage.setItem(
-        "marclastra_calendar_statuses",
-        JSON.stringify(
-            calendarStatuses
-        )
-    );
-
-}
-
-
-
-/* =========================
-   OBTENER ESTADO
-========================= */
-
-
-function getStatus(
-    date
-) {
-
-    return (
-        calendarStatuses[
-            dateKey(date)
-        ] ||
-        null
-    );
-
-}
-
-
-
-/* =========================
-   CAMBIAR ESTADO
-========================= */
-
-
-function setDayStatus(
-    date,
-    status
-) {
-
-    const key =
-        dateKey(date);
-
-
-    if (status) {
-
-        calendarStatuses[key] =
-            status;
-
-    } else {
-
-        delete calendarStatuses[key];
-
-    }
-
-
-    saveCalendarStatuses();
-
-    updateCalendarView();
-
-}
-
-
-
-/* =========================
-   NOMBRES
-========================= */
-
-
-const monthNames = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre"
-];
-
-
-const weekdayNames = [
-    "L",
-    "M",
-    "X",
-    "J",
-    "V",
-    "S",
-    "D"
-];
-
-
-const weekdayLongNames = [
-    "Lunes",
-    "Martes",
-    "Miércoles",
-    "Jueves",
-    "Viernes",
-    "Sábado",
-    "Domingo"
-];
-
-
-
-/* =========================
-   CALENDARIO
-========================= */
-
-
-function updateCalendarView() {
-
-    if (
-        currentCalendarView ===
-        "year"
-    ) {
-
-        renderYear();
-
-    }
-
-
-    if (
-        currentCalendarView ===
-        "week"
-    ) {
-
-        renderWeek();
-
-    }
-
-
-    if (
-        currentCalendarView ===
-        "day"
-    ) {
-
-        renderDay();
-
-    }
-
-}
-
-
-
-/* =========================
-   VISTA ANUAL
-========================= */
-
-
-function renderYear() {
-
-    const year =
-        currentCalendarDate
-            .getFullYear();
-
-
-    calendarTitle.textContent =
-        String(year);
-
-
-    calendarContent.innerHTML =
-        "";
-
-
-    const yearGrid =
-        document.createElement(
-            "div"
-        );
-
-    yearGrid.className =
-        "year-grid";
-
-
-    for (
-        let month = 0;
-        month < 12;
-        month++
-    ) {
-
-        const monthElement =
-            document.createElement(
-                "div"
-            );
-
-        monthElement.className =
-            "month";
-
-
-        const title =
-            document.createElement(
-                "div"
-            );
-
-        title.className =
-            "month-title";
-
-        title.textContent =
-            monthNames[month];
-
-
-        monthElement.appendChild(
-            title
-        );
-
-
-        const weekdays =
-            document.createElement(
-                "div"
-            );
-
-        weekdays.className =
-            "weekday-row";
-
-
-        weekdayNames.forEach(
-            function(name) {
-
-                const weekday =
-                    document.createElement(
-                        "div"
-                    );
-
-                weekday.className =
-                    "weekday";
-
-                weekday.textContent =
-                    name;
-
-                weekdays.appendChild(
-                    weekday
-                );
-
-            }
-        );
-
-
-        monthElement.appendChild(
-            weekdays
-        );
-
-
-        const days =
-            document.createElement(
-                "div"
-            );
-
-        days.className =
-            "month-days";
-
-
-        const firstDay =
-            new Date(
-                year,
-                month,
-                1
-            );
-
-
-        let startDay =
-            firstDay.getDay();
-
-
-        /*
-           JavaScript:
-           Domingo = 0
-
-           Nosotros queremos:
-           Lunes = 0
-        */
-
-        startDay =
-            startDay === 0
-                ? 6
-                : startDay - 1;
-
-
-        for (
-            let i = 0;
-            i < startDay;
-            i++
-        ) {
-
-            const empty =
-                document.createElement(
-                    "div"
-                );
-
-            empty.className =
-                "day empty-day";
-
-            days.appendChild(
-                empty
-            );
-
-        }
-
-
-        const daysInMonth =
-            new Date(
-                year,
-                month + 1,
-                0
-            ).getDate();
-
-
-        for (
-            let dayNumber = 1;
-            dayNumber <= daysInMonth;
-            dayNumber++
-        ) {
-
-            const date =
-                new Date(
-                    year,
-                    month,
-                    dayNumber
-                );
-
-
-            const dayElement =
-                document.createElement(
-                    "div"
-                );
-
-            dayElement.className =
-                "day";
-
-
-            const status =
-                getStatus(date);
-
-
-            if (
-                status ===
-                "work"
-            ) {
-
-                dayElement.classList.add(
-                    "work"
-                );
-
-            }
-
-
-            if (
-                status ===
-                "party"
-            ) {
-
-                dayElement.classList.add(
-                    "party"
-                );
-
-            }
-
-
-            const today =
-                new Date();
-
-
-            if (
-                dateKey(date) ===
-                dateKey(today)
-            ) {
-
-                dayElement.classList.add(
-                    "today"
-                );
-
-            }
-
-
-            dayElement.innerHTML = `
-
-                <span class="day-number">
-                    ${dayNumber}
-                </span>
-
-            `;
-
-
-            dayElement.addEventListener(
-                "click",
-                function() {
-
-                    cycleDayStatus(
-                        date
-                    );
-
-                }
-            );
-
-
-            days.appendChild(
-                dayElement
-            );
-
-        }
-
-
-        monthElement.appendChild(
-            days
-        );
-
-
-        yearGrid.appendChild(
-            monthElement
-        );
-
-    }
-
-
-    calendarContent.appendChild(
-        yearGrid
-    );
-
-}
-
-
-
-/* =========================
-   CICLO DEL DÍA
-========================= */
-
-
-function cycleDayStatus(
-    date
-) {
-
-    const current =
-        getStatus(date);
-
-
-    if (!current) {
-
-        setDayStatus(
-            date,
-            "work"
-        );
-
-        return;
-
-    }
-
-
-    if (
-        current ===
-        "work"
-    ) {
-
-        setDayStatus(
-            date,
-            "party"
-        );
-
-        return;
-
-    }
-
-
-    setDayStatus(
-        date,
-        null
-    );
-
-}
-
-
-
-/* =========================
-   VISTA SEMANAL
-========================= */
-
-
-function getMonday(
-    date
-) {
-
-    const result =
-        new Date(date);
-
-
-    const day =
-        result.getDay();
-
-
-    const difference =
-        day === 0
-            ? -6
-            : 1 - day;
-
-
-    result.setDate(
-        result.getDate() +
-        difference
-    );
-
-
-    result.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    return result;
-
-}
-
-
-
-function renderWeek() {
-
-    const monday =
-        getMonday(
-            currentCalendarDate
-        );
-
-
-    const sunday =
-        new Date(monday);
-
-
-    sunday.setDate(
-        monday.getDate() +
-        6
-    );
-
-
-    calendarTitle.textContent =
-        monday.toLocaleDateString(
-            "es-ES",
-            {
-                day: "numeric",
-                month: "short",
-                year: "numeric"
-            }
-        ) +
-        " — " +
-        sunday.toLocaleDateString(
-            "es-ES",
-            {
-                day: "numeric",
-                month: "short",
-                year: "numeric"
-            }
-        );
-
-
-    calendarContent.innerHTML =
-        "";
-
-
-    const weekView =
-        document.createElement(
-            "div"
-        );
-
-    weekView.className =
-        "week-view";
-
-
-    const weekGrid =
-        document.createElement(
-            "div"
-        );
-
-    weekGrid.className =
-        "week-grid";
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        const date =
-            new Date(monday);
-
-
-        date.setDate(
-            monday.getDate() +
-            i
-        );
-
-
-        const status =
-            getStatus(date);
-
-
-        const dayElement =
-            document.createElement(
-                "div"
-            );
-
-        dayElement.className =
-            "week-day";
-
-
-        const header =
-            document.createElement(
-                "div"
-            );
-
-        header.className =
-            "week-day-header";
-
-
-        header.innerHTML = `
-
-            ${weekdayLongNames[i]}
-
-            <div class="week-day-number">
-                ${date.getDate()}
-            </div>
-
-        `;
-
-
-        const content =
-            document.createElement(
-                "div"
-            );
-
-        content.className =
-            "week-day-content";
-
-
-        let icon =
-            "⚪";
-
-        let text =
-            "Sin marcar";
-
-
-        if (
-            status ===
-            "work"
-        ) {
-
-            icon =
-                "🟢";
-
-            text =
-                "Trabajo";
-
-        }
-
-
-        if (
-            status ===
-            "party"
-        ) {
-
-            icon =
-                "🔴";
-
-            text =
-                "Fiesta";
-
-        }
-
-
-        content.innerHTML = `
-
-            <div class="week-status">
-                ${icon}
-            </div>
-
-            <div class="week-status-text">
-                ${text}
-            </div>
-
-        `;
-
-
-        dayElement.appendChild(
-            header
-        );
-
-        dayElement.appendChild(
-            content
-        );
-
-
-        dayElement.addEventListener(
-            "click",
-            function() {
-
-                openSpecificDay(
-                    date
-                );
-
-            }
-        );
-
-
-        weekGrid.appendChild(
-            dayElement
-        );
-
-    }
-
-
-    weekView.appendChild(
-        weekGrid
-    );
-
-
-    calendarContent.appendChild(
-        weekView
-    );
-
-}
-
-
-
-/* =========================
-   VISTA DIARIA
-========================= */
-
-
-function renderDay() {
-
-    const date =
-        currentCalendarDate;
-
-
-    calendarTitle.textContent =
-        date.toLocaleDateString(
-            "es-ES",
-            {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        );
-
-
-    calendarContent.innerHTML =
-        "";
-
-
-    const status =
-        getStatus(date);
-
-
-    let icon =
-        "⚪";
-
-    let text =
-        "Sin marcar";
-
-
-    if (
-        status ===
-        "work"
-    ) {
-
-        icon =
-            "🟢";
-
-        text =
-            "Trabajo";
-
-    }
-
-
-    if (
-        status ===
-        "party"
-    ) {
-
-        icon =
-            "🔴";
-
-        text =
-            "Fiesta";
-
-    }
-
-
-    const container =
-        document.createElement(
-            "div"
-        );
-
-    container.className =
-        "day-view";
-
-
-    container.innerHTML = `
-
-        <div class="day-view-date">
-            ${date.toLocaleDateString(
-                "es-ES",
-                {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
-                }
-            )}
-        </div>
-
-        <div class="day-view-status">
-            ${icon}
-        </div>
-
-        <div class="day-view-status-text">
-            ${text}
-        </div>
-
-        <div class="status-buttons">
-
-            <button
-                class="status-work"
-                id="set-work"
-            >
-                🟢 Trabajo
-            </button>
-
-            <button
-                class="status-party"
-                id="set-party"
-            >
-                🔴 Fiesta
-            </button>
-
-            <button
-                class="status-clear"
-                id="set-clear"
-            >
-                ⚪ Limpiar
-            </button>
-
-        </div>
-
-    `;
-
-
-    calendarContent.appendChild(
-        container
-    );
-
-
-    document
-        .getElementById("set-work")
-        .addEventListener(
-            "click",
-            function() {
-
-                setDayStatus(
-                    date,
-                    "work"
-                );
-
-            }
-        );
-
-
-    document
-        .getElementById("set-party")
-        .addEventListener(
-            "click",
-            function() {
-
-                setDayStatus(
-                    date,
-                    "party"
-                );
-
-            }
-        );
-
-
-    document
-        .getElementById("set-clear")
-        .addEventListener(
-            "click",
-            function() {
-
-                setDayStatus(
-                    date,
-                    null
-                );
-
-            }
-        );
-
-}
-
-
-
-/* =========================
-   ABRIR DÍA
-========================= */
-
-
-function openSpecificDay(
-    date
-) {
-
-    currentCalendarDate =
-        new Date(date);
-
-    currentCalendarView =
-        "day";
-
-    updateCalendarView();
-
-    updateViewButtons();
-
-}
-
-
-
-/* =========================
-   CAMBIAR VISTA
-========================= */
-
-
-document
-    .getElementById("view-year")
-    .addEventListener(
-        "click",
-        function() {
-
-            currentCalendarView =
-                "year";
-
-            updateViewButtons();
-
-            updateCalendarView();
-
-        }
-    );
-
-
-document
-    .getElementById("view-week")
-    .addEventListener(
-        "click",
-        function() {
-
-            currentCalendarView =
-                "week";
-
-            updateViewButtons();
-
-            updateCalendarView();
-
-        }
-    );
-
-
-document
-    .getElementById("view-day")
-    .addEventListener(
-        "click",
-        function() {
-
-            currentCalendarView =
-                "day";
-
-            updateViewButtons();
-
-            updateCalendarView();
-
-        }
-    );
-
-
-
-/* =========================
-   BOTONES DE VISTA
-========================= */
-
-
-function updateViewButtons() {
-
-    document
-        .getElementById("view-year")
-        .classList.remove(
-            "active"
-        );
-
-    document
-        .getElementById("view-week")
-        .classList.remove(
-            "active"
-        );
-
-    document
-        .getElementById("view-day")
-        .classList.remove(
-            "active"
-        );
-
-
-    document
-        .getElementById(
-            "view-" +
-            currentCalendarView
-        )
-        .classList.add(
-            "active"
-        );
-
-}
-
-
-
-/* =========================
-   NAVEGACIÓN CALENDARIO
-========================= */
-
-
-document
-    .getElementById("calendar-prev")
-    .addEventListener(
-        "click",
-        function() {
-
-            if (
-                currentCalendarView ===
-                "year"
-            ) {
-
-                currentCalendarDate.setFullYear(
-                    currentCalendarDate.getFullYear() -
-                    1
-                );
-
-            }
-
-
-            if (
-                currentCalendarView ===
-                "week"
-            ) {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() -
-                    7
-                );
-
-            }
-
-
-            if (
-                currentCalendarView ===
-                "day"
-            ) {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() -
-                    1
-                );
-
-            }
-
-
-            updateCalendarView();
-
-        }
-    );
-
-
-
-document
-    .getElementById("calendar-next")
-    .addEventListener(
-        "click",
-        function() {
-
-            if (
-                currentCalendarView ===
-                "year"
-            ) {
-
-                currentCalendarDate.setFullYear(
-                    currentCalendarDate.getFullYear() +
-                    1
-                );
-
-            }
-
-
-            if (
-                currentCalendarView ===
-                "week"
-            ) {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() +
-                    7
-                );
-
-            }
-
-
-            if (
-                currentCalendarView ===
-                "day"
-            ) {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() +
-                    1
-                );
-
-            }
-
-
-            updateCalendarView();
-
-        }
-    );
-
-
-
-/* =========================
-   VOLVER DEL CALENDARIO
-========================= */
-
-
-document
-    .getElementById(
-        "calendar-back-button"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            openDashboard();
-
-        }
-    );
-
-
-
-/* =========================
+/* =====================================================
    SEGURIDAD HTML
-========================= */
+===================================================== */
 
 
 function escapeHtml(
@@ -3655,8 +3340,10 @@ function escapeHtml(
             "div"
         );
 
+
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
@@ -3664,9 +3351,9 @@ function escapeHtml(
 
 
 
-/* =========================
+/* =====================================================
    COMPROBAR SESIÓN
-========================= */
+===================================================== */
 
 
 async function checkSession() {
@@ -3679,9 +3366,7 @@ async function checkSession() {
             .getSession();
 
 
-    if (
-        data.session
-    ) {
+    if (data.session) {
 
         showPortal();
 
