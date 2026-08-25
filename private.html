@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>MARCLASTRA — Zona Privada</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
 
 *{
     box-sizing:border-box;
@@ -56,6 +66,18 @@ textarea{
     resize:vertical;
 }
 
+label{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
 #login-screen{
     min-height:100vh;
     display:flex;
@@ -89,13 +111,6 @@ textarea{
     font-size:14px;
 }
 
-label{
-    display:block;
-    margin-bottom:7px;
-    font-size:14px;
-    font-weight:bold;
-}
-
 .login-box input{
     margin-bottom:20px;
 }
@@ -106,6 +121,11 @@ label{
     font-size:14px;
     text-align:center;
 }
+
+
+/* =====================================================
+   PORTAL
+===================================================== */
 
 #portal{
     display:none;
@@ -146,6 +166,11 @@ main{
     padding:20px;
 }
 
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
 #dashboard{
     display:block;
 }
@@ -170,9 +195,17 @@ main{
     color:#777;
 }
 
+
+/* =====================================================
+   CARDS
+===================================================== */
+
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
     gap:20px;
 }
 
@@ -203,6 +236,14 @@ main{
     font-size:14px;
 }
 
+.empty{
+    padding:40px;
+    text-align:center;
+    color:#888;
+    background:white;
+    border-radius:12px;
+}
+
 .back-button{
     margin-bottom:25px;
     background:#666;
@@ -225,21 +266,15 @@ main{
     color:#777;
 }
 
-.empty{
-    padding:40px;
-    text-align:center;
-    color:#888;
-    background:white;
-    border-radius:12px;
-}
 
-/* =========================
+/* =====================================================
    PORTFOLIO
-========================= */
+===================================================== */
 
 .portfolio-admin-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    grid-template-columns:
+        repeat(auto-fill,minmax(280px,1fr));
     gap:20px;
 }
 
@@ -371,9 +406,10 @@ main{
     color:#a32219;
 }
 
-/* =========================
+
+/* =====================================================
    DOCUMENTOS
-========================= */
+===================================================== */
 
 .documents-header{
     display:flex;
@@ -453,9 +489,10 @@ main{
     margin:15px 0;
 }
 
-/* =========================
+
+/* =====================================================
    EVENTOS
-========================= */
+===================================================== */
 
 .event-card{
     background:white;
@@ -480,9 +517,10 @@ main{
     font-size:14px;
 }
 
-/* =========================
+
+/* =====================================================
    CALENDARIO
-========================= */
+===================================================== */
 
 .calendar-container{
     background:white;
@@ -532,9 +570,57 @@ main{
     color:white;
 }
 
+
+/* =====================================================
+   COLORES DE EVENTOS
+===================================================== */
+
+.event-green{
+    background:#2e8b57;
+}
+
+.event-red{
+    background:#c0392b;
+}
+
+.event-blue{
+    background:#3478c9;
+}
+
+.event-purple{
+    background:#7b4bb7;
+}
+
+.event-orange{
+    background:#e67e22;
+}
+
+.event-yellow{
+    background:#d4a017;
+    color:#111 !important;
+}
+
+.event-black{
+    background:#222;
+}
+
+.event-pink{
+    background:#d85c91;
+}
+
+.event-cyan{
+    background:#159a9c;
+}
+
+
+/* =====================================================
+   CALENDARIO ANUAL
+===================================================== */
+
 .year-calendar{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
     gap:20px;
 }
 
@@ -548,11 +634,13 @@ main{
     font-weight:bold;
     margin-bottom:10px;
     text-align:center;
+    text-transform:capitalize;
 }
 
 .mini-days{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:
+        repeat(7,1fr);
     gap:2px;
 }
 
@@ -576,61 +664,15 @@ main{
     border:2px solid #111;
 }
 
-/* =========================
-   COLORES CALENDARIO
-========================= */
 
-.event-green{
-    background:#2e8b57;
-}
-
-.event-red{
-    background:#c0392b;
-}
-
-.event-gray{
-    background:#777;
-}
-
-.event-blue{
-    background:#3478c9;
-}
-
-.event-yellow{
-    background:#d4a017;
-}
-
-.event-orange{
-    background:#e67e22;
-}
-
-.event-purple{
-    background:#8e44ad;
-}
-
-.event-pink{
-    background:#d64b7f;
-}
-
-.event-teal{
-    background:#159a9c;
-}
-
-.event-brown{
-    background:#8b5a2b;
-}
-
-.event-navy{
-    background:#34495e;
-}
-
-.event-black{
-    background:#222;
-}
+/* =====================================================
+   CALENDARIO MENSUAL
+===================================================== */
 
 .month-calendar{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:
+        repeat(7,1fr);
     border-top:1px solid #eee;
     border-left:1px solid #eee;
 }
@@ -683,11 +725,13 @@ main{
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
+    cursor:pointer;
 }
 
-/* =========================
+
+/* =====================================================
    MODAL
-========================= */
+===================================================== */
 
 .modal-overlay{
     position:fixed;
@@ -734,14 +778,16 @@ main{
     background:#b3261e;
 }
 
-/* =========================
+
+/* =====================================================
    RESPONSIVE
-========================= */
+===================================================== */
 
 @media(max-width:800px){
 
     .year-calendar{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
@@ -780,12 +826,24 @@ main{
         align-items:flex-start;
     }
 
+    .month-day{
+        min-height:90px;
+        padding:4px;
+    }
+
+    .calendar-event{
+        font-size:9px;
+    }
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      LOGIN
@@ -793,45 +851,45 @@ main{
 
 <section id="login-screen">
 
-<div class="login-box">
+    <div class="login-box">
 
-<div class="logo">
+        <div class="logo">
 
-<h1>MARCLASTRA</h1>
+            <h1>MARCLASTRA</h1>
 
-<p>Private Management Portal</p>
+            <p>Private Management Portal</p>
 
-</div>
+        </div>
 
-<form id="login-form">
+        <form id="login-form">
 
-<label>Email</label>
+            <label>Email</label>
 
-<input
-type="email"
-id="email"
-placeholder="Tu email"
-required
->
+            <input
+                type="email"
+                id="email"
+                placeholder="Tu email"
+                required
+            >
 
-<label>Contraseña</label>
+            <label>Contraseña</label>
 
-<input
-type="password"
-id="password"
-placeholder="Tu contraseña"
-required
->
+            <input
+                type="password"
+                id="password"
+                placeholder="Tu contraseña"
+                required
+            >
 
-<button type="submit">
-Entrar
-</button>
+            <button type="submit">
+                Entrar
+            </button>
 
-<div id="error"></div>
+            <div id="error"></div>
 
-</form>
+        </form>
 
-</div>
+    </div>
 
 </section>
 
@@ -844,34 +902,35 @@ Entrar
 
 <header>
 
-<div class="header-content">
+    <div class="header-content">
 
-<h1>MARCLASTRA</h1>
+        <h1>MARCLASTRA</h1>
 
-<div>
+        <div>
 
-<button
-class="public-button"
-id="public-button"
->
-🌐 Portfolio público
-</button>
+            <button
+                class="public-button"
+                id="public-button"
+            >
+                🌐 Portfolio público
+            </button>
 
-<button
-id="logout"
-class="logout"
->
-Cerrar sesión
-</button>
+            <button
+                id="logout"
+                class="logout"
+            >
+                Cerrar sesión
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </header>
 
 
 <main>
+
 
 <!-- =====================================================
      DASHBOARD
@@ -879,49 +938,68 @@ Cerrar sesión
 
 <section id="dashboard">
 
-<div class="welcome">
+    <div class="welcome">
 
-<h2>Bienvenido, Marc</h2>
+        <h2>Bienvenido, Marc</h2>
 
-<p>Este es tu espacio privado de gestión.</p>
+        <p>
+            Este es tu espacio privado de gestión.
+        </p>
 
-</div>
-
-<div class="cards">
-
-<div class="card" id="documents-card">
-
-<div class="icon">📄</div>
-
-<h3>Documentos</h3>
-
-<p>Accede a tus documentos privados.</p>
-
-</div>
+    </div>
 
 
-<div class="card" id="events-card">
+    <div class="cards">
 
-<div class="icon">📅</div>
+        <div
+            class="card"
+            id="documents-card"
+        >
 
-<h3>Eventos</h3>
+            <div class="icon">📄</div>
 
-<p>Calendario y organización de eventos.</p>
+            <h3>Documentos</h3>
 
-</div>
+            <p>
+                Accede a tus documentos privados.
+            </p>
+
+        </div>
 
 
-<div class="card" id="portfolio-card">
+        <div
+            class="card"
+            id="events-card"
+        >
 
-<div class="icon">🖼️</div>
+            <div class="icon">📅</div>
 
-<h3>Portfolio</h3>
+            <h3>Eventos</h3>
 
-<p>Gestiona los trabajos que aparecen en tu web pública.</p>
+            <p>
+                Calendario y organización de eventos.
+            </p>
 
-</div>
+        </div>
 
-</div>
+
+        <div
+            class="card"
+            id="portfolio-card"
+        >
+
+            <div class="icon">🖼️</div>
+
+            <h3>Portfolio</h3>
+
+            <p>
+                Gestiona los trabajos que aparecen
+                en tu web pública.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -932,135 +1010,140 @@ Cerrar sesión
 
 <section id="portfolio-section">
 
-<button
-class="back-button"
-id="portfolio-back"
->
-← Volver
-</button>
-
-<div class="section-header">
-
-<div>
-
-<h2>🖼️ Portfolio</h2>
-
-<p>Gestiona los trabajos que quieres mostrar públicamente.</p>
-
-</div>
-
-<button id="new-portfolio-button">
-+ Nuevo trabajo
-</button>
-
-</div>
+    <button
+        class="back-button"
+        id="portfolio-back"
+    >
+        ← Volver
+    </button>
 
 
-<div
-id="portfolio-form-container"
-style="display:none;"
->
+    <div class="section-header">
 
-<div class="portfolio-form">
+        <div>
 
-<h2 id="portfolio-form-title">
-Nuevo trabajo
-</h2>
+            <h2>🖼️ Portfolio</h2>
 
-<div class="form-group">
+            <p>
+                Gestiona los trabajos que quieres
+                mostrar públicamente.
+            </p>
 
-<label>Título</label>
+        </div>
 
-<input
-type="text"
-id="portfolio-title"
-placeholder="Ej. Fiesta Mayor de Igualada"
->
+        <button id="new-portfolio-button">
+            + Nuevo trabajo
+        </button>
 
-</div>
+    </div>
 
 
-<div class="form-group">
+    <div
+        id="portfolio-form-container"
+        style="display:none;"
+    >
 
-<label>Fecha</label>
+        <div class="portfolio-form">
 
-<input
-type="date"
-id="portfolio-date"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>Texto</label>
-
-<textarea
-id="portfolio-text"
-placeholder="Escribe aquí la descripción del proyecto..."
-></textarea>
-
-</div>
+            <h2 id="portfolio-form-title">
+                Nuevo trabajo
+            </h2>
 
 
-<div class="form-group">
+            <div class="form-group">
 
-<label>Fotografía</label>
+                <label>Título</label>
 
-<input
-type="file"
-id="portfolio-image"
-accept="image/*"
->
+                <input
+                    type="text"
+                    id="portfolio-title"
+                    placeholder="Ej. Fiesta Mayor de Igualada"
+                >
 
-<img
-id="portfolio-image-preview"
-class="image-preview"
-alt="Vista previa"
->
-
-</div>
+            </div>
 
 
-<div
-id="portfolio-save-status"
-></div>
+            <div class="form-group">
+
+                <label>Fecha</label>
+
+                <input
+                    type="date"
+                    id="portfolio-date"
+                >
+
+            </div>
 
 
-<div class="form-buttons">
+            <div class="form-group">
 
-<button
-class="cancel-button"
-id="cancel-portfolio-button"
->
-Cancelar
-</button>
+                <label>Texto</label>
 
-<button
-class="save-button"
-id="save-portfolio-button"
->
-Guardar
-</button>
+                <textarea
+                    id="portfolio-text"
+                    placeholder="Escribe aquí la descripción del proyecto..."
+                ></textarea>
 
-</div>
-
-</div>
-
-</div>
+            </div>
 
 
-<div
-id="portfolio-admin-list"
-class="portfolio-admin-grid"
->
+            <div class="form-group">
 
-<div class="empty">
-Cargando portfolio...
-</div>
+                <label>Fotografía</label>
 
-</div>
+                <input
+                    type="file"
+                    id="portfolio-image"
+                    accept="image/*"
+                >
+
+                <img
+                    id="portfolio-image-preview"
+                    class="image-preview"
+                    alt="Vista previa"
+                >
+
+            </div>
+
+
+            <div
+                id="portfolio-save-status"
+            ></div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    class="cancel-button"
+                    id="cancel-portfolio-button"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    class="save-button"
+                    id="save-portfolio-button"
+                >
+                    Guardar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="portfolio-admin-list"
+        class="portfolio-admin-grid"
+    >
+
+        <div class="empty">
+            Cargando portfolio...
+        </div>
+
+    </div>
 
 </section>
 
@@ -1071,85 +1154,100 @@ Cargando portfolio...
 
 <section id="events-section">
 
-<button
-class="back-button"
-id="events-back-button"
->
-← Volver
-</button>
-
-<div class="section-header">
-
-<div>
-
-<h2>📅 Eventos</h2>
-
-<p>Organiza tu calendario y tus eventos.</p>
-
-</div>
-
-<button id="new-calendar-event-button">
-+ Nuevo evento
-</button>
-
-</div>
+    <button
+        class="back-button"
+        id="events-back-button"
+    >
+        ← Volver
+    </button>
 
 
-<div class="calendar-container">
+    <div class="section-header">
 
-<div class="calendar-toolbar">
+        <div>
 
-<div class="calendar-navigation">
+            <h2>📅 Eventos</h2>
 
-<button id="previous-button">‹</button>
+            <p>
+                Organiza tu calendario y tus eventos.
+            </p>
 
-<button id="today-button">Hoy</button>
+        </div>
 
-<button id="next-button">›</button>
+        <button id="new-calendar-event-button">
+            + Nuevo evento
+        </button>
 
-</div>
-
-<h2 id="calendar-title">2026</h2>
-
-<div class="calendar-views">
-
-<button
-data-view="year"
-class="calendar-view-button active"
->
-Año
-</button>
-
-<button
-data-view="month"
-class="calendar-view-button"
->
-Mes
-</button>
-
-</div>
-
-</div>
-
-<div id="calendar"></div>
-
-</div>
+    </div>
 
 
-<h2 style="margin:40px 0 20px;">
-📁 Mis eventos
-</h2>
+    <div class="calendar-container">
 
-<div
-id="events-list"
-class="cards"
->
+        <div class="calendar-toolbar">
 
-<div class="empty">
-Cargando eventos...
-</div>
+            <div class="calendar-navigation">
 
-</div>
+                <button id="previous-button">
+                    ‹
+                </button>
+
+                <button id="today-button">
+                    Hoy
+                </button>
+
+                <button id="next-button">
+                    ›
+                </button>
+
+            </div>
+
+
+            <h2 id="calendar-title">
+                2026
+            </h2>
+
+
+            <div class="calendar-views">
+
+                <button
+                    data-view="year"
+                    class="calendar-view-button active"
+                >
+                    Año
+                </button>
+
+                <button
+                    data-view="month"
+                    class="calendar-view-button"
+                >
+                    Mes
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div id="calendar"></div>
+
+    </div>
+
+
+    <h2 style="margin:40px 0 20px;">
+        📁 Mis eventos
+    </h2>
+
+
+    <div
+        id="events-list"
+        class="cards"
+    >
+
+        <div class="empty">
+            Cargando eventos...
+        </div>
+
+    </div>
 
 </section>
 
@@ -1160,74 +1258,97 @@ Cargando eventos...
 
 <section id="event-folders-section">
 
-<button
-class="back-button"
-id="event-folders-back-button"
->
-← Volver
-</button>
-
-<div class="section-header">
-
-<div>
-
-<h2 id="event-folders-title">
-📁 Evento
-</h2>
-
-<p>Selecciona una carpeta.</p>
-
-</div>
-
-</div>
+    <button
+        class="back-button"
+        id="event-folders-back-button"
+    >
+        ← Volver
+    </button>
 
 
-<div class="cards">
+    <div class="section-header">
 
-<div class="card" data-folder="Contratos">
+        <div>
 
-<div class="icon">📑</div>
+            <h2 id="event-folders-title">
+                📁 Evento
+            </h2>
 
-<h3>Contratos</h3>
+            <p>
+                Selecciona una carpeta.
+            </p>
 
-<p>Contratos relacionados con este evento.</p>
+        </div>
 
-</div>
-
-
-<div class="card" data-folder="Facturas">
-
-<div class="icon">🧾</div>
-
-<h3>Facturas</h3>
-
-<p>Facturas del evento.</p>
-
-</div>
+    </div>
 
 
-<div class="card" data-folder="Presupuestos">
+    <div class="cards">
 
-<div class="icon">💰</div>
+        <div
+            class="card"
+            data-folder="Contratos"
+        >
 
-<h3>Presupuestos</h3>
+            <div class="icon">📑</div>
 
-<p>Presupuestos del evento.</p>
+            <h3>Contratos</h3>
 
-</div>
+            <p>
+                Contratos relacionados con este evento.
+            </p>
+
+        </div>
 
 
-<div class="card" data-folder="Otros">
+        <div
+            class="card"
+            data-folder="Facturas"
+        >
 
-<div class="icon">📂</div>
+            <div class="icon">🧾</div>
 
-<h3>Otros documentos</h3>
+            <h3>Facturas</h3>
 
-<p>Otros documentos del evento.</p>
+            <p>
+                Facturas del evento.
+            </p>
 
-</div>
+        </div>
 
-</div>
+
+        <div
+            class="card"
+            data-folder="Presupuestos"
+        >
+
+            <div class="icon">💰</div>
+
+            <h3>Presupuestos</h3>
+
+            <p>
+                Presupuestos del evento.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card"
+            data-folder="Otros"
+        >
+
+            <div class="icon">📂</div>
+
+            <h3>Otros documentos</h3>
+
+            <p>
+                Otros documentos del evento.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1238,53 +1359,58 @@ id="event-folders-back-button"
 
 <section id="documents-section">
 
-<button
-class="back-button"
-id="back-button"
->
-← Volver
-</button>
+    <button
+        class="back-button"
+        id="back-button"
+    >
+        ← Volver
+    </button>
 
-<div class="documents-header">
 
-<div>
+    <div class="documents-header">
 
-<h2 id="documents-title">
-📄 Documentos
-</h2>
+        <div>
 
-<p id="documents-subtitle">
-Tus documentos privados.
-</p>
+            <h2 id="documents-title">
+                📄 Documentos
+            </h2>
 
-</div>
+            <p id="documents-subtitle">
+                Tus documentos privados.
+            </p>
 
-<label
-for="upload-input"
-class="upload-label"
->
-⬆️ Subir documento
-</label>
+        </div>
 
-<input
-type="file"
-id="upload-input"
->
 
-</div>
+        <label
+            for="upload-input"
+            class="upload-label"
+        >
+            ⬆️ Subir documento
+        </label>
 
-<div id="documents-error"></div>
 
-<div
-class="document-list"
-id="document-list"
->
+        <input
+            type="file"
+            id="upload-input"
+        >
 
-<div class="empty">
-Cargando documentos...
-</div>
+    </div>
 
-</div>
+
+    <div id="documents-error"></div>
+
+
+    <div
+        class="document-list"
+        id="document-list"
+    >
+
+        <div class="empty">
+            Cargando documentos...
+        </div>
+
+    </div>
 
 </section>
 
@@ -1294,170 +1420,201 @@ Cargando documentos...
 
 
 <!-- =====================================================
-     MODAL EVENTO
+     MODAL CALENDARIO
 ===================================================== -->
 
 <div
-class="modal-overlay"
-id="calendar-modal"
+    class="modal-overlay"
+    id="calendar-modal"
 >
 
-<div class="modal">
+    <div class="modal">
 
-<h2>Nuevo / editar evento</h2>
-
-
-<div class="form-group">
-
-<label>Título</label>
-
-<input
-type="text"
-id="event-title"
-placeholder="Ej. Festival, montaje, evento..."
->
-
-</div>
+        <h2>
+            Nuevo / editar evento
+        </h2>
 
 
-<div class="form-group">
+        <div class="form-group">
 
-<label>📅 Fecha inicio</label>
+            <label>
+                Título
+            </label>
 
-<input
-type="date"
-id="event-date"
->
+            <input
+                type="text"
+                id="event-title"
+                placeholder="Ej. Fiesta Mayor"
+            >
 
-</div>
-
-
-<div class="form-group">
-
-<label>📅 Fecha fin</label>
-
-<input
-type="date"
-id="event-date-end"
->
-
-</div>
+        </div>
 
 
-<div class="form-group">
+        <div class="form-group">
 
-<label>🕐 Hora inicio</label>
+            <label>
+                Fecha de inicio
+            </label>
 
-<input
-type="time"
-id="event-start"
->
+            <input
+                type="date"
+                id="event-date"
+            >
 
-</div>
-
-
-<div class="form-group">
-
-<label>🕐 Hora final</label>
-
-<input
-type="time"
-id="event-end"
->
-
-</div>
+        </div>
 
 
-<div class="form-group">
+        <div class="form-group">
 
-<label>📍 Lugar</label>
+            <label>
+                Fecha de fin
+            </label>
 
-<input
-type="text"
-id="event-place"
-placeholder="Lugar del evento"
->
+            <input
+                type="date"
+                id="event-date-end"
+            >
 
-</div>
-
-
-<div class="form-group">
-
-<label>🎨 Color</label>
-
-<select id="event-color">
-
-<option value="green">🟢 Verde — Trabajo</option>
-
-<option value="red">🔴 Rojo — Fiesta</option>
-
-<option value="blue">🔵 Azul — Evento</option>
-
-<option value="gray">⚪ Gris — Libre</option>
-
-<option value="yellow">🟡 Amarillo</option>
-
-<option value="orange">🟠 Naranja</option>
-
-<option value="purple">🟣 Morado</option>
-
-<option value="pink">🌸 Rosa</option>
-
-<option value="teal">🩵 Turquesa</option>
-
-<option value="brown">🟤 Marrón</option>
-
-<option value="navy">🔷 Azul oscuro</option>
-
-<option value="black">⚫ Negro</option>
-
-</select>
-
-</div>
+        </div>
 
 
-<div class="form-group">
+        <div class="form-group">
 
-<label>📝 Notas</label>
+            <label>
+                Hora inicio
+            </label>
 
-<textarea
-id="event-notes"
-placeholder="Notas del evento..."
-></textarea>
+            <input
+                type="time"
+                id="event-start"
+            >
 
-</div>
+        </div>
 
 
-<div class="modal-buttons">
+        <div class="form-group">
 
-<button
-id="delete-calendar-event-button"
-class="delete-modal"
-style="display:none;"
->
-Eliminar
-</button>
+            <label>
+                Hora final
+            </label>
 
-<div class="modal-right-buttons">
+            <input
+                type="time"
+                id="event-end"
+            >
 
-<button
-id="close-modal-button"
-class="close-modal"
->
-Cancelar
-</button>
+        </div>
 
-<button
-id="save-calendar-event-button"
->
-Guardar
-</button>
 
-</div>
+        <div class="form-group">
 
-</div>
+            <label>
+                Lugar
+            </label>
 
-</div>
+            <input
+                type="text"
+                id="event-place"
+                placeholder="Ej. Igualada"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Color
+            </label>
+
+            <select id="event-color">
+
+                <option value="green">
+                    🟢 Trabajo
+                </option>
+
+                <option value="red">
+                    🔴 Fiesta
+                </option>
+
+                <option value="blue">
+                    🔵 Evento
+                </option>
+
+                <option value="purple">
+                    🟣 Reunión
+                </option>
+
+                <option value="orange">
+                    🟠 Montaje
+                </option>
+
+                <option value="yellow">
+                    🟡 Pendiente
+                </option>
+
+                <option value="black">
+                    ⚫ Personal
+                </option>
+
+                <option value="pink">
+                    🩷 Importante
+                </option>
+
+                <option value="cyan">
+                    🩵 Otro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Notas
+            </label>
+
+            <textarea
+                id="event-notes"
+                placeholder="Información adicional..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                id="delete-calendar-event-button"
+                class="delete-modal"
+                style="display:none;"
+            >
+                Eliminar
+            </button>
+
+
+            <div class="modal-right-buttons">
+
+                <button
+                    id="close-modal-button"
+                    class="close-modal"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="save-calendar-event-button"
+                >
+                    Guardar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -1529,25 +1686,39 @@ const portfolioAdminList =
 document.getElementById("portfolio-admin-list");
 
 const portfolioFormContainer =
-document.getElementById("portfolio-form-container");
+document.getElementById(
+    "portfolio-form-container"
+);
 
 const portfolioTitle =
-document.getElementById("portfolio-title");
+document.getElementById(
+    "portfolio-title"
+);
 
 const portfolioDate =
-document.getElementById("portfolio-date");
+document.getElementById(
+    "portfolio-date"
+);
 
 const portfolioText =
-document.getElementById("portfolio-text");
+document.getElementById(
+    "portfolio-text"
+);
 
 const portfolioImage =
-document.getElementById("portfolio-image");
+document.getElementById(
+    "portfolio-image"
+);
 
 const portfolioImagePreview =
-document.getElementById("portfolio-image-preview");
+document.getElementById(
+    "portfolio-image-preview"
+);
 
 const portfolioSaveStatus =
-document.getElementById("portfolio-save-status");
+document.getElementById(
+    "portfolio-save-status"
+);
 
 
 /* =====================================================
@@ -1587,20 +1758,51 @@ function formatDate(dateString){
 }
 
 
-function formatDateKey(date){
+function formatDateRange(
+    start,
+    end
+){
+
+    if(!start){
+        return "";
+    }
+
+    if(!end || end === start){
+
+        return formatDate(start);
+
+    }
 
     return (
-        date.getFullYear() +
-        "-" +
-        String(date.getMonth()+1).padStart(2,"0") +
-        "-" +
-        String(date.getDate()).padStart(2,"0")
+        formatDate(start) +
+        " → " +
+        formatDate(end)
     );
 
 }
 
 
-function showPortfolioStatus(message,type){
+function formatDateKey(date){
+
+    return (
+        date.getFullYear() +
+        "-" +
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0") +
+        "-" +
+        String(
+            date.getDate()
+        ).padStart(2,"0")
+    );
+
+}
+
+
+function showPortfolioStatus(
+    message,
+    type
+){
 
     portfolioSaveStatus.textContent =
         message;
@@ -1641,13 +1843,18 @@ document
         .textContent =
             "Entrando...";
 
+
         const {error} =
             await supabaseClient
             .auth
             .signInWithPassword({
+
                 email,
+
                 password
+
             });
+
 
         if(error){
 
@@ -1659,7 +1866,9 @@ document
                 error.message;
 
             return;
+
         }
+
 
         showPortal();
 
@@ -1792,8 +2001,7 @@ document
         documentsSection.style.display =
             "block";
 
-        currentEvent =
-            null;
+        currentEvent = null;
 
         document
         .getElementById("documents-title")
@@ -1846,7 +2054,9 @@ document
 
 
 document
-.getElementById("event-folders-back-button")
+.getElementById(
+    "event-folders-back-button"
+)
 .addEventListener(
     "click",
     async function(){
@@ -1870,6 +2080,7 @@ document
 
         documentsSection.style.display =
             "none";
+
 
         if(currentEvent){
 
@@ -1899,6 +2110,7 @@ async function loadPortfolioAdmin(){
         </div>
     `;
 
+
     const {
         data,
         error
@@ -1913,6 +2125,7 @@ async function loadPortfolioAdmin(){
         }
     );
 
+
     if(error){
 
         console.error(
@@ -1922,7 +2135,9 @@ async function loadPortfolioAdmin(){
 
         portfolioAdminList.innerHTML = `
             <div class="empty">
-                <strong>Error cargando portfolio.</strong>
+                <strong>
+                    Error cargando portfolio.
+                </strong>
                 <br><br>
                 ${escapeHtml(error.message)}
             </div>
@@ -1931,6 +2146,7 @@ async function loadPortfolioAdmin(){
         return;
 
     }
+
 
     if(!data || data.length === 0){
 
@@ -1944,8 +2160,9 @@ async function loadPortfolioAdmin(){
 
     }
 
-    portfolioAdminList.innerHTML =
-        "";
+
+    portfolioAdminList.innerHTML = "";
+
 
     for(const item of data){
 
@@ -1955,6 +2172,7 @@ async function loadPortfolioAdmin(){
         card.className =
             "portfolio-admin-card";
 
+
         const image =
             document.createElement("img");
 
@@ -1963,6 +2181,7 @@ async function loadPortfolioAdmin(){
 
         image.alt =
             item.titulo || "";
+
 
         if(item.imagen){
 
@@ -1978,6 +2197,7 @@ async function loadPortfolioAdmin(){
                 3600
             );
 
+
             if(
                 !signedError &&
                 signedData
@@ -1990,11 +2210,13 @@ async function loadPortfolioAdmin(){
 
         }
 
+
         const info =
             document.createElement("div");
 
         info.className =
             "portfolio-admin-info";
+
 
         const title =
             document.createElement("h3");
@@ -2003,6 +2225,7 @@ async function loadPortfolioAdmin(){
             item.titulo ||
             "Sin título";
 
+
         const date =
             document.createElement("div");
 
@@ -2010,7 +2233,10 @@ async function loadPortfolioAdmin(){
             "portfolio-admin-date";
 
         date.textContent =
-            formatDate(item.fecha);
+            formatDate(
+                item.fecha
+            );
+
 
         const status =
             document.createElement("span");
@@ -2028,11 +2254,13 @@ async function loadPortfolioAdmin(){
             ? "Publicado"
             : "Borrador";
 
+
         const actions =
             document.createElement("div");
 
         actions.className =
             "portfolio-admin-actions";
+
 
         const editButton =
             document.createElement("button");
@@ -2046,6 +2274,7 @@ async function loadPortfolioAdmin(){
         editButton.onclick =
             () =>
                 openPortfolioForm(item);
+
 
         const publishButton =
             document.createElement("button");
@@ -2064,6 +2293,7 @@ async function loadPortfolioAdmin(){
             () =>
                 togglePublish(item);
 
+
         const deleteButton =
             document.createElement("button");
 
@@ -2077,9 +2307,8 @@ async function loadPortfolioAdmin(){
             () =>
                 deletePortfolio(item);
 
-        actions.appendChild(
-            editButton
-        );
+
+        actions.appendChild(editButton);
 
         actions.appendChild(
             publishButton
@@ -2089,6 +2318,7 @@ async function loadPortfolioAdmin(){
             deleteButton
         );
 
+
         info.appendChild(title);
 
         info.appendChild(date);
@@ -2097,11 +2327,15 @@ async function loadPortfolioAdmin(){
 
         info.appendChild(actions);
 
+
         card.appendChild(image);
 
         card.appendChild(info);
 
-        portfolioAdminList.appendChild(card);
+
+        portfolioAdminList.appendChild(
+            card
+        );
 
     }
 
@@ -2127,35 +2361,46 @@ function openPortfolioForm(item=null){
         ? item.id
         : null;
 
+
     currentPortfolioImage =
         item
         ? item.imagen
         : null;
 
+
     document
-    .getElementById("portfolio-form-title")
+    .getElementById(
+        "portfolio-form-title"
+    )
     .textContent =
         item
         ? "Editar trabajo"
         : "Nuevo trabajo";
+
 
     portfolioTitle.value =
         item
         ? item.titulo || ""
         : "";
 
+
     portfolioDate.value =
         item
         ? item.fecha || ""
-        : formatDateKey(new Date());
+        : formatDateKey(
+            new Date()
+        );
+
 
     portfolioText.value =
         item
         ? item.texto || ""
         : "";
 
+
     portfolioImage.value =
         "";
+
 
     portfolioSaveStatus.className =
         "";
@@ -2163,8 +2408,10 @@ function openPortfolioForm(item=null){
     portfolioSaveStatus.textContent =
         "";
 
+
     portfolioImagePreview.style.display =
         "none";
+
 
     if(
         item &&
@@ -2194,8 +2441,10 @@ function openPortfolioForm(item=null){
 
     }
 
+
     portfolioFormContainer.style.display =
         "block";
+
 
     portfolioFormContainer.scrollIntoView({
         behavior:"smooth"
@@ -2205,7 +2454,9 @@ function openPortfolioForm(item=null){
 
 
 document
-.getElementById("cancel-portfolio-button")
+.getElementById(
+    "cancel-portfolio-button"
+)
 .addEventListener(
     "click",
     function(){
@@ -2248,7 +2499,9 @@ portfolioImage.addEventListener(
 
 
 document
-.getElementById("save-portfolio-button")
+.getElementById(
+    "save-portfolio-button"
+)
 .addEventListener(
     "click",
     savePortfolio
@@ -2262,6 +2515,7 @@ async function savePortfolio(){
             "save-portfolio-button"
         );
 
+
     const title =
         portfolioTitle.value.trim();
 
@@ -2274,6 +2528,7 @@ async function savePortfolio(){
     const imageFile =
         portfolioImage.files[0];
 
+
     if(!title){
 
         showPortfolioStatus(
@@ -2284,6 +2539,7 @@ async function savePortfolio(){
         return;
 
     }
+
 
     if(!date){
 
@@ -2296,11 +2552,13 @@ async function savePortfolio(){
 
     }
 
+
     saveButton.disabled =
         true;
 
     saveButton.textContent =
         "Guardando...";
+
 
     try{
 
@@ -2312,12 +2570,15 @@ async function savePortfolio(){
         .auth
         .getSession();
 
+
         if(sessionError){
             throw sessionError;
         }
 
+
         const user =
             sessionData.session?.user;
+
 
         if(!user){
 
@@ -2327,9 +2588,11 @@ async function savePortfolio(){
 
         }
 
+
         let imagePath =
             currentPortfolioImage ||
             null;
+
 
         if(imageFile){
 
@@ -2339,11 +2602,13 @@ async function savePortfolio(){
                 .pop()
                 .toLowerCase();
 
+
             const safeExtension =
                 extension.replace(
                     /[^a-z0-9]/gi,
                     ""
                 );
+
 
             const fileName =
                 user.id +
@@ -2351,6 +2616,7 @@ async function savePortfolio(){
                 Date.now() +
                 "." +
                 safeExtension;
+
 
             const {
                 error:uploadError
@@ -2366,6 +2632,7 @@ async function savePortfolio(){
                 }
             );
 
+
             if(uploadError){
 
                 throw new Error(
@@ -2375,10 +2642,12 @@ async function savePortfolio(){
 
             }
 
+
             imagePath =
                 fileName;
 
         }
+
 
         const portfolioData = {
 
@@ -2397,14 +2666,18 @@ async function savePortfolio(){
 
         };
 
+
         let result;
+
 
         if(editingPortfolioId){
 
             result =
                 await supabaseClient
                 .from("portfolio")
-                .update(portfolioData)
+                .update(
+                    portfolioData
+                )
                 .eq(
                     "id",
                     editingPortfolioId
@@ -2428,6 +2701,7 @@ async function savePortfolio(){
 
         }
 
+
         if(result.error){
 
             if(
@@ -2444,12 +2718,14 @@ async function savePortfolio(){
 
             }
 
+
             throw new Error(
                 "Error guardando en portfolio: " +
                 result.error.message
             );
 
         }
+
 
         if(
             imageFile &&
@@ -2467,10 +2743,12 @@ async function savePortfolio(){
 
         }
 
+
         showPortfolioStatus(
             "✓ Trabajo guardado correctamente.",
             "success"
         );
+
 
         await new Promise(
             resolve =>
@@ -2480,8 +2758,10 @@ async function savePortfolio(){
                 )
         );
 
+
         portfolioFormContainer.style.display =
             "none";
+
 
         editingPortfolioId =
             null;
@@ -2489,7 +2769,9 @@ async function savePortfolio(){
         currentPortfolioImage =
             null;
 
+
         await loadPortfolioAdmin();
+
 
     }catch(error){
 
@@ -2498,11 +2780,13 @@ async function savePortfolio(){
             error
         );
 
+
         showPortfolioStatus(
             error.message ||
             "Ha ocurrido un error al guardar.",
             "error"
         );
+
 
     }finally{
 
@@ -2526,19 +2810,25 @@ async function togglePublish(item){
     .auth
     .getSession();
 
+
     const user =
         sessionData.session?.user;
 
+
     if(!user){
 
-        alert("Sesión caducada.");
+        alert(
+            "Sesión caducada."
+        );
 
         return;
 
     }
 
+
     const newStatus =
         !item.publicado;
+
 
     const {
         error
@@ -2562,6 +2852,7 @@ async function togglePublish(item){
         user.id
     );
 
+
     if(error){
 
         alert(
@@ -2572,6 +2863,7 @@ async function togglePublish(item){
         return;
 
     }
+
 
     await loadPortfolioAdmin();
 
@@ -2590,6 +2882,7 @@ async function deletePortfolio(item){
 
     }
 
+
     const {
         data:sessionData
     } =
@@ -2597,16 +2890,21 @@ async function deletePortfolio(item){
     .auth
     .getSession();
 
+
     const user =
         sessionData.session?.user;
 
+
     if(!user){
 
-        alert("Sesión caducada.");
+        alert(
+            "Sesión caducada."
+        );
 
         return;
 
     }
+
 
     const {
         error
@@ -2623,6 +2921,7 @@ async function deletePortfolio(item){
         user.id
     );
 
+
     if(error){
 
         alert(
@@ -2634,6 +2933,7 @@ async function deletePortfolio(item){
 
     }
 
+
     if(item.imagen){
 
         await supabaseClient
@@ -2644,6 +2944,7 @@ async function deletePortfolio(item){
         ]);
 
     }
+
 
     await loadPortfolioAdmin();
 
@@ -2673,19 +2974,25 @@ async function loadDocuments(){
         }
     );
 
+
     if(error){
 
         document
-        .getElementById("document-list")
+        .getElementById(
+            "document-list"
+        )
         .innerHTML = `
             <div class="empty">
-                ${escapeHtml(error.message)}
+                ${escapeHtml(
+                    error.message
+                )}
             </div>
         `;
 
         return;
 
     }
+
 
     renderDocumentList(
         data || [],
@@ -2705,6 +3012,7 @@ async function loadEventDocuments(
         "/" +
         folderName;
 
+
     const {
         data,
         error
@@ -2722,6 +3030,7 @@ async function loadEventDocuments(
         }
     );
 
+
     if(error){
 
         console.error(error);
@@ -2729,6 +3038,7 @@ async function loadEventDocuments(
         return;
 
     }
+
 
     renderDocumentList(
         data || [],
@@ -2748,7 +3058,11 @@ function renderDocumentList(
             "document-list"
         );
 
-    if(!data || data.length === 0){
+
+    if(
+        !data ||
+        data.length === 0
+    ){
 
         list.innerHTML = `
             <div class="empty">
@@ -2760,8 +3074,9 @@ function renderDocumentList(
 
     }
 
-    list.innerHTML =
-        "";
+
+    list.innerHTML = "";
+
 
     data.forEach(file=>{
 
@@ -2769,11 +3084,13 @@ function renderDocumentList(
             return;
         }
 
+
         const row =
             document.createElement("div");
 
         row.className =
             "document";
+
 
         const name =
             document.createElement("div");
@@ -2782,15 +3099,21 @@ function renderDocumentList(
             "document-name";
 
         name.innerHTML = `
-            <span class="document-icon">📄</span>
-            <span>${escapeHtml(file.name)}</span>
+            <span class="document-icon">
+                📄
+            </span>
+            <span>
+                ${escapeHtml(file.name)}
+            </span>
         `;
+
 
         const actions =
             document.createElement("div");
 
         actions.className =
             "document-actions";
+
 
         const view =
             document.createElement("button");
@@ -2801,6 +3124,7 @@ function renderDocumentList(
         view.textContent =
             "👁️ Ver";
 
+
         view.onclick =
             () =>
                 openDocument(
@@ -2808,6 +3132,7 @@ function renderDocumentList(
                     ? path + "/" + file.name
                     : file.name
                 );
+
 
         const del =
             document.createElement("button");
@@ -2818,6 +3143,7 @@ function renderDocumentList(
         del.textContent =
             "🗑️ Eliminar";
 
+
         del.onclick =
             () =>
                 deleteDocument(
@@ -2825,6 +3151,7 @@ function renderDocumentList(
                     ? path + "/" + file.name
                     : file.name
                 );
+
 
         actions.appendChild(view);
 
@@ -2850,11 +3177,14 @@ document
         const file =
             this.files[0];
 
+
         if(!file){
             return;
         }
 
+
         let path = "";
+
 
         if(currentEvent){
 
@@ -2864,11 +3194,9 @@ document
                     "documents-title"
                 )
                 .textContent
-                .replace(
-                    "📁 ",
-                    ""
-                )
+                .replace("📁 ","")
                 .trim();
+
 
             path =
                 currentEvent.id +
@@ -2877,15 +3205,18 @@ document
 
         }
 
+
         const filePath =
             path
-            ? path + "/" +
+            ? path +
+              "/" +
               Date.now() +
               "_" +
               file.name
             : Date.now() +
               "_" +
               file.name;
+
 
         const {
             error
@@ -2898,6 +3229,7 @@ document
             file
         );
 
+
         if(error){
 
             alert(
@@ -2909,8 +3241,9 @@ document
 
         }
 
-        this.value =
-            "";
+
+        this.value = "";
+
 
         if(currentEvent){
 
@@ -2920,11 +3253,9 @@ document
                     "documents-title"
                 )
                 .textContent
-                .replace(
-                    "📁 ",
-                    ""
-                )
+                .replace("📁 ","")
                 .trim();
+
 
             await loadEventDocuments(
                 currentEvent.id,
@@ -2955,6 +3286,7 @@ async function openDocument(path){
         600
     );
 
+
     if(error){
 
         alert(
@@ -2965,6 +3297,7 @@ async function openDocument(path){
         return;
 
     }
+
 
     window.open(
         data.signedUrl,
@@ -2986,6 +3319,7 @@ async function deleteDocument(path){
 
     }
 
+
     const {
         error
     } =
@@ -2995,6 +3329,7 @@ async function deleteDocument(path){
     .remove([
         path
     ]);
+
 
     if(error){
 
@@ -3007,6 +3342,7 @@ async function deleteDocument(path){
 
     }
 
+
     if(currentEvent){
 
         const folder =
@@ -3015,11 +3351,9 @@ async function deleteDocument(path){
                 "documents-title"
             )
             .textContent
-            .replace(
-                "📁 ",
-                ""
-            )
+            .replace("📁 ","")
             .trim();
+
 
         await loadEventDocuments(
             currentEvent.id,
@@ -3036,7 +3370,7 @@ async function deleteDocument(path){
 
 
 /* =====================================================
-   EVENTOS
+   EVENTOS / CARPETAS
 ===================================================== */
 
 async function loadEvents(){
@@ -3045,6 +3379,7 @@ async function loadEvents(){
         document.getElementById(
             "events-list"
         );
+
 
     const {
         data,
@@ -3060,13 +3395,16 @@ async function loadEvents(){
         }
     );
 
+
     if(error){
 
         console.error(error);
 
         list.innerHTML = `
             <div class="empty">
-                ${escapeHtml(error.message)}
+                ${escapeHtml(
+                    error.message
+                )}
             </div>
         `;
 
@@ -3074,7 +3412,11 @@ async function loadEvents(){
 
     }
 
-    if(!data || data.length === 0){
+
+    if(
+        !data ||
+        data.length === 0
+    ){
 
         list.innerHTML = `
             <div class="empty">
@@ -3086,8 +3428,9 @@ async function loadEvents(){
 
     }
 
-    list.innerHTML =
-        "";
+
+    list.innerHTML = "";
+
 
     data.forEach(evento=>{
 
@@ -3097,27 +3440,36 @@ async function loadEvents(){
         card.className =
             "event-card";
 
+
         card.innerHTML = `
-            <div class="event-icon">📁</div>
+            <div class="event-icon">
+                📁
+            </div>
 
             <h3>
-                ${escapeHtml(evento.nombre)}
+                ${escapeHtml(
+                    evento.nombre
+                )}
             </h3>
 
             <p>
                 ${
                     evento.fecha
-                    ? formatDate(evento.fecha)
+                    ? formatDate(
+                        evento.fecha
+                    )
                     : "Sin fecha"
                 }
             </p>
         `;
+
 
         card.onclick =
             () =>
                 openEventFolders(
                     evento
                 );
+
 
         list.appendChild(card);
 
@@ -3126,22 +3478,28 @@ async function loadEvents(){
 }
 
 
-async function openEventFolders(evento){
+async function openEventFolders(
+    evento
+){
 
     currentEvent =
         evento;
+
 
     hideAllSections();
 
     eventFoldersSection.style.display =
         "block";
 
+
     document
     .getElementById(
         "event-folders-title"
     )
     .textContent =
-        "📁 " + evento.nombre;
+        "📁 " +
+        evento.nombre;
+
 
     await loadEventFolders(
         evento.id
@@ -3166,6 +3524,7 @@ async function loadEventFolders(
         eventoId
     );
 
+
     if(error){
 
         console.error(error);
@@ -3174,6 +3533,7 @@ async function loadEventFolders(
 
     }
 
+
     const folders = [
         "Contratos",
         "Facturas",
@@ -3181,9 +3541,9 @@ async function loadEventFolders(
         "Otros"
     ];
 
+
     for(
-        const folderName
-        of folders
+        const folderName of folders
     ){
 
         const exists =
@@ -3193,17 +3553,16 @@ async function loadEventFolders(
                     folderName
             );
 
+
         if(!exists){
 
             await supabaseClient
             .from("evento_carpetas")
             .insert({
 
-                evento_id:
-                    eventoId,
+                evento_id:eventoId,
 
-                nombre:
-                    folderName
+                nombre:folderName
 
             });
 
@@ -3216,49 +3575,53 @@ async function loadEventFolders(
 
 document
 .querySelectorAll("[data-folder]")
-.forEach(
-    card=>{
+.forEach(card=>{
 
-        card.addEventListener(
-            "click",
-            async function(){
+    card.addEventListener(
+        "click",
+        async function(){
 
-                if(!currentEvent){
-                    return;
-                }
-
-                hideAllSections();
-
-                documentsSection.style.display =
-                    "block";
-
-                const folder =
-                    card.dataset.folder;
-
-                document
-                .getElementById(
-                    "documents-title"
-                )
-                .textContent =
-                    "📁 " + folder;
-
-                document
-                .getElementById(
-                    "documents-subtitle"
-                )
-                .textContent =
-                    currentEvent.nombre;
-
-                await loadEventDocuments(
-                    currentEvent.id,
-                    folder
-                );
-
+            if(!currentEvent){
+                return;
             }
-        );
 
-    }
-);
+
+            hideAllSections();
+
+            documentsSection.style.display =
+                "block";
+
+
+            const folder =
+                card.dataset.folder;
+
+
+            document
+            .getElementById(
+                "documents-title"
+            )
+            .textContent =
+                "📁 " +
+                folder;
+
+
+            document
+            .getElementById(
+                "documents-subtitle"
+            )
+            .textContent =
+                currentEvent.nombre;
+
+
+            await loadEventDocuments(
+                currentEvent.id,
+                folder
+            );
+
+        }
+    );
+
+});
 
 
 /* =====================================================
@@ -3281,6 +3644,7 @@ async function loadCalendarEvents(){
         }
     );
 
+
     if(error){
 
         console.error(
@@ -3288,12 +3652,12 @@ async function loadCalendarEvents(){
             error
         );
 
-        calendarEvents =
-            [];
+        calendarEvents = [];
 
         return;
 
     }
+
 
     calendarEvents =
         data || [];
@@ -3301,35 +3665,38 @@ async function loadCalendarEvents(){
 }
 
 
-/*
- * Comprueba si un evento ocupa una fecha.
- *
- * Si no tiene fecha_fin,
- * solamente ocupa fecha.
- *
- * Si tiene fecha_fin,
- * ocupa desde fecha hasta fecha_fin,
- * ambos incluidos.
- */
+/* =====================================================
+   IMPORTANTE:
+   COMPRUEBA SI UNA FECHA ESTÁ
+   DENTRO DEL RANGO DEL EVENTO
+===================================================== */
 
-function eventIncludesDate(
+function eventOccursOnDate(
     event,
     date
 ){
 
-    const key =
+    const dateKey =
         formatDateKey(date);
+
 
     const start =
         event.fecha;
+
 
     const end =
         event.fecha_fin ||
         event.fecha;
 
+
+    if(!start){
+        return false;
+    }
+
+
     return (
-        key >= start &&
-        key <= end
+        dateKey >= start &&
+        dateKey <= end
     );
 
 }
@@ -3341,7 +3708,7 @@ function getEventsForDate(
 
     return calendarEvents.filter(
         event =>
-            eventIncludesDate(
+            eventOccursOnDate(
                 event,
                 date
             )
@@ -3349,6 +3716,10 @@ function getEventsForDate(
 
 }
 
+
+/* =====================================================
+   RENDER CALENDARIO
+===================================================== */
 
 function renderCalendar(){
 
@@ -3369,7 +3740,7 @@ function renderCalendar(){
 
 
 /* =====================================================
-   VISTA AÑO
+   VISTA ANUAL
 ===================================================== */
 
 function renderYear(){
@@ -3378,6 +3749,7 @@ function renderYear(){
         currentCalendarDate
         .getFullYear();
 
+
     document
     .getElementById(
         "calendar-title"
@@ -3385,13 +3757,16 @@ function renderYear(){
     .textContent =
         year;
 
+
     const calendar =
         document.getElementById(
             "calendar"
         );
 
+
     calendar.innerHTML =
         "";
+
 
     const container =
         document.createElement(
@@ -3400,6 +3775,7 @@ function renderYear(){
 
     container.className =
         "year-calendar";
+
 
     for(
         let month=0;
@@ -3414,6 +3790,7 @@ function renderYear(){
 
         box.className =
             "mini-month";
+
 
         const title =
             document.createElement(
@@ -3435,7 +3812,9 @@ function renderYear(){
                 }
             );
 
+
         box.appendChild(title);
+
 
         const days =
             document.createElement(
@@ -3445,6 +3824,7 @@ function renderYear(){
         days.className =
             "mini-days";
 
+
         const first =
             new Date(
                 year,
@@ -3452,13 +3832,16 @@ function renderYear(){
                 1
             );
 
+
         let start =
             first.getDay();
+
 
         start =
             start === 0
             ? 6
             : start - 1;
+
 
         for(
             let i=0;
@@ -3474,12 +3857,14 @@ function renderYear(){
 
         }
 
+
         const total =
             new Date(
                 year,
-                month + 1,
+                month+1,
                 0
             ).getDate();
+
 
         for(
             let day=1;
@@ -3494,6 +3879,7 @@ function renderYear(){
                     day
                 );
 
+
             const element =
                 document.createElement(
                     "div"
@@ -3505,16 +3891,19 @@ function renderYear(){
             element.textContent =
                 day;
 
+
             const events =
                 getEventsForDate(
                     date
                 );
+
 
             if(events.length){
 
                 element.classList.add(
                     "has-event"
                 );
+
 
                 element.classList.add(
                     "event-" +
@@ -3524,15 +3913,8 @@ function renderYear(){
                     )
                 );
 
-                element.title =
-                    events
-                    .map(
-                        event =>
-                            event.titulo
-                    )
-                    .join(", ");
-
             }
+
 
             if(
                 formatDateKey(date) ===
@@ -3547,14 +3929,13 @@ function renderYear(){
 
             }
 
+
             element.onclick =
                 () =>
                     openCalendarModal(
-                        formatDateKey(date),
-                        events.length
-                        ? events[0]
-                        : null
+                        formatDateKey(date)
                     );
+
 
             days.appendChild(
                 element
@@ -3562,11 +3943,13 @@ function renderYear(){
 
         }
 
+
         box.appendChild(days);
 
         container.appendChild(box);
 
     }
+
 
     calendar.appendChild(
         container
@@ -3576,7 +3959,7 @@ function renderYear(){
 
 
 /* =====================================================
-   VISTA MES
+   VISTA MENSUAL
 ===================================================== */
 
 function renderMonth(){
@@ -3586,13 +3969,16 @@ function renderMonth(){
             "calendar"
         );
 
+
     const year =
         currentCalendarDate
         .getFullYear();
 
+
     const month =
         currentCalendarDate
         .getMonth();
+
 
     document
     .getElementById(
@@ -3608,8 +3994,10 @@ function renderMonth(){
             }
         );
 
+
     calendar.innerHTML =
         "";
+
 
     const container =
         document.createElement(
@@ -3619,6 +4007,7 @@ function renderMonth(){
     container.className =
         "month-calendar";
 
+
     [
         "Lun",
         "Mar",
@@ -3627,26 +4016,26 @@ function renderMonth(){
         "Vie",
         "Sáb",
         "Dom"
-    ].forEach(
-        day=>{
+    ]
+    .forEach(day=>{
 
-            const element =
-                document.createElement(
-                    "div"
-                );
-
-            element.className =
-                "month-weekday";
-
-            element.textContent =
-                day;
-
-            container.appendChild(
-                element
+        const element =
+            document.createElement(
+                "div"
             );
 
-        }
-    );
+        element.className =
+            "month-weekday";
+
+        element.textContent =
+            day;
+
+        container.appendChild(
+            element
+        );
+
+    });
+
 
     const first =
         new Date(
@@ -3655,24 +4044,24 @@ function renderMonth(){
             1
         );
 
+
     let start =
         first.getDay();
+
 
     start =
         start === 0
         ? 6
         : start - 1;
 
+
     const days =
         new Date(
             year,
-            month + 1,
+            month+1,
             0
         ).getDate();
 
-    /*
-     * Días del mes anterior
-     */
 
     for(
         let i=start-1;
@@ -3682,23 +4071,22 @@ function renderMonth(){
 
         createMonthDay(
             container,
+
             new Date(
                 year,
-                month - 1,
+                month-1,
                 new Date(
                     year,
                     month,
                     0
-                ).getDate() - i
+                ).getDate()-i
             ),
+
             true
         );
 
     }
 
-    /*
-     * Días del mes actual
-     */
 
     for(
         let day=1;
@@ -3708,51 +4096,51 @@ function renderMonth(){
 
         createMonthDay(
             container,
+
             new Date(
                 year,
                 month,
                 day
             ),
+
             false
         );
 
     }
 
-    /*
-     * Días del mes siguiente
-     * para completar la cuadrícula.
-     */
 
     const totalCells =
-        container.children.length;
+        start + days;
 
-    const remainder =
-        totalCells % 7;
 
-    if(remainder !== 0){
+    const remaining =
+        (
+            Math.ceil(
+                totalCells / 7
+            ) * 7
+        ) - totalCells;
 
-        const extra =
-            7 - remainder;
 
-        for(
-            let i=1;
-            i<=extra;
-            i++
-        ){
+    for(
+        let i=1;
+        i<=remaining;
+        i++
+    ){
 
-            createMonthDay(
-                container,
-                new Date(
-                    year,
-                    month + 1,
-                    i
-                ),
-                true
-            );
+        createMonthDay(
+            container,
 
-        }
+            new Date(
+                year,
+                month+1,
+                i
+            ),
+
+            true
+        );
 
     }
+
 
     calendar.appendChild(
         container
@@ -3779,6 +4167,7 @@ function createMonthDay(
     cell.className =
         "month-day";
 
+
     if(otherMonth){
 
         cell.classList.add(
@@ -3786,6 +4175,7 @@ function createMonthDay(
         );
 
     }
+
 
     if(
         formatDateKey(date) ===
@@ -3800,6 +4190,7 @@ function createMonthDay(
 
     }
 
+
     const number =
         document.createElement(
             "div"
@@ -3811,88 +4202,66 @@ function createMonthDay(
     number.textContent =
         date.getDate();
 
+
     cell.appendChild(
         number
     );
 
-    const events =
-        getEventsForDate(
-            date
-        );
 
-    events.forEach(
-        event=>{
+    getEventsForDate(date)
+    .forEach(event=>{
 
-            const element =
-                document.createElement(
-                    "div"
-                );
-
-            element.className =
-                "calendar-event event-" +
-                (
-                    event.color ||
-                    "green"
-                );
-
-            element.textContent =
-                event.titulo;
-
-            /*
-             * Información extra
-             * al pasar el ratón.
-             */
-
-            const start =
-                event.fecha;
-
-            const end =
-                event.fecha_fin ||
-                event.fecha;
-
-            if(start !== end){
-
-                element.title =
-                    event.titulo +
-                    " — " +
-                    formatDate(start) +
-                    " → " +
-                    formatDate(end);
-
-            }else{
-
-                element.title =
-                    event.titulo;
-
-            }
-
-            element.onclick =
-                function(e){
-
-                    e.stopPropagation();
-
-                    openCalendarModal(
-                        event.fecha,
-                        event
-                    );
-
-                };
-
-            cell.appendChild(
-                element
+        const element =
+            document.createElement(
+                "div"
             );
 
-        }
-    );
+
+        element.className =
+            "calendar-event event-" +
+            (
+                event.color ||
+                "green"
+            );
+
+
+        element.textContent =
+            event.titulo;
+
+
+        element.title =
+            formatDateRange(
+                event.fecha,
+                event.fecha_fin
+            );
+
+
+        element.onclick =
+            function(e){
+
+                e.stopPropagation();
+
+                openCalendarModal(
+                    formatDateKey(date),
+                    event
+                );
+
+            };
+
+
+        cell.appendChild(
+            element
+        );
+
+    });
+
 
     cell.onclick =
         () =>
             openCalendarModal(
-                formatDateKey(date),
-                events.length
-                ? events[0]
-                : null
+                formatDateKey(date)
             );
+
 
     container.appendChild(
         cell
@@ -3934,6 +4303,7 @@ document
 
         }
 
+
         renderCalendar();
 
     }
@@ -3969,6 +4339,7 @@ document
 
         }
 
+
         renderCalendar();
 
     }
@@ -3996,41 +4367,40 @@ document
 .querySelectorAll(
     ".calendar-view-button"
 )
-.forEach(
-    button=>{
+.forEach(button=>{
 
-        button.addEventListener(
-            "click",
-            function(){
+    button.addEventListener(
+        "click",
+        function(){
 
-                currentCalendarView =
-                    button.dataset.view;
+            currentCalendarView =
+                button.dataset.view;
 
-                document
-                .querySelectorAll(
-                    ".calendar-view-button"
-                )
-                .forEach(
-                    other=>{
 
-                        other.classList.remove(
-                            "active"
-                        );
+            document
+            .querySelectorAll(
+                ".calendar-view-button"
+            )
+            .forEach(other=>{
 
-                    }
-                );
-
-                button.classList.add(
+                other.classList.remove(
                     "active"
                 );
 
-                renderCalendar();
+            });
 
-            }
-        );
 
-    }
-);
+            button.classList.add(
+                "active"
+            );
+
+
+            renderCalendar();
+
+        }
+    );
+
+});
 
 
 /* =====================================================
@@ -4047,6 +4417,7 @@ function openCalendarModal(
         ? event.id
         : null;
 
+
     document
     .getElementById(
         "event-title"
@@ -4056,9 +4427,6 @@ function openCalendarModal(
         ? event.titulo || ""
         : "";
 
-    /*
-     * FECHA INICIO
-     */
 
     document
     .getElementById(
@@ -4069,9 +4437,6 @@ function openCalendarModal(
         ? event.fecha
         : date;
 
-    /*
-     * FECHA FIN
-     */
 
     document
     .getElementById(
@@ -4085,6 +4450,7 @@ function openCalendarModal(
         )
         : date;
 
+
     document
     .getElementById(
         "event-start"
@@ -4093,6 +4459,7 @@ function openCalendarModal(
         event
         ? event.horario_inicio || ""
         : "";
+
 
     document
     .getElementById(
@@ -4103,6 +4470,7 @@ function openCalendarModal(
         ? event.hora_fin || ""
         : "";
 
+
     document
     .getElementById(
         "event-place"
@@ -4111,6 +4479,7 @@ function openCalendarModal(
         event
         ? event.lugar || ""
         : "";
+
 
     document
     .getElementById(
@@ -4121,6 +4490,7 @@ function openCalendarModal(
         ? event.color || "green"
         : "green";
 
+
     document
     .getElementById(
         "event-notes"
@@ -4129,6 +4499,7 @@ function openCalendarModal(
         event
         ? event.notas || ""
         : "";
+
 
     document
     .getElementById(
@@ -4139,6 +4510,7 @@ function openCalendarModal(
         ? "block"
         : "none";
 
+
     document
     .getElementById(
         "calendar-modal"
@@ -4147,83 +4519,6 @@ function openCalendarModal(
         "flex";
 
 }
-
-
-/*
- * Si el usuario cambia la fecha de inicio
- * y la fecha fin es anterior,
- * automáticamente ponemos la misma fecha.
- */
-
-document
-.getElementById(
-    "event-date"
-)
-.addEventListener(
-    "change",
-    function(){
-
-        const start =
-            this.value;
-
-        const endInput =
-            document.getElementById(
-                "event-date-end"
-            );
-
-        if(
-            start &&
-            (
-                !endInput.value ||
-                endInput.value < start
-            )
-        ){
-
-            endInput.value =
-                start;
-
-        }
-
-    }
-);
-
-
-/*
- * Validación de fecha fin.
- */
-
-document
-.getElementById(
-    "event-date-end"
-)
-.addEventListener(
-    "change",
-    function(){
-
-        const start =
-            document
-            .getElementById(
-                "event-date"
-            )
-            .value;
-
-        if(
-            start &&
-            this.value &&
-            this.value < start
-        ){
-
-            alert(
-                "La fecha fin no puede ser anterior a la fecha de inicio."
-            );
-
-            this.value =
-                start;
-
-        }
-
-    }
-);
 
 
 document
@@ -4247,6 +4542,31 @@ document
 
 document
 .getElementById(
+    "calendar-modal"
+)
+.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target === this
+        ){
+
+            this.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   NUEVO EVENTO
+===================================================== */
+
+document
+.getElementById(
     "new-calendar-event-button"
 )
 .addEventListener(
@@ -4255,7 +4575,7 @@ document
 
         openCalendarModal(
             formatDateKey(
-                currentCalendarDate
+                new Date()
             )
         );
 
@@ -4276,10 +4596,10 @@ document
     async function(){
 
         const saveButton =
-            document
-            .getElementById(
+            document.getElementById(
                 "save-calendar-event-button"
             );
+
 
         const titulo =
             document
@@ -4289,12 +4609,14 @@ document
             .value
             .trim();
 
+
         const fecha =
             document
             .getElementById(
                 "event-date"
             )
             .value;
+
 
         const fechaFin =
             document
@@ -4303,36 +4625,50 @@ document
             )
             .value;
 
-        if(
-            !titulo ||
-            !fecha
-        ){
+
+        if(!titulo){
 
             alert(
-                "Título y fecha de inicio son obligatorios."
+                "El título es obligatorio."
             );
 
             return;
 
         }
 
-        /*
-         * Si no se pone fecha fin,
-         * usamos la fecha de inicio.
-         */
 
-        const finalDate =
-            fechaFin || fecha;
-
-        if(finalDate < fecha){
+        if(!fecha){
 
             alert(
-                "La fecha fin no puede ser anterior a la fecha de inicio."
+                "La fecha de inicio es obligatoria."
             );
 
             return;
 
         }
+
+
+        if(!fechaFin){
+
+            alert(
+                "La fecha de fin es obligatoria."
+            );
+
+            return;
+
+        }
+
+
+        if(fechaFin < fecha){
+
+            alert(
+                "La fecha de fin no puede ser anterior a la fecha de inicio."
+            );
+
+            return;
+
+        }
+
 
         const {
             data,
@@ -4341,6 +4677,7 @@ document
         await supabaseClient
         .auth
         .getSession();
+
 
         if(sessionError){
 
@@ -4352,8 +4689,10 @@ document
 
         }
 
+
         const user =
             data.session?.user;
+
 
         if(!user){
 
@@ -4365,45 +4704,37 @@ document
 
         }
 
+
         saveButton.disabled =
             true;
 
         saveButton.textContent =
             "Guardando...";
 
+
         const eventData = {
 
-            user_id:
-                user.id,
+            user_id:user.id,
 
-            titulo:
-                titulo,
+            titulo:titulo,
 
-            fecha:
-                fecha,
+            fecha:fecha,
 
-            /*
-             * NUEVO
-             */
-
-            fecha_fin:
-                finalDate,
+            fecha_fin:fechaFin,
 
             horario_inicio:
                 document
                 .getElementById(
                     "event-start"
                 )
-                .value ||
-                null,
+                .value || null,
 
             hora_fin:
                 document
                 .getElementById(
                     "event-end"
                 )
-                .value ||
-                null,
+                .value || null,
 
             lugar:
                 document
@@ -4411,8 +4742,7 @@ document
                     "event-place"
                 )
                 .value
-                .trim() ||
-                null,
+                .trim() || null,
 
             color:
                 document
@@ -4427,16 +4757,15 @@ document
                     "event-notes"
                 )
                 .value
-                .trim() ||
-                null
+                .trim() || null
 
         };
 
+
         let result;
 
-        if(
-            editingCalendarEventId
-        ){
+
+        if(editingCalendarEventId){
 
             result =
                 await supabaseClient
@@ -4468,16 +4797,20 @@ document
 
         }
 
+
         if(result.error){
 
             console.error(
+                "SAVE CALENDAR ERROR:",
                 result.error
             );
+
 
             alert(
                 "No se ha podido guardar:\n\n" +
                 result.error.message
             );
+
 
             saveButton.disabled =
                 false;
@@ -4489,6 +4822,7 @@ document
 
         }
 
+
         document
         .getElementById(
             "calendar-modal"
@@ -4496,15 +4830,23 @@ document
         .style.display =
             "none";
 
+
+        editingCalendarEventId =
+            null;
+
+
+        await loadCalendarEvents();
+
+        renderCalendar();
+
+        await loadEvents();
+
+
         saveButton.disabled =
             false;
 
         saveButton.textContent =
             "Guardar";
-
-        await loadCalendarEvents();
-
-        renderCalendar();
 
     }
 );
@@ -4522,13 +4864,12 @@ document
     "click",
     async function(){
 
-        if(
-            !editingCalendarEventId
-        ){
+        if(!editingCalendarEventId){
 
             return;
 
         }
+
 
         if(
             !confirm(
@@ -4540,6 +4881,7 @@ document
 
         }
 
+
         const {
             data
         } =
@@ -4547,8 +4889,10 @@ document
         .auth
         .getSession();
 
+
         const user =
             data.session?.user;
+
 
         if(!user){
 
@@ -4559,6 +4903,7 @@ document
             return;
 
         }
+
 
         const {
             error
@@ -4577,6 +4922,7 @@ document
             user.id
         );
 
+
         if(error){
 
             alert(
@@ -4588,6 +4934,7 @@ document
 
         }
 
+
         document
         .getElementById(
             "calendar-modal"
@@ -4595,12 +4942,16 @@ document
         .style.display =
             "none";
 
+
         editingCalendarEventId =
             null;
+
 
         await loadCalendarEvents();
 
         renderCalendar();
+
+        await loadEvents();
 
     }
 );
@@ -4619,6 +4970,7 @@ async function checkSession(){
     .auth
     .getSession();
 
+
     if(data.session){
 
         showPortal();
@@ -4633,4 +4985,5 @@ checkSession();
 </script>
 
 </body>
+
 </html>
