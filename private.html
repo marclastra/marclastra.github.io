@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -57,10 +58,7 @@
             resize: vertical;
         }
 
-
-        /* =========================
-           LOGIN
-        ========================= */
+        /* LOGIN */
 
         #login-screen {
             min-height: 100vh;
@@ -113,10 +111,7 @@
             text-align: center;
         }
 
-
-        /* =========================
-           PORTAL
-        ========================= */
+        /* PORTAL */
 
         #portal {
             display: none;
@@ -145,16 +140,18 @@
             background: #333;
         }
 
+        .public-button {
+            background: #333;
+            margin-right: 8px;
+        }
+
         main {
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
         }
 
-
-        /* =========================
-           DASHBOARD
-        ========================= */
+        /* DASHBOARD */
 
         #dashboard {
             display: block;
@@ -209,10 +206,7 @@
             font-size: 14px;
         }
 
-
-        /* =========================
-           GENERAL
-        ========================= */
+        /* GENERAL */
 
         .back-button {
             margin-bottom: 25px;
@@ -244,10 +238,7 @@
             border-radius: 12px;
         }
 
-
-        /* =========================
-           CALENDARIO
-        ========================= */
+        /* CALENDARIO */
 
         #events-section {
             display: none;
@@ -306,9 +297,6 @@
             color: white;
         }
 
-
-        /* YEAR VIEW */
-
         .year-calendar {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -365,9 +353,6 @@
             font-weight: bold;
         }
 
-
-        /* MONTH VIEW */
-
         .month-calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -418,9 +403,6 @@
             font-size: 13px;
         }
 
-
-        /* EVENT IN CALENDAR */
-
         .calendar-event {
             padding: 5px 7px;
             margin-bottom: 4px;
@@ -452,9 +434,6 @@
         .event-blue {
             background: #3478c9;
         }
-
-
-        /* WEEK VIEW */
 
         .week-calendar {
             display: grid;
@@ -496,9 +475,6 @@
             background: #fafafa;
         }
 
-
-        /* DAY VIEW */
-
         .day-calendar {
             display: grid;
             grid-template-columns: 80px 1fr;
@@ -527,10 +503,7 @@
             background: #fafafa;
         }
 
-
-        /* =========================
-           EVENTOS GRANDES
-        ========================= */
+        /* EVENTOS */
 
         .projects-title {
             margin-top: 40px;
@@ -565,19 +538,13 @@
             font-size: 14px;
         }
 
-
-        /* =========================
-           CARPETAS EVENTO
-        ========================= */
+        /* CARPETAS */
 
         #event-folders-section {
             display: none;
         }
 
-
-        /* =========================
-           DOCUMENTOS
-        ========================= */
+        /* DOCUMENTOS */
 
         #documents-section {
             display: none;
@@ -667,10 +634,7 @@
             margin: 15px 0;
         }
 
-
-        /* =========================
-           MODAL
-        ========================= */
+        /* MODAL */
 
         .modal-overlay {
             position: fixed;
@@ -725,11 +689,6 @@
         .close-modal {
             background: #777;
         }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
         @media (max-width: 800px) {
 
@@ -799,19 +758,25 @@
                 flex: 1;
             }
 
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .public-button {
+                margin-right: 0;
+            }
+
         }
 
     </style>
 
 </head>
 
-
 <body>
 
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<!-- LOGIN -->
 
 <section id="login-screen">
 
@@ -864,10 +829,7 @@
 </section>
 
 
-
-<!-- =====================================================
-     PORTAL
-===================================================== -->
+<!-- PORTAL -->
 
 <section id="portal">
 
@@ -879,12 +841,23 @@
                 MARCLASTRA
             </h1>
 
-            <button
-                id="logout"
-                class="logout"
-            >
-                Cerrar sesión
-            </button>
+            <div>
+
+                <button
+                    class="public-button"
+                    id="public-button"
+                >
+                    🌐 Portfolio
+                </button>
+
+                <button
+                    id="logout"
+                    class="logout"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
 
         </div>
 
@@ -894,9 +867,7 @@
     <main>
 
 
-        <!-- =================================================
-             DASHBOARD
-        ================================================= -->
+        <!-- DASHBOARD -->
 
         <section id="dashboard">
 
@@ -915,8 +886,6 @@
 
             <section class="cards">
 
-
-                <!-- DOCUMENTOS -->
 
                 <div
                     class="card"
@@ -937,8 +906,6 @@
 
                 </div>
 
-
-                <!-- EVENTOS -->
 
                 <div
                     class="card"
@@ -964,10 +931,7 @@
         </section>
 
 
-
-        <!-- =================================================
-             EVENTOS / CALENDARIO
-        ================================================= -->
+        <!-- EVENTOS -->
 
         <section id="events-section">
 
@@ -1001,12 +965,9 @@
             </div>
 
 
-            <!-- CALENDARIO -->
-
             <div class="calendar-container">
 
                 <div class="calendar-toolbar">
-
 
                     <div class="calendar-navigation">
 
@@ -1070,8 +1031,6 @@
             </div>
 
 
-            <!-- EVENTOS GRANDES -->
-
             <h2 class="projects-title">
                 📁 Mis eventos
             </h2>
@@ -1091,10 +1050,7 @@
         </section>
 
 
-
-        <!-- =================================================
-             CARPETAS DEL EVENTO
-        ================================================= -->
+        <!-- CARPETAS -->
 
         <section id="event-folders-section">
 
@@ -1210,10 +1166,7 @@
         </section>
 
 
-
-        <!-- =================================================
-             DOCUMENTOS
-        ================================================= -->
+        <!-- DOCUMENTOS -->
 
         <section id="documents-section">
 
@@ -1277,10 +1230,7 @@
 </section>
 
 
-
-<!-- =====================================================
-     MODAL CALENDARIO
-===================================================== -->
+<!-- MODAL CALENDARIO -->
 
 <div
     class="modal-overlay"
@@ -1444,22 +1394,17 @@
 </div>
 
 
-
 <script>
-
 
 /* =====================================================
    SUPABASE
 ===================================================== */
 
-
 const SUPABASE_URL =
     "https://xcyqbqegaklxpcbxwjia.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
-
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1468,115 +1413,88 @@ const supabaseClient =
     );
 
 
-
 /* =====================================================
    ELEMENTOS
 ===================================================== */
 
-
 const loginScreen =
     document.getElementById("login-screen");
-
 
 const portal =
     document.getElementById("portal");
 
-
 const dashboard =
     document.getElementById("dashboard");
-
 
 const eventsSection =
     document.getElementById("events-section");
 
-
 const eventFoldersSection =
     document.getElementById("event-folders-section");
-
 
 const eventFoldersTitle =
     document.getElementById("event-folders-title");
 
-
 const documentsSection =
     document.getElementById("documents-section");
-
 
 const loginForm =
     document.getElementById("login-form");
 
-
 const errorElement =
     document.getElementById("error");
-
 
 const eventsList =
     document.getElementById("events-list");
 
-
 const documentsError =
     document.getElementById("documents-error");
-
 
 const documentList =
     document.getElementById("document-list");
 
-
 const uploadInput =
     document.getElementById("upload-input");
-
 
 const calendar =
     document.getElementById("calendar");
 
-
 const calendarTitle =
     document.getElementById("calendar-title");
-
 
 const calendarModal =
     document.getElementById("calendar-modal");
 
-
 const eventTitleInput =
     document.getElementById("event-title");
-
 
 const eventDateInput =
     document.getElementById("event-date");
 
-
 const eventStartInput =
     document.getElementById("event-start");
-
 
 const eventEndInput =
     document.getElementById("event-end");
 
-
 const eventPlaceInput =
     document.getElementById("event-place");
-
 
 const eventColorInput =
     document.getElementById("event-color");
 
-
 const eventNotesInput =
     document.getElementById("event-notes");
-
 
 const saveCalendarEventButton =
     document.getElementById(
         "save-calendar-event-button"
     );
 
-
 const deleteCalendarEventButton =
     document.getElementById(
         "delete-calendar-event-button"
     );
-
 
 const closeModalButton =
     document.getElementById(
@@ -1595,11 +1513,26 @@ let currentCalendarDate = new Date();
 let currentCalendarView = "year";
 
 
+/* =====================================================
+   PORTFOLIO PÚBLICO
+===================================================== */
+
+document
+    .getElementById("public-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "./index.html";
+
+        }
+    );
+
 
 /* =====================================================
    LOGIN
 ===================================================== */
-
 
 loginForm.addEventListener(
     "submit",
@@ -1651,11 +1584,9 @@ loginForm.addEventListener(
 );
 
 
-
 /* =====================================================
    MOSTRAR PORTAL
 ===================================================== */
-
 
 function showPortal() {
 
@@ -1668,11 +1599,9 @@ function showPortal() {
 }
 
 
-
 /* =====================================================
    CERRAR SESIÓN
 ===================================================== */
-
 
 document
     .getElementById("logout")
@@ -1706,11 +1635,9 @@ document
     );
 
 
-
 /* =====================================================
    ABRIR EVENTOS
 ===================================================== */
-
 
 document
     .getElementById("events-card")
@@ -1740,11 +1667,9 @@ document
     );
 
 
-
 /* =====================================================
    CALENDARIO
 ===================================================== */
-
 
 async function loadCalendarEvents() {
 
@@ -1783,7 +1708,6 @@ async function loadCalendarEvents() {
 }
 
 
-
 function formatDateKey(date) {
 
     const year =
@@ -1810,7 +1734,6 @@ function formatDateKey(date) {
 }
 
 
-
 function parseDate(dateString) {
 
     const parts =
@@ -1823,20 +1746,6 @@ function parseDate(dateString) {
     );
 
 }
-
-
-
-function getMonthName(date) {
-
-    return date.toLocaleDateString(
-        "es-ES",
-        {
-            month: "long"
-        }
-    );
-
-}
-
 
 
 function getEventsForDate(date) {
@@ -1853,7 +1762,6 @@ function getEventsForDate(date) {
     );
 
 }
-
 
 
 function eventColorClass(color) {
@@ -1875,35 +1783,25 @@ function eventColorClass(color) {
 }
 
 
-
 function renderCalendar() {
 
     if (currentCalendarView === "year") {
-
         renderYear();
-
     }
 
     if (currentCalendarView === "month") {
-
         renderMonth();
-
     }
 
     if (currentCalendarView === "week") {
-
         renderWeek();
-
     }
 
     if (currentCalendarView === "day") {
-
         renderDay();
-
     }
 
 }
-
 
 
 function renderYear() {
@@ -1913,7 +1811,6 @@ function renderYear() {
 
     calendarTitle.textContent =
         String(year);
-
 
     calendar.innerHTML = "";
 
@@ -2135,7 +2032,6 @@ function renderYear() {
 }
 
 
-
 function renderMonth() {
 
     const year =
@@ -2305,7 +2201,6 @@ function renderMonth() {
 }
 
 
-
 function createMonthDay(
     container,
     date,
@@ -2320,11 +2215,7 @@ function createMonthDay(
 
 
     if (otherMonth) {
-
-        element.classList.add(
-            "other-month"
-        );
-
+        element.classList.add("other-month");
     }
 
 
@@ -2333,9 +2224,7 @@ function createMonthDay(
         formatDateKey(new Date())
     ) {
 
-        element.classList.add(
-            "today"
-        );
+        element.classList.add("today");
 
     }
 
@@ -2402,7 +2291,6 @@ function createMonthDay(
 }
 
 
-
 function createCalendarEventElement(
     evento
 ) {
@@ -2434,7 +2322,6 @@ function createCalendarEventElement(
     element.textContent =
         text;
 
-
     element.title =
         evento.titulo;
 
@@ -2459,7 +2346,6 @@ function createCalendarEventElement(
 }
 
 
-
 function getMonday(date) {
 
     const result =
@@ -2480,7 +2366,6 @@ function getMonday(date) {
     return result;
 
 }
-
 
 
 function renderWeek() {
@@ -2676,7 +2561,6 @@ function renderWeek() {
 }
 
 
-
 function renderDay() {
 
     const date =
@@ -2797,11 +2681,9 @@ function renderDay() {
 }
 
 
-
 /* =====================================================
    NAVEGACIÓN CALENDARIO
 ===================================================== */
-
 
 document
     .getElementById("previous-button")
@@ -2851,7 +2733,6 @@ document
 
         }
     );
-
 
 
 document
@@ -2904,7 +2785,6 @@ document
     );
 
 
-
 document
     .getElementById("today-button")
     .addEventListener(
@@ -2918,7 +2798,6 @@ document
 
         }
     );
-
 
 
 document
@@ -2965,11 +2844,9 @@ document
     );
 
 
-
 /* =====================================================
-   MODAL CALENDARIO
+   MODAL
 ===================================================== */
-
 
 function openCalendarModal(
     dateString,
@@ -3054,7 +2931,6 @@ function openCalendarModal(
 }
 
 
-
 function closeCalendarModal() {
 
     calendarModal.style.display =
@@ -3066,12 +2942,10 @@ function closeCalendarModal() {
 }
 
 
-
 closeModalButton.addEventListener(
     "click",
     closeCalendarModal
 );
-
 
 
 calendarModal.addEventListener(
@@ -3091,11 +2965,9 @@ calendarModal.addEventListener(
 );
 
 
-
 /* =====================================================
-   NUEVO EVENTO CALENDARIO
+   NUEVO EVENTO
 ===================================================== */
-
 
 document
     .getElementById(
@@ -3115,11 +2987,9 @@ document
     );
 
 
-
 /* =====================================================
-   GUARDAR EVENTO CALENDARIO
+   GUARDAR EVENTO
 ===================================================== */
-
 
 saveCalendarEventButton.addEventListener(
     "click",
@@ -3127,7 +2997,6 @@ saveCalendarEventButton.addEventListener(
 
         const titulo =
             eventTitleInput.value.trim();
-
 
         const fecha =
             eventDateInput.value;
@@ -3180,11 +3049,14 @@ saveCalendarEventButton.addEventListener(
 
         const eventData = {
 
-            user_id: user.id,
+            user_id:
+                user.id,
 
-            titulo: titulo,
+            titulo:
+                titulo,
 
-            fecha: fecha,
+            fecha:
+                fecha,
 
             horario_inicio:
                 eventStartInput.value || null,
@@ -3257,20 +3129,16 @@ saveCalendarEventButton.addEventListener(
 );
 
 
-
 /* =====================================================
-   ELIMINAR EVENTO CALENDARIO
+   ELIMINAR EVENTO
 ===================================================== */
-
 
 deleteCalendarEventButton.addEventListener(
     "click",
     async function() {
 
         if (!editingCalendarEventId) {
-
             return;
-
         }
 
 
@@ -3281,9 +3149,7 @@ deleteCalendarEventButton.addEventListener(
 
 
         if (!confirmed) {
-
             return;
-
         }
 
 
@@ -3322,11 +3188,9 @@ deleteCalendarEventButton.addEventListener(
 );
 
 
-
 /* =====================================================
-   ABRIR EVENTO GRANDE
+   EVENTOS GRANDES
 ===================================================== */
-
 
 async function openEventFolders(evento) {
 
@@ -3352,7 +3216,6 @@ async function openEventFolders(evento) {
     );
 
 }
-
 
 
 async function loadEventFolders(
@@ -3445,11 +3308,9 @@ async function loadEventFolders(
 }
 
 
-
 /* =====================================================
-   ABRIR CARPETA
+   CARPETAS
 ===================================================== */
-
 
 eventFoldersSection
     .querySelectorAll(
@@ -3473,15 +3334,12 @@ eventFoldersSection
     );
 
 
-
 async function openEventFolder(
     folderName
 ) {
 
     if (!currentEvent) {
-
         return;
-
     }
 
 
@@ -3512,11 +3370,9 @@ async function openEventFolder(
 }
 
 
-
 /* =====================================================
-   VOLVER DESDE EVENTOS
+   VOLVER
 ===================================================== */
-
 
 document
     .getElementById(
@@ -3534,12 +3390,6 @@ document
 
         }
     );
-
-
-
-/* =====================================================
-   VOLVER DESDE CARPETAS
-===================================================== */
 
 
 document
@@ -3562,11 +3412,9 @@ document
     );
 
 
-
 /* =====================================================
-   CARGAR EVENTOS GRANDES
+   CARGAR EVENTOS
 ===================================================== */
-
 
 async function loadEvents() {
 
@@ -3688,23 +3536,9 @@ async function loadEvents() {
 }
 
 
-
-/* =====================================================
-   CREAR EVENTO GRANDE
-===================================================== */
-
-
-document
-    .getElementById(
-        "new-calendar-event-button"
-    );
-
-
-
 /* =====================================================
    DOCUMENTOS
 ===================================================== */
-
 
 document
     .getElementById(
@@ -3739,16 +3573,14 @@ document
                 "Tus documentos privados.";
 
 
+            currentEvent =
+                null;
+
+
             await loadDocuments();
 
         }
     );
-
-
-
-/* =====================================================
-   DOCUMENTOS PRINCIPALES
-===================================================== */
 
 
 async function loadDocuments() {
@@ -3801,7 +3633,6 @@ async function loadDocuments() {
     );
 
 }
-
 
 
 async function loadEventDocuments(
@@ -3865,7 +3696,6 @@ async function loadEventDocuments(
 }
 
 
-
 function renderDocumentList(
     data,
     path,
@@ -3893,9 +3723,7 @@ function renderDocumentList(
         function(file) {
 
             if (!file.name) {
-
                 return;
-
             }
 
 
@@ -4029,12 +3857,6 @@ function renderDocumentList(
 }
 
 
-
-/* =====================================================
-   VOLVER DESDE DOCUMENTOS
-===================================================== */
-
-
 document
     .getElementById(
         "back-button"
@@ -4063,12 +3885,6 @@ document
 
         }
     );
-
-
-
-/* =====================================================
-   ABRIR DOCUMENTO
-===================================================== */
 
 
 async function openDocument(
@@ -4109,11 +3925,9 @@ async function openDocument(
 }
 
 
-
 /* =====================================================
    SUBIR DOCUMENTO
 ===================================================== */
-
 
 uploadInput.addEventListener(
     "change",
@@ -4124,9 +3938,7 @@ uploadInput.addEventListener(
 
 
         if (!file) {
-
             return;
-
         }
 
 
@@ -4253,11 +4065,9 @@ uploadInput.addEventListener(
 );
 
 
-
 /* =====================================================
    ELIMINAR DOCUMENTO
 ===================================================== */
-
 
 async function deleteDocument(
     filePath
@@ -4270,9 +4080,7 @@ async function deleteDocument(
 
 
     if (!confirmed) {
-
         return;
-
     }
 
 
@@ -4329,11 +4137,9 @@ async function deleteDocument(
 }
 
 
-
 /* =====================================================
-   SEGURIDAD HTML
+   SEGURIDAD
 ===================================================== */
-
 
 function escapeHtml(
     text
@@ -4354,11 +4160,9 @@ function escapeHtml(
 }
 
 
-
 /* =====================================================
    COMPROBAR SESIÓN
 ===================================================== */
-
 
 async function checkSession() {
 
@@ -4381,9 +4185,9 @@ async function checkSession() {
 
 checkSession();
 
-
 </script>
 
 </body>
 
 </html>
+```
