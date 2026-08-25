@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MARCLASTRA — Zona Privada</title>
@@ -11,10 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-/* =====================================================
-   GENERAL
-===================================================== */
 
 *{
     box-sizing:border-box;
@@ -62,18 +56,6 @@ textarea{
     resize:vertical;
 }
 
-label{
-    display:block;
-    margin-bottom:7px;
-    font-size:14px;
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
 #login-screen{
     min-height:100vh;
     display:flex;
@@ -107,6 +89,13 @@ label{
     font-size:14px;
 }
 
+label{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:bold;
+}
+
 .login-box input{
     margin-bottom:20px;
 }
@@ -117,11 +106,6 @@ label{
     font-size:14px;
     text-align:center;
 }
-
-
-/* =====================================================
-   PORTAL
-===================================================== */
 
 #portal{
     display:none;
@@ -172,11 +156,6 @@ main{
 #portfolio-section{
     display:none;
 }
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
 
 .welcome{
     margin-bottom:30px;
@@ -229,11 +208,6 @@ main{
     background:#666;
 }
 
-
-/* =====================================================
-   SECTION HEADER
-===================================================== */
-
 .section-header{
     display:flex;
     justify-content:space-between;
@@ -259,10 +233,9 @@ main{
     border-radius:12px;
 }
 
-
-/* =====================================================
+/* =========================
    PORTFOLIO
-===================================================== */
+========================= */
 
 .portfolio-admin-grid{
     display:grid;
@@ -398,10 +371,9 @@ main{
     color:#a32219;
 }
 
-
-/* =====================================================
+/* =========================
    DOCUMENTOS
-===================================================== */
+========================= */
 
 .documents-header{
     display:flex;
@@ -481,10 +453,9 @@ main{
     margin:15px 0;
 }
 
-
-/* =====================================================
+/* =========================
    EVENTOS
-===================================================== */
+========================= */
 
 .event-card{
     background:white;
@@ -509,10 +480,9 @@ main{
     font-size:14px;
 }
 
-
-/* =====================================================
+/* =========================
    CALENDARIO
-===================================================== */
+========================= */
 
 .calendar-container{
     background:white;
@@ -562,11 +532,6 @@ main{
     color:white;
 }
 
-
-/* =====================================================
-   CALENDARIO ANUAL
-===================================================== */
-
 .year-calendar{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -611,10 +576,9 @@ main{
     border:2px solid #111;
 }
 
-
-/* =====================================================
-   COLORES EVENTOS
-===================================================== */
+/* =========================
+   COLORES CALENDARIO
+========================= */
 
 .event-green{
     background:#2e8b57;
@@ -632,54 +596,37 @@ main{
     background:#3478c9;
 }
 
-.event-purple{
-    background:#8e44ad;
+.event-yellow{
+    background:#d4a017;
 }
 
 .event-orange{
     background:#e67e22;
 }
 
-.event-yellow{
-    background:#d4ac0d;
+.event-purple{
+    background:#8e44ad;
 }
 
 .event-pink{
-    background:#d65a8a;
+    background:#d64b7f;
 }
 
-.event-turquoise{
-    background:#16a6a6;
+.event-teal{
+    background:#159a9c;
 }
 
 .event-brown{
-    background:#8b5e3c;
+    background:#8b5a2b;
+}
+
+.event-navy{
+    background:#34495e;
 }
 
 .event-black{
     background:#222;
 }
-
-.event-lime{
-    background:#7cb342;
-}
-
-.event-indigo{
-    background:#4b5fc5;
-}
-
-.event-cyan{
-    background:#159bc0;
-}
-
-.event-magenta{
-    background:#b03a9b;
-}
-
-
-/* =====================================================
-   CALENDARIO MENSUAL
-===================================================== */
 
 .month-calendar{
     display:grid;
@@ -738,10 +685,9 @@ main{
     white-space:nowrap;
 }
 
-
-/* =====================================================
+/* =========================
    MODAL
-===================================================== */
+========================= */
 
 .modal-overlay{
     position:fixed;
@@ -757,7 +703,7 @@ main{
 .modal{
     background:white;
     width:100%;
-    max-width:520px;
+    max-width:500px;
     max-height:90vh;
     overflow-y:auto;
     border-radius:16px;
@@ -788,25 +734,9 @@ main{
     background:#b3261e;
 }
 
-
-/* =====================================================
-   RANGO DE FECHAS
-===================================================== */
-
-.date-range-info{
-    background:#f5f5f5;
-    padding:12px;
-    border-radius:8px;
-    font-size:13px;
-    color:#666;
-    margin-top:-5px;
-    margin-bottom:18px;
-}
-
-
-/* =====================================================
+/* =========================
    RESPONSIVE
-===================================================== */
+========================= */
 
 @media(max-width:800px){
 
@@ -850,24 +780,12 @@ main{
         align-items:flex-start;
     }
 
-    .month-day{
-        min-height:80px;
-        padding:4px;
-    }
-
-    .calendar-event{
-        font-size:9px;
-        padding:4px;
-    }
-
 }
 
 </style>
-
 </head>
 
 <body>
-
 
 <!-- =====================================================
      LOGIN
@@ -955,7 +873,6 @@ Cerrar sesión
 
 <main>
 
-
 <!-- =====================================================
      DASHBOARD
 ===================================================== -->
@@ -971,7 +888,6 @@ Cerrar sesión
 </div>
 
 <div class="cards">
-
 
 <div class="card" id="documents-card">
 
@@ -1004,7 +920,6 @@ Cerrar sesión
 <p>Gestiona los trabajos que aparecen en tu web pública.</p>
 
 </div>
-
 
 </div>
 
@@ -1051,7 +966,6 @@ style="display:none;"
 <h2 id="portfolio-form-title">
 Nuevo trabajo
 </h2>
-
 
 <div class="form-group">
 
@@ -1164,7 +1078,6 @@ id="events-back-button"
 ← Volver
 </button>
 
-
 <div class="section-header">
 
 <div>
@@ -1196,11 +1109,7 @@ id="events-back-button"
 
 </div>
 
-
-<h2 id="calendar-title">
-2026
-</h2>
-
+<h2 id="calendar-title">2026</h2>
 
 <div class="calendar-views">
 
@@ -1222,7 +1131,6 @@ Mes
 
 </div>
 
-
 <div id="calendar"></div>
 
 </div>
@@ -1231,7 +1139,6 @@ Mes
 <h2 style="margin:40px 0 20px;">
 📁 Mis eventos
 </h2>
-
 
 <div
 id="events-list"
@@ -1260,7 +1167,6 @@ id="event-folders-back-button"
 ← Volver
 </button>
 
-
 <div class="section-header">
 
 <div>
@@ -1277,7 +1183,6 @@ id="event-folders-back-button"
 
 
 <div class="cards">
-
 
 <div class="card" data-folder="Contratos">
 
@@ -1322,7 +1227,6 @@ id="event-folders-back-button"
 
 </div>
 
-
 </div>
 
 </section>
@@ -1341,7 +1245,6 @@ id="back-button"
 ← Volver
 </button>
 
-
 <div class="documents-header">
 
 <div>
@@ -1356,14 +1259,12 @@ Tus documentos privados.
 
 </div>
 
-
 <label
 for="upload-input"
 class="upload-label"
 >
 ⬆️ Subir documento
 </label>
-
 
 <input
 type="file"
@@ -1372,9 +1273,7 @@ id="upload-input"
 
 </div>
 
-
 <div id="documents-error"></div>
-
 
 <div
 class="document-list"
@@ -1389,14 +1288,13 @@ Cargando documentos...
 
 </section>
 
-
 </main>
 
 </section>
 
 
 <!-- =====================================================
-     MODAL CALENDARIO
+     MODAL EVENTO
 ===================================================== -->
 
 <div
@@ -1406,9 +1304,7 @@ id="calendar-modal"
 
 <div class="modal">
 
-<h2 id="calendar-modal-title">
-Nuevo evento
-</h2>
+<h2>Nuevo / editar evento</h2>
 
 
 <div class="form-group">
@@ -1418,7 +1314,7 @@ Nuevo evento
 <input
 type="text"
 id="event-title"
-placeholder="Ej. Fiesta Mayor de Igualada"
+placeholder="Ej. Festival, montaje, evento..."
 >
 
 </div>
@@ -1426,11 +1322,11 @@ placeholder="Ej. Fiesta Mayor de Igualada"
 
 <div class="form-group">
 
-<label>📅 Día de inicio</label>
+<label>📅 Fecha inicio</label>
 
 <input
 type="date"
-id="event-date-start"
+id="event-date"
 >
 
 </div>
@@ -1438,7 +1334,7 @@ id="event-date-start"
 
 <div class="form-group">
 
-<label>📅 Día de finalización</label>
+<label>📅 Fecha fin</label>
 
 <input
 type="date"
@@ -1448,16 +1344,9 @@ id="event-date-end"
 </div>
 
 
-<div class="date-range-info">
-
-💡 Si el evento dura solamente un día, selecciona la misma fecha en inicio y finalización.
-
-</div>
-
-
 <div class="form-group">
 
-<label>Hora inicio</label>
+<label>🕐 Hora inicio</label>
 
 <input
 type="time"
@@ -1469,7 +1358,7 @@ id="event-start"
 
 <div class="form-group">
 
-<label>Hora final</label>
+<label>🕐 Hora final</label>
 
 <input
 type="time"
@@ -1481,12 +1370,12 @@ id="event-end"
 
 <div class="form-group">
 
-<label>Lugar</label>
+<label>📍 Lugar</label>
 
 <input
 type="text"
 id="event-place"
-placeholder="Ej. Igualada"
+placeholder="Lugar del evento"
 >
 
 </div>
@@ -1494,7 +1383,7 @@ placeholder="Ej. Igualada"
 
 <div class="form-group">
 
-<label>Color</label>
+<label>🎨 Color</label>
 
 <select id="event-color">
 
@@ -1504,29 +1393,23 @@ placeholder="Ej. Igualada"
 
 <option value="blue">🔵 Azul — Evento</option>
 
-<option value="purple">🟣 Morado</option>
-
-<option value="orange">🟠 Naranja</option>
+<option value="gray">⚪ Gris — Libre</option>
 
 <option value="yellow">🟡 Amarillo</option>
 
-<option value="pink">🩷 Rosa</option>
+<option value="orange">🟠 Naranja</option>
 
-<option value="turquoise">🩵 Turquesa</option>
+<option value="purple">🟣 Morado</option>
+
+<option value="pink">🌸 Rosa</option>
+
+<option value="teal">🩵 Turquesa</option>
 
 <option value="brown">🟤 Marrón</option>
 
-<option value="gray">⚪ Gris — Libre</option>
+<option value="navy">🔷 Azul oscuro</option>
 
 <option value="black">⚫ Negro</option>
-
-<option value="lime">🟢 Lima</option>
-
-<option value="indigo">🔷 Índigo</option>
-
-<option value="cyan">🔹 Cian</option>
-
-<option value="magenta">🟣 Magenta</option>
 
 </select>
 
@@ -1535,11 +1418,11 @@ placeholder="Ej. Igualada"
 
 <div class="form-group">
 
-<label>Notas</label>
+<label>📝 Notas</label>
 
 <textarea
 id="event-notes"
-placeholder="Información adicional..."
+placeholder="Notas del evento..."
 ></textarea>
 
 </div>
@@ -1555,7 +1438,6 @@ style="display:none;"
 Eliminar
 </button>
 
-
 <div class="modal-right-buttons">
 
 <button
@@ -1564,7 +1446,6 @@ class="close-modal"
 >
 Cancelar
 </button>
-
 
 <button
 id="save-calendar-event-button"
@@ -1706,25 +1587,6 @@ function formatDate(dateString){
 }
 
 
-function formatDateShort(dateString){
-
-    if(!dateString){
-        return "";
-    }
-
-    return new Date(
-        dateString + "T00:00:00"
-    ).toLocaleDateString(
-        "es-ES",
-        {
-            day:"numeric",
-            month:"short"
-        }
-    );
-
-}
-
-
 function formatDateKey(date){
 
     return (
@@ -1738,36 +1600,7 @@ function formatDateKey(date){
 }
 
 
-function parseLocalDate(dateString){
-
-    return new Date(
-        dateString + "T00:00:00"
-    );
-
-}
-
-
-function isDateBetween(
-    date,
-    startString,
-    endString
-){
-
-    const key =
-        formatDateKey(date);
-
-    return (
-        key >= startString &&
-        key <= endString
-    );
-
-}
-
-
-function showPortfolioStatus(
-    message,
-    type
-){
+function showPortfolioStatus(message,type){
 
     portfolioSaveStatus.textContent =
         message;
@@ -1808,16 +1641,13 @@ document
         .textContent =
             "Entrando...";
 
-
         const {error} =
-            await supabaseClient.auth.signInWithPassword({
-
+            await supabaseClient
+            .auth
+            .signInWithPassword({
                 email,
-
                 password
-
             });
-
 
         if(error){
 
@@ -1829,9 +1659,7 @@ document
                 error.message;
 
             return;
-
         }
-
 
         showPortal();
 
@@ -1864,7 +1692,9 @@ document
     "click",
     async function(){
 
-        await supabaseClient.auth.signOut();
+        await supabaseClient
+        .auth
+        .signOut();
 
         location.reload();
 
@@ -2041,7 +1871,6 @@ document
         documentsSection.style.display =
             "none";
 
-
         if(currentEvent){
 
             eventFoldersSection.style.display =
@@ -2070,7 +1899,6 @@ async function loadPortfolioAdmin(){
         </div>
     `;
 
-
     const {
         data,
         error
@@ -2084,7 +1912,6 @@ async function loadPortfolioAdmin(){
             ascending:false
         }
     );
-
 
     if(error){
 
@@ -2105,7 +1932,6 @@ async function loadPortfolioAdmin(){
 
     }
 
-
     if(!data || data.length === 0){
 
         portfolioAdminList.innerHTML = `
@@ -2118,9 +1944,8 @@ async function loadPortfolioAdmin(){
 
     }
 
-
-    portfolioAdminList.innerHTML = "";
-
+    portfolioAdminList.innerHTML =
+        "";
 
     for(const item of data){
 
@@ -2130,7 +1955,6 @@ async function loadPortfolioAdmin(){
         card.className =
             "portfolio-admin-card";
 
-
         const image =
             document.createElement("img");
 
@@ -2139,7 +1963,6 @@ async function loadPortfolioAdmin(){
 
         image.alt =
             item.titulo || "";
-
 
         if(item.imagen){
 
@@ -2155,7 +1978,6 @@ async function loadPortfolioAdmin(){
                 3600
             );
 
-
             if(
                 !signedError &&
                 signedData
@@ -2168,13 +1990,11 @@ async function loadPortfolioAdmin(){
 
         }
 
-
         const info =
             document.createElement("div");
 
         info.className =
             "portfolio-admin-info";
-
 
         const title =
             document.createElement("h3");
@@ -2182,7 +2002,6 @@ async function loadPortfolioAdmin(){
         title.textContent =
             item.titulo ||
             "Sin título";
-
 
         const date =
             document.createElement("div");
@@ -2192,7 +2011,6 @@ async function loadPortfolioAdmin(){
 
         date.textContent =
             formatDate(item.fecha);
-
 
         const status =
             document.createElement("span");
@@ -2210,13 +2028,11 @@ async function loadPortfolioAdmin(){
             ? "Publicado"
             : "Borrador";
 
-
         const actions =
             document.createElement("div");
 
         actions.className =
             "portfolio-admin-actions";
-
 
         const editButton =
             document.createElement("button");
@@ -2228,8 +2044,8 @@ async function loadPortfolioAdmin(){
             "Editar";
 
         editButton.onclick =
-            () => openPortfolioForm(item);
-
+            () =>
+                openPortfolioForm(item);
 
         const publishButton =
             document.createElement("button");
@@ -2245,8 +2061,8 @@ async function loadPortfolioAdmin(){
             : "Publicar";
 
         publishButton.onclick =
-            () => togglePublish(item);
-
+            () =>
+                togglePublish(item);
 
         const deleteButton =
             document.createElement("button");
@@ -2258,15 +2074,20 @@ async function loadPortfolioAdmin(){
             "Eliminar";
 
         deleteButton.onclick =
-            () => deletePortfolio(item);
+            () =>
+                deletePortfolio(item);
 
+        actions.appendChild(
+            editButton
+        );
 
-        actions.appendChild(editButton);
+        actions.appendChild(
+            publishButton
+        );
 
-        actions.appendChild(publishButton);
-
-        actions.appendChild(deleteButton);
-
+        actions.appendChild(
+            deleteButton
+        );
 
         info.appendChild(title);
 
@@ -2276,11 +2097,9 @@ async function loadPortfolioAdmin(){
 
         info.appendChild(actions);
 
-
         card.appendChild(image);
 
         card.appendChild(info);
-
 
         portfolioAdminList.appendChild(card);
 
@@ -2288,10 +2107,6 @@ async function loadPortfolioAdmin(){
 
 }
 
-
-/* =====================================================
-   NUEVO PORTFOLIO
-===================================================== */
 
 document
 .getElementById("new-portfolio-button")
@@ -2312,12 +2127,10 @@ function openPortfolioForm(item=null){
         ? item.id
         : null;
 
-
     currentPortfolioImage =
         item
         ? item.imagen
         : null;
-
 
     document
     .getElementById("portfolio-form-title")
@@ -2326,28 +2139,23 @@ function openPortfolioForm(item=null){
         ? "Editar trabajo"
         : "Nuevo trabajo";
 
-
     portfolioTitle.value =
         item
         ? item.titulo || ""
         : "";
-
 
     portfolioDate.value =
         item
         ? item.fecha || ""
         : formatDateKey(new Date());
 
-
     portfolioText.value =
         item
         ? item.texto || ""
         : "";
 
-
     portfolioImage.value =
         "";
-
 
     portfolioSaveStatus.className =
         "";
@@ -2355,10 +2163,8 @@ function openPortfolioForm(item=null){
     portfolioSaveStatus.textContent =
         "";
 
-
     portfolioImagePreview.style.display =
         "none";
-
 
     if(
         item &&
@@ -2388,10 +2194,8 @@ function openPortfolioForm(item=null){
 
     }
 
-
     portfolioFormContainer.style.display =
         "block";
-
 
     portfolioFormContainer.scrollIntoView({
         behavior:"smooth"
@@ -2399,10 +2203,6 @@ function openPortfolioForm(item=null){
 
 }
 
-
-/* =====================================================
-   CANCELAR PORTFOLIO
-===================================================== */
 
 document
 .getElementById("cancel-portfolio-button")
@@ -2423,10 +2223,6 @@ document
 );
 
 
-/* =====================================================
-   PREVISUALIZACIÓN PORTFOLIO
-===================================================== */
-
 portfolioImage.addEventListener(
     "change",
     function(){
@@ -2438,10 +2234,8 @@ portfolioImage.addEventListener(
             return;
         }
 
-
         const url =
             URL.createObjectURL(file);
-
 
         portfolioImagePreview.src =
             url;
@@ -2452,10 +2246,6 @@ portfolioImage.addEventListener(
     }
 );
 
-
-/* =====================================================
-   GUARDAR PORTFOLIO
-===================================================== */
 
 document
 .getElementById("save-portfolio-button")
@@ -2472,7 +2262,6 @@ async function savePortfolio(){
             "save-portfolio-button"
         );
 
-
     const title =
         portfolioTitle.value.trim();
 
@@ -2485,7 +2274,6 @@ async function savePortfolio(){
     const imageFile =
         portfolioImage.files[0];
 
-
     if(!title){
 
         showPortfolioStatus(
@@ -2496,7 +2284,6 @@ async function savePortfolio(){
         return;
 
     }
-
 
     if(!date){
 
@@ -2509,13 +2296,11 @@ async function savePortfolio(){
 
     }
 
-
     saveButton.disabled =
         true;
 
     saveButton.textContent =
         "Guardando...";
-
 
     try{
 
@@ -2523,17 +2308,16 @@ async function savePortfolio(){
             data:sessionData,
             error:sessionError
         } =
-        await supabaseClient.auth.getSession();
-
+        await supabaseClient
+        .auth
+        .getSession();
 
         if(sessionError){
             throw sessionError;
         }
 
-
         const user =
             sessionData.session?.user;
-
 
         if(!user){
 
@@ -2543,11 +2327,9 @@ async function savePortfolio(){
 
         }
 
-
         let imagePath =
             currentPortfolioImage ||
             null;
-
 
         if(imageFile){
 
@@ -2557,13 +2339,11 @@ async function savePortfolio(){
                 .pop()
                 .toLowerCase();
 
-
             const safeExtension =
                 extension.replace(
                     /[^a-z0-9]/gi,
                     ""
                 );
-
 
             const fileName =
                 user.id +
@@ -2571,7 +2351,6 @@ async function savePortfolio(){
                 Date.now() +
                 "." +
                 safeExtension;
-
 
             const {
                 error:uploadError
@@ -2587,7 +2366,6 @@ async function savePortfolio(){
                 }
             );
 
-
             if(uploadError){
 
                 throw new Error(
@@ -2597,12 +2375,10 @@ async function savePortfolio(){
 
             }
 
-
             imagePath =
                 fileName;
 
         }
-
 
         const portfolioData = {
 
@@ -2621,9 +2397,7 @@ async function savePortfolio(){
 
         };
 
-
         let result;
-
 
         if(editingPortfolioId){
 
@@ -2645,7 +2419,6 @@ async function savePortfolio(){
             portfolioData.publicado =
                 false;
 
-
             result =
                 await supabaseClient
                 .from("portfolio")
@@ -2654,7 +2427,6 @@ async function savePortfolio(){
                 );
 
         }
-
 
         if(result.error){
 
@@ -2672,14 +2444,12 @@ async function savePortfolio(){
 
             }
 
-
             throw new Error(
                 "Error guardando en portfolio: " +
                 result.error.message
             );
 
         }
-
 
         if(
             imageFile &&
@@ -2697,12 +2467,10 @@ async function savePortfolio(){
 
         }
 
-
         showPortfolioStatus(
             "✓ Trabajo guardado correctamente.",
             "success"
         );
-
 
         await new Promise(
             resolve =>
@@ -2712,10 +2480,8 @@ async function savePortfolio(){
                 )
         );
 
-
         portfolioFormContainer.style.display =
             "none";
-
 
         editingPortfolioId =
             null;
@@ -2723,9 +2489,7 @@ async function savePortfolio(){
         currentPortfolioImage =
             null;
 
-
         await loadPortfolioAdmin();
-
 
     }catch(error){
 
@@ -2734,13 +2498,11 @@ async function savePortfolio(){
             error
         );
 
-
         showPortfolioStatus(
             error.message ||
             "Ha ocurrido un error al guardar.",
             "error"
         );
-
 
     }finally{
 
@@ -2755,36 +2517,28 @@ async function savePortfolio(){
 }
 
 
-/* =====================================================
-   PUBLICAR / DESPUBLICAR
-===================================================== */
-
 async function togglePublish(item){
 
     const {
         data:sessionData
     } =
-    await supabaseClient.auth.getSession();
-
+    await supabaseClient
+    .auth
+    .getSession();
 
     const user =
         sessionData.session?.user;
 
-
     if(!user){
 
-        alert(
-            "Sesión caducada."
-        );
+        alert("Sesión caducada.");
 
         return;
 
     }
 
-
     const newStatus =
         !item.publicado;
-
 
     const {
         error
@@ -2808,10 +2562,7 @@ async function togglePublish(item){
         user.id
     );
 
-
     if(error){
-
-        console.error(error);
 
         alert(
             "No se ha podido cambiar el estado:\n\n" +
@@ -2822,15 +2573,10 @@ async function togglePublish(item){
 
     }
 
-
     await loadPortfolioAdmin();
 
 }
 
-
-/* =====================================================
-   ELIMINAR PORTFOLIO
-===================================================== */
 
 async function deletePortfolio(item){
 
@@ -2844,27 +2590,23 @@ async function deletePortfolio(item){
 
     }
 
-
     const {
         data:sessionData
     } =
-    await supabaseClient.auth.getSession();
-
+    await supabaseClient
+    .auth
+    .getSession();
 
     const user =
         sessionData.session?.user;
 
-
     if(!user){
 
-        alert(
-            "Sesión caducada."
-        );
+        alert("Sesión caducada.");
 
         return;
 
     }
-
 
     const {
         error
@@ -2881,10 +2623,7 @@ async function deletePortfolio(item){
         user.id
     );
 
-
     if(error){
-
-        console.error(error);
 
         alert(
             "No se ha podido eliminar:\n\n" +
@@ -2894,7 +2633,6 @@ async function deletePortfolio(item){
         return;
 
     }
-
 
     if(item.imagen){
 
@@ -2906,7 +2644,6 @@ async function deletePortfolio(item){
         ]);
 
     }
-
 
     await loadPortfolioAdmin();
 
@@ -2936,7 +2673,6 @@ async function loadDocuments(){
         }
     );
 
-
     if(error){
 
         document
@@ -2950,7 +2686,6 @@ async function loadDocuments(){
         return;
 
     }
-
 
     renderDocumentList(
         data || [],
@@ -2970,7 +2705,6 @@ async function loadEventDocuments(
         "/" +
         folderName;
 
-
     const {
         data,
         error
@@ -2988,7 +2722,6 @@ async function loadEventDocuments(
         }
     );
 
-
     if(error){
 
         console.error(error);
@@ -2996,7 +2729,6 @@ async function loadEventDocuments(
         return;
 
     }
-
 
     renderDocumentList(
         data || [],
@@ -3016,11 +2748,7 @@ function renderDocumentList(
             "document-list"
         );
 
-
-    if(
-        !data ||
-        data.length === 0
-    ){
+    if(!data || data.length === 0){
 
         list.innerHTML = `
             <div class="empty">
@@ -3032,10 +2760,8 @@ function renderDocumentList(
 
     }
 
-
     list.innerHTML =
         "";
-
 
     data.forEach(file=>{
 
@@ -3043,13 +2769,11 @@ function renderDocumentList(
             return;
         }
 
-
         const row =
             document.createElement("div");
 
         row.className =
             "document";
-
 
         const name =
             document.createElement("div");
@@ -3057,19 +2781,16 @@ function renderDocumentList(
         name.className =
             "document-name";
 
-
         name.innerHTML = `
             <span class="document-icon">📄</span>
             <span>${escapeHtml(file.name)}</span>
         `;
-
 
         const actions =
             document.createElement("div");
 
         actions.className =
             "document-actions";
-
 
         const view =
             document.createElement("button");
@@ -3080,7 +2801,6 @@ function renderDocumentList(
         view.textContent =
             "👁️ Ver";
 
-
         view.onclick =
             () =>
                 openDocument(
@@ -3088,7 +2808,6 @@ function renderDocumentList(
                     ? path + "/" + file.name
                     : file.name
                 );
-
 
         const del =
             document.createElement("button");
@@ -3099,7 +2818,6 @@ function renderDocumentList(
         del.textContent =
             "🗑️ Eliminar";
 
-
         del.onclick =
             () =>
                 deleteDocument(
@@ -3107,7 +2825,6 @@ function renderDocumentList(
                     ? path + "/" + file.name
                     : file.name
                 );
-
 
         actions.appendChild(view);
 
@@ -3133,15 +2850,11 @@ document
         const file =
             this.files[0];
 
-
         if(!file){
             return;
         }
 
-
-        let path =
-            "";
-
+        let path = "";
 
         if(currentEvent){
 
@@ -3151,9 +2864,11 @@ document
                     "documents-title"
                 )
                 .textContent
-                .replace("📁 ","")
+                .replace(
+                    "📁 ",
+                    ""
+                )
                 .trim();
-
 
             path =
                 currentEvent.id +
@@ -3161,7 +2876,6 @@ document
                 title;
 
         }
-
 
         const filePath =
             path
@@ -3172,7 +2886,6 @@ document
             : Date.now() +
               "_" +
               file.name;
-
 
         const {
             error
@@ -3185,10 +2898,7 @@ document
             file
         );
 
-
         if(error){
-
-            console.error(error);
 
             alert(
                 "No se ha podido subir el documento:\n\n" +
@@ -3199,10 +2909,8 @@ document
 
         }
 
-
         this.value =
             "";
-
 
         if(currentEvent){
 
@@ -3212,9 +2920,11 @@ document
                     "documents-title"
                 )
                 .textContent
-                .replace("📁 ","")
+                .replace(
+                    "📁 ",
+                    ""
+                )
                 .trim();
-
 
             await loadEventDocuments(
                 currentEvent.id,
@@ -3245,7 +2955,6 @@ async function openDocument(path){
         600
     );
 
-
     if(error){
 
         alert(
@@ -3256,7 +2965,6 @@ async function openDocument(path){
         return;
 
     }
-
 
     window.open(
         data.signedUrl,
@@ -3278,7 +2986,6 @@ async function deleteDocument(path){
 
     }
 
-
     const {
         error
     } =
@@ -3288,7 +2995,6 @@ async function deleteDocument(path){
     .remove([
         path
     ]);
-
 
     if(error){
 
@@ -3301,7 +3007,6 @@ async function deleteDocument(path){
 
     }
 
-
     if(currentEvent){
 
         const folder =
@@ -3310,9 +3015,11 @@ async function deleteDocument(path){
                 "documents-title"
             )
             .textContent
-            .replace("📁 ","")
+            .replace(
+                "📁 ",
+                ""
+            )
             .trim();
-
 
         await loadEventDocuments(
             currentEvent.id,
@@ -3329,7 +3036,7 @@ async function deleteDocument(path){
 
 
 /* =====================================================
-   EVENTOS DE CARPETAS
+   EVENTOS
 ===================================================== */
 
 async function loadEvents(){
@@ -3338,7 +3045,6 @@ async function loadEvents(){
         document.getElementById(
             "events-list"
         );
-
 
     const {
         data,
@@ -3354,7 +3060,6 @@ async function loadEvents(){
         }
     );
 
-
     if(error){
 
         console.error(error);
@@ -3369,11 +3074,7 @@ async function loadEvents(){
 
     }
 
-
-    if(
-        !data ||
-        data.length === 0
-    ){
+    if(!data || data.length === 0){
 
         list.innerHTML = `
             <div class="empty">
@@ -3385,10 +3086,8 @@ async function loadEvents(){
 
     }
 
-
     list.innerHTML =
         "";
-
 
     data.forEach(evento=>{
 
@@ -3397,7 +3096,6 @@ async function loadEvents(){
 
         card.className =
             "event-card";
-
 
         card.innerHTML = `
             <div class="event-icon">📁</div>
@@ -3415,13 +3113,11 @@ async function loadEvents(){
             </p>
         `;
 
-
         card.onclick =
             () =>
                 openEventFolders(
                     evento
                 );
-
 
         list.appendChild(card);
 
@@ -3430,29 +3126,22 @@ async function loadEvents(){
 }
 
 
-async function openEventFolders(
-    evento
-){
+async function openEventFolders(evento){
 
     currentEvent =
         evento;
 
-
     hideAllSections();
-
 
     eventFoldersSection.style.display =
         "block";
-
 
     document
     .getElementById(
         "event-folders-title"
     )
     .textContent =
-        "📁 " +
-        evento.nombre;
-
+        "📁 " + evento.nombre;
 
     await loadEventFolders(
         evento.id
@@ -3477,7 +3166,6 @@ async function loadEventFolders(
         eventoId
     );
 
-
     if(error){
 
         console.error(error);
@@ -3486,7 +3174,6 @@ async function loadEventFolders(
 
     }
 
-
     const folders = [
         "Contratos",
         "Facturas",
@@ -3494,9 +3181,9 @@ async function loadEventFolders(
         "Otros"
     ];
 
-
     for(
-        const folderName of folders
+        const folderName
+        of folders
     ){
 
         const exists =
@@ -3505,7 +3192,6 @@ async function loadEventFolders(
                     folder.nombre ===
                     folderName
             );
-
 
         if(!exists){
 
@@ -3541,26 +3227,20 @@ document
                     return;
                 }
 
-
                 hideAllSections();
-
 
                 documentsSection.style.display =
                     "block";
 
-
                 const folder =
                     card.dataset.folder;
-
 
                 document
                 .getElementById(
                     "documents-title"
                 )
                 .textContent =
-                    "📁 " +
-                    folder;
-
+                    "📁 " + folder;
 
                 document
                 .getElementById(
@@ -3568,7 +3248,6 @@ document
                 )
                 .textContent =
                     currentEvent.nombre;
-
 
                 await loadEventDocuments(
                     currentEvent.id,
@@ -3596,12 +3275,11 @@ async function loadCalendarEvents(){
     .from("calendario_eventos")
     .select("*")
     .order(
-        "fecha_inicio",
+        "fecha",
         {
             ascending:true
         }
     );
-
 
     if(error){
 
@@ -3617,78 +3295,60 @@ async function loadCalendarEvents(){
 
     }
 
-
     calendarEvents =
         data || [];
-
-
-    /*
-     * Compatibilidad con eventos antiguos.
-     */
-
-    calendarEvents.forEach(
-        event=>{
-
-            if(!event.fecha_inicio){
-
-                event.fecha_inicio =
-                    event.fecha;
-
-            }
-
-            if(!event.fecha_fin){
-
-                event.fecha_fin =
-                    event.fecha_inicio;
-
-            }
-
-        }
-    );
 
 }
 
 
-/* =====================================================
-   EVENTOS DE UNA FECHA
-===================================================== */
+/*
+ * Comprueba si un evento ocupa una fecha.
+ *
+ * Si no tiene fecha_fin,
+ * solamente ocupa fecha.
+ *
+ * Si tiene fecha_fin,
+ * ocupa desde fecha hasta fecha_fin,
+ * ambos incluidos.
+ */
+
+function eventIncludesDate(
+    event,
+    date
+){
+
+    const key =
+        formatDateKey(date);
+
+    const start =
+        event.fecha;
+
+    const end =
+        event.fecha_fin ||
+        event.fecha;
+
+    return (
+        key >= start &&
+        key <= end
+    );
+
+}
+
 
 function getEventsForDate(
     date
 ){
 
     return calendarEvents.filter(
-        event=>{
-
-            const start =
-                event.fecha_inicio ||
-                event.fecha;
-
-            const end =
-                event.fecha_fin ||
-                start;
-
-
-            if(!start){
-                return false;
-            }
-
-
-            return isDateBetween(
-                date,
-                start,
-                end
-            );
-
-        }
+        event =>
+            eventIncludesDate(
+                event,
+                date
+            )
     );
 
 }
 
-
-/* =====================================================
-   RENDER CALENDARIO
-===================================================== */
 
 function renderCalendar(){
 
@@ -3709,7 +3369,7 @@ function renderCalendar(){
 
 
 /* =====================================================
-   VISTA ANUAL
+   VISTA AÑO
 ===================================================== */
 
 function renderYear(){
@@ -3718,7 +3378,6 @@ function renderYear(){
         currentCalendarDate
         .getFullYear();
 
-
     document
     .getElementById(
         "calendar-title"
@@ -3726,23 +3385,21 @@ function renderYear(){
     .textContent =
         year;
 
-
     const calendar =
         document.getElementById(
             "calendar"
         );
 
-
     calendar.innerHTML =
         "";
 
-
     const container =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     container.className =
         "year-calendar";
-
 
     for(
         let month=0;
@@ -3751,18 +3408,20 @@ function renderYear(){
     ){
 
         const box =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         box.className =
             "mini-month";
 
-
         const title =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         title.className =
             "mini-month-title";
-
 
         title.textContent =
             new Date(
@@ -3776,16 +3435,15 @@ function renderYear(){
                 }
             );
 
-
         box.appendChild(title);
 
-
         const days =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         days.className =
             "mini-days";
-
 
         const first =
             new Date(
@@ -3794,16 +3452,13 @@ function renderYear(){
                 1
             );
 
-
         let start =
             first.getDay();
-
 
         start =
             start === 0
             ? 6
             : start - 1;
-
 
         for(
             let i=0;
@@ -3812,19 +3467,19 @@ function renderYear(){
         ){
 
             days.appendChild(
-                document.createElement("div")
+                document.createElement(
+                    "div"
+                )
             );
 
         }
 
-
         const total =
             new Date(
                 year,
-                month+1,
+                month + 1,
                 0
             ).getDate();
-
 
         for(
             let day=1;
@@ -3839,33 +3494,27 @@ function renderYear(){
                     day
                 );
 
-
             const element =
-                document.createElement("div");
-
+                document.createElement(
+                    "div"
+                );
 
             element.className =
                 "mini-day";
 
-
             element.textContent =
                 day;
-
 
             const events =
                 getEventsForDate(
                     date
                 );
 
-
-            if(
-                events.length
-            ){
+            if(events.length){
 
                 element.classList.add(
                     "has-event"
                 );
-
 
                 element.classList.add(
                     "event-" +
@@ -3875,8 +3524,15 @@ function renderYear(){
                     )
                 );
 
-            }
+                element.title =
+                    events
+                    .map(
+                        event =>
+                            event.titulo
+                    )
+                    .join(", ");
 
+            }
 
             if(
                 formatDateKey(date) ===
@@ -3891,13 +3547,14 @@ function renderYear(){
 
             }
 
-
             element.onclick =
                 () =>
                     openCalendarModal(
-                        formatDateKey(date)
+                        formatDateKey(date),
+                        events.length
+                        ? events[0]
+                        : null
                     );
-
 
             days.appendChild(
                 element
@@ -3905,18 +3562,11 @@ function renderYear(){
 
         }
 
+        box.appendChild(days);
 
-        box.appendChild(
-            days
-        );
-
-
-        container.appendChild(
-            box
-        );
+        container.appendChild(box);
 
     }
-
 
     calendar.appendChild(
         container
@@ -3926,7 +3576,7 @@ function renderYear(){
 
 
 /* =====================================================
-   VISTA MENSUAL
+   VISTA MES
 ===================================================== */
 
 function renderMonth(){
@@ -3936,16 +3586,13 @@ function renderMonth(){
             "calendar"
         );
 
-
     const year =
         currentCalendarDate
         .getFullYear();
 
-
     const month =
         currentCalendarDate
         .getMonth();
-
 
     document
     .getElementById(
@@ -3961,17 +3608,16 @@ function renderMonth(){
             }
         );
 
-
     calendar.innerHTML =
         "";
 
-
     const container =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     container.className =
         "month-calendar";
-
 
     [
         "Lun",
@@ -3985,7 +3631,9 @@ function renderMonth(){
         day=>{
 
             const element =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             element.className =
                 "month-weekday";
@@ -4000,7 +3648,6 @@ function renderMonth(){
         }
     );
 
-
     const first =
         new Date(
             year,
@@ -4008,24 +3655,24 @@ function renderMonth(){
             1
         );
 
-
     let start =
         first.getDay();
-
 
     start =
         start === 0
         ? 6
         : start - 1;
 
-
     const days =
         new Date(
             year,
-            month+1,
+            month + 1,
             0
         ).getDate();
 
+    /*
+     * Días del mes anterior
+     */
 
     for(
         let i=start-1;
@@ -4035,22 +3682,23 @@ function renderMonth(){
 
         createMonthDay(
             container,
-
             new Date(
                 year,
-                month-1,
+                month - 1,
                 new Date(
                     year,
                     month,
                     0
-                ).getDate()-i
+                ).getDate() - i
             ),
-
             true
         );
 
     }
 
+    /*
+     * Días del mes actual
+     */
 
     for(
         let day=1;
@@ -4060,55 +3708,51 @@ function renderMonth(){
 
         createMonthDay(
             container,
-
             new Date(
                 year,
                 month,
                 day
             ),
-
             false
         );
 
     }
 
-
     /*
-     * Completar la última semana
+     * Días del mes siguiente
+     * para completar la cuadrícula.
      */
 
     const totalCells =
-        start + days;
+        container.children.length;
 
+    const remainder =
+        totalCells % 7;
 
-    const remaining =
-        totalCells % 7 === 0
-        ? 0
-        : 7 - (
-            totalCells % 7
-        );
+    if(remainder !== 0){
 
+        const extra =
+            7 - remainder;
 
-    for(
-        let i=1;
-        i<=remaining;
-        i++
-    ){
+        for(
+            let i=1;
+            i<=extra;
+            i++
+        ){
 
-        createMonthDay(
-            container,
+            createMonthDay(
+                container,
+                new Date(
+                    year,
+                    month + 1,
+                    i
+                ),
+                true
+            );
 
-            new Date(
-                year,
-                month+1,
-                i
-            ),
-
-            true
-        );
+        }
 
     }
-
 
     calendar.appendChild(
         container
@@ -4128,12 +3772,12 @@ function createMonthDay(
 ){
 
     const cell =
-        document.createElement("div");
-
+        document.createElement(
+            "div"
+        );
 
     cell.className =
         "month-day";
-
 
     if(otherMonth){
 
@@ -4142,7 +3786,6 @@ function createMonthDay(
         );
 
     }
-
 
     if(
         formatDateKey(date) ===
@@ -4157,35 +3800,33 @@ function createMonthDay(
 
     }
 
-
     const number =
-        document.createElement("div");
-
+        document.createElement(
+            "div"
+        );
 
     number.className =
         "day-number";
 
-
     number.textContent =
         date.getDate();
-
 
     cell.appendChild(
         number
     );
 
+    const events =
+        getEventsForDate(
+            date
+        );
 
-    getEventsForDate(
-        date
-    )
-    .forEach(
+    events.forEach(
         event=>{
 
             const element =
                 document.createElement(
                     "div"
                 );
-
 
             element.className =
                 "calendar-event event-" +
@@ -4194,16 +3835,36 @@ function createMonthDay(
                     "green"
                 );
 
-
             element.textContent =
                 event.titulo;
 
+            /*
+             * Información extra
+             * al pasar el ratón.
+             */
 
-            element.title =
-                buildEventTooltip(
-                    event
-                );
+            const start =
+                event.fecha;
 
+            const end =
+                event.fecha_fin ||
+                event.fecha;
+
+            if(start !== end){
+
+                element.title =
+                    event.titulo +
+                    " — " +
+                    formatDate(start) +
+                    " → " +
+                    formatDate(end);
+
+            }else{
+
+                element.title =
+                    event.titulo;
+
+            }
 
             element.onclick =
                 function(e){
@@ -4211,15 +3872,11 @@ function createMonthDay(
                     e.stopPropagation();
 
                     openCalendarModal(
-                        event.fecha_inicio ||
-                        event.fecha ||
-                        formatDateKey(date),
-
+                        event.fecha,
                         event
                     );
 
                 };
-
 
             cell.appendChild(
                 element
@@ -4228,74 +3885,18 @@ function createMonthDay(
         }
     );
 
-
     cell.onclick =
         () =>
             openCalendarModal(
-                formatDateKey(date)
+                formatDateKey(date),
+                events.length
+                ? events[0]
+                : null
             );
-
 
     container.appendChild(
         cell
     );
-
-}
-
-
-/* =====================================================
-   TOOLTIP EVENTO
-===================================================== */
-
-function buildEventTooltip(
-    event
-){
-
-    const start =
-        event.fecha_inicio ||
-        event.fecha;
-
-
-    const end =
-        event.fecha_fin ||
-        start;
-
-
-    let text =
-        event.titulo || "";
-
-
-    if(start){
-
-        text +=
-            "\n" +
-            formatDateShort(start);
-
-    }
-
-
-    if(
-        end &&
-        end !== start
-    ){
-
-        text +=
-            " → " +
-            formatDateShort(end);
-
-    }
-
-
-    if(event.lugar){
-
-        text +=
-            "\n📍 " +
-            event.lugar;
-
-    }
-
-
-    return text;
 
 }
 
@@ -4320,7 +3921,7 @@ document
             currentCalendarDate
             .setFullYear(
                 currentCalendarDate
-                .getFullYear()-1
+                .getFullYear() - 1
             );
 
         }else{
@@ -4328,11 +3929,10 @@ document
             currentCalendarDate
             .setMonth(
                 currentCalendarDate
-                .getMonth()-1
+                .getMonth() - 1
             );
 
         }
-
 
         renderCalendar();
 
@@ -4356,7 +3956,7 @@ document
             currentCalendarDate
             .setFullYear(
                 currentCalendarDate
-                .getFullYear()+1
+                .getFullYear() + 1
             );
 
         }else{
@@ -4364,11 +3964,10 @@ document
             currentCalendarDate
             .setMonth(
                 currentCalendarDate
-                .getMonth()+1
+                .getMonth() + 1
             );
 
         }
-
 
         renderCalendar();
 
@@ -4407,7 +4006,6 @@ document
                 currentCalendarView =
                     button.dataset.view;
 
-
                 document
                 .querySelectorAll(
                     ".calendar-view-button"
@@ -4422,11 +4020,9 @@ document
                     }
                 );
 
-
                 button.classList.add(
                     "active"
                 );
-
 
                 renderCalendar();
 
@@ -4451,17 +4047,6 @@ function openCalendarModal(
         ? event.id
         : null;
 
-
-    document
-    .getElementById(
-        "calendar-modal-title"
-    )
-    .textContent =
-        event
-        ? "Editar evento"
-        : "Nuevo evento";
-
-
     document
     .getElementById(
         "event-title"
@@ -4471,43 +4056,34 @@ function openCalendarModal(
         ? event.titulo || ""
         : "";
 
-
-    const startDate =
-        event
-        ? (
-            event.fecha_inicio ||
-            event.fecha ||
-            date
-        )
-        : date;
-
-
-    const endDate =
-        event
-        ? (
-            event.fecha_fin ||
-            event.fecha_inicio ||
-            event.fecha ||
-            date
-        )
-        : date;
-
+    /*
+     * FECHA INICIO
+     */
 
     document
     .getElementById(
-        "event-date-start"
+        "event-date"
     )
     .value =
-        startDate;
+        event
+        ? event.fecha
+        : date;
 
+    /*
+     * FECHA FIN
+     */
 
     document
     .getElementById(
         "event-date-end"
     )
     .value =
-        endDate;
-
+        event
+        ? (
+            event.fecha_fin ||
+            event.fecha
+        )
+        : date;
 
     document
     .getElementById(
@@ -4518,7 +4094,6 @@ function openCalendarModal(
         ? event.horario_inicio || ""
         : "";
 
-
     document
     .getElementById(
         "event-end"
@@ -4527,7 +4102,6 @@ function openCalendarModal(
         event
         ? event.hora_fin || ""
         : "";
-
 
     document
     .getElementById(
@@ -4538,7 +4112,6 @@ function openCalendarModal(
         ? event.lugar || ""
         : "";
 
-
     document
     .getElementById(
         "event-color"
@@ -4547,7 +4120,6 @@ function openCalendarModal(
         event
         ? event.color || "green"
         : "green";
-
 
     document
     .getElementById(
@@ -4558,7 +4130,6 @@ function openCalendarModal(
         ? event.notas || ""
         : "";
 
-
     document
     .getElementById(
         "delete-calendar-event-button"
@@ -4567,7 +4138,6 @@ function openCalendarModal(
         event
         ? "block"
         : "none";
-
 
     document
     .getElementById(
@@ -4579,13 +4149,15 @@ function openCalendarModal(
 }
 
 
-/* =====================================================
-   VALIDAR FECHAS
-===================================================== */
+/*
+ * Si el usuario cambia la fecha de inicio
+ * y la fecha fin es anterior,
+ * automáticamente ponemos la misma fecha.
+ */
 
 document
 .getElementById(
-    "event-date-start"
+    "event-date"
 )
 .addEventListener(
     "change",
@@ -4594,28 +4166,17 @@ document
         const start =
             this.value;
 
-
         const endInput =
             document.getElementById(
                 "event-date-end"
             );
 
-
         if(
             start &&
-            !endInput.value
-        ){
-
-            endInput.value =
-                start;
-
-        }
-
-
-        if(
-            start &&
-            endInput.value &&
-            endInput.value < start
+            (
+                !endInput.value ||
+                endInput.value < start
+            )
         ){
 
             endInput.value =
@@ -4626,6 +4187,10 @@ document
     }
 );
 
+
+/*
+ * Validación de fecha fin.
+ */
 
 document
 .getElementById(
@@ -4638,10 +4203,9 @@ document
         const start =
             document
             .getElementById(
-                "event-date-start"
+                "event-date"
             )
             .value;
-
 
         if(
             start &&
@@ -4650,7 +4214,7 @@ document
         ){
 
             alert(
-                "La fecha final no puede ser anterior a la fecha de inicio."
+                "La fecha fin no puede ser anterior a la fecha de inicio."
             );
 
             this.value =
@@ -4661,10 +4225,6 @@ document
     }
 );
 
-
-/* =====================================================
-   CERRAR MODAL
-===================================================== */
 
 document
 .getElementById(
@@ -4685,10 +4245,6 @@ document
 );
 
 
-/* =====================================================
-   NUEVO EVENTO
-===================================================== */
-
 document
 .getElementById(
     "new-calendar-event-button"
@@ -4697,38 +4253,10 @@ document
     "click",
     function(){
 
-        let date =
+        openCalendarModal(
             formatDateKey(
                 currentCalendarDate
-            );
-
-
-        /*
-         * Si estamos en vista mensual,
-         * usamos el primer día del mes.
-         */
-
-        if(
-            currentCalendarView ===
-            "month"
-        ){
-
-            date =
-                formatDateKey(
-                    new Date(
-                        currentCalendarDate
-                        .getFullYear(),
-                        currentCalendarDate
-                        .getMonth(),
-                        1
-                    )
-                );
-
-        }
-
-
-        openCalendarModal(
-            date
+            )
         );
 
     }
@@ -4748,10 +4276,10 @@ document
     async function(){
 
         const saveButton =
-            document.getElementById(
+            document
+            .getElementById(
                 "save-calendar-event-button"
             );
-
 
         const titulo =
             document
@@ -4761,14 +4289,12 @@ document
             .value
             .trim();
 
-
-        const fechaInicio =
+        const fecha =
             document
             .getElementById(
-                "event-date-start"
+                "event-date"
             )
             .value;
-
 
         const fechaFin =
             document
@@ -4777,41 +4303,44 @@ document
             )
             .value;
 
-
         if(
             !titulo ||
-            !fechaInicio ||
-            !fechaFin
+            !fecha
         ){
 
             alert(
-                "Título, fecha de inicio y fecha de finalización son obligatorios."
+                "Título y fecha de inicio son obligatorios."
             );
 
             return;
 
         }
 
+        /*
+         * Si no se pone fecha fin,
+         * usamos la fecha de inicio.
+         */
 
-        if(
-            fechaFin < fechaInicio
-        ){
+        const finalDate =
+            fechaFin || fecha;
+
+        if(finalDate < fecha){
 
             alert(
-                "La fecha final no puede ser anterior a la fecha de inicio."
+                "La fecha fin no puede ser anterior a la fecha de inicio."
             );
 
             return;
 
         }
-
 
         const {
             data,
             error:sessionError
         } =
-        await supabaseClient.auth.getSession();
-
+        await supabaseClient
+        .auth
+        .getSession();
 
         if(sessionError){
 
@@ -4823,10 +4352,8 @@ document
 
         }
 
-
         const user =
             data.session?.user;
-
 
         if(!user){
 
@@ -4838,13 +4365,11 @@ document
 
         }
 
-
         saveButton.disabled =
             true;
 
         saveButton.textContent =
             "Guardando...";
-
 
         const eventData = {
 
@@ -4854,19 +4379,15 @@ document
             titulo:
                 titulo,
 
+            fecha:
+                fecha,
+
             /*
-             * Mantenemos fecha para compatibilidad
-             * con la estructura anterior.
+             * NUEVO
              */
 
-            fecha:
-                fechaInicio,
-
-            fecha_inicio:
-                fechaInicio,
-
             fecha_fin:
-                fechaFin,
+                finalDate,
 
             horario_inicio:
                 document
@@ -4911,9 +4432,7 @@ document
 
         };
 
-
         let result;
-
 
         if(
             editingCalendarEventId
@@ -4949,19 +4468,16 @@ document
 
         }
 
-
         if(result.error){
 
             console.error(
                 result.error
             );
 
-
             alert(
                 "No se ha podido guardar:\n\n" +
                 result.error.message
             );
-
 
             saveButton.disabled =
                 false;
@@ -4969,11 +4485,9 @@ document
             saveButton.textContent =
                 "Guardar";
 
-
             return;
 
         }
-
 
         document
         .getElementById(
@@ -4982,23 +4496,15 @@ document
         .style.display =
             "none";
 
-
-        editingCalendarEventId =
-            null;
-
-
-        await loadCalendarEvents();
-
-        await loadEvents();
-
-        renderCalendar();
-
-
         saveButton.disabled =
             false;
 
         saveButton.textContent =
             "Guardar";
+
+        await loadCalendarEvents();
+
+        renderCalendar();
 
     }
 );
@@ -5024,7 +4530,6 @@ document
 
         }
 
-
         if(
             !confirm(
                 "¿Eliminar este evento?"
@@ -5035,7 +4540,6 @@ document
 
         }
 
-
         const {
             data
         } =
@@ -5043,10 +4547,8 @@ document
         .auth
         .getSession();
 
-
         const user =
             data.session?.user;
-
 
         if(!user){
 
@@ -5057,7 +4559,6 @@ document
             return;
 
         }
-
 
         const {
             error
@@ -5076,7 +4577,6 @@ document
             user.id
         );
 
-
         if(error){
 
             alert(
@@ -5088,7 +4588,6 @@ document
 
         }
 
-
         document
         .getElementById(
             "calendar-modal"
@@ -5096,41 +4595,12 @@ document
         .style.display =
             "none";
 
-
         editingCalendarEventId =
             null;
 
-
         await loadCalendarEvents();
 
-        await loadEvents();
-
         renderCalendar();
-
-    }
-);
-
-
-/* =====================================================
-   CERRAR MODAL AL HACER CLICK FUERA
-===================================================== */
-
-document
-.getElementById(
-    "calendar-modal"
-)
-.addEventListener(
-    "click",
-    function(e){
-
-        if(
-            e.target === this
-        ){
-
-            this.style.display =
-                "none";
-
-        }
 
     }
 );
@@ -5148,7 +4618,6 @@ async function checkSession(){
     await supabaseClient
     .auth
     .getSession();
-
 
     if(data.session){
 
