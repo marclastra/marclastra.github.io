@@ -1,0 +1,1237 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="MARCLASTRA — Producción y gestión de eventos."
+    >
+
+    <title>MARCLASTRA — Event Production</title>
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.5;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+
+            background: rgba(255,255,255,0.92);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .header-inner {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 22px 35px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        .nav a {
+            font-size: 13px;
+            transition: opacity 0.2s;
+        }
+
+
+        .nav a:hover {
+            opacity: 0.5;
+        }
+
+
+        .private-link {
+            border: 1px solid #111111;
+            padding: 9px 15px;
+            border-radius: 6px;
+        }
+
+
+        .private-link:hover {
+            background: #111111;
+            color: white;
+            opacity: 1 !important;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 140px 35px 80px;
+
+            background: #f5f5f5;
+        }
+
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+
+        .hero-small {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #777777;
+            margin-bottom: 25px;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 150px);
+            line-height: 0.9;
+            letter-spacing: -5px;
+            font-weight: 700;
+            max-width: 1000px;
+        }
+
+
+        .hero-description {
+            margin-top: 40px;
+
+            max-width: 600px;
+
+            font-size: 18px;
+            color: #555555;
+        }
+
+
+        .hero-scroll {
+            margin-top: 70px;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+
+        /* =====================================================
+           PORTFOLIO
+        ====================================================== */
+
+        .portfolio-section {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 120px 35px;
+        }
+
+
+        .section-intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 30px;
+
+            margin-bottom: 60px;
+        }
+
+
+        .section-intro h2 {
+            font-size: 48px;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+
+        .section-intro p {
+            max-width: 400px;
+            color: #777777;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           PORTFOLIO GRID
+        ====================================================== */
+
+        .portfolio-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 60px 30px;
+        }
+
+
+        .portfolio-item {
+            cursor: pointer;
+        }
+
+
+        .portfolio-image {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            overflow: hidden;
+
+            background: #eeeeee;
+        }
+
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.6s ease;
+        }
+
+
+        .portfolio-item:hover
+        .portfolio-image img {
+            transform: scale(1.04);
+        }
+
+
+        .portfolio-info {
+            padding-top: 18px;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .portfolio-info h3 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+
+        .portfolio-date {
+            color: #888888;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+
+        .portfolio-description {
+            margin-top: 10px;
+
+            color: #777777;
+
+            font-size: 14px;
+
+            max-width: 650px;
+        }
+
+
+        /* =====================================================
+           EMPTY / LOADING
+        ====================================================== */
+
+        .portfolio-message {
+            grid-column: 1 / -1;
+
+            padding: 80px 20px;
+
+            text-align: center;
+
+            color: #888888;
+        }
+
+
+        .loading {
+            font-size: 14px;
+        }
+
+
+        .error-message {
+            color: #b3261e;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ====================================================== */
+
+        .about-section {
+            background: #111111;
+            color: white;
+        }
+
+
+        .about-inner {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 120px 35px;
+        }
+
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 80px;
+        }
+
+
+        .about-title {
+            font-size: 60px;
+            line-height: 1;
+
+            letter-spacing: -3px;
+        }
+
+
+        .about-text {
+            color: #bbbbbb;
+
+            font-size: 17px;
+
+            max-width: 600px;
+        }
+
+
+        .about-text p + p {
+            margin-top: 20px;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ====================================================== */
+
+        .contact-section {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 120px 35px;
+        }
+
+
+        .contact-section h2 {
+            font-size: 70px;
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .contact-link {
+            font-size: 18px;
+
+            border-bottom: 1px solid #111111;
+
+            padding-bottom: 5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+            border-top: 1px solid #eeeeee;
+
+            padding: 25px 35px;
+        }
+
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #777777;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 800px) {
+
+            .header-inner {
+                padding: 18px 20px;
+            }
+
+
+            .nav {
+                gap: 12px;
+            }
+
+
+            .nav a:not(.private-link) {
+                display: none;
+            }
+
+
+            .hero {
+                padding: 130px 20px 70px;
+            }
+
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+
+            .portfolio-section {
+                padding: 80px 20px;
+            }
+
+
+            .section-intro {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+
+            .section-intro h2 {
+                font-size: 40px;
+            }
+
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+
+            .about-inner {
+                padding: 80px 20px;
+            }
+
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
+            .about-title {
+                font-size: 48px;
+            }
+
+
+            .contact-section {
+                padding: 80px 20px;
+            }
+
+
+            .contact-section h2 {
+                font-size: 48px;
+            }
+
+
+            footer {
+                padding: 20px;
+            }
+
+
+            .footer-inner {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="header-inner">
+
+
+        <a
+            href="#top"
+            class="logo"
+        >
+            MARCLASTRA
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="#portfolio">
+                Portfolio
+            </a>
+
+            <a href="#about">
+                Sobre mí
+            </a>
+
+            <a href="#contact">
+                Contacto
+            </a>
+
+            <a
+                href="private.html"
+                class="private-link"
+            >
+                🔒 Private
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main id="top">
+
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-small">
+            Event Production · Management
+        </div>
+
+
+        <h1>
+            MARCLASTRA
+        </h1>
+
+
+        <p class="hero-description">
+            Producción, gestión y coordinación de eventos.
+            Un espacio para mostrar proyectos, experiencias
+            y trabajos realizados.
+        </p>
+
+
+        <a
+            href="#portfolio"
+            class="hero-scroll"
+        >
+            Ver proyectos
+            ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PORTFOLIO
+===================================================== -->
+
+<section
+    id="portfolio"
+    class="portfolio-section"
+>
+
+
+    <div class="section-intro">
+
+        <h2>
+            Proyectos
+        </h2>
+
+
+        <p>
+            Una selección de eventos, producciones y proyectos
+            en los que he trabajado.
+        </p>
+
+    </div>
+
+
+    <div
+        id="portfolio-grid"
+        class="portfolio-grid"
+    >
+
+        <div class="portfolio-message loading">
+            Cargando proyectos...
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="about-section"
+>
+
+    <div class="about-inner">
+
+
+        <div class="about-grid">
+
+
+            <h2 class="about-title">
+                Sobre mí
+            </h2>
+
+
+            <div class="about-text">
+
+                <p>
+                    Soy Marc Lastra, especializado en producción,
+                    organización y gestión de eventos.
+                </p>
+
+
+                <p>
+                    Este espacio reúne algunos de los proyectos
+                    y experiencias que forman parte de mi trayectoria
+                    profesional.
+                </p>
+
+
+                <p>
+                    Desde la planificación y coordinación hasta
+                    la ejecución del evento, me interesa especialmente
+                    que cada parte del proceso funcione.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
+<section
+    id="contact"
+    class="contact-section"
+>
+
+    <h2>
+        ¿Trabajamos juntos?
+    </h2>
+
+
+    <a
+        href="mailto:contacto@marclastra.com"
+        class="contact-link"
+    >
+        contacto@marclastra.com
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <span>
+            © 2026 MARCLASTRA
+        </span>
+
+
+        <span>
+            Event Production
+        </span>
+
+
+        <a href="private.html">
+            Private Area →
+        </a>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+
+const SUPABASE_URL =
+    "https://xcyqbqegaklxpcbxwjia.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+
+const portfolioGrid =
+    document.getElementById(
+        "portfolio-grid"
+    );
+
+
+
+/* =====================================================
+   CARGAR PORTFOLIO
+===================================================== */
+
+
+async function loadPortfolio() {
+
+    portfolioGrid.innerHTML =
+        `
+        <div class="portfolio-message loading">
+            Cargando proyectos...
+        </div>
+        `;
+
+
+    /*
+     * IMPORTANTE:
+     *
+     * Se buscan únicamente los proyectos
+     * marcados como públicos.
+     */
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("portfolio")
+            .select("*")
+            .eq(
+                "publicado",
+                true
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Error cargando portfolio:",
+            error
+        );
+
+
+        portfolioGrid.innerHTML =
+            `
+            <div class="portfolio-message error-message">
+                No se han podido cargar los proyectos.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        portfolioGrid.innerHTML =
+            `
+            <div class="portfolio-message">
+                Todavía no hay proyectos publicados.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    portfolioGrid.innerHTML =
+        "";
+
+
+    data.forEach(
+        function(project) {
+
+            createPortfolioCard(
+                project
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CREAR TARJETA
+===================================================== */
+
+
+function createPortfolioCard(
+    project
+) {
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "portfolio-item";
+
+
+    /*
+     * Obtener URL de la imagen
+     *
+     * La tabla puede guardar:
+     *
+     * - imagen
+     * - imagen_url
+     * - image_url
+     * - foto
+     *
+     * El código intenta varias opciones.
+     */
+
+
+    const imagePath =
+        project.imagen ||
+        project.imagen_url ||
+        project.image_url ||
+        project.foto ||
+        project.image ||
+        null;
+
+
+    let imageUrl =
+        "";
+
+
+    if (imagePath) {
+
+        /*
+         * Si ya es una URL completa
+         */
+
+        if (
+            imagePath.startsWith(
+                "http://"
+            ) ||
+            imagePath.startsWith(
+                "https://"
+            )
+        ) {
+
+            imageUrl =
+                imagePath;
+
+        }
+
+        /*
+         * Si es una ruta dentro
+         * del bucket portfolio
+         */
+
+        else {
+
+            const {
+                data
+            } =
+                supabaseClient
+                    .storage
+                    .from("portfolio")
+                    .getPublicUrl(
+                        imagePath
+                    );
+
+
+            imageUrl =
+                data.publicUrl;
+
+        }
+
+    }
+
+
+    /*
+     * Si no hay imagen
+     */
+
+    if (!imageUrl) {
+
+        imageUrl =
+            createPlaceholder();
+
+    }
+
+
+    const title =
+        project.titulo ||
+        project.title ||
+        "Sin título";
+
+
+    const description =
+        project.descripcion ||
+        project.description ||
+        project.texto ||
+        "";
+
+
+    const date =
+        project.fecha ||
+        project.date ||
+        project.created_at ||
+        null;
+
+
+    let formattedDate =
+        "";
+
+
+    if (date) {
+
+        const parsedDate =
+            new Date(
+                date
+            );
+
+
+        if (
+            !isNaN(
+                parsedDate.getTime()
+            )
+        ) {
+
+            formattedDate =
+                parsedDate.toLocaleDateString(
+                    "es-ES",
+                    {
+                        year: "numeric",
+                        month: "long"
+                    }
+                );
+
+        }
+
+    }
+
+
+    card.innerHTML =
+        `
+
+        <div class="portfolio-image">
+
+            <img
+                src="${escapeHtml(imageUrl)}"
+                alt="${escapeHtml(title)}"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="portfolio-info">
+
+            <div>
+
+                <h3>
+                    ${escapeHtml(title)}
+                </h3>
+
+
+                ${
+                    description
+                        ? `
+                        <p class="portfolio-description">
+                            ${escapeHtml(description)}
+                        </p>
+                        `
+                        : ""
+                }
+
+            </div>
+
+
+            ${
+                formattedDate
+                    ? `
+                    <span class="portfolio-date">
+                        ${escapeHtml(
+                            formattedDate
+                        )}
+                    </span>
+                    `
+                    : ""
+            }
+
+        </div>
+
+        `;
+
+
+    portfolioGrid.appendChild(
+        card
+    );
+
+}
+
+
+
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
+
+
+function createPlaceholder() {
+
+    /*
+     * Placeholder SVG generado directamente.
+     * No necesita ninguna imagen externa.
+     */
+
+    const svg = `
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1200"
+            height="750"
+            viewBox="0 0 1200 750"
+        >
+
+            <rect
+                width="1200"
+                height="750"
+                fill="#eeeeee"
+            />
+
+            <text
+                x="600"
+                y="375"
+                text-anchor="middle"
+                dominant-baseline="middle"
+                font-family="Arial"
+                font-size="32"
+                fill="#999999"
+            >
+                MARCLASTRA
+            </text>
+
+        </svg>
+    `;
+
+
+    return (
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(svg)
+    );
+
+}
+
+
+
+/* =====================================================
+   SEGURIDAD HTML
+===================================================== */
+
+
+function escapeHtml(
+    text
+) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        String(
+            text
+        );
+
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+
+loadPortfolio();
+
+</script>
+
+
+</body>
+
+</html>
+```
