@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,793 +11,541 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>MARCLASTRA — Private Portal</title>
+    <meta
+        name="description"
+        content="MARCLASTRA — Producción y gestión de eventos."
+    >
+
+    <title>MARCLASTRA — Event Production</title>
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
     <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
 
         body {
-            background: #f5f5f5;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.5;
         }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
 
         button {
-            padding: 12px 17px;
-            background: #111;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
+            font-family: inherit;
         }
 
-        button:hover {
-            background: #333;
-        }
 
-        input,
-        textarea,
-        select {
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
+            z-index: 100;
+
+            background: rgba(255,255,255,0.92);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid #eeeeee;
         }
 
-        textarea {
-            min-height: 90px;
-            resize: vertical;
-        }
 
+        .header-inner {
+            max-width: 1400px;
+            margin: auto;
 
-        /* =========================
-           LOGIN
-        ========================= */
+            padding: 22px 35px;
 
-        #login-screen {
-            min-height: 100vh;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
         }
 
-        .login-box {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.10);
-        }
 
         .logo {
-            text-align: center;
-            margin-bottom: 35px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
         }
 
-        .logo h1 {
-            font-size: 30px;
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        .nav a {
+            font-size: 13px;
+            transition: opacity 0.2s;
+        }
+
+
+        .nav a:hover {
+            opacity: 0.5;
+        }
+
+
+        .private-link {
+            border: 1px solid #111111;
+            padding: 9px 15px;
+            border-radius: 6px;
+        }
+
+
+        .private-link:hover {
+            background: #111111;
+            color: white;
+            opacity: 1 !important;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 140px 35px 80px;
+
+            background: #f5f5f5;
+        }
+
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+
+        .hero-small {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #777777;
+            margin-bottom: 25px;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 150px);
+            line-height: 0.9;
+            letter-spacing: -5px;
+            font-weight: 700;
+            max-width: 1000px;
+        }
+
+
+        .hero-description {
+            margin-top: 40px;
+
+            max-width: 600px;
+
+            font-size: 18px;
+            color: #555555;
+        }
+
+
+        .hero-scroll {
+            margin-top: 70px;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 13px;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .logo p {
-            margin-top: 8px;
-            color: #888;
-            font-size: 14px;
-        }
 
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+        /* =====================================================
+           PORTFOLIO
+        ====================================================== */
 
-        .login-box input {
-            margin-bottom: 20px;
-        }
-
-        #error {
-            color: #d33;
-            margin-top: 15px;
-            font-size: 14px;
-            text-align: center;
-        }
-
-
-        /* =========================
-           PORTAL
-        ========================= */
-
-        #portal {
-            display: none;
-        }
-
-        header {
-            background: #111;
-            color: white;
-            padding: 25px;
-        }
-
-        .header-content {
-            max-width: 1100px;
+        .portfolio-section {
+            max-width: 1400px;
             margin: auto;
+
+            padding: 120px 35px;
+        }
+
+
+        .section-intro {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
+            align-items: flex-end;
 
-        header h1 {
-            font-size: 24px;
-            letter-spacing: 1px;
-        }
+            gap: 30px;
 
-        .logout {
-            background: #333;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
+            margin-bottom: 60px;
         }
 
 
-        /* =========================
-           DASHBOARD
-        ========================= */
-
-        #dashboard {
-            display: block;
+        .section-intro h2 {
+            font-size: 48px;
+            line-height: 1;
+            letter-spacing: -2px;
         }
 
-        .welcome {
-            margin-bottom: 30px;
-        }
 
-        .welcome h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .welcome p {
-            color: #777;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(220px, 1fr)
-            );
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-        }
-
-        .icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: #777;
+        .section-intro p {
+            max-width: 400px;
+            color: #777777;
             font-size: 14px;
         }
 
 
-        /* =========================
-           GENERAL
-        ========================= */
+        /* =====================================================
+           PORTFOLIO GRID
+        ====================================================== */
 
-        .back-button {
-            margin-bottom: 25px;
-            background: #666;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            gap: 20px;
-        }
-
-        .section-header h2 {
-            font-size: 30px;
-            margin-bottom: 6px;
-        }
-
-        .section-header p {
-            color: #777;
-        }
-
-        .empty {
-            padding: 40px;
-            text-align: center;
-            color: #888;
-            background: white;
-            border-radius: 12px;
-        }
-
-
-        /* =========================
-           CALENDARIO
-        ========================= */
-
-        #events-section {
-            display: none;
-        }
-
-        .calendar-container {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-            padding: 20px;
-        }
-
-        .calendar-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .calendar-navigation {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .calendar-navigation button {
-            background: #eee;
-            color: #222;
-        }
-
-        .calendar-navigation button:hover {
-            background: #ddd;
-        }
-
-        #calendar-title {
-            min-width: 200px;
-            text-align: center;
-            font-size: 22px;
-        }
-
-        .calendar-views {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-
-        .calendar-views button {
-            background: #eee;
-            color: #222;
-        }
-
-        .calendar-views button.active {
-            background: #111;
-            color: white;
-        }
-
-
-        /* YEAR VIEW */
-
-        .year-calendar {
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 60px 30px;
         }
 
-        .mini-month {
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 12px;
-        }
 
-        .mini-month-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .mini-weekdays,
-        .mini-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
-        }
-
-        .mini-weekday {
-            text-align: center;
-            font-size: 10px;
-            color: #999;
-            padding: 4px 0;
-        }
-
-        .mini-day {
-            min-height: 28px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
+        .portfolio-item {
             cursor: pointer;
         }
 
-        .mini-day:hover {
-            background: #eee;
-        }
 
-        .mini-day.today {
-            font-weight: bold;
-            border: 2px solid #111;
-        }
+        .portfolio-image {
+            position: relative;
 
-        .mini-day.has-event {
-            color: white;
-            font-weight: bold;
-        }
-
-
-        /* MONTH VIEW */
-
-        .month-calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            border-top: 1px solid #eee;
-            border-left: 1px solid #eee;
-        }
-
-        .month-weekday {
-            padding: 12px;
-            background: #fafafa;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            font-size: 12px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .month-day {
-            min-height: 120px;
-            padding: 8px;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-        }
-
-        .month-day:hover {
-            background: #fafafa;
-        }
-
-        .month-day.other-month {
-            background: #fafafa;
-            color: #aaa;
-        }
-
-        .month-day.today .day-number {
-            background: #111;
-            color: white;
-        }
-
-        .day-number {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: 5px;
-            font-size: 13px;
-        }
-
-
-        /* EVENT IN CALENDAR */
-
-        .calendar-event {
-            padding: 5px 7px;
-            margin-bottom: 4px;
-            border-radius: 5px;
-            color: white;
-            font-size: 11px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .calendar-event:hover {
-            opacity: 0.85;
-        }
-
-        .event-green {
-            background: #2e8b57;
-        }
-
-        .event-red {
-            background: #c0392b;
-        }
-
-        .event-gray {
-            background: #777;
-        }
-
-        .event-blue {
-            background: #3478c9;
-        }
-
-
-        /* WEEK VIEW */
-
-        .week-calendar {
-            display: grid;
-            grid-template-columns: 70px repeat(7, 1fr);
-            border-top: 1px solid #eee;
-            border-left: 1px solid #eee;
-            overflow-x: auto;
-        }
-
-        .week-header {
-            min-width: 110px;
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-            background: #fafafa;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-
-        .week-time {
-            padding: 8px;
-            font-size: 11px;
-            color: #999;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            min-height: 60px;
-        }
-
-        .week-cell {
-            min-width: 110px;
-            min-height: 60px;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            padding: 3px;
-            cursor: pointer;
-        }
-
-        .week-cell:hover {
-            background: #fafafa;
-        }
-
-
-        /* DAY VIEW */
-
-        .day-calendar {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            border-top: 1px solid #eee;
-            border-left: 1px solid #eee;
-        }
-
-        .day-time {
-            padding: 10px;
-            font-size: 12px;
-            color: #999;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            min-height: 70px;
-        }
-
-        .day-cell {
-            min-height: 70px;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            padding: 5px;
-            cursor: pointer;
-        }
-
-        .day-cell:hover {
-            background: #fafafa;
-        }
-
-
-        /* =========================
-           EVENTOS GRANDES
-        ========================= */
-
-        .projects-title {
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .event-card {
-            background: white;
-            padding: 25px;
-            border-radius: 14px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .event-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .event-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .event-card h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
-        }
-
-        .event-card p {
-            color: #777;
-            font-size: 14px;
-        }
-
-
-        /* =========================
-           CARPETAS EVENTO
-        ========================= */
-
-        #event-folders-section {
-            display: none;
-        }
-
-
-        /* =========================
-           DOCUMENTOS
-        ========================= */
-
-        #documents-section {
-            display: none;
-        }
-
-        .documents-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            gap: 15px;
-        }
-
-        .documents-header h2 {
-            margin-bottom: 5px;
-        }
-
-        .documents-header p {
-            color: #777;
-        }
-
-        .upload-label {
-            padding: 13px 18px;
-            background: #111;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        .upload-label:hover {
-            background: #333;
-        }
-
-        #upload-input {
-            display: none;
-        }
-
-        .document-list {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .document {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 20px;
-            border-bottom: 1px solid #eee;
-            gap: 15px;
-        }
-
-        .document:last-child {
-            border-bottom: none;
-        }
-
-        .document-name {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            word-break: break-word;
-        }
-
-        .document-icon {
-            font-size: 25px;
-        }
-
-        .document-actions {
-            display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        .view-button {
-            background: #444;
-        }
-
-        .delete-button {
-            background: #b3261e;
-        }
-
-        #documents-error {
-            color: #b3261e;
-            margin: 15px 0;
-        }
-
-
-        /* =========================
-           MODAL
-        ========================= */
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000;
-        }
-
-        .modal {
-            background: white;
             width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+
+            aspect-ratio: 16 / 10;
+
+            overflow: hidden;
+
+            background: #eeeeee;
         }
 
-        .modal h2 {
-            margin-bottom: 20px;
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.6s ease;
         }
 
-        .form-group {
-            margin-bottom: 15px;
+
+        .portfolio-item:hover
+        .portfolio-image img {
+            transform: scale(1.04);
         }
 
-        .form-group label {
-            margin-bottom: 6px;
-        }
 
-        .modal-buttons {
+        .portfolio-info {
+            padding-top: 18px;
+
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+
+            gap: 20px;
+        }
+
+
+        .portfolio-info h3 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+
+        .portfolio-date {
+            color: #888888;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+
+        .portfolio-description {
+            margin-top: 10px;
+
+            color: #777777;
+
+            font-size: 14px;
+
+            max-width: 650px;
+        }
+
+
+        /* =====================================================
+           EMPTY / LOADING
+        ====================================================== */
+
+        .portfolio-message {
+            grid-column: 1 / -1;
+
+            padding: 80px 20px;
+
+            text-align: center;
+
+            color: #888888;
+        }
+
+
+        .loading {
+            font-size: 14px;
+        }
+
+
+        .error-message {
+            color: #b3261e;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ====================================================== */
+
+        .about-section {
+            background: #111111;
+            color: white;
+        }
+
+
+        .about-inner {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 120px 35px;
+        }
+
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 80px;
+        }
+
+
+        .about-title {
+            font-size: 60px;
+            line-height: 1;
+
+            letter-spacing: -3px;
+        }
+
+
+        .about-text {
+            color: #bbbbbb;
+
+            font-size: 17px;
+
+            max-width: 600px;
+        }
+
+
+        .about-text p + p {
             margin-top: 20px;
         }
 
-        .modal-buttons .delete-modal {
-            background: #b3261e;
+
+        /* =====================================================
+           CONTACT
+        ====================================================== */
+
+        .contact-section {
+            max-width: 1400px;
+            margin: auto;
+
+            padding: 120px 35px;
         }
 
-        .modal-right-buttons {
+
+        .contact-section h2 {
+            font-size: 70px;
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .contact-link {
+            font-size: 18px;
+
+            border-bottom: 1px solid #111111;
+
+            padding-bottom: 5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+            border-top: 1px solid #eeeeee;
+
+            padding: 25px 35px;
+        }
+
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: auto;
+
             display: flex;
-            gap: 8px;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #777777;
+
+            font-size: 12px;
         }
 
-        .close-modal {
-            background: #777;
-        }
 
-
-        /* =========================
+        /* =====================================================
            RESPONSIVE
-        ========================= */
+        ====================================================== */
 
         @media (max-width: 800px) {
 
-            .year-calendar {
-                grid-template-columns: repeat(2, 1fr);
+            .header-inner {
+                padding: 18px 20px;
             }
 
-            .month-day {
-                min-height: 90px;
+
+            .nav {
+                gap: 12px;
             }
 
-        }
 
-        @media (max-width: 600px) {
-
-            main {
-                margin: 20px auto;
-                padding: 15px;
+            .nav a:not(.private-link) {
+                display: none;
             }
 
-            .section-header,
-            .documents-header {
-                align-items: flex-start;
+
+            .hero {
+                padding: 130px 20px 70px;
+            }
+
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+
+            .portfolio-section {
+                padding: 80px 20px;
+            }
+
+
+            .section-intro {
                 flex-direction: column;
+                align-items: flex-start;
             }
 
-            .year-calendar {
+
+            .section-intro h2 {
+                font-size: 40px;
+            }
+
+
+            .portfolio-grid {
                 grid-template-columns: 1fr;
+                gap: 50px;
             }
 
-            .calendar-toolbar {
-                align-items: stretch;
+
+            .about-inner {
+                padding: 80px 20px;
+            }
+
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
+            .about-title {
+                font-size: 48px;
+            }
+
+
+            .contact-section {
+                padding: 80px 20px;
+            }
+
+
+            .contact-section h2 {
+                font-size: 48px;
+            }
+
+
+            footer {
+                padding: 20px;
+            }
+
+
+            .footer-inner {
                 flex-direction: column;
-            }
-
-            #calendar-title {
-                min-width: auto;
-            }
-
-            .calendar-navigation {
-                justify-content: center;
-            }
-
-            .calendar-views {
-                justify-content: center;
-            }
-
-            .month-day {
-                min-height: 75px;
-                padding: 4px;
-            }
-
-            .calendar-event {
-                font-size: 9px;
-            }
-
-            .document {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .document-actions {
-                width: 100%;
-            }
-
-            .document-actions button {
-                flex: 1;
             }
 
         }
@@ -810,54 +559,86 @@
 
 
 <!-- =====================================================
-     LOGIN
+     HEADER
 ===================================================== -->
 
-<section id="login-screen">
+<header>
 
-    <div class="login-box">
+    <div class="header-inner">
 
-        <div class="logo">
 
-            <h1>MARCLASTRA</h1>
+        <a
+            href="#top"
+            class="logo"
+        >
+            MARCLASTRA
+        </a>
 
-            <p>
-                Private Management Portal
-            </p>
 
+        <nav class="nav">
+
+            <a href="#portfolio">
+                Portfolio
+            </a>
+
+            <a href="#about">
+                Sobre mí
+            </a>
+
+            <a href="#contact">
+                Contacto
+            </a>
+
+            <a
+                href="private.html"
+                class="private-link"
+            >
+                🔒 Private
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main id="top">
+
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-small">
+            Event Production · Management
         </div>
 
-        <form id="login-form">
 
-            <label for="email">
-                Email
-            </label>
+        <h1>
+            MARCLASTRA
+        </h1>
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Tu email"
-                required
-            >
 
-            <label for="password">
-                Contraseña
-            </label>
+        <p class="hero-description">
+            Producción, gestión y coordinación de eventos.
+            Un espacio para mostrar proyectos, experiencias
+            y trabajos realizados.
+        </p>
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Tu contraseña"
-                required
-            >
 
-            <button type="submit">
-                Entrar
-            </button>
-
-            <div id="error"></div>
-
-        </form>
+        <a
+            href="#portfolio"
+            class="hero-scroll"
+        >
+            Ver proyectos
+            ↓
+        </a>
 
     </div>
 
@@ -866,582 +647,149 @@
 
 
 <!-- =====================================================
-     PORTAL
+     PORTFOLIO
 ===================================================== -->
 
-<section id="portal">
+<section
+    id="portfolio"
+    class="portfolio-section"
+>
 
-    <header>
 
-        <div class="header-content">
+    <div class="section-intro">
 
-            <h1>
-                MARCLASTRA
-            </h1>
+        <h2>
+            Proyectos
+        </h2>
 
-            <button
-                id="logout"
-                class="logout"
-            >
-                Cerrar sesión
-            </button>
 
+        <p>
+            Una selección de eventos, producciones y proyectos
+            en los que he trabajado.
+        </p>
+
+    </div>
+
+
+    <div
+        id="portfolio-grid"
+        class="portfolio-grid"
+    >
+
+        <div class="portfolio-message loading">
+            Cargando proyectos...
         </div>
 
-    </header>
+    </div>
+
+</section>
 
 
-    <main>
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="about-section"
+>
+
+    <div class="about-inner">
 
 
-        <!-- =================================================
-             DASHBOARD
-        ================================================= -->
+        <div class="about-grid">
 
-        <section id="dashboard">
 
-            <div class="welcome">
+            <h2 class="about-title">
+                Sobre mí
+            </h2>
 
-                <h2>
-                    Bienvenido, Marc
-                </h2>
+
+            <div class="about-text">
 
                 <p>
-                    Este es tu espacio privado de gestión.
+                    Soy Marc Lastra, especializado en producción,
+                    organización y gestión de eventos.
+                </p>
+
+
+                <p>
+                    Este espacio reúne algunos de los proyectos
+                    y experiencias que forman parte de mi trayectoria
+                    profesional.
+                </p>
+
+
+                <p>
+                    Desde la planificación y coordinación hasta
+                    la ejecución del evento, me interesa especialmente
+                    que cada parte del proceso funcione.
                 </p>
 
             </div>
 
+        </div>
 
-            <section class="cards">
-
-
-                <!-- DOCUMENTOS -->
-
-                <div
-                    class="card"
-                    id="documents-card"
-                >
-
-                    <div class="icon">
-                        📄
-                    </div>
-
-                    <h3>
-                        Documentos
-                    </h3>
-
-                    <p>
-                        Accede a tus documentos privados.
-                    </p>
-
-                </div>
-
-
-                <!-- EVENTOS -->
-
-                <div
-                    class="card"
-                    id="events-card"
-                >
-
-                    <div class="icon">
-                        📅
-                    </div>
-
-                    <h3>
-                        Eventos
-                    </h3>
-
-                    <p>
-                        Calendario y organización de eventos.
-                    </p>
-
-                </div>
-
-            </section>
-
-        </section>
-
-
-
-        <!-- =================================================
-             EVENTOS / CALENDARIO
-        ================================================= -->
-
-        <section id="events-section">
-
-            <button
-                class="back-button"
-                id="events-back-button"
-            >
-                ← Volver
-            </button>
-
-
-            <div class="section-header">
-
-                <div>
-
-                    <h2>
-                        📅 Eventos
-                    </h2>
-
-                    <p>
-                        Organiza tu calendario y tus eventos.
-                    </p>
-
-                </div>
-
-
-                <button id="new-calendar-event-button">
-                    + Nuevo evento
-                </button>
-
-            </div>
-
-
-            <!-- CALENDARIO -->
-
-            <div class="calendar-container">
-
-                <div class="calendar-toolbar">
-
-
-                    <div class="calendar-navigation">
-
-                        <button id="previous-button">
-                            ‹
-                        </button>
-
-                        <button id="today-button">
-                            Hoy
-                        </button>
-
-                        <button id="next-button">
-                            ›
-                        </button>
-
-                    </div>
-
-
-                    <h2 id="calendar-title">
-                        2026
-                    </h2>
-
-
-                    <div class="calendar-views">
-
-                        <button
-                            data-view="year"
-                            class="calendar-view-button active"
-                        >
-                            Año
-                        </button>
-
-                        <button
-                            data-view="month"
-                            class="calendar-view-button"
-                        >
-                            Mes
-                        </button>
-
-                        <button
-                            data-view="week"
-                            class="calendar-view-button"
-                        >
-                            Semana
-                        </button>
-
-                        <button
-                            data-view="day"
-                            class="calendar-view-button"
-                        >
-                            Día
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div id="calendar"></div>
-
-            </div>
-
-
-            <!-- EVENTOS GRANDES -->
-
-            <h2 class="projects-title">
-                📁 Mis eventos
-            </h2>
-
-
-            <div
-                id="events-list"
-                class="cards"
-            >
-
-                <div class="empty">
-                    Cargando eventos...
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             CARPETAS DEL EVENTO
-        ================================================= -->
-
-        <section id="event-folders-section">
-
-            <button
-                class="back-button"
-                id="event-folders-back-button"
-            >
-                ← Volver
-            </button>
-
-
-            <div class="section-header">
-
-                <div>
-
-                    <h2 id="event-folders-title">
-                        📁 Evento
-                    </h2>
-
-                    <p>
-                        Selecciona una carpeta
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="cards">
-
-
-                <div
-                    class="card"
-                    data-folder="Contratos"
-                >
-
-                    <div class="icon">
-                        📑
-                    </div>
-
-                    <h3>
-                        Contratos
-                    </h3>
-
-                    <p>
-                        Contratos relacionados con este evento.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="card"
-                    data-folder="Facturas"
-                >
-
-                    <div class="icon">
-                        🧾
-                    </div>
-
-                    <h3>
-                        Facturas
-                    </h3>
-
-                    <p>
-                        Facturas del evento.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="card"
-                    data-folder="Presupuestos"
-                >
-
-                    <div class="icon">
-                        💰
-                    </div>
-
-                    <h3>
-                        Presupuestos
-                    </h3>
-
-                    <p>
-                        Presupuestos del evento.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="card"
-                    data-folder="Otros"
-                >
-
-                    <div class="icon">
-                        📂
-                    </div>
-
-                    <h3>
-                        Otros documentos
-                    </h3>
-
-                    <p>
-                        Otros documentos del evento.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             DOCUMENTOS
-        ================================================= -->
-
-        <section id="documents-section">
-
-            <button
-                class="back-button"
-                id="back-button"
-            >
-                ← Volver
-            </button>
-
-
-            <div class="documents-header">
-
-                <div>
-
-                    <h2 id="documents-title">
-                        📄 Documentos
-                    </h2>
-
-                    <p id="documents-subtitle">
-                        Tus documentos privados.
-                    </p>
-
-                </div>
-
-
-                <label
-                    for="upload-input"
-                    class="upload-label"
-                >
-                    ⬆️ Subir documento
-                </label>
-
-
-                <input
-                    type="file"
-                    id="upload-input"
-                >
-
-            </div>
-
-
-            <div id="documents-error"></div>
-
-
-            <div
-                class="document-list"
-                id="document-list"
-            >
-
-                <div class="empty">
-                    Cargando documentos...
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     MODAL CALENDARIO
+     CONTACTO
 ===================================================== -->
 
-<div
-    class="modal-overlay"
-    id="calendar-modal"
+<section
+    id="contact"
+    class="contact-section"
 >
 
-    <div class="modal">
-
-        <h2 id="modal-title">
-            Nuevo evento
-        </h2>
+    <h2>
+        ¿Trabajamos juntos?
+    </h2>
 
 
-        <div class="form-group">
+    <a
+        href="mailto:contacto@marclastra.com"
+        class="contact-link"
+    >
+        contacto@marclastra.com
+    </a>
 
-            <label for="event-title">
-                Título
-            </label>
-
-            <input
-                type="text"
-                id="event-title"
-                placeholder="Ej. Montaje Fiesta Mayor"
-            >
-
-        </div>
+</section>
 
 
-        <div class="form-group">
-
-            <label for="event-date">
-                Fecha
-            </label>
-
-            <input
-                type="date"
-                id="event-date"
-            >
-
-        </div>
+</main>
 
 
-        <div class="form-group">
 
-            <label for="event-start">
-                Hora de inicio
-            </label>
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-            <input
-                type="time"
-                id="event-start"
-            >
+<footer>
 
-        </div>
+    <div class="footer-inner">
 
-
-        <div class="form-group">
-
-            <label for="event-end">
-                Hora de final
-            </label>
-
-            <input
-                type="time"
-                id="event-end"
-            >
-
-        </div>
+        <span>
+            © 2026 MARCLASTRA
+        </span>
 
 
-        <div class="form-group">
-
-            <label for="event-place">
-                Lugar
-            </label>
-
-            <input
-                type="text"
-                id="event-place"
-                placeholder="Ej. Barcelona"
-            >
-
-        </div>
+        <span>
+            Event Production
+        </span>
 
 
-        <div class="form-group">
-
-            <label for="event-color">
-                Tipo
-            </label>
-
-            <select id="event-color">
-
-                <option value="green">
-                    🟢 Trabajo
-                </option>
-
-                <option value="red">
-                    🔴 Fiesta
-                </option>
-
-                <option value="gray">
-                    ⚪ Libre
-                </option>
-
-                <option value="blue">
-                    🔵 Otro
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="event-notes">
-                Notas
-            </label>
-
-            <textarea
-                id="event-notes"
-                placeholder="Notas del evento..."
-            ></textarea>
-
-        </div>
-
-
-        <div class="modal-buttons">
-
-            <button
-                id="delete-calendar-event-button"
-                class="delete-modal"
-                style="display:none;"
-            >
-                Eliminar
-            </button>
-
-
-            <div class="modal-right-buttons">
-
-                <button
-                    id="close-modal-button"
-                    class="close-modal"
-                >
-                    Cancelar
-                </button>
-
-                <button
-                    id="save-calendar-event-button"
-                >
-                    Guardar
-                </button>
-
-            </div>
-
-        </div>
+        <a href="private.html">
+            Private Area →
+        </a>
 
     </div>
 
-</div>
+</footer>
 
 
 
@@ -1474,291 +822,51 @@ const supabaseClient =
 ===================================================== */
 
 
-const loginScreen =
-    document.getElementById("login-screen");
-
-
-const portal =
-    document.getElementById("portal");
-
-
-const dashboard =
-    document.getElementById("dashboard");
-
-
-const eventsSection =
-    document.getElementById("events-section");
-
-
-const eventFoldersSection =
-    document.getElementById("event-folders-section");
-
-
-const eventFoldersTitle =
-    document.getElementById("event-folders-title");
-
-
-const documentsSection =
-    document.getElementById("documents-section");
-
-
-const loginForm =
-    document.getElementById("login-form");
-
-
-const errorElement =
-    document.getElementById("error");
-
-
-const eventsList =
-    document.getElementById("events-list");
-
-
-const documentsError =
-    document.getElementById("documents-error");
-
-
-const documentList =
-    document.getElementById("document-list");
-
-
-const uploadInput =
-    document.getElementById("upload-input");
-
-
-const calendar =
-    document.getElementById("calendar");
-
-
-const calendarTitle =
-    document.getElementById("calendar-title");
-
-
-const calendarModal =
-    document.getElementById("calendar-modal");
-
-
-const eventTitleInput =
-    document.getElementById("event-title");
-
-
-const eventDateInput =
-    document.getElementById("event-date");
-
-
-const eventStartInput =
-    document.getElementById("event-start");
-
-
-const eventEndInput =
-    document.getElementById("event-end");
-
-
-const eventPlaceInput =
-    document.getElementById("event-place");
-
-
-const eventColorInput =
-    document.getElementById("event-color");
-
-
-const eventNotesInput =
-    document.getElementById("event-notes");
-
-
-const saveCalendarEventButton =
+const portfolioGrid =
     document.getElementById(
-        "save-calendar-event-button"
-    );
-
-
-const deleteCalendarEventButton =
-    document.getElementById(
-        "delete-calendar-event-button"
-    );
-
-
-const closeModalButton =
-    document.getElementById(
-        "close-modal-button"
-    );
-
-
-let currentEvent = null;
-
-let editingCalendarEventId = null;
-
-let calendarEvents = [];
-
-let currentCalendarDate = new Date();
-
-let currentCalendarView = "year";
-
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-
-loginForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-        errorElement.textContent = "";
-
-        const email =
-            document
-                .getElementById("email")
-                .value
-                .trim();
-
-        const password =
-            document
-                .getElementById("password")
-                .value;
-
-
-        const {
-            error: loginError
-        } =
-            await supabaseClient
-                .auth
-                .signInWithPassword({
-
-                    email: email,
-
-                    password: password
-
-                });
-
-
-        if (loginError) {
-
-            errorElement.textContent =
-                "Email o contraseña incorrectos.";
-
-            return;
-
-        }
-
-
-        showPortal();
-
-    }
-);
-
-
-
-/* =====================================================
-   MOSTRAR PORTAL
-===================================================== */
-
-
-function showPortal() {
-
-    loginScreen.style.display =
-        "none";
-
-    portal.style.display =
-        "block";
-
-}
-
-
-
-/* =====================================================
-   CERRAR SESIÓN
-===================================================== */
-
-
-document
-    .getElementById("logout")
-    .addEventListener(
-        "click",
-        async function() {
-
-            await supabaseClient
-                .auth
-                .signOut();
-
-            eventsSection.style.display =
-                "none";
-
-            eventFoldersSection.style.display =
-                "none";
-
-            documentsSection.style.display =
-                "none";
-
-            dashboard.style.display =
-                "block";
-
-            portal.style.display =
-                "none";
-
-            loginScreen.style.display =
-                "flex";
-
-        }
+        "portfolio-grid"
     );
 
 
 
 /* =====================================================
-   ABRIR EVENTOS
+   CARGAR PORTFOLIO
 ===================================================== */
 
 
-document
-    .getElementById("events-card")
-    .addEventListener(
-        "click",
-        async function() {
+async function loadPortfolio() {
 
-            dashboard.style.display =
-                "none";
-
-            documentsSection.style.display =
-                "none";
-
-            eventFoldersSection.style.display =
-                "none";
-
-            eventsSection.style.display =
-                "block";
-
-            await loadCalendarEvents();
-
-            await loadEvents();
-
-            renderCalendar();
-
-        }
-    );
+    portfolioGrid.innerHTML =
+        `
+        <div class="portfolio-message loading">
+            Cargando proyectos...
+        </div>
+        `;
 
 
+    /*
+     * IMPORTANTE:
+     *
+     * Se buscan únicamente los proyectos
+     * marcados como públicos.
+     */
 
-/* =====================================================
-   CALENDARIO
-===================================================== */
-
-
-async function loadCalendarEvents() {
 
     const {
         data,
         error
     } =
         await supabaseClient
-            .from("calendario_eventos")
+            .from("portfolio")
             .select("*")
+            .eq(
+                "publicado",
+                true
+            )
             .order(
-                "fecha",
+                "created_at",
                 {
-                    ascending: true
+                    ascending: false
                 }
             );
 
@@ -1766,2261 +874,49 @@ async function loadCalendarEvents() {
     if (error) {
 
         console.error(
-            "Error cargando calendario:",
+            "Error cargando portfolio:",
             error
         );
 
-        calendarEvents = [];
 
-        return;
-
-    }
-
-
-    calendarEvents =
-        data || [];
-
-}
-
-
-
-function formatDateKey(date) {
-
-    const year =
-        date.getFullYear();
-
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(2, "0");
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(2, "0");
-
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
-    );
-
-}
-
-
-
-function parseDate(dateString) {
-
-    const parts =
-        dateString.split("-");
-
-    return new Date(
-        Number(parts[0]),
-        Number(parts[1]) - 1,
-        Number(parts[2])
-    );
-
-}
-
-
-
-function getMonthName(date) {
-
-    return date.toLocaleDateString(
-        "es-ES",
-        {
-            month: "long"
-        }
-    );
-
-}
-
-
-
-function getEventsForDate(date) {
-
-    const key =
-        formatDateKey(date);
-
-    return calendarEvents.filter(
-        function(evento) {
-
-            return evento.fecha === key;
-
-        }
-    );
-
-}
-
-
-
-function eventColorClass(color) {
-
-    if (color === "red") {
-        return "event-red";
-    }
-
-    if (color === "gray") {
-        return "event-gray";
-    }
-
-    if (color === "blue") {
-        return "event-blue";
-    }
-
-    return "event-green";
-
-}
-
-
-
-function renderCalendar() {
-
-    if (currentCalendarView === "year") {
-
-        renderYear();
-
-    }
-
-    if (currentCalendarView === "month") {
-
-        renderMonth();
-
-    }
-
-    if (currentCalendarView === "week") {
-
-        renderWeek();
-
-    }
-
-    if (currentCalendarView === "day") {
-
-        renderDay();
-
-    }
-
-}
-
-
-
-function renderYear() {
-
-    const year =
-        currentCalendarDate.getFullYear();
-
-    calendarTitle.textContent =
-        String(year);
-
-
-    calendar.innerHTML = "";
-
-    const yearContainer =
-        document.createElement("div");
-
-    yearContainer.className =
-        "year-calendar";
-
-
-    for (
-        let month = 0;
-        month < 12;
-        month++
-    ) {
-
-        const monthBox =
-            document.createElement("div");
-
-        monthBox.className =
-            "mini-month";
-
-
-        const monthDate =
-            new Date(
-                year,
-                month,
-                1
-            );
-
-
-        const title =
-            document.createElement("div");
-
-        title.className =
-            "mini-month-title";
-
-        title.textContent =
-            monthDate.toLocaleDateString(
-                "es-ES",
-                {
-                    month: "long"
-                }
-            );
-
-
-        monthBox.appendChild(title);
-
-
-        const weekdays =
-            document.createElement("div");
-
-        weekdays.className =
-            "mini-weekdays";
-
-
-        [
-            "L",
-            "M",
-            "X",
-            "J",
-            "V",
-            "S",
-            "D"
-        ].forEach(
-            function(day) {
-
-                const element =
-                    document.createElement("div");
-
-                element.className =
-                    "mini-weekday";
-
-                element.textContent =
-                    day;
-
-                weekdays.appendChild(element);
-
-            }
-        );
-
-
-        monthBox.appendChild(
-            weekdays
-        );
-
-
-        const days =
-            document.createElement("div");
-
-        days.className =
-            "mini-days";
-
-
-        const firstDay =
-            new Date(
-                year,
-                month,
-                1
-            );
-
-
-        let startingDay =
-            firstDay.getDay();
-
-        startingDay =
-            startingDay === 0
-                ? 6
-                : startingDay - 1;
-
-
-        for (
-            let i = 0;
-            i < startingDay;
-            i++
-        ) {
-
-            const empty =
-                document.createElement("div");
-
-            days.appendChild(empty);
-
-        }
-
-
-        const daysInMonth =
-            new Date(
-                year,
-                month + 1,
-                0
-            ).getDate();
-
-
-        for (
-            let day = 1;
-            day <= daysInMonth;
-            day++
-        ) {
-
-            const date =
-                new Date(
-                    year,
-                    month,
-                    day
-                );
-
-
-            const element =
-                document.createElement("div");
-
-            element.className =
-                "mini-day";
-
-            element.textContent =
-                day;
-
-
-            const events =
-                getEventsForDate(date);
-
-
-            if (events.length > 0) {
-
-                element.classList.add(
-                    "has-event"
-                );
-
-                element.classList.add(
-                    eventColorClass(
-                        events[0].color
-                    )
-                );
-
-            }
-
-
-            if (
-                formatDateKey(date) ===
-                formatDateKey(new Date())
-            ) {
-
-                element.classList.add(
-                    "today"
-                );
-
-            }
-
-
-            element.addEventListener(
-                "click",
-                function() {
-
-                    openCalendarModal(
-                        formatDateKey(date)
-                    );
-
-                }
-            );
-
-
-            days.appendChild(element);
-
-        }
-
-
-        monthBox.appendChild(days);
-
-        yearContainer.appendChild(
-            monthBox
-        );
-
-    }
-
-
-    calendar.appendChild(
-        yearContainer
-    );
-
-}
-
-
-
-function renderMonth() {
-
-    const year =
-        currentCalendarDate.getFullYear();
-
-    const month =
-        currentCalendarDate.getMonth();
-
-
-    calendarTitle.textContent =
-        currentCalendarDate.toLocaleDateString(
-            "es-ES",
-            {
-                month: "long",
-                year: "numeric"
-            }
-        );
-
-
-    calendar.innerHTML = "";
-
-
-    const container =
-        document.createElement("div");
-
-    container.className =
-        "month-calendar";
-
-
-    [
-        "Lunes",
-        "Martes",
-        "Miércoles",
-        "Jueves",
-        "Viernes",
-        "Sábado",
-        "Domingo"
-    ].forEach(
-        function(day) {
-
-            const element =
-                document.createElement("div");
-
-            element.className =
-                "month-weekday";
-
-            element.textContent =
-                day.substring(0, 3);
-
-            container.appendChild(element);
-
-        }
-    );
-
-
-    const firstDay =
-        new Date(
-            year,
-            month,
-            1
-        );
-
-
-    let startingDay =
-        firstDay.getDay();
-
-    startingDay =
-        startingDay === 0
-            ? 6
-            : startingDay - 1;
-
-
-    const daysInMonth =
-        new Date(
-            year,
-            month + 1,
-            0
-        ).getDate();
-
-
-    const previousMonthDays =
-        new Date(
-            year,
-            month,
-            0
-        ).getDate();
-
-
-    for (
-        let i = startingDay - 1;
-        i >= 0;
-        i--
-    ) {
-
-        const date =
-            new Date(
-                year,
-                month - 1,
-                previousMonthDays - i
-            );
-
-        createMonthDay(
-            container,
-            date,
-            true
-        );
-
-    }
-
-
-    for (
-        let day = 1;
-        day <= daysInMonth;
-        day++
-    ) {
-
-        const date =
-            new Date(
-                year,
-                month,
-                day
-            );
-
-        createMonthDay(
-            container,
-            date,
-            false
-        );
-
-    }
-
-
-    const totalCells =
-        Math.ceil(
-            container.children.length / 7
-        ) * 7;
-
-
-    let nextDay = 1;
-
-
-    while (
-        container.children.length <
-        totalCells
-    ) {
-
-        const date =
-            new Date(
-                year,
-                month + 1,
-                nextDay++
-            );
-
-        createMonthDay(
-            container,
-            date,
-            true
-        );
-
-    }
-
-
-    calendar.appendChild(
-        container
-    );
-
-}
-
-
-
-function createMonthDay(
-    container,
-    date,
-    otherMonth
-) {
-
-    const element =
-        document.createElement("div");
-
-    element.className =
-        "month-day";
-
-
-    if (otherMonth) {
-
-        element.classList.add(
-            "other-month"
-        );
-
-    }
-
-
-    if (
-        formatDateKey(date) ===
-        formatDateKey(new Date())
-    ) {
-
-        element.classList.add(
-            "today"
-        );
-
-    }
-
-
-    const number =
-        document.createElement("div");
-
-    number.className =
-        "day-number";
-
-    number.textContent =
-        date.getDate();
-
-
-    element.appendChild(number);
-
-
-    const events =
-        getEventsForDate(date);
-
-
-    events.forEach(
-        function(evento) {
-
-            const eventElement =
-                createCalendarEventElement(
-                    evento
-                );
-
-            element.appendChild(
-                eventElement
-            );
-
-        }
-    );
-
-
-    element.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target.classList.contains(
-                    "calendar-event"
-                )
-            ) {
-
-                return;
-
-            }
-
-            openCalendarModal(
-                formatDateKey(date)
-            );
-
-        }
-    );
-
-
-    container.appendChild(
-        element
-    );
-
-}
-
-
-
-function createCalendarEventElement(
-    evento
-) {
-
-    const element =
-        document.createElement("div");
-
-    element.className =
-        "calendar-event " +
-        eventColorClass(
-            evento.color
-        );
-
-
-    let text =
-        evento.titulo;
-
-
-    if (evento.horario_inicio) {
-
-        text =
-            evento.horario_inicio +
-            " · " +
-            text;
-
-    }
-
-
-    element.textContent =
-        text;
-
-
-    element.title =
-        evento.titulo;
-
-
-    element.addEventListener(
-        "click",
-        function(event) {
-
-            event.stopPropagation();
-
-            openCalendarModal(
-                evento.fecha,
-                evento
-            );
-
-        }
-    );
-
-
-    return element;
-
-}
-
-
-
-function getMonday(date) {
-
-    const result =
-        new Date(date);
-
-    const day =
-        result.getDay();
-
-    const difference =
-        day === 0
-            ? -6
-            : 1 - day;
-
-    result.setDate(
-        result.getDate() + difference
-    );
-
-    return result;
-
-}
-
-
-
-function renderWeek() {
-
-    const monday =
-        getMonday(
-            currentCalendarDate
-        );
-
-
-    const sunday =
-        new Date(monday);
-
-    sunday.setDate(
-        sunday.getDate() + 6
-    );
-
-
-    calendarTitle.textContent =
-        monday.toLocaleDateString(
-            "es-ES",
-            {
-                day: "numeric",
-                month: "short"
-            }
-        ) +
-        " – " +
-        sunday.toLocaleDateString(
-            "es-ES",
-            {
-                day: "numeric",
-                month: "short",
-                year: "numeric"
-            }
-        );
-
-
-    calendar.innerHTML = "";
-
-
-    const container =
-        document.createElement("div");
-
-    container.className =
-        "week-calendar";
-
-
-    container.appendChild(
-        document.createElement("div")
-    );
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        const date =
-            new Date(monday);
-
-        date.setDate(
-            monday.getDate() + i
-        );
-
-
-        const header =
-            document.createElement("div");
-
-        header.className =
-            "week-header";
-
-        header.textContent =
-            date.toLocaleDateString(
-                "es-ES",
-                {
-                    weekday: "short",
-                    day: "numeric"
-                }
-            );
-
-
-        container.appendChild(
-            header
-        );
-
-    }
-
-
-    for (
-        let hour = 0;
-        hour < 24;
-        hour++
-    ) {
-
-        const time =
-            document.createElement("div");
-
-        time.className =
-            "week-time";
-
-        time.textContent =
-            String(hour).padStart(2, "0") +
-            ":00";
-
-
-        container.appendChild(
-            time
-        );
-
-
-        for (
-            let day = 0;
-            day < 7;
-            day++
-        ) {
-
-            const date =
-                new Date(monday);
-
-            date.setDate(
-                monday.getDate() + day
-            );
-
-
-            const cell =
-                document.createElement("div");
-
-            cell.className =
-                "week-cell";
-
-
-            const events =
-                getEventsForDate(date);
-
-
-            events
-                .filter(
-                    function(evento) {
-
-                        if (
-                            !evento.horario_inicio
-                        ) {
-
-                            return hour === 0;
-
-                        }
-
-                        return (
-                            parseInt(
-                                evento.horario_inicio
-                            ) === hour
-                        );
-
-                    }
-                )
-                .forEach(
-                    function(evento) {
-
-                        cell.appendChild(
-                            createCalendarEventElement(
-                                evento
-                            )
-                        );
-
-                    }
-                );
-
-
-            cell.addEventListener(
-                "click",
-                function() {
-
-                    openCalendarModal(
-                        formatDateKey(date)
-                    );
-
-                }
-            );
-
-
-            container.appendChild(cell);
-
-        }
-
-    }
-
-
-    calendar.appendChild(
-        container
-    );
-
-}
-
-
-
-function renderDay() {
-
-    const date =
-        currentCalendarDate;
-
-
-    calendarTitle.textContent =
-        date.toLocaleDateString(
-            "es-ES",
-            {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        );
-
-
-    calendar.innerHTML = "";
-
-
-    const container =
-        document.createElement("div");
-
-    container.className =
-        "day-calendar";
-
-
-    for (
-        let hour = 0;
-        hour < 24;
-        hour++
-    ) {
-
-        const time =
-            document.createElement("div");
-
-        time.className =
-            "day-time";
-
-        time.textContent =
-            String(hour).padStart(2, "0") +
-            ":00";
-
-
-        container.appendChild(
-            time
-        );
-
-
-        const cell =
-            document.createElement("div");
-
-        cell.className =
-            "day-cell";
-
-
-        const events =
-            getEventsForDate(date);
-
-
-        events
-            .filter(
-                function(evento) {
-
-                    if (
-                        !evento.horario_inicio
-                    ) {
-
-                        return hour === 0;
-
-                    }
-
-                    return (
-                        parseInt(
-                            evento.horario_inicio
-                        ) === hour
-                    );
-
-                }
-            )
-            .forEach(
-                function(evento) {
-
-                    cell.appendChild(
-                        createCalendarEventElement(
-                            evento
-                        )
-                    );
-
-                }
-            );
-
-
-        cell.addEventListener(
-            "click",
-            function() {
-
-                openCalendarModal(
-                    formatDateKey(date)
-                );
-
-            }
-        );
-
-
-        container.appendChild(
-            cell
-        );
-
-    }
-
-
-    calendar.appendChild(
-        container
-    );
-
-}
-
-
-
-/* =====================================================
-   NAVEGACIÓN CALENDARIO
-===================================================== */
-
-
-document
-    .getElementById("previous-button")
-    .addEventListener(
-        "click",
-        function() {
-
-            if (
-                currentCalendarView === "year"
-            ) {
-
-                currentCalendarDate.setFullYear(
-                    currentCalendarDate.getFullYear() - 1
-                );
-
-            }
-
-            else if (
-                currentCalendarView === "month"
-            ) {
-
-                currentCalendarDate.setMonth(
-                    currentCalendarDate.getMonth() - 1
-                );
-
-            }
-
-            else if (
-                currentCalendarView === "week"
-            ) {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() - 7
-                );
-
-            }
-
-            else {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() - 1
-                );
-
-            }
-
-            renderCalendar();
-
-        }
-    );
-
-
-
-document
-    .getElementById("next-button")
-    .addEventListener(
-        "click",
-        function() {
-
-            if (
-                currentCalendarView === "year"
-            ) {
-
-                currentCalendarDate.setFullYear(
-                    currentCalendarDate.getFullYear() + 1
-                );
-
-            }
-
-            else if (
-                currentCalendarView === "month"
-            ) {
-
-                currentCalendarDate.setMonth(
-                    currentCalendarDate.getMonth() + 1
-                );
-
-            }
-
-            else if (
-                currentCalendarView === "week"
-            ) {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() + 7
-                );
-
-            }
-
-            else {
-
-                currentCalendarDate.setDate(
-                    currentCalendarDate.getDate() + 1
-                );
-
-            }
-
-            renderCalendar();
-
-        }
-    );
-
-
-
-document
-    .getElementById("today-button")
-    .addEventListener(
-        "click",
-        function() {
-
-            currentCalendarDate =
-                new Date();
-
-            renderCalendar();
-
-        }
-    );
-
-
-
-document
-    .querySelectorAll(
-        ".calendar-view-button"
-    )
-    .forEach(
-        function(button) {
-
-            button.addEventListener(
-                "click",
-                function() {
-
-                    currentCalendarView =
-                        button.dataset.view;
-
-
-                    document
-                        .querySelectorAll(
-                            ".calendar-view-button"
-                        )
-                        .forEach(
-                            function(other) {
-
-                                other.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                    button.classList.add(
-                        "active"
-                    );
-
-
-                    renderCalendar();
-
-                }
-            );
-
-        }
-    );
-
-
-
-/* =====================================================
-   MODAL CALENDARIO
-===================================================== */
-
-
-function openCalendarModal(
-    dateString,
-    evento = null
-) {
-
-    editingCalendarEventId =
-        evento
-            ? evento.id
-            : null;
-
-
-    document.getElementById(
-        "modal-title"
-    ).textContent =
-        evento
-            ? "Editar evento"
-            : "Nuevo evento";
-
-
-    eventTitleInput.value =
-        evento
-            ? evento.titulo || ""
-            : "";
-
-
-    eventDateInput.value =
-        evento
-            ? evento.fecha
-            : dateString;
-
-
-    eventStartInput.value =
-        evento
-            ? evento.horario_inicio || ""
-            : "";
-
-
-    eventEndInput.value =
-        evento
-            ? evento.hora_fin || ""
-            : "";
-
-
-    eventPlaceInput.value =
-        evento
-            ? evento.lugar || ""
-            : "";
-
-
-    eventColorInput.value =
-        evento
-            ? evento.color || "green"
-            : "green";
-
-
-    eventNotesInput.value =
-        evento
-            ? evento.notas || ""
-            : "";
-
-
-    deleteCalendarEventButton.style.display =
-        evento
-            ? "block"
-            : "none";
-
-
-    calendarModal.style.display =
-        "flex";
-
-
-    setTimeout(
-        function() {
-
-            eventTitleInput.focus();
-
-        },
-        50
-    );
-
-}
-
-
-
-function closeCalendarModal() {
-
-    calendarModal.style.display =
-        "none";
-
-    editingCalendarEventId =
-        null;
-
-}
-
-
-
-closeModalButton.addEventListener(
-    "click",
-    closeCalendarModal
-);
-
-
-
-calendarModal.addEventListener(
-    "click",
-    function(event) {
-
-        if (
-            event.target ===
-            calendarModal
-        ) {
-
-            closeCalendarModal();
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
-   NUEVO EVENTO CALENDARIO
-===================================================== */
-
-
-document
-    .getElementById(
-        "new-calendar-event-button"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            openCalendarModal(
-                formatDateKey(
-                    currentCalendarDate
-                )
-            );
-
-        }
-    );
-
-
-
-/* =====================================================
-   GUARDAR EVENTO CALENDARIO
-===================================================== */
-
-
-saveCalendarEventButton.addEventListener(
-    "click",
-    async function() {
-
-        const titulo =
-            eventTitleInput.value.trim();
-
-
-        const fecha =
-            eventDateInput.value;
-
-
-        if (!titulo) {
-
-            alert(
-                "Escribe un título para el evento."
-            );
-
-            return;
-
-        }
-
-
-        if (!fecha) {
-
-            alert(
-                "Selecciona una fecha."
-            );
-
-            return;
-
-        }
-
-
-        const {
-            data: sessionData
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
-
-
-        const user =
-            sessionData.session?.user;
-
-
-        if (!user) {
-
-            alert(
-                "Tu sesión ha caducado. Vuelve a iniciar sesión."
-            );
-
-            return;
-
-        }
-
-
-        const eventData = {
-
-            user_id: user.id,
-
-            titulo: titulo,
-
-            fecha: fecha,
-
-            horario_inicio:
-                eventStartInput.value || null,
-
-            hora_fin:
-                eventEndInput.value || null,
-
-            lugar:
-                eventPlaceInput.value.trim() || null,
-
-            notas:
-                eventNotesInput.value.trim() || null,
-
-            color:
-                eventColorInput.value
-
-        };
-
-
-        let result;
-
-
-        if (editingCalendarEventId) {
-
-            result =
-                await supabaseClient
-                    .from("calendario_eventos")
-                    .update(eventData)
-                    .eq(
-                        "id",
-                        editingCalendarEventId
-                    );
-
-        }
-
-        else {
-
-            result =
-                await supabaseClient
-                    .from("calendario_eventos")
-                    .insert(
-                        eventData
-                    );
-
-        }
-
-
-        if (result.error) {
-
-            console.error(
-                result.error
-            );
-
-            alert(
-                "No se ha podido guardar el evento."
-            );
-
-            return;
-
-        }
-
-
-        closeCalendarModal();
-
-        await loadCalendarEvents();
-
-        renderCalendar();
-
-    }
-);
-
-
-
-/* =====================================================
-   ELIMINAR EVENTO CALENDARIO
-===================================================== */
-
-
-deleteCalendarEventButton.addEventListener(
-    "click",
-    async function() {
-
-        if (!editingCalendarEventId) {
-
-            return;
-
-        }
-
-
-        const confirmed =
-            confirm(
-                "¿Seguro que quieres eliminar este evento?"
-            );
-
-
-        if (!confirmed) {
-
-            return;
-
-        }
-
-
-        const {
-            error
-        } =
-            await supabaseClient
-                .from("calendario_eventos")
-                .delete()
-                .eq(
-                    "id",
-                    editingCalendarEventId
-                );
-
-
-        if (error) {
-
-            console.error(error);
-
-            alert(
-                "No se ha podido eliminar el evento."
-            );
-
-            return;
-
-        }
-
-
-        closeCalendarModal();
-
-        await loadCalendarEvents();
-
-        renderCalendar();
-
-    }
-);
-
-
-
-/* =====================================================
-   ABRIR EVENTO GRANDE
-===================================================== */
-
-
-async function openEventFolders(evento) {
-
-    eventsSection.style.display =
-        "none";
-
-    documentsSection.style.display =
-        "none";
-
-    eventFoldersSection.style.display =
-        "block";
-
-    currentEvent =
-        evento;
-
-
-    eventFoldersTitle.textContent =
-        "📁 " + evento.nombre;
-
-
-    await loadEventFolders(
-        evento.id
-    );
-
-}
-
-
-
-async function loadEventFolders(
-    eventoId
-) {
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("evento_carpetas")
-            .select("*")
-            .eq(
-                "evento_id",
-                eventoId
-            )
-            .order(
-                "nombre"
-            );
-
-
-    if (error) {
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    const folderCards =
-        eventFoldersSection
-            .querySelectorAll(
-                "[data-folder]"
-            );
-
-
-    for (
-        const card of folderCards
-    ) {
-
-        const folderName =
-            card.dataset.folder;
-
-
-        const existingFolder =
-            (data || []).find(
-                function(folder) {
-
-                    return (
-                        folder.nombre ===
-                        folderName
-                    );
-
-                }
-            );
-
-
-        if (!existingFolder) {
-
-            const {
-                error: insertError
-            } =
-                await supabaseClient
-                    .from("evento_carpetas")
-                    .insert({
-
-                        evento_id:
-                            eventoId,
-
-                        nombre:
-                            folderName
-
-                    });
-
-
-            if (insertError) {
-
-                console.error(
-                    insertError
-                );
-
-            }
-
-        }
-
-    }
-
-}
-
-
-
-/* =====================================================
-   ABRIR CARPETA
-===================================================== */
-
-
-eventFoldersSection
-    .querySelectorAll(
-        "[data-folder]"
-    )
-    .forEach(
-        function(card) {
-
-            card.addEventListener(
-                "click",
-                function() {
-
-                    openEventFolder(
-                        card.dataset.folder
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-
-async function openEventFolder(
-    folderName
-) {
-
-    if (!currentEvent) {
-
-        return;
-
-    }
-
-
-    eventFoldersSection.style.display =
-        "none";
-
-    documentsSection.style.display =
-        "block";
-
-
-    document.getElementById(
-        "documents-title"
-    ).textContent =
-        "📁 " + folderName;
-
-
-    document.getElementById(
-        "documents-subtitle"
-    ).textContent =
-        currentEvent.nombre;
-
-
-    await loadEventDocuments(
-        currentEvent.id,
-        folderName
-    );
-
-}
-
-
-
-/* =====================================================
-   VOLVER DESDE EVENTOS
-===================================================== */
-
-
-document
-    .getElementById(
-        "events-back-button"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            eventsSection.style.display =
-                "none";
-
-            dashboard.style.display =
-                "block";
-
-        }
-    );
-
-
-
-/* =====================================================
-   VOLVER DESDE CARPETAS
-===================================================== */
-
-
-document
-    .getElementById(
-        "event-folders-back-button"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            eventFoldersSection.style.display =
-                "none";
-
-            eventsSection.style.display =
-                "block";
-
-            loadEvents();
-
-        }
-    );
-
-
-
-/* =====================================================
-   CARGAR EVENTOS GRANDES
-===================================================== */
-
-
-async function loadEvents() {
-
-    eventsList.innerHTML =
-        '<div class="empty">Cargando eventos...</div>';
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("eventos")
-            .select("*")
-            .order(
-                "fecha",
-                {
-                    ascending: true
-                }
-            );
-
-
-    if (error) {
-
-        eventsList.innerHTML =
-            '<div class="empty">No se han podido cargar los eventos.</div>';
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    if (
-        !data ||
-        data.length === 0
-    ) {
-
-        eventsList.innerHTML =
-            '<div class="empty">Todavía no tienes eventos.</div>';
-
-        return;
-
-    }
-
-
-    eventsList.innerHTML =
-        "";
-
-
-    data.forEach(
-        function(evento) {
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "event-card";
-
-
-            const date =
-                evento.fecha
-                    ? new Date(
-                        evento.fecha +
-                        "T00:00:00"
-                    ).toLocaleDateString(
-                        "es-ES",
-                        {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric"
-                        }
-                    )
-                    : "Sin fecha";
-
-
-            card.innerHTML = `
-
-                <div class="event-icon">
-                    📁
-                </div>
-
-                <h3>
-                    ${escapeHtml(
-                        evento.nombre
-                    )}
-                </h3>
-
-                <p>
-                    ${date}
-                </p>
-
+        portfolioGrid.innerHTML =
+            `
+            <div class="portfolio-message error-message">
+                No se han podido cargar los proyectos.
+            </div>
             `;
 
-
-            card.addEventListener(
-                "click",
-                function() {
-
-                    openEventFolders(
-                        evento
-                    );
-
-                }
-            );
-
-
-            eventsList.appendChild(
-                card
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   CREAR EVENTO GRANDE
-===================================================== */
-
-
-document
-    .getElementById(
-        "new-calendar-event-button"
-    );
-
-
-
-/* =====================================================
-   DOCUMENTOS
-===================================================== */
-
-
-document
-    .getElementById(
-        "documents-card"
-    )
-    .addEventListener(
-        "click",
-        async function() {
-
-            dashboard.style.display =
-                "none";
-
-            eventsSection.style.display =
-                "none";
-
-            eventFoldersSection.style.display =
-                "none";
-
-            documentsSection.style.display =
-                "block";
-
-
-            document.getElementById(
-                "documents-title"
-            ).textContent =
-                "📄 Documentos";
-
-
-            document.getElementById(
-                "documents-subtitle"
-            ).textContent =
-                "Tus documentos privados.";
-
-
-            await loadDocuments();
-
-        }
-    );
-
-
-
-/* =====================================================
-   DOCUMENTOS PRINCIPALES
-===================================================== */
-
-
-async function loadDocuments() {
-
-    documentsError.textContent =
-        "";
-
-
-    documentList.innerHTML =
-        '<div class="empty">Cargando documentos...</div>';
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from("Documentos")
-            .list(
-                "",
-                {
-                    sortBy: {
-                        column: "created_at",
-                        order: "desc"
-                    }
-                }
-            );
-
-
-    if (error) {
-
-        documentsError.textContent =
-            "No se han podido cargar los documentos.";
-
-        documentList.innerHTML =
-            '<div class="empty">Error al cargar los documentos.</div>';
-
-        console.error(error);
-
         return;
 
     }
 
-
-    renderDocumentList(
-        data || [],
-        "",
-        "Documentos"
-    );
-
-}
-
-
-
-async function loadEventDocuments(
-    eventoId,
-    folderName
-) {
-
-    documentsError.textContent =
-        "";
-
-
-    documentList.innerHTML =
-        '<div class="empty">Cargando documentos...</div>';
-
-
-    const path =
-        eventoId +
-        "/" +
-        folderName;
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from("Documentos")
-            .list(
-                path,
-                {
-                    sortBy: {
-                        column: "created_at",
-                        order: "desc"
-                    }
-                }
-            );
-
-
-    if (error) {
-
-        documentsError.textContent =
-            "No se han podido cargar los documentos.";
-
-        documentList.innerHTML =
-            '<div class="empty">Error al cargar los documentos.</div>';
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    renderDocumentList(
-        data || [],
-        path,
-        folderName
-    );
-
-}
-
-
-
-function renderDocumentList(
-    data,
-    path,
-    displayName
-) {
 
     if (
         !data ||
         data.length === 0
     ) {
 
-        documentList.innerHTML =
-            '<div class="empty">Todavía no hay documentos.</div>';
+        portfolioGrid.innerHTML =
+            `
+            <div class="portfolio-message">
+                Todavía no hay proyectos publicados.
+            </div>
+            `;
 
         return;
 
     }
 
 
-    documentList.innerHTML =
+    portfolioGrid.innerHTML =
         "";
 
 
     data.forEach(
-        function(file) {
+        function(project) {
 
-            if (!file.name) {
-
-                return;
-
-            }
-
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-
-            row.className =
-                "document";
-
-
-            const name =
-                document.createElement(
-                    "div"
-                );
-
-
-            name.className =
-                "document-name";
-
-
-            name.innerHTML =
-                `
-                <span class="document-icon">
-                    📄
-                </span>
-
-                <span>
-                    ${escapeHtml(
-                        file.name
-                    )}
-                </span>
-                `;
-
-
-            const actions =
-                document.createElement(
-                    "div"
-                );
-
-
-            actions.className =
-                "document-actions";
-
-
-            const viewButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            viewButton.className =
-                "view-button";
-
-            viewButton.textContent =
-                "👁️ Ver";
-
-
-            viewButton.addEventListener(
-                "click",
-                function() {
-
-                    openDocument(
-                        path
-                            ? path +
-                              "/" +
-                              file.name
-                            : file.name
-                    );
-
-                }
-            );
-
-
-            const deleteButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            deleteButton.className =
-                "delete-button";
-
-            deleteButton.textContent =
-                "🗑️ Eliminar";
-
-
-            deleteButton.addEventListener(
-                "click",
-                function() {
-
-                    deleteDocument(
-                        path
-                            ? path +
-                              "/" +
-                              file.name
-                            : file.name
-                    );
-
-                }
-            );
-
-
-            actions.appendChild(
-                viewButton
-            );
-
-            actions.appendChild(
-                deleteButton
-            );
-
-
-            row.appendChild(
-                name
-            );
-
-            row.appendChild(
-                actions
-            );
-
-
-            documentList.appendChild(
-                row
+            createPortfolioCard(
+                project
             );
 
         }
@@ -4031,300 +927,268 @@ function renderDocumentList(
 
 
 /* =====================================================
-   VOLVER DESDE DOCUMENTOS
+   CREAR TARJETA
 ===================================================== */
 
 
-document
-    .getElementById(
-        "back-button"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            documentsSection.style.display =
-                "none";
-
-
-            if (currentEvent) {
-
-                eventFoldersSection.style.display =
-                    "block";
-
-            }
-
-            else {
-
-                dashboard.style.display =
-                    "block";
-
-            }
-
-        }
-    );
-
-
-
-/* =====================================================
-   ABRIR DOCUMENTO
-===================================================== */
-
-
-async function openDocument(
-    filePath
+function createPortfolioCard(
+    project
 ) {
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from("Documentos")
-            .createSignedUrl(
-                filePath,
-                600
-            );
-
-
-    if (error) {
-
-        alert(
-            "No se ha podido abrir el documento."
+    const card =
+        document.createElement(
+            "article"
         );
 
-        console.error(error);
 
-        return;
-
-    }
+    card.className =
+        "portfolio-item";
 
 
-    window.open(
-        data.signedUrl,
-        "_blank"
-    );
-
-}
-
-
-
-/* =====================================================
-   SUBIR DOCUMENTO
-===================================================== */
-
-
-uploadInput.addEventListener(
-    "change",
-    async function() {
-
-        const file =
-            uploadInput.files[0];
+    /*
+     * Obtener URL de la imagen
+     *
+     * La tabla puede guardar:
+     *
+     * - imagen
+     * - imagen_url
+     * - image_url
+     * - foto
+     *
+     * El código intenta varias opciones.
+     */
 
 
-        if (!file) {
-
-            return;
-
-        }
-
-
-        const {
-            data: sessionData
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
+    const imagePath =
+        project.imagen ||
+        project.imagen_url ||
+        project.image_url ||
+        project.foto ||
+        project.image ||
+        null;
 
 
-        const user =
-            sessionData.session?.user;
+    let imageUrl =
+        "";
 
 
-        if (!user) {
+    if (imagePath) {
 
-            alert(
-                "Tu sesión ha caducado."
-            );
+        /*
+         * Si ya es una URL completa
+         */
 
-            return;
+        if (
+            imagePath.startsWith(
+                "http://"
+            ) ||
+            imagePath.startsWith(
+                "https://"
+            )
+        ) {
+
+            imageUrl =
+                imagePath;
 
         }
 
-
-        let folderPath = "";
-
-
-        if (currentEvent) {
-
-            const title =
-                document.getElementById(
-                    "documents-title"
-                ).textContent;
-
-
-            const folderName =
-                title
-                    .replace(
-                        "📁 ",
-                        ""
-                    )
-                    .trim();
-
-
-            folderPath =
-                currentEvent.id +
-                "/" +
-                folderName;
-
-        }
-
-
-        const fileName =
-            Date.now() +
-            "_" +
-            file.name;
-
-
-        const fullPath =
-            folderPath
-                ? folderPath +
-                  "/" +
-                  fileName
-                : fileName;
-
-
-        const {
-            error
-        } =
-            await supabaseClient
-                .storage
-                .from("Documentos")
-                .upload(
-                    fullPath,
-                    file
-                );
-
-
-        if (error) {
-
-            documentsError.textContent =
-                "No se ha podido subir el documento.";
-
-            console.error(error);
-
-            return;
-
-        }
-
-
-        uploadInput.value =
-            "";
-
-
-        if (currentEvent) {
-
-            const folderName =
-                document.getElementById(
-                    "documents-title"
-                ).textContent
-                .replace(
-                    "📁 ",
-                    ""
-                )
-                .trim();
-
-
-            await loadEventDocuments(
-                currentEvent.id,
-                folderName
-            );
-
-        }
+        /*
+         * Si es una ruta dentro
+         * del bucket portfolio
+         */
 
         else {
 
-            await loadDocuments();
+            const {
+                data
+            } =
+                supabaseClient
+                    .storage
+                    .from("portfolio")
+                    .getPublicUrl(
+                        imagePath
+                    );
+
+
+            imageUrl =
+                data.publicUrl;
 
         }
 
     }
-);
+
+
+    /*
+     * Si no hay imagen
+     */
+
+    if (!imageUrl) {
+
+        imageUrl =
+            createPlaceholder();
+
+    }
+
+
+    const title =
+        project.titulo ||
+        project.title ||
+        "Sin título";
+
+
+    const description =
+        project.descripcion ||
+        project.description ||
+        project.texto ||
+        "";
+
+
+    const date =
+        project.fecha ||
+        project.date ||
+        project.created_at ||
+        null;
+
+
+    let formattedDate =
+        "";
+
+
+    if (date) {
+
+        const parsedDate =
+            new Date(
+                date
+            );
+
+
+        if (
+            !isNaN(
+                parsedDate.getTime()
+            )
+        ) {
+
+            formattedDate =
+                parsedDate.toLocaleDateString(
+                    "es-ES",
+                    {
+                        year: "numeric",
+                        month: "long"
+                    }
+                );
+
+        }
+
+    }
+
+
+    card.innerHTML =
+        `
+
+        <div class="portfolio-image">
+
+            <img
+                src="${escapeHtml(imageUrl)}"
+                alt="${escapeHtml(title)}"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="portfolio-info">
+
+            <div>
+
+                <h3>
+                    ${escapeHtml(title)}
+                </h3>
+
+
+                ${
+                    description
+                        ? `
+                        <p class="portfolio-description">
+                            ${escapeHtml(description)}
+                        </p>
+                        `
+                        : ""
+                }
+
+            </div>
+
+
+            ${
+                formattedDate
+                    ? `
+                    <span class="portfolio-date">
+                        ${escapeHtml(
+                            formattedDate
+                        )}
+                    </span>
+                    `
+                    : ""
+            }
+
+        </div>
+
+        `;
+
+
+    portfolioGrid.appendChild(
+        card
+    );
+
+}
 
 
 
 /* =====================================================
-   ELIMINAR DOCUMENTO
+   PLACEHOLDER
 ===================================================== */
 
 
-async function deleteDocument(
-    filePath
-) {
+function createPlaceholder() {
 
-    const confirmed =
-        confirm(
-            "¿Seguro que quieres eliminar este documento?"
-        );
+    /*
+     * Placeholder SVG generado directamente.
+     * No necesita ninguna imagen externa.
+     */
 
+    const svg = `
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1200"
+            height="750"
+            viewBox="0 0 1200 750"
+        >
 
-    if (!confirmed) {
+            <rect
+                width="1200"
+                height="750"
+                fill="#eeeeee"
+            />
 
-        return;
+            <text
+                x="600"
+                y="375"
+                text-anchor="middle"
+                dominant-baseline="middle"
+                font-family="Arial"
+                font-size="32"
+                fill="#999999"
+            >
+                MARCLASTRA
+            </text>
 
-    }
-
-
-    const {
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from("Documentos")
-            .remove([
-                filePath
-            ]);
-
-
-    if (error) {
-
-        alert(
-            "No se ha podido eliminar el documento."
-        );
-
-        console.error(error);
-
-        return;
-
-    }
+        </svg>
+    `;
 
 
-    if (currentEvent) {
-
-        const folderName =
-            document.getElementById(
-                "documents-title"
-            ).textContent
-            .replace(
-                "📁 ",
-                ""
-            )
-            .trim();
-
-
-        await loadEventDocuments(
-            currentEvent.id,
-            folderName
-        );
-
-    }
-
-    else {
-
-        await loadDocuments();
-
-    }
+    return (
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(svg)
+    );
 
 }
 
@@ -4346,7 +1210,9 @@ function escapeHtml(
 
 
     div.textContent =
-        text;
+        String(
+            text
+        );
 
 
     return div.innerHTML;
@@ -4356,34 +1222,16 @@ function escapeHtml(
 
 
 /* =====================================================
-   COMPROBAR SESIÓN
+   INICIAR
 ===================================================== */
 
 
-async function checkSession() {
-
-    const {
-        data
-    } =
-        await supabaseClient
-            .auth
-            .getSession();
-
-
-    if (data.session) {
-
-        showPortal();
-
-    }
-
-}
-
-
-checkSession();
-
+loadPortfolio();
 
 </script>
+
 
 </body>
 
 </html>
+```
