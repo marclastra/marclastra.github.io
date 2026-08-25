@@ -12,18 +12,7 @@
 
     <title>MARCLASTRA — Private Portal</title>
 
-    <!-- SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <!-- FULLCALENDAR -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css"
-        rel="stylesheet"
-    >
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"
-    ></script>
 
     <style>
 
@@ -39,152 +28,89 @@
             color: #222;
         }
 
+        button {
+            padding: 12px 17px;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
 
         /* =========================
            LOGIN
         ========================= */
 
         #login-screen {
-
             min-height: 100vh;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             padding: 20px;
-
         }
-
 
         .login-box {
-
             width: 100%;
-
             max-width: 400px;
-
             background: white;
-
             padding: 40px;
-
             border-radius: 16px;
-
-            box-shadow:
-                0 10px 40px rgba(0,0,0,0.10);
-
+            box-shadow: 0 10px 40px rgba(0,0,0,0.10);
         }
-
 
         .logo {
-
             text-align: center;
-
             margin-bottom: 35px;
-
         }
-
 
         .logo h1 {
-
             font-size: 30px;
-
             letter-spacing: 2px;
-
         }
-
 
         .logo p {
-
             margin-top: 8px;
-
             color: #888;
-
             font-size: 14px;
-
         }
-
 
         label {
-
             display: block;
-
             margin-bottom: 7px;
-
             font-size: 14px;
-
             font-weight: bold;
-
         }
 
-
-        input,
-        textarea,
-        select {
-
-            width: 100%;
-
-            padding: 13px;
-
+        .login-box input {
             margin-bottom: 20px;
-
-            border: 1px solid #ddd;
-
-            border-radius: 8px;
-
-            font-size: 15px;
-
-            background: white;
-
         }
-
-
-        textarea {
-
-            min-height: 100px;
-
-            resize: vertical;
-
-        }
-
-
-        button {
-
-            padding: 13px 18px;
-
-            background: #111;
-
-            color: white;
-
-            border: none;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            cursor: pointer;
-
-        }
-
-
-        button:hover {
-
-            background: #333;
-
-        }
-
 
         #error {
-
             color: #d33;
-
             margin-top: 15px;
-
             font-size: 14px;
-
             text-align: center;
-
         }
 
 
@@ -193,204 +119,129 @@
         ========================= */
 
         #portal {
-
             display: none;
-
         }
-
 
         header {
-
             background: #111;
-
             color: white;
-
             padding: 25px;
-
         }
-
 
         .header-content {
-
             max-width: 1100px;
-
             margin: auto;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
         }
-
 
         header h1 {
-
             font-size: 24px;
-
             letter-spacing: 1px;
-
         }
-
 
         .logout {
-
             background: #333;
-
         }
-
 
         main {
-
-            max-width: 1100px;
-
+            max-width: 1200px;
             margin: 40px auto;
-
             padding: 20px;
-
         }
 
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        #dashboard {
+            display: block;
+        }
 
         .welcome {
-
             margin-bottom: 30px;
-
         }
-
 
         .welcome h2 {
-
             font-size: 30px;
-
             margin-bottom: 8px;
-
         }
-
 
         .welcome p {
-
             color: #777;
-
         }
-
-
-        /* =========================
-           TARJETAS PRINCIPALES
-        ========================= */
 
         .cards {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(240px, 1fr));
-
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
             gap: 20px;
-
         }
-
 
         .card {
-
             background: white;
-
             padding: 25px;
-
             border-radius: 12px;
-
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.08);
-
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             cursor: pointer;
-
             transition: 0.2s;
-
         }
-
 
         .card:hover {
-
             transform: translateY(-3px);
-
         }
-
 
         .icon {
-
             font-size: 35px;
-
             margin-bottom: 15px;
-
         }
-
 
         .card h3 {
-
             margin-bottom: 8px;
-
         }
 
-
         .card p {
-
             color: #777;
-
             font-size: 14px;
-
         }
 
 
         /* =========================
-           SECCIONES
+           GENERAL
         ========================= */
 
-        #events-section,
-        #event-folders-section,
-        #documents-section {
-
-            display: none;
-
-        }
-
-
         .back-button {
-
             margin-bottom: 25px;
-
             background: #666;
-
         }
-
 
         .section-header {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            margin-bottom: 30px;
-
+            margin-bottom: 25px;
             gap: 20px;
-
         }
-
 
         .section-header h2 {
-
             font-size: 30px;
-
             margin-bottom: 6px;
-
         }
 
-
         .section-header p {
-
             color: #777;
+        }
 
+        .empty {
+            padding: 40px;
+            text-align: center;
+            color: #888;
+            background: white;
+            border-radius: 12px;
         }
 
 
@@ -398,267 +249,329 @@
            CALENDARIO
         ========================= */
 
-        .calendar-box {
-
-            background: white;
-
-            padding: 20px;
-
-            border-radius: 16px;
-
-            box-shadow:
-                0 4px 18px rgba(0,0,0,0.08);
-
-        }
-
-
-        #calendar {
-
-            min-height: 700px;
-
-        }
-
-
-        .fc {
-
-            font-family: Arial, sans-serif;
-
-        }
-
-
-        .fc-toolbar-title {
-
-            font-size: 22px !important;
-
-        }
-
-
-        .fc-event {
-
-            cursor: pointer;
-
-            border-radius: 5px;
-
-            padding: 2px 4px;
-
-        }
-
-
-        /* =========================
-           MODAL EVENTO
-        ========================= */
-
-        .modal {
-
+        #events-section {
             display: none;
-
-            position: fixed;
-
-            inset: 0;
-
-            background:
-                rgba(0,0,0,0.55);
-
-            z-index: 1000;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
         }
 
-
-        .modal-content {
-
+        .calendar-container {
             background: white;
-
-            width: 100%;
-
-            max-width: 500px;
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            padding: 30px;
-
             border-radius: 16px;
-
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.25);
-
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            padding: 20px;
         }
 
-
-        .modal-header {
-
+        .calendar-toolbar {
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .modal-header h2 {
-
-            font-size: 24px;
-
-        }
-
-
-        .close-button {
-
-            background: #eee;
-
-            color: #222;
-
-            width: 40px;
-
-            height: 40px;
-
-            padding: 0;
-
-            font-size: 20px;
-
-        }
-
-
-        .close-button:hover {
-
-            background: #ddd;
-
-        }
-
-
-        .form-buttons {
-
-            display: flex;
-
-            gap: 10px;
-
-            justify-content: flex-end;
-
-            margin-top: 10px;
-
-        }
-
-
-        .cancel-button {
-
-            background: #777;
-
-        }
-
-
-        .delete-event-button {
-
-            background: #b3261e;
-
-            margin-right: auto;
-
-        }
-
-
-        .color-options {
-
-            display: flex;
-
-            gap: 10px;
-
+            gap: 15px;
             margin-bottom: 20px;
-
             flex-wrap: wrap;
+        }
 
+        .calendar-navigation {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calendar-navigation button {
+            background: #eee;
+            color: #222;
+        }
+
+        .calendar-navigation button:hover {
+            background: #ddd;
+        }
+
+        #calendar-title {
+            min-width: 200px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .calendar-views {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-views button {
+            background: #eee;
+            color: #222;
+        }
+
+        .calendar-views button.active {
+            background: #111;
+            color: white;
         }
 
 
-        .color-option {
+        /* YEAR VIEW */
 
-            width: 35px;
+        .year-calendar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-            height: 35px;
+        .mini-month {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 12px;
+        }
 
-            border-radius: 50%;
+        .mini-month-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-            border: 3px solid white;
+        .mini-weekdays,
+        .mini-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
 
-            box-shadow:
-                0 0 0 1px #ccc;
+        .mini-weekday {
+            text-align: center;
+            font-size: 10px;
+            color: #999;
+            padding: 4px 0;
+        }
 
+        .mini-day {
+            min-height: 28px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
             cursor: pointer;
+        }
 
+        .mini-day:hover {
+            background: #eee;
+        }
+
+        .mini-day.today {
+            font-weight: bold;
+            border: 2px solid #111;
+        }
+
+        .mini-day.has-event {
+            color: white;
+            font-weight: bold;
         }
 
 
-        .color-option.selected {
+        /* MONTH VIEW */
 
-            box-shadow:
-                0 0 0 3px #111;
+        .month-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+        }
 
+        .month-weekday {
+            padding: 12px;
+            background: #fafafa;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .month-day {
+            min-height: 120px;
+            padding: 8px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .month-day:hover {
+            background: #fafafa;
+        }
+
+        .month-day.other-month {
+            background: #fafafa;
+            color: #aaa;
+        }
+
+        .month-day.today .day-number {
+            background: #111;
+            color: white;
+        }
+
+        .day-number {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+
+        /* EVENT IN CALENDAR */
+
+        .calendar-event {
+            padding: 5px 7px;
+            margin-bottom: 4px;
+            border-radius: 5px;
+            color: white;
+            font-size: 11px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .calendar-event:hover {
+            opacity: 0.85;
+        }
+
+        .event-green {
+            background: #2e8b57;
+        }
+
+        .event-red {
+            background: #c0392b;
+        }
+
+        .event-gray {
+            background: #777;
+        }
+
+        .event-blue {
+            background: #3478c9;
+        }
+
+
+        /* WEEK VIEW */
+
+        .week-calendar {
+            display: grid;
+            grid-template-columns: 70px repeat(7, 1fr);
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+            overflow-x: auto;
+        }
+
+        .week-header {
+            min-width: 110px;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            background: #fafafa;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .week-time {
+            padding: 8px;
+            font-size: 11px;
+            color: #999;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            min-height: 60px;
+        }
+
+        .week-cell {
+            min-width: 110px;
+            min-height: 60px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 3px;
+            cursor: pointer;
+        }
+
+        .week-cell:hover {
+            background: #fafafa;
+        }
+
+
+        /* DAY VIEW */
+
+        .day-calendar {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+        }
+
+        .day-time {
+            padding: 10px;
+            font-size: 12px;
+            color: #999;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            min-height: 70px;
+        }
+
+        .day-cell {
+            min-height: 70px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .day-cell:hover {
+            background: #fafafa;
         }
 
 
         /* =========================
-           EVENTOS / CARPETAS
+           EVENTOS GRANDES
         ========================= */
+
+        .projects-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
 
         .event-card {
-
             background: white;
-
-            padding: 30px;
-
-            border-radius: 16px;
-
-            box-shadow:
-                0 4px 18px rgba(0,0,0,0.08);
-
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
             cursor: pointer;
-
             transition: 0.2s;
-
-            min-height: 180px;
-
         }
-
 
         .event-card:hover {
-
-            transform: translateY(-4px);
-
+            transform: translateY(-3px);
         }
-
 
         .event-icon {
-
-            font-size: 50px;
-
-            margin-bottom: 20px;
-
+            font-size: 45px;
+            margin-bottom: 15px;
         }
-
 
         .event-card h3 {
-
-            font-size: 20px;
-
+            font-size: 19px;
             margin-bottom: 8px;
+        }
 
+        .event-card p {
+            color: #777;
+            font-size: 14px;
         }
 
 
-        .event-card p {
+        /* =========================
+           CARPETAS EVENTO
+        ========================= */
 
-            color: #777;
-
-            font-size: 14px;
-
+        #event-folders-section {
+            display: none;
         }
 
 
@@ -666,172 +579,151 @@
            DOCUMENTOS
         ========================= */
 
-        .documents-header {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 25px;
-
-            gap: 15px;
-
+        #documents-section {
+            display: none;
         }
 
+        .documents-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
 
         .documents-header h2 {
-
             margin-bottom: 5px;
-
         }
-
 
         .documents-header p {
-
             color: #777;
-
         }
-
 
         .upload-label {
-
             padding: 13px 18px;
-
             background: #111;
-
             color: white;
-
             border-radius: 8px;
-
             cursor: pointer;
-
             font-size: 14px;
-
             white-space: nowrap;
-
         }
-
 
         .upload-label:hover {
-
             background: #333;
-
         }
-
 
         #upload-input {
-
             display: none;
-
         }
-
 
         .document-list {
-
             background: white;
-
             border-radius: 12px;
-
             overflow: hidden;
-
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.08);
-
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-
 
         .document {
-
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             padding: 18px 20px;
-
             border-bottom: 1px solid #eee;
-
             gap: 15px;
-
         }
-
 
         .document:last-child {
-
             border-bottom: none;
-
         }
-
 
         .document-name {
-
             display: flex;
-
             align-items: center;
-
             gap: 12px;
-
             word-break: break-word;
-
         }
-
 
         .document-icon {
-
             font-size: 25px;
-
         }
-
 
         .document-actions {
-
             display: flex;
-
             gap: 8px;
-
             flex-shrink: 0;
-
         }
-
 
         .view-button {
-
             background: #444;
-
         }
-
 
         .delete-button {
-
             background: #b3261e;
-
         }
-
 
         #documents-error {
-
             color: #b3261e;
-
             margin: 15px 0;
-
         }
 
 
-        .empty {
+        /* =========================
+           MODAL
+        ========================= */
 
-            padding: 40px;
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
 
-            text-align: center;
-
-            color: #888;
-
+        .modal {
             background: white;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
 
-            border-radius: 12px;
+        .modal h2 {
+            margin-bottom: 20px;
+        }
 
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            margin-bottom: 6px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-buttons .delete-modal {
+            background: #b3261e;
+        }
+
+        .modal-right-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .close-modal {
+            background: #777;
         }
 
 
@@ -839,54 +731,72 @@
            RESPONSIVE
         ========================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
+
+            .year-calendar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .month-day {
+                min-height: 90px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            main {
+                margin: 20px auto;
+                padding: 15px;
+            }
 
             .section-header,
             .documents-header {
-
                 align-items: flex-start;
-
                 flex-direction: column;
-
             }
 
-
-            #calendar {
-
-                min-height: 600px;
-
+            .year-calendar {
+                grid-template-columns: 1fr;
             }
 
-
-            .fc-toolbar {
-
+            .calendar-toolbar {
+                align-items: stretch;
                 flex-direction: column;
-
-                gap: 10px;
-
             }
 
+            #calendar-title {
+                min-width: auto;
+            }
+
+            .calendar-navigation {
+                justify-content: center;
+            }
+
+            .calendar-views {
+                justify-content: center;
+            }
+
+            .month-day {
+                min-height: 75px;
+                padding: 4px;
+            }
+
+            .calendar-event {
+                font-size: 9px;
+            }
 
             .document {
-
                 align-items: flex-start;
-
                 flex-direction: column;
-
             }
-
 
             .document-actions {
-
                 width: 100%;
-
             }
 
-
             .document-actions button {
-
                 flex: 1;
-
             }
 
         }
@@ -917,7 +827,6 @@
 
         </div>
 
-
         <form id="login-form">
 
             <label for="email">
@@ -931,7 +840,6 @@
                 required
             >
 
-
             <label for="password">
                 Contraseña
             </label>
@@ -943,11 +851,9 @@
                 required
             >
 
-
             <button type="submit">
                 Entrar
             </button>
-
 
             <div id="error"></div>
 
@@ -990,7 +896,7 @@
 
         <!-- =================================================
              DASHBOARD
-        ================================================== -->
+        ================================================= -->
 
         <section id="dashboard">
 
@@ -1048,7 +954,7 @@
                     </h3>
 
                     <p>
-                        Organiza tus eventos y calendario.
+                        Calendario y organización de eventos.
                     </p>
 
                 </div>
@@ -1061,7 +967,7 @@
 
         <!-- =================================================
              EVENTOS / CALENDARIO
-        ================================================== -->
+        ================================================= -->
 
         <section id="events-section">
 
@@ -1082,24 +988,103 @@
                     </h2>
 
                     <p>
-                        Organiza tu trabajo, fiestas y eventos.
+                        Organiza tu calendario y tus eventos.
                     </p>
 
                 </div>
 
 
-                <button
-                    id="new-calendar-event-button"
-                >
+                <button id="new-calendar-event-button">
                     + Nuevo evento
                 </button>
 
             </div>
 
 
-            <div class="calendar-box">
+            <!-- CALENDARIO -->
+
+            <div class="calendar-container">
+
+                <div class="calendar-toolbar">
+
+
+                    <div class="calendar-navigation">
+
+                        <button id="previous-button">
+                            ‹
+                        </button>
+
+                        <button id="today-button">
+                            Hoy
+                        </button>
+
+                        <button id="next-button">
+                            ›
+                        </button>
+
+                    </div>
+
+
+                    <h2 id="calendar-title">
+                        2026
+                    </h2>
+
+
+                    <div class="calendar-views">
+
+                        <button
+                            data-view="year"
+                            class="calendar-view-button active"
+                        >
+                            Año
+                        </button>
+
+                        <button
+                            data-view="month"
+                            class="calendar-view-button"
+                        >
+                            Mes
+                        </button>
+
+                        <button
+                            data-view="week"
+                            class="calendar-view-button"
+                        >
+                            Semana
+                        </button>
+
+                        <button
+                            data-view="day"
+                            class="calendar-view-button"
+                        >
+                            Día
+                        </button>
+
+                    </div>
+
+                </div>
+
 
                 <div id="calendar"></div>
+
+            </div>
+
+
+            <!-- EVENTOS GRANDES -->
+
+            <h2 class="projects-title">
+                📁 Mis eventos
+            </h2>
+
+
+            <div
+                id="events-list"
+                class="cards"
+            >
+
+                <div class="empty">
+                    Cargando eventos...
+                </div>
 
             </div>
 
@@ -1109,12 +1094,9 @@
 
         <!-- =================================================
              CARPETAS DEL EVENTO
-        ================================================== -->
+        ================================================= -->
 
-        <section
-            id="event-folders-section"
-            style="display:none;"
-        >
+        <section id="event-folders-section">
 
             <button
                 class="back-button"
@@ -1133,7 +1115,7 @@
                     </h2>
 
                     <p>
-                        Selecciona una carpeta.
+                        Selecciona una carpeta
                     </p>
 
                 </div>
@@ -1231,7 +1213,7 @@
 
         <!-- =================================================
              DOCUMENTOS
-        ================================================== -->
+        ================================================= -->
 
         <section id="documents-section">
 
@@ -1247,11 +1229,11 @@
 
                 <div>
 
-                    <h2>
+                    <h2 id="documents-title">
                         📄 Documentos
                     </h2>
 
-                    <p>
+                    <p id="documents-subtitle">
                         Tus documentos privados.
                     </p>
 
@@ -1297,163 +1279,163 @@
 
 
 <!-- =====================================================
-     MODAL CREAR / EDITAR EVENTO
+     MODAL CALENDARIO
 ===================================================== -->
 
 <div
-    class="modal"
-    id="event-modal"
+    class="modal-overlay"
+    id="calendar-modal"
 >
 
-    <div class="modal-content">
+    <div class="modal">
 
-        <div class="modal-header">
+        <h2 id="modal-title">
+            Nuevo evento
+        </h2>
 
-            <h2 id="modal-title">
-                Nuevo evento
-            </h2>
 
-            <button
-                class="close-button"
-                id="close-modal-button"
+        <div class="form-group">
+
+            <label for="event-title">
+                Título
+            </label>
+
+            <input
+                type="text"
+                id="event-title"
+                placeholder="Ej. Montaje Fiesta Mayor"
             >
-                ×
-            </button>
 
         </div>
 
 
-        <label for="event-title">
-            Nombre del evento
-        </label>
+        <div class="form-group">
 
-        <input
-            type="text"
-            id="event-title"
-            placeholder="Ej. Boda de Marc"
-        >
+            <label for="event-date">
+                Fecha
+            </label>
 
-
-        <label for="event-date">
-            Fecha
-        </label>
-
-        <input
-            type="date"
-            id="event-date"
-        >
-
-
-        <label for="event-start">
-            Hora de inicio
-        </label>
-
-        <input
-            type="time"
-            id="event-start"
-        >
-
-
-        <label for="event-end">
-            Hora de finalización
-        </label>
-
-        <input
-            type="time"
-            id="event-end"
-        >
-
-
-        <label for="event-place">
-            Lugar
-        </label>
-
-        <input
-            type="text"
-            id="event-place"
-            placeholder="Ej. Barcelona"
-        >
-
-
-        <label>
-            Color
-        </label>
-
-        <div class="color-options">
-
-            <div
-                class="color-option selected"
-                data-color="#3788d8"
-                style="background:#3788d8;"
-            ></div>
-
-            <div
-                class="color-option"
-                data-color="#2e7d32"
-                style="background:#2e7d32;"
-            ></div>
-
-            <div
-                class="color-option"
-                data-color="#f57c00"
-                style="background:#f57c00;"
-            ></div>
-
-            <div
-                class="color-option"
-                data-color="#c62828"
-                style="background:#c62828;"
-            ></div>
-
-            <div
-                class="color-option"
-                data-color="#7b1fa2"
-                style="background:#7b1fa2;"
-            ></div>
-
-            <div
-                class="color-option"
-                data-color="#00838f"
-                style="background:#00838f;"
-            ></div>
+            <input
+                type="date"
+                id="event-date"
+            >
 
         </div>
 
 
-        <label for="event-notes">
-            Notas
-        </label>
+        <div class="form-group">
 
-        <textarea
-            id="event-notes"
-            placeholder="Información adicional..."
-        ></textarea>
+            <label for="event-start">
+                Hora de inicio
+            </label>
+
+            <input
+                type="time"
+                id="event-start"
+            >
+
+        </div>
 
 
-        <div class="form-buttons">
+        <div class="form-group">
+
+            <label for="event-end">
+                Hora de final
+            </label>
+
+            <input
+                type="time"
+                id="event-end"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="event-place">
+                Lugar
+            </label>
+
+            <input
+                type="text"
+                id="event-place"
+                placeholder="Ej. Barcelona"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="event-color">
+                Tipo
+            </label>
+
+            <select id="event-color">
+
+                <option value="green">
+                    🟢 Trabajo
+                </option>
+
+                <option value="red">
+                    🔴 Fiesta
+                </option>
+
+                <option value="gray">
+                    ⚪ Libre
+                </option>
+
+                <option value="blue">
+                    🔵 Otro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="event-notes">
+                Notas
+            </label>
+
+            <textarea
+                id="event-notes"
+                placeholder="Notas del evento..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="modal-buttons">
 
             <button
-                class="delete-event-button"
-                id="delete-event-button"
+                id="delete-calendar-event-button"
+                class="delete-modal"
                 style="display:none;"
             >
                 Eliminar
             </button>
 
 
-            <button
-                class="cancel-button"
-                id="cancel-event-button"
-            >
-                Cancelar
-            </button>
+            <div class="modal-right-buttons">
 
+                <button
+                    id="close-modal-button"
+                    class="close-modal"
+                >
+                    Cancelar
+                </button>
 
-            <button
-                id="save-event-button"
-            >
-                Guardar
-            </button>
+                <button
+                    id="save-calendar-event-button"
+                >
+                    Guardar
+                </button>
+
+            </div>
 
         </div>
 
@@ -1464,6 +1446,7 @@
 
 
 <script>
+
 
 /* =====================================================
    SUPABASE
@@ -1492,91 +1475,124 @@ const supabaseClient =
 
 
 const loginScreen =
-    document.getElementById(
-        "login-screen"
-    );
+    document.getElementById("login-screen");
 
 
 const portal =
-    document.getElementById(
-        "portal"
-    );
+    document.getElementById("portal");
 
 
 const dashboard =
-    document.getElementById(
-        "dashboard"
-    );
+    document.getElementById("dashboard");
 
 
 const eventsSection =
-    document.getElementById(
-        "events-section"
-    );
+    document.getElementById("events-section");
 
 
 const eventFoldersSection =
-    document.getElementById(
-        "event-folders-section"
-    );
+    document.getElementById("event-folders-section");
 
 
 const eventFoldersTitle =
-    document.getElementById(
-        "event-folders-title"
-    );
+    document.getElementById("event-folders-title");
 
 
 const documentsSection =
-    document.getElementById(
-        "documents-section"
-    );
+    document.getElementById("documents-section");
 
 
 const loginForm =
-    document.getElementById(
-        "login-form"
-    );
+    document.getElementById("login-form");
 
 
 const errorElement =
-    document.getElementById(
-        "error"
-    );
+    document.getElementById("error");
+
+
+const eventsList =
+    document.getElementById("events-list");
 
 
 const documentsError =
-    document.getElementById(
-        "documents-error"
-    );
+    document.getElementById("documents-error");
 
 
 const documentList =
-    document.getElementById(
-        "document-list"
-    );
+    document.getElementById("document-list");
 
 
 const uploadInput =
+    document.getElementById("upload-input");
+
+
+const calendar =
+    document.getElementById("calendar");
+
+
+const calendarTitle =
+    document.getElementById("calendar-title");
+
+
+const calendarModal =
+    document.getElementById("calendar-modal");
+
+
+const eventTitleInput =
+    document.getElementById("event-title");
+
+
+const eventDateInput =
+    document.getElementById("event-date");
+
+
+const eventStartInput =
+    document.getElementById("event-start");
+
+
+const eventEndInput =
+    document.getElementById("event-end");
+
+
+const eventPlaceInput =
+    document.getElementById("event-place");
+
+
+const eventColorInput =
+    document.getElementById("event-color");
+
+
+const eventNotesInput =
+    document.getElementById("event-notes");
+
+
+const saveCalendarEventButton =
     document.getElementById(
-        "upload-input"
+        "save-calendar-event-button"
     );
 
 
-let currentEvent =
-    null;
+const deleteCalendarEventButton =
+    document.getElementById(
+        "delete-calendar-event-button"
+    );
 
 
-let currentCalendarEvent =
-    null;
+const closeModalButton =
+    document.getElementById(
+        "close-modal-button"
+    );
 
 
-let selectedColor =
-    "#3788d8";
+let currentEvent = null;
 
+let editingCalendarEventId = null;
 
-let calendar =
-    null;
+let calendarEvents = [];
+
+let currentCalendarDate = new Date();
+
+let currentCalendarView = "year";
 
 
 
@@ -1591,21 +1607,18 @@ loginForm.addEventListener(
 
         event.preventDefault();
 
-
-        errorElement.textContent =
-            "";
-
+        errorElement.textContent = "";
 
         const email =
-            document.getElementById(
-                "email"
-            ).value;
-
+            document
+                .getElementById("email")
+                .value
+                .trim();
 
         const password =
-            document.getElementById(
-                "password"
-            ).value;
+            document
+                .getElementById("password")
+                .value;
 
 
         const {
@@ -1649,7 +1662,6 @@ function showPortal() {
     loginScreen.style.display =
         "none";
 
-
     portal.style.display =
         "block";
 
@@ -1672,26 +1684,20 @@ document
                 .auth
                 .signOut();
 
-
             eventsSection.style.display =
                 "none";
-
 
             eventFoldersSection.style.display =
                 "none";
 
-
             documentsSection.style.display =
                 "none";
-
 
             dashboard.style.display =
                 "block";
 
-
             portal.style.display =
                 "none";
-
 
             loginScreen.style.display =
                 "flex";
@@ -1715,20 +1721,20 @@ document
             dashboard.style.display =
                 "none";
 
-
-            eventsSection.style.display =
-                "block";
-
+            documentsSection.style.display =
+                "none";
 
             eventFoldersSection.style.display =
                 "none";
 
+            eventsSection.style.display =
+                "block";
 
-            documentsSection.style.display =
-                "none";
+            await loadCalendarEvents();
 
+            await loadEvents();
 
-            await initializeCalendar();
+            renderCalendar();
 
         }
     );
@@ -1740,142 +1746,14 @@ document
 ===================================================== */
 
 
-async function initializeCalendar() {
-
-    if (calendar) {
-
-        await loadCalendarEvents();
-
-        calendar.render();
-
-        return;
-
-    }
-
-
-    const calendarElement =
-        document.getElementById(
-            "calendar"
-        );
-
-
-    calendar =
-        new FullCalendar.Calendar(
-            calendarElement,
-            {
-
-                initialView:
-                    "dayGridMonth",
-
-                locale:
-                    "es",
-
-                firstDay:
-                    1,
-
-                height:
-                    "auto",
-
-                editable:
-                    false,
-
-                selectable:
-                    true,
-
-                dayMaxEvents:
-                    3,
-
-                headerToolbar: {
-
-                    left:
-                        "prev,next today",
-
-                    center:
-                        "title",
-
-                    right:
-                        "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
-
-                },
-
-
-                buttonText: {
-
-                    today:
-                        "Hoy",
-
-                    month:
-                        "Mes",
-
-                    week:
-                        "Semana",
-
-                    day:
-                        "Día",
-
-                    list:
-                        "Lista"
-
-                },
-
-
-                dateClick:
-                    function(info) {
-
-                        openNewEventModal(
-                            info.dateStr
-                        );
-
-                    },
-
-
-                eventClick:
-                    function(info) {
-
-                        openEditEventModal(
-                            info.event
-                        );
-
-                    }
-
-            }
-        );
-
-
-    calendar.render();
-
-
-    await loadCalendarEvents();
-
-}
-
-
-
-/* =====================================================
-   CARGAR EVENTOS DEL CALENDARIO
-===================================================== */
-
-
 async function loadCalendarEvents() {
-
-    if (!calendar) {
-
-        return;
-
-    }
-
-
-    calendar.removeAllEvents();
-
 
     const {
         data,
         error
     } =
         await supabaseClient
-            .from(
-                "calendario_eventos"
-            )
+            .from("calendario_eventos")
             .select("*")
             .order(
                 "fecha",
@@ -1892,92 +1770,84 @@ async function loadCalendarEvents() {
             error
         );
 
-        return;
-
-    }
-
-
-    if (!data) {
+        calendarEvents = [];
 
         return;
 
     }
 
 
-    data.forEach(
+    calendarEvents =
+        data || [];
+
+}
+
+
+
+function formatDateKey(date) {
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2, "0");
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+
+function parseDate(dateString) {
+
+    const parts =
+        dateString.split("-");
+
+    return new Date(
+        Number(parts[0]),
+        Number(parts[1]) - 1,
+        Number(parts[2])
+    );
+
+}
+
+
+
+function getMonthName(date) {
+
+    return date.toLocaleDateString(
+        "es-ES",
+        {
+            month: "long"
+        }
+    );
+
+}
+
+
+
+function getEventsForDate(date) {
+
+    const key =
+        formatDateKey(date);
+
+    return calendarEvents.filter(
         function(evento) {
 
-            let start =
-                evento.fecha;
-
-
-            let end =
-                null;
-
-
-            if (
-                evento.hora_inicio
-            ) {
-
-                start =
-                    evento.fecha
-                    + "T"
-                    + evento.hora_inicio;
-
-            }
-
-
-            if (
-                evento.hora_fin
-            ) {
-
-                end =
-                    evento.fecha
-                    + "T"
-                    + evento.hora_fin;
-
-            }
-
-
-            calendar.addEvent({
-
-                id:
-                    evento.id,
-
-                title:
-                    evento.titulo,
-
-                start:
-                    start,
-
-                end:
-                    end,
-
-                backgroundColor:
-                    evento.color ||
-                    "#3788d8",
-
-                borderColor:
-                    evento.color ||
-                    "#3788d8",
-
-                extendedProps: {
-
-                    lugar:
-                        evento.lugar,
-
-                    notas:
-                        evento.notas,
-
-                    hora_inicio:
-                        evento.hora_inicio,
-
-                    hora_fin:
-                        evento.hora_fin
-
-                }
-
-            });
+            return evento.fecha === key;
 
         }
     );
@@ -1986,216 +1856,1107 @@ async function loadCalendarEvents() {
 
 
 
-/* =====================================================
-   ABRIR MODAL NUEVO
-===================================================== */
+function eventColorClass(color) {
 
+    if (color === "red") {
+        return "event-red";
+    }
 
-function openNewEventModal(
-    date
-) {
+    if (color === "gray") {
+        return "event-gray";
+    }
 
-    currentCalendarEvent =
-        null;
+    if (color === "blue") {
+        return "event-blue";
+    }
 
-
-    document.getElementById(
-        "modal-title"
-    ).textContent =
-        "Nuevo evento";
-
-
-    document.getElementById(
-        "event-title"
-    ).value =
-        "";
-
-
-    document.getElementById(
-        "event-date"
-    ).value =
-        date;
-
-
-    document.getElementById(
-        "event-start"
-    ).value =
-        "";
-
-
-    document.getElementById(
-        "event-end"
-    ).value =
-        "";
-
-
-    document.getElementById(
-        "event-place"
-    ).value =
-        "";
-
-
-    document.getElementById(
-        "event-notes"
-    ).value =
-        "";
-
-
-    selectedColor =
-        "#3788d8";
-
-
-    updateColorSelection();
-
-
-    document.getElementById(
-        "delete-event-button"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "event-modal"
-    ).style.display =
-        "flex";
+    return "event-green";
 
 }
 
 
 
-/* =====================================================
-   ABRIR MODAL EDITAR
-===================================================== */
+function renderCalendar() {
+
+    if (currentCalendarView === "year") {
+
+        renderYear();
+
+    }
+
+    if (currentCalendarView === "month") {
+
+        renderMonth();
+
+    }
+
+    if (currentCalendarView === "week") {
+
+        renderWeek();
+
+    }
+
+    if (currentCalendarView === "day") {
+
+        renderDay();
+
+    }
+
+}
 
 
-async function openEditEventModal(
-    event
-) {
 
-    currentCalendarEvent =
-        event;
+function renderYear() {
 
+    const year =
+        currentCalendarDate.getFullYear();
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from(
-                "calendario_eventos"
-            )
-            .select("*")
-            .eq(
-                "id",
-                event.id
-            )
-            .single();
+    calendarTitle.textContent =
+        String(year);
 
 
-    if (error) {
+    calendar.innerHTML = "";
 
-        console.error(error);
+    const yearContainer =
+        document.createElement("div");
 
-        return;
+    yearContainer.className =
+        "year-calendar";
+
+
+    for (
+        let month = 0;
+        month < 12;
+        month++
+    ) {
+
+        const monthBox =
+            document.createElement("div");
+
+        monthBox.className =
+            "mini-month";
+
+
+        const monthDate =
+            new Date(
+                year,
+                month,
+                1
+            );
+
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "mini-month-title";
+
+        title.textContent =
+            monthDate.toLocaleDateString(
+                "es-ES",
+                {
+                    month: "long"
+                }
+            );
+
+
+        monthBox.appendChild(title);
+
+
+        const weekdays =
+            document.createElement("div");
+
+        weekdays.className =
+            "mini-weekdays";
+
+
+        [
+            "L",
+            "M",
+            "X",
+            "J",
+            "V",
+            "S",
+            "D"
+        ].forEach(
+            function(day) {
+
+                const element =
+                    document.createElement("div");
+
+                element.className =
+                    "mini-weekday";
+
+                element.textContent =
+                    day;
+
+                weekdays.appendChild(element);
+
+            }
+        );
+
+
+        monthBox.appendChild(
+            weekdays
+        );
+
+
+        const days =
+            document.createElement("div");
+
+        days.className =
+            "mini-days";
+
+
+        const firstDay =
+            new Date(
+                year,
+                month,
+                1
+            );
+
+
+        let startingDay =
+            firstDay.getDay();
+
+        startingDay =
+            startingDay === 0
+                ? 6
+                : startingDay - 1;
+
+
+        for (
+            let i = 0;
+            i < startingDay;
+            i++
+        ) {
+
+            const empty =
+                document.createElement("div");
+
+            days.appendChild(empty);
+
+        }
+
+
+        const daysInMonth =
+            new Date(
+                year,
+                month + 1,
+                0
+            ).getDate();
+
+
+        for (
+            let day = 1;
+            day <= daysInMonth;
+            day++
+        ) {
+
+            const date =
+                new Date(
+                    year,
+                    month,
+                    day
+                );
+
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "mini-day";
+
+            element.textContent =
+                day;
+
+
+            const events =
+                getEventsForDate(date);
+
+
+            if (events.length > 0) {
+
+                element.classList.add(
+                    "has-event"
+                );
+
+                element.classList.add(
+                    eventColorClass(
+                        events[0].color
+                    )
+                );
+
+            }
+
+
+            if (
+                formatDateKey(date) ===
+                formatDateKey(new Date())
+            ) {
+
+                element.classList.add(
+                    "today"
+                );
+
+            }
+
+
+            element.addEventListener(
+                "click",
+                function() {
+
+                    openCalendarModal(
+                        formatDateKey(date)
+                    );
+
+                }
+            );
+
+
+            days.appendChild(element);
+
+        }
+
+
+        monthBox.appendChild(days);
+
+        yearContainer.appendChild(
+            monthBox
+        );
 
     }
 
 
-    document.getElementById(
-        "modal-title"
-    ).textContent =
-        "Editar evento";
+    calendar.appendChild(
+        yearContainer
+    );
+
+}
 
 
-    document.getElementById(
-        "event-title"
-    ).value =
-        data.titulo || "";
+
+function renderMonth() {
+
+    const year =
+        currentCalendarDate.getFullYear();
+
+    const month =
+        currentCalendarDate.getMonth();
 
 
-    document.getElementById(
-        "event-date"
-    ).value =
-        data.fecha || "";
+    calendarTitle.textContent =
+        currentCalendarDate.toLocaleDateString(
+            "es-ES",
+            {
+                month: "long",
+                year: "numeric"
+            }
+        );
 
 
-    document.getElementById(
-        "event-start"
-    ).value =
-        data.hora_inicio
-        ? data.hora_inicio.substring(
-            0,
-            5
-        )
-        : "";
+    calendar.innerHTML = "";
 
 
-    document.getElementById(
-        "event-end"
-    ).value =
-        data.hora_fin
-        ? data.hora_fin.substring(
-            0,
-            5
-        )
-        : "";
+    const container =
+        document.createElement("div");
+
+    container.className =
+        "month-calendar";
 
 
-    document.getElementById(
-        "event-place"
-    ).value =
-        data.lugar || "";
+    [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+        "Domingo"
+    ].forEach(
+        function(day) {
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "month-weekday";
+
+            element.textContent =
+                day.substring(0, 3);
+
+            container.appendChild(element);
+
+        }
+    );
 
 
-    document.getElementById(
-        "event-notes"
-    ).value =
-        data.notas || "";
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        );
 
 
-    selectedColor =
-        data.color ||
-        "#3788d8";
+    let startingDay =
+        firstDay.getDay();
+
+    startingDay =
+        startingDay === 0
+            ? 6
+            : startingDay - 1;
 
 
-    updateColorSelection();
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
 
 
-    document.getElementById(
-        "delete-event-button"
-    ).style.display =
-        "block";
+    const previousMonthDays =
+        new Date(
+            year,
+            month,
+            0
+        ).getDate();
 
 
-    document.getElementById(
-        "event-modal"
-    ).style.display =
-        "flex";
+    for (
+        let i = startingDay - 1;
+        i >= 0;
+        i--
+    ) {
+
+        const date =
+            new Date(
+                year,
+                month - 1,
+                previousMonthDays - i
+            );
+
+        createMonthDay(
+            container,
+            date,
+            true
+        );
+
+    }
+
+
+    for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ) {
+
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
+
+        createMonthDay(
+            container,
+            date,
+            false
+        );
+
+    }
+
+
+    const totalCells =
+        Math.ceil(
+            container.children.length / 7
+        ) * 7;
+
+
+    let nextDay = 1;
+
+
+    while (
+        container.children.length <
+        totalCells
+    ) {
+
+        const date =
+            new Date(
+                year,
+                month + 1,
+                nextDay++
+            );
+
+        createMonthDay(
+            container,
+            date,
+            true
+        );
+
+    }
+
+
+    calendar.appendChild(
+        container
+    );
+
+}
+
+
+
+function createMonthDay(
+    container,
+    date,
+    otherMonth
+) {
+
+    const element =
+        document.createElement("div");
+
+    element.className =
+        "month-day";
+
+
+    if (otherMonth) {
+
+        element.classList.add(
+            "other-month"
+        );
+
+    }
+
+
+    if (
+        formatDateKey(date) ===
+        formatDateKey(new Date())
+    ) {
+
+        element.classList.add(
+            "today"
+        );
+
+    }
+
+
+    const number =
+        document.createElement("div");
+
+    number.className =
+        "day-number";
+
+    number.textContent =
+        date.getDate();
+
+
+    element.appendChild(number);
+
+
+    const events =
+        getEventsForDate(date);
+
+
+    events.forEach(
+        function(evento) {
+
+            const eventElement =
+                createCalendarEventElement(
+                    evento
+                );
+
+            element.appendChild(
+                eventElement
+            );
+
+        }
+    );
+
+
+    element.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target.classList.contains(
+                    "calendar-event"
+                )
+            ) {
+
+                return;
+
+            }
+
+            openCalendarModal(
+                formatDateKey(date)
+            );
+
+        }
+    );
+
+
+    container.appendChild(
+        element
+    );
+
+}
+
+
+
+function createCalendarEventElement(
+    evento
+) {
+
+    const element =
+        document.createElement("div");
+
+    element.className =
+        "calendar-event " +
+        eventColorClass(
+            evento.color
+        );
+
+
+    let text =
+        evento.titulo;
+
+
+    if (evento.horario_inicio) {
+
+        text =
+            evento.horario_inicio +
+            " · " +
+            text;
+
+    }
+
+
+    element.textContent =
+        text;
+
+
+    element.title =
+        evento.titulo;
+
+
+    element.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+            openCalendarModal(
+                evento.fecha,
+                evento
+            );
+
+        }
+    );
+
+
+    return element;
+
+}
+
+
+
+function getMonday(date) {
+
+    const result =
+        new Date(date);
+
+    const day =
+        result.getDay();
+
+    const difference =
+        day === 0
+            ? -6
+            : 1 - day;
+
+    result.setDate(
+        result.getDate() + difference
+    );
+
+    return result;
+
+}
+
+
+
+function renderWeek() {
+
+    const monday =
+        getMonday(
+            currentCalendarDate
+        );
+
+
+    const sunday =
+        new Date(monday);
+
+    sunday.setDate(
+        sunday.getDate() + 6
+    );
+
+
+    calendarTitle.textContent =
+        monday.toLocaleDateString(
+            "es-ES",
+            {
+                day: "numeric",
+                month: "short"
+            }
+        ) +
+        " – " +
+        sunday.toLocaleDateString(
+            "es-ES",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+
+    calendar.innerHTML = "";
+
+
+    const container =
+        document.createElement("div");
+
+    container.className =
+        "week-calendar";
+
+
+    container.appendChild(
+        document.createElement("div")
+    );
+
+
+    for (
+        let i = 0;
+        i < 7;
+        i++
+    ) {
+
+        const date =
+            new Date(monday);
+
+        date.setDate(
+            monday.getDate() + i
+        );
+
+
+        const header =
+            document.createElement("div");
+
+        header.className =
+            "week-header";
+
+        header.textContent =
+            date.toLocaleDateString(
+                "es-ES",
+                {
+                    weekday: "short",
+                    day: "numeric"
+                }
+            );
+
+
+        container.appendChild(
+            header
+        );
+
+    }
+
+
+    for (
+        let hour = 0;
+        hour < 24;
+        hour++
+    ) {
+
+        const time =
+            document.createElement("div");
+
+        time.className =
+            "week-time";
+
+        time.textContent =
+            String(hour).padStart(2, "0") +
+            ":00";
+
+
+        container.appendChild(
+            time
+        );
+
+
+        for (
+            let day = 0;
+            day < 7;
+            day++
+        ) {
+
+            const date =
+                new Date(monday);
+
+            date.setDate(
+                monday.getDate() + day
+            );
+
+
+            const cell =
+                document.createElement("div");
+
+            cell.className =
+                "week-cell";
+
+
+            const events =
+                getEventsForDate(date);
+
+
+            events
+                .filter(
+                    function(evento) {
+
+                        if (
+                            !evento.horario_inicio
+                        ) {
+
+                            return hour === 0;
+
+                        }
+
+                        return (
+                            parseInt(
+                                evento.horario_inicio
+                            ) === hour
+                        );
+
+                    }
+                )
+                .forEach(
+                    function(evento) {
+
+                        cell.appendChild(
+                            createCalendarEventElement(
+                                evento
+                            )
+                        );
+
+                    }
+                );
+
+
+            cell.addEventListener(
+                "click",
+                function() {
+
+                    openCalendarModal(
+                        formatDateKey(date)
+                    );
+
+                }
+            );
+
+
+            container.appendChild(cell);
+
+        }
+
+    }
+
+
+    calendar.appendChild(
+        container
+    );
+
+}
+
+
+
+function renderDay() {
+
+    const date =
+        currentCalendarDate;
+
+
+    calendarTitle.textContent =
+        date.toLocaleDateString(
+            "es-ES",
+            {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    calendar.innerHTML = "";
+
+
+    const container =
+        document.createElement("div");
+
+    container.className =
+        "day-calendar";
+
+
+    for (
+        let hour = 0;
+        hour < 24;
+        hour++
+    ) {
+
+        const time =
+            document.createElement("div");
+
+        time.className =
+            "day-time";
+
+        time.textContent =
+            String(hour).padStart(2, "0") +
+            ":00";
+
+
+        container.appendChild(
+            time
+        );
+
+
+        const cell =
+            document.createElement("div");
+
+        cell.className =
+            "day-cell";
+
+
+        const events =
+            getEventsForDate(date);
+
+
+        events
+            .filter(
+                function(evento) {
+
+                    if (
+                        !evento.horario_inicio
+                    ) {
+
+                        return hour === 0;
+
+                    }
+
+                    return (
+                        parseInt(
+                            evento.horario_inicio
+                        ) === hour
+                    );
+
+                }
+            )
+            .forEach(
+                function(evento) {
+
+                    cell.appendChild(
+                        createCalendarEventElement(
+                            evento
+                        )
+                    );
+
+                }
+            );
+
+
+        cell.addEventListener(
+            "click",
+            function() {
+
+                openCalendarModal(
+                    formatDateKey(date)
+                );
+
+            }
+        );
+
+
+        container.appendChild(
+            cell
+        );
+
+    }
+
+
+    calendar.appendChild(
+        container
+    );
 
 }
 
 
 
 /* =====================================================
-   COLORES
+   NAVEGACIÓN CALENDARIO
 ===================================================== */
 
 
 document
+    .getElementById("previous-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (
+                currentCalendarView === "year"
+            ) {
+
+                currentCalendarDate.setFullYear(
+                    currentCalendarDate.getFullYear() - 1
+                );
+
+            }
+
+            else if (
+                currentCalendarView === "month"
+            ) {
+
+                currentCalendarDate.setMonth(
+                    currentCalendarDate.getMonth() - 1
+                );
+
+            }
+
+            else if (
+                currentCalendarView === "week"
+            ) {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() - 7
+                );
+
+            }
+
+            else {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() - 1
+                );
+
+            }
+
+            renderCalendar();
+
+        }
+    );
+
+
+
+document
+    .getElementById("next-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (
+                currentCalendarView === "year"
+            ) {
+
+                currentCalendarDate.setFullYear(
+                    currentCalendarDate.getFullYear() + 1
+                );
+
+            }
+
+            else if (
+                currentCalendarView === "month"
+            ) {
+
+                currentCalendarDate.setMonth(
+                    currentCalendarDate.getMonth() + 1
+                );
+
+            }
+
+            else if (
+                currentCalendarView === "week"
+            ) {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() + 7
+                );
+
+            }
+
+            else {
+
+                currentCalendarDate.setDate(
+                    currentCalendarDate.getDate() + 1
+                );
+
+            }
+
+            renderCalendar();
+
+        }
+    );
+
+
+
+document
+    .getElementById("today-button")
+    .addEventListener(
+        "click",
+        function() {
+
+            currentCalendarDate =
+                new Date();
+
+            renderCalendar();
+
+        }
+    );
+
+
+
+document
     .querySelectorAll(
-        ".color-option"
+        ".calendar-view-button"
     )
     .forEach(
-        function(option) {
+        function(button) {
 
-            option.addEventListener(
+            button.addEventListener(
                 "click",
                 function() {
 
-                    selectedColor =
-                        option.dataset.color;
+                    currentCalendarView =
+                        button.dataset.view;
 
-                    updateColorSelection();
+
+                    document
+                        .querySelectorAll(
+                            ".calendar-view-button"
+                        )
+                        .forEach(
+                            function(other) {
+
+                                other.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    renderCalendar();
 
                 }
             );
@@ -2204,324 +2965,136 @@ document
     );
 
 
-function updateColorSelection() {
 
-    document
-        .querySelectorAll(
-            ".color-option"
-        )
-        .forEach(
-            function(option) {
-
-                option.classList.remove(
-                    "selected"
-                );
+/* =====================================================
+   MODAL CALENDARIO
+===================================================== */
 
 
-                if (
-                    option.dataset.color ===
-                    selectedColor
-                ) {
+function openCalendarModal(
+    dateString,
+    evento = null
+) {
 
-                    option.classList.add(
-                        "selected"
-                    );
+    editingCalendarEventId =
+        evento
+            ? evento.id
+            : null;
 
-                }
 
-            }
-        );
+    document.getElementById(
+        "modal-title"
+    ).textContent =
+        evento
+            ? "Editar evento"
+            : "Nuevo evento";
+
+
+    eventTitleInput.value =
+        evento
+            ? evento.titulo || ""
+            : "";
+
+
+    eventDateInput.value =
+        evento
+            ? evento.fecha
+            : dateString;
+
+
+    eventStartInput.value =
+        evento
+            ? evento.horario_inicio || ""
+            : "";
+
+
+    eventEndInput.value =
+        evento
+            ? evento.hora_fin || ""
+            : "";
+
+
+    eventPlaceInput.value =
+        evento
+            ? evento.lugar || ""
+            : "";
+
+
+    eventColorInput.value =
+        evento
+            ? evento.color || "green"
+            : "green";
+
+
+    eventNotesInput.value =
+        evento
+            ? evento.notas || ""
+            : "";
+
+
+    deleteCalendarEventButton.style.display =
+        evento
+            ? "block"
+            : "none";
+
+
+    calendarModal.style.display =
+        "flex";
+
+
+    setTimeout(
+        function() {
+
+            eventTitleInput.focus();
+
+        },
+        50
+    );
 
 }
 
 
 
-/* =====================================================
-   GUARDAR EVENTO
-===================================================== */
+function closeCalendarModal() {
 
-
-document
-    .getElementById(
-        "save-event-button"
-    )
-    .addEventListener(
-        "click",
-        async function() {
-
-            const titulo =
-                document.getElementById(
-                    "event-title"
-                ).value.trim();
-
-
-            const fecha =
-                document.getElementById(
-                    "event-date"
-                ).value;
-
-
-            const horaInicio =
-                document.getElementById(
-                    "event-start"
-                ).value;
-
-
-            const horaFin =
-                document.getElementById(
-                    "event-end"
-                ).value;
-
-
-            const lugar =
-                document.getElementById(
-                    "event-place"
-                ).value.trim();
-
-
-            const notas =
-                document.getElementById(
-                    "event-notes"
-                ).value.trim();
-
-
-            if (
-                !titulo ||
-                !fecha
-            ) {
-
-                alert(
-                    "Es necesario indicar el nombre y la fecha."
-                );
-
-                return;
-
-            }
-
-
-            const {
-                data: sessionData
-            } =
-                await supabaseClient
-                    .auth
-                    .getSession();
-
-
-            const user =
-                sessionData
-                    .session
-                    ?.user;
-
-
-            if (!user) {
-
-                alert(
-                    "Tu sesión ha caducado. Vuelve a iniciar sesión."
-                );
-
-                return;
-
-            }
-
-
-            const eventData = {
-
-                titulo:
-                    titulo,
-
-                fecha:
-                    fecha,
-
-                hora_inicio:
-                    horaInicio || null,
-
-                hora_fin:
-                    horaFin || null,
-
-                lugar:
-                    lugar || null,
-
-                notas:
-                    notas || null,
-
-                color:
-                    selectedColor,
-
-                user_id:
-                    user.id
-
-            };
-
-
-            let result;
-
-
-            if (
-                currentCalendarEvent
-            ) {
-
-                result =
-                    await supabaseClient
-                        .from(
-                            "calendario_eventos"
-                        )
-                        .update(
-                            eventData
-                        )
-                        .eq(
-                            "id",
-                            currentCalendarEvent.id
-                        );
-
-            } else {
-
-                result =
-                    await supabaseClient
-                        .from(
-                            "calendario_eventos"
-                        )
-                        .insert(
-                            eventData
-                        );
-
-            }
-
-
-            if (result.error) {
-
-                console.error(
-                    result.error
-                );
-
-
-                alert(
-                    "No se ha podido guardar el evento."
-                );
-
-                return;
-
-            }
-
-
-            closeEventModal();
-
-
-            await loadCalendarEvents();
-
-        }
-    );
-
-
-
-/* =====================================================
-   ELIMINAR EVENTO
-===================================================== */
-
-
-document
-    .getElementById(
-        "delete-event-button"
-    )
-    .addEventListener(
-        "click",
-        async function() {
-
-            if (
-                !currentCalendarEvent
-            ) {
-
-                return;
-
-            }
-
-
-            const confirmed =
-                confirm(
-                    "¿Seguro que quieres eliminar este evento?"
-                );
-
-
-            if (!confirmed) {
-
-                return;
-
-            }
-
-
-            const {
-                error
-            } =
-                await supabaseClient
-                    .from(
-                        "calendario_eventos"
-                    )
-                    .delete()
-                    .eq(
-                        "id",
-                        currentCalendarEvent.id
-                    );
-
-
-            if (error) {
-
-                console.error(error);
-
-                alert(
-                    "No se ha podido eliminar el evento."
-                );
-
-                return;
-
-            }
-
-
-            closeEventModal();
-
-
-            await loadCalendarEvents();
-
-        }
-    );
-
-
-
-/* =====================================================
-   CERRAR MODAL
-===================================================== */
-
-
-function closeEventModal() {
-
-    document.getElementById(
-        "event-modal"
-    ).style.display =
+    calendarModal.style.display =
         "none";
 
-
-    currentCalendarEvent =
+    editingCalendarEventId =
         null;
 
 }
 
 
-document
-    .getElementById(
-        "close-modal-button"
-    )
-    .addEventListener(
-        "click",
-        closeEventModal
-    );
+
+closeModalButton.addEventListener(
+    "click",
+    closeCalendarModal
+);
 
 
-document
-    .getElementById(
-        "cancel-event-button"
-    )
-    .addEventListener(
-        "click",
-        closeEventModal
-    );
+
+calendarModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            calendarModal
+        ) {
+
+            closeCalendarModal();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   NUEVO EVENTO CALENDARIO
+===================================================== */
 
 
 document
@@ -2532,34 +3105,10 @@ document
         "click",
         function() {
 
-            const today =
-                new Date();
-
-
-            const year =
-                today.getFullYear();
-
-
-            const month =
-                String(
-                    today.getMonth() + 1
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            const day =
-                String(
-                    today.getDate()
-                ).padStart(
-                    2,
-                    "0"
-                );
-
-
-            openNewEventModal(
-                `${year}-${month}-${day}`
+            openCalendarModal(
+                formatDateKey(
+                    currentCalendarDate
+                )
             );
 
         }
@@ -2568,50 +3117,227 @@ document
 
 
 /* =====================================================
-   VOLVER DESDE EVENTOS
+   GUARDAR EVENTO CALENDARIO
 ===================================================== */
 
 
-document
-    .getElementById(
-        "events-back-button"
-    )
-    .addEventListener(
-        "click",
-        function() {
+saveCalendarEventButton.addEventListener(
+    "click",
+    async function() {
 
-            eventsSection.style.display =
-                "none";
+        const titulo =
+            eventTitleInput.value.trim();
 
 
-            dashboard.style.display =
-                "block";
+        const fecha =
+            eventDateInput.value;
+
+
+        if (!titulo) {
+
+            alert(
+                "Escribe un título para el evento."
+            );
+
+            return;
 
         }
-    );
+
+
+        if (!fecha) {
+
+            alert(
+                "Selecciona una fecha."
+            );
+
+            return;
+
+        }
+
+
+        const {
+            data: sessionData
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
+
+        const user =
+            sessionData.session?.user;
+
+
+        if (!user) {
+
+            alert(
+                "Tu sesión ha caducado. Vuelve a iniciar sesión."
+            );
+
+            return;
+
+        }
+
+
+        const eventData = {
+
+            user_id: user.id,
+
+            titulo: titulo,
+
+            fecha: fecha,
+
+            horario_inicio:
+                eventStartInput.value || null,
+
+            hora_fin:
+                eventEndInput.value || null,
+
+            lugar:
+                eventPlaceInput.value.trim() || null,
+
+            notas:
+                eventNotesInput.value.trim() || null,
+
+            color:
+                eventColorInput.value
+
+        };
+
+
+        let result;
+
+
+        if (editingCalendarEventId) {
+
+            result =
+                await supabaseClient
+                    .from("calendario_eventos")
+                    .update(eventData)
+                    .eq(
+                        "id",
+                        editingCalendarEventId
+                    );
+
+        }
+
+        else {
+
+            result =
+                await supabaseClient
+                    .from("calendario_eventos")
+                    .insert(
+                        eventData
+                    );
+
+        }
+
+
+        if (result.error) {
+
+            console.error(
+                result.error
+            );
+
+            alert(
+                "No se ha podido guardar el evento."
+            );
+
+            return;
+
+        }
+
+
+        closeCalendarModal();
+
+        await loadCalendarEvents();
+
+        renderCalendar();
+
+    }
+);
 
 
 
 /* =====================================================
-   EVENTOS → CARPETAS
+   ELIMINAR EVENTO CALENDARIO
 ===================================================== */
 
 
-async function openEventFolders(
-    evento
-) {
+deleteCalendarEventButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!editingCalendarEventId) {
+
+            return;
+
+        }
+
+
+        const confirmed =
+            confirm(
+                "¿Seguro que quieres eliminar este evento?"
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("calendario_eventos")
+                .delete()
+                .eq(
+                    "id",
+                    editingCalendarEventId
+                );
+
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "No se ha podido eliminar el evento."
+            );
+
+            return;
+
+        }
+
+
+        closeCalendarModal();
+
+        await loadCalendarEvents();
+
+        renderCalendar();
+
+    }
+);
+
+
+
+/* =====================================================
+   ABRIR EVENTO GRANDE
+===================================================== */
+
+
+async function openEventFolders(evento) {
 
     eventsSection.style.display =
         "none";
 
-
     documentsSection.style.display =
         "none";
 
-
     eventFoldersSection.style.display =
         "block";
-
 
     currentEvent =
         evento;
@@ -2629,11 +3355,6 @@ async function openEventFolders(
 
 
 
-/* =====================================================
-   CARGAR CARPETAS DEL EVENTO
-===================================================== */
-
-
 async function loadEventFolders(
     eventoId
 ) {
@@ -2643,9 +3364,7 @@ async function loadEventFolders(
         error
     } =
         await supabaseClient
-            .from(
-                "evento_carpetas"
-            )
+            .from("evento_carpetas")
             .select("*")
             .eq(
                 "evento_id",
@@ -2681,7 +3400,7 @@ async function loadEventFolders(
 
 
         const existingFolder =
-            data.find(
+            (data || []).find(
                 function(folder) {
 
                     return (
@@ -2693,17 +3412,13 @@ async function loadEventFolders(
             );
 
 
-        if (
-            !existingFolder
-        ) {
+        if (!existingFolder) {
 
             const {
                 error: insertError
             } =
                 await supabaseClient
-                    .from(
-                        "evento_carpetas"
-                    )
+                    .from("evento_carpetas")
                     .insert({
 
                         evento_id:
@@ -2773,28 +3488,19 @@ async function openEventFolder(
     eventFoldersSection.style.display =
         "none";
 
-
     documentsSection.style.display =
         "block";
 
 
-    const title =
-        documentsSection.querySelector(
-            ".documents-header h2"
-        );
-
-
-    const subtitle =
-        documentsSection.querySelector(
-            ".documents-header p"
-        );
-
-
-    title.textContent =
+    document.getElementById(
+        "documents-title"
+    ).textContent =
         "📁 " + folderName;
 
 
-    subtitle.textContent =
+    document.getElementById(
+        "documents-subtitle"
+    ).textContent =
         currentEvent.nombre;
 
 
@@ -2804,6 +3510,30 @@ async function openEventFolder(
     );
 
 }
+
+
+
+/* =====================================================
+   VOLVER DESDE EVENTOS
+===================================================== */
+
+
+document
+    .getElementById(
+        "events-back-button"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            eventsSection.style.display =
+                "none";
+
+            dashboard.style.display =
+                "block";
+
+        }
+    );
 
 
 
@@ -2823,12 +3553,10 @@ document
             eventFoldersSection.style.display =
                 "none";
 
-
             eventsSection.style.display =
                 "block";
 
-
-            initializeCalendar();
+            loadEvents();
 
         }
     );
@@ -2836,8 +3564,244 @@ document
 
 
 /* =====================================================
-   DOCUMENTOS DE EVENTO
+   CARGAR EVENTOS GRANDES
 ===================================================== */
+
+
+async function loadEvents() {
+
+    eventsList.innerHTML =
+        '<div class="empty">Cargando eventos...</div>';
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("eventos")
+            .select("*")
+            .order(
+                "fecha",
+                {
+                    ascending: true
+                }
+            );
+
+
+    if (error) {
+
+        eventsList.innerHTML =
+            '<div class="empty">No se han podido cargar los eventos.</div>';
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        eventsList.innerHTML =
+            '<div class="empty">Todavía no tienes eventos.</div>';
+
+        return;
+
+    }
+
+
+    eventsList.innerHTML =
+        "";
+
+
+    data.forEach(
+        function(evento) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "event-card";
+
+
+            const date =
+                evento.fecha
+                    ? new Date(
+                        evento.fecha +
+                        "T00:00:00"
+                    ).toLocaleDateString(
+                        "es-ES",
+                        {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric"
+                        }
+                    )
+                    : "Sin fecha";
+
+
+            card.innerHTML = `
+
+                <div class="event-icon">
+                    📁
+                </div>
+
+                <h3>
+                    ${escapeHtml(
+                        evento.nombre
+                    )}
+                </h3>
+
+                <p>
+                    ${date}
+                </p>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                function() {
+
+                    openEventFolders(
+                        evento
+                    );
+
+                }
+            );
+
+
+            eventsList.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CREAR EVENTO GRANDE
+===================================================== */
+
+
+document
+    .getElementById(
+        "new-calendar-event-button"
+    );
+
+
+
+/* =====================================================
+   DOCUMENTOS
+===================================================== */
+
+
+document
+    .getElementById(
+        "documents-card"
+    )
+    .addEventListener(
+        "click",
+        async function() {
+
+            dashboard.style.display =
+                "none";
+
+            eventsSection.style.display =
+                "none";
+
+            eventFoldersSection.style.display =
+                "none";
+
+            documentsSection.style.display =
+                "block";
+
+
+            document.getElementById(
+                "documents-title"
+            ).textContent =
+                "📄 Documentos";
+
+
+            document.getElementById(
+                "documents-subtitle"
+            ).textContent =
+                "Tus documentos privados.";
+
+
+            await loadDocuments();
+
+        }
+    );
+
+
+
+/* =====================================================
+   DOCUMENTOS PRINCIPALES
+===================================================== */
+
+
+async function loadDocuments() {
+
+    documentsError.textContent =
+        "";
+
+
+    documentList.innerHTML =
+        '<div class="empty">Cargando documentos...</div>';
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .storage
+            .from("Documentos")
+            .list(
+                "",
+                {
+                    sortBy: {
+                        column: "created_at",
+                        order: "desc"
+                    }
+                }
+            );
+
+
+    if (error) {
+
+        documentsError.textContent =
+            "No se han podido cargar los documentos.";
+
+        documentList.innerHTML =
+            '<div class="empty">Error al cargar los documentos.</div>';
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    renderDocumentList(
+        data || [],
+        "",
+        "Documentos"
+    );
+
+}
+
 
 
 async function loadEventDocuments(
@@ -2865,100 +3829,14 @@ async function loadEventDocuments(
     } =
         await supabaseClient
             .storage
-            .from(
-                "Documentos"
-            )
+            .from("Documentos")
             .list(
                 path,
                 {
-
                     sortBy: {
-
-                        column:
-                            "created_at",
-
-                        order:
-                            "desc"
-
+                        column: "created_at",
+                        order: "desc"
                     }
-
-                }
-            );
-
-
-    if (error) {
-
-        console.error(error);
-
-
-        documentList.innerHTML =
-            '<div class="empty">No se han podido cargar los documentos.</div>';
-
-        return;
-
-    }
-
-
-    if (
-        !data ||
-        data.length === 0
-    ) {
-
-        documentList.innerHTML =
-            '<div class="empty">Todavía no hay documentos en esta carpeta.</div>';
-
-        return;
-
-    }
-
-
-    renderDocumentList(
-        data,
-        path
-    );
-
-}
-
-
-
-/* =====================================================
-   DOCUMENTOS PRINCIPALES
-===================================================== */
-
-
-async function loadDocuments() {
-
-    documentsError.textContent =
-        "";
-
-
-    documentList.innerHTML =
-        '<div class="empty">Cargando documentos...</div>';
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .storage
-            .from(
-                "Documentos"
-            )
-            .list(
-                "",
-                {
-
-                    sortBy: {
-
-                        column:
-                            "created_at",
-
-                        order:
-                            "desc"
-
-                    }
-
                 }
             );
 
@@ -2968,10 +3846,8 @@ async function loadDocuments() {
         documentsError.textContent =
             "No se han podido cargar los documentos.";
 
-
         documentList.innerHTML =
             '<div class="empty">Error al cargar los documentos.</div>';
-
 
         console.error(error);
 
@@ -2979,6 +3855,22 @@ async function loadDocuments() {
 
     }
 
+
+    renderDocumentList(
+        data || [],
+        path,
+        folderName
+    );
+
+}
+
+
+
+function renderDocumentList(
+    data,
+    path,
+    displayName
+) {
 
     if (
         !data ||
@@ -2992,25 +3884,6 @@ async function loadDocuments() {
 
     }
 
-
-    renderDocumentList(
-        data,
-        ""
-    );
-
-}
-
-
-
-/* =====================================================
-   MOSTRAR DOCUMENTOS
-===================================================== */
-
-
-function renderDocumentList(
-    data,
-    folderPath
-) {
 
     documentList.innerHTML =
         "";
@@ -3047,14 +3920,15 @@ function renderDocumentList(
 
 
             name.innerHTML =
-
                 `
                 <span class="document-icon">
                     📄
                 </span>
 
                 <span>
-                    ${escapeHtml(file.name)}
+                    ${escapeHtml(
+                        file.name
+                    )}
                 </span>
                 `;
 
@@ -3078,7 +3952,6 @@ function renderDocumentList(
             viewButton.className =
                 "view-button";
 
-
             viewButton.textContent =
                 "👁️ Ver";
 
@@ -3088,8 +3961,10 @@ function renderDocumentList(
                 function() {
 
                     openDocument(
-                        folderPath
-                            ? folderPath + "/" + file.name
+                        path
+                            ? path +
+                              "/" +
+                              file.name
                             : file.name
                     );
 
@@ -3106,7 +3981,6 @@ function renderDocumentList(
             deleteButton.className =
                 "delete-button";
 
-
             deleteButton.textContent =
                 "🗑️ Eliminar";
 
@@ -3116,8 +3990,10 @@ function renderDocumentList(
                 function() {
 
                     deleteDocument(
-                        folderPath
-                            ? folderPath + "/" + file.name
+                        path
+                            ? path +
+                              "/" +
+                              file.name
                             : file.name
                     );
 
@@ -3129,7 +4005,6 @@ function renderDocumentList(
                 viewButton
             );
 
-
             actions.appendChild(
                 deleteButton
             );
@@ -3138,7 +4013,6 @@ function renderDocumentList(
             row.appendChild(
                 name
             );
-
 
             row.appendChild(
                 actions
@@ -3157,6 +4031,42 @@ function renderDocumentList(
 
 
 /* =====================================================
+   VOLVER DESDE DOCUMENTOS
+===================================================== */
+
+
+document
+    .getElementById(
+        "back-button"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            documentsSection.style.display =
+                "none";
+
+
+            if (currentEvent) {
+
+                eventFoldersSection.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                dashboard.style.display =
+                    "block";
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
    ABRIR DOCUMENTO
 ===================================================== */
 
@@ -3171,9 +4081,7 @@ async function openDocument(
     } =
         await supabaseClient
             .storage
-            .from(
-                "Documentos"
-            )
+            .from("Documentos")
             .createSignedUrl(
                 filePath,
                 600
@@ -3185,7 +4093,6 @@ async function openDocument(
         alert(
             "No se ha podido abrir el documento."
         );
-
 
         console.error(error);
 
@@ -3223,14 +4130,69 @@ uploadInput.addEventListener(
         }
 
 
-        documentsError.textContent =
-            "";
+        const {
+            data: sessionData
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
+
+        const user =
+            sessionData.session?.user;
+
+
+        if (!user) {
+
+            alert(
+                "Tu sesión ha caducado."
+            );
+
+            return;
+
+        }
+
+
+        let folderPath = "";
+
+
+        if (currentEvent) {
+
+            const title =
+                document.getElementById(
+                    "documents-title"
+                ).textContent;
+
+
+            const folderName =
+                title
+                    .replace(
+                        "📁 ",
+                        ""
+                    )
+                    .trim();
+
+
+            folderPath =
+                currentEvent.id +
+                "/" +
+                folderName;
+
+        }
 
 
         const fileName =
-            Date.now()
-            + "_"
-            + file.name;
+            Date.now() +
+            "_" +
+            file.name;
+
+
+        const fullPath =
+            folderPath
+                ? folderPath +
+                  "/" +
+                  fileName
+                : fileName;
 
 
         const {
@@ -3238,11 +4200,9 @@ uploadInput.addEventListener(
         } =
             await supabaseClient
                 .storage
-                .from(
-                    "Documentos"
-                )
+                .from("Documentos")
                 .upload(
-                    fileName,
+                    fullPath,
                     file
                 );
 
@@ -3251,7 +4211,6 @@ uploadInput.addEventListener(
 
             documentsError.textContent =
                 "No se ha podido subir el documento.";
-
 
             console.error(error);
 
@@ -3264,7 +4223,31 @@ uploadInput.addEventListener(
             "";
 
 
-        await loadDocuments();
+        if (currentEvent) {
+
+            const folderName =
+                document.getElementById(
+                    "documents-title"
+                ).textContent
+                .replace(
+                    "📁 ",
+                    ""
+                )
+                .trim();
+
+
+            await loadEventDocuments(
+                currentEvent.id,
+                folderName
+            );
+
+        }
+
+        else {
+
+            await loadDocuments();
+
+        }
 
     }
 );
@@ -3298,9 +4281,7 @@ async function deleteDocument(
     } =
         await supabaseClient
             .storage
-            .from(
-                "Documentos"
-            )
+            .from("Documentos")
             .remove([
                 filePath
             ]);
@@ -3312,7 +4293,6 @@ async function deleteDocument(
             "No se ha podido eliminar el documento."
         );
 
-
         console.error(error);
 
         return;
@@ -3320,7 +4300,31 @@ async function deleteDocument(
     }
 
 
-    await loadDocuments();
+    if (currentEvent) {
+
+        const folderName =
+            document.getElementById(
+                "documents-title"
+            ).textContent
+            .replace(
+                "📁 ",
+                ""
+            )
+            .trim();
+
+
+        await loadEventDocuments(
+            currentEvent.id,
+            folderName
+        );
+
+    }
+
+    else {
+
+        await loadDocuments();
+
+    }
 
 }
 
