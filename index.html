@@ -10,26 +10,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="description"
-        content="MARCLASTRA — Producción y gestión de eventos."
-    >
-
-    <title>MARC_LASTRA — Event Production</title>
-
-
-    <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
+    <title>MARCLASTRA — Portfolio</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
     <style>
-
-        /* =====================================================
-           RESET
-        ====================================================== */
 
         * {
             box-sizing: border-box;
@@ -37,593 +22,498 @@
             padding: 0;
         }
 
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #111111;
-            line-height: 1.5;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #111;
         }
 
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-
-        img {
-            display: block;
-            width: 100%;
-        }
-
-
-        button {
+        button,
+        input,
+        textarea {
             font-family: inherit;
         }
 
-
-        /* =====================================================
-           HEADER
-        ====================================================== */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            width: 100%;
-
-            z-index: 100;
-
-            background: rgba(255, 255, 255, 0.94);
-
-            backdrop-filter: blur(10px);
-
-            border-bottom: 1px solid #eeeeee;
-        }
-
-
-        .header-inner {
-            max-width: 1400px;
-
-            margin: auto;
-
-            padding: 22px 35px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-        }
-
-
-        .logo {
-            font-size: 20px;
-
-            font-weight: bold;
-
-            letter-spacing: 3px;
-        }
-
-
-        .nav {
-            display: flex;
-
-            align-items: center;
-
-            gap: 30px;
-        }
-
-
-        .nav a {
-            font-size: 13px;
-
-            transition: opacity 0.2s ease;
-        }
-
-
-        .nav a:hover {
-            opacity: 0.5;
-        }
-
-
-        .private-link {
-            border: 1px solid #111111;
-
-            padding: 9px 15px;
-
-            border-radius: 6px;
-        }
-
-
-        .private-link:hover {
-            background: #111111;
-
-            color: #ffffff;
-
-            opacity: 1 !important;
-        }
-
-
-        /* =====================================================
-           HERO
-        ====================================================== */
-
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            padding: 140px 35px 80px;
-
-            background: #f5f5f5;
-        }
-
-
-        .hero-inner {
-            width: 100%;
-
-            max-width: 1400px;
-
-            margin: auto;
-        }
-
-
-        .hero-small {
-            font-size: 13px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 3px;
-
-            color: #777777;
-
-            margin-bottom: 25px;
-        }
-
-
-        .hero h1 {
-            font-size: clamp(55px, 10vw, 150px);
-
-            line-height: 0.9;
-
-            letter-spacing: -5px;
-
-            font-weight: 700;
-
-            max-width: 1000px;
-        }
-
-
-        .hero-description {
-            margin-top: 40px;
-
-            max-width: 600px;
-
-            font-size: 18px;
-
-            color: #555555;
-        }
-
-
-        .hero-scroll {
-            margin-top: 70px;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            font-size: 13px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-        }
-
-
-        /* =====================================================
-           PORTFOLIO
-        ====================================================== */
-
-        .portfolio-section {
-            max-width: 1400px;
-
-            margin: auto;
-
-            padding: 120px 35px;
-        }
-
-
-        .section-intro {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: flex-end;
-
-            gap: 30px;
-
-            margin-bottom: 60px;
-        }
-
-
-        .section-intro h2 {
-            font-size: 48px;
-
-            line-height: 1;
-
-            letter-spacing: -2px;
-        }
-
-
-        .section-intro p {
-            max-width: 400px;
-
-            color: #777777;
-
-            font-size: 14px;
-        }
-
-
-        /* =====================================================
-           PORTFOLIO GRID
-        ====================================================== */
-
-        .portfolio-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
-            gap: 70px 30px;
-        }
-
-
-        .portfolio-item {
+        button {
+            border: none;
             cursor: pointer;
         }
 
 
-        .portfolio-image {
-            position: relative;
+        /* =========================
+           HEADER
+        ========================= */
 
-            width: 100%;
-
-            aspect-ratio: 16 / 10;
-
-            overflow: hidden;
-
-            background: #eeeeee;
+        header {
+            background: #111;
+            color: white;
+            padding: 22px 30px;
         }
 
-
-        .portfolio-image img {
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            transition:
-                transform 0.6s ease;
-        }
-
-
-        .portfolio-item:hover
-        .portfolio-image img {
-            transform: scale(1.04);
-        }
-
-
-        /* =====================================================
-           INFORMACIÓN DEL PROYECTO
-        ====================================================== */
-
-        .portfolio-info {
-            padding-top: 18px;
+        .header-inner {
+            max-width: 1200px;
+            margin: auto;
 
             display: flex;
-
+            align-items: center;
             justify-content: space-between;
-
-            align-items: flex-start;
 
             gap: 20px;
         }
 
-
-        .portfolio-main-info {
-            flex: 1;
+        .logo {
+            font-size: 24px;
+            letter-spacing: 2px;
+            font-weight: bold;
         }
 
-
-        .portfolio-info h3 {
-            font-size: 21px;
-
-            font-weight: 500;
-
-            line-height: 1.2;
+        .header-actions {
+            display: flex;
+            gap: 10px;
         }
 
+        .header-button {
+            background: #333;
+            color: white;
 
-        .portfolio-description {
-            margin-top: 9px;
-
-            color: #777777;
+            padding: 11px 16px;
+            border-radius: 8px;
 
             font-size: 14px;
+        }
 
-            line-height: 1.6;
+        .header-button:hover {
+            background: #444;
+        }
 
-            max-width: 650px;
+        .admin-button {
+            background: white;
+            color: #111;
+        }
+
+        .admin-button:hover {
+            background: #ddd;
         }
 
 
-        .portfolio-date {
-            color: #888888;
+        /* =========================
+           HERO
+        ========================= */
 
-            font-size: 13px;
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 80px 30px 60px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 82px);
+            letter-spacing: -3px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            color: #777;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           PORTFOLIO
+        ========================= */
+
+        .portfolio-container {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 0 30px 80px;
+        }
+
+        .portfolio-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+
+            gap: 20px;
+        }
+
+        .portfolio-header h2 {
+            font-size: 30px;
+        }
+
+        .portfolio-header p {
+            color: #777;
+            margin-top: 6px;
+        }
+
+
+        .new-button {
+            background: #111;
+            color: white;
+
+            padding: 13px 18px;
+            border-radius: 8px;
 
             white-space: nowrap;
         }
 
-
-        /* =====================================================
-           MENSAJES
-        ====================================================== */
-
-        .portfolio-message {
-            grid-column: 1 / -1;
-
-            padding: 80px 20px;
-
-            text-align: center;
-
-            color: #888888;
+        .new-button:hover {
+            background: #333;
         }
 
 
-        .loading {
-            font-size: 14px;
-        }
+        /* =========================
+           POSTS
+        ========================= */
 
-
-        .error-message {
-            color: #b3261e;
-        }
-
-
-        /* =====================================================
-           ABOUT
-        ====================================================== */
-
-        .about-section {
-            background: #111111;
-
-            color: #ffffff;
-        }
-
-
-        .about-inner {
-            max-width: 1400px;
-
-            margin: auto;
-
-            padding: 120px 35px;
-        }
-
-
-        .about-grid {
+        #portfolio-list {
             display: grid;
 
             grid-template-columns:
-                1fr 1fr;
+                repeat(
+                    auto-fit,
+                    minmax(300px, 1fr)
+                );
 
-            gap: 80px;
+            gap: 30px;
         }
 
 
-        .about-title {
-            font-size: 60px;
+        .post {
+            background: white;
 
-            line-height: 1;
+            border-radius: 14px;
 
-            letter-spacing: -3px;
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.07);
         }
 
 
-        .about-text {
-            color: #bbbbbb;
+        .post-image {
+            width: 100%;
+            height: 300px;
 
-            font-size: 17px;
+            object-fit: cover;
 
-            max-width: 600px;
+            display: block;
         }
 
 
-        .about-text p + p {
+        .post-content {
+            padding: 25px;
+        }
+
+
+        .post-date {
+            color: #999;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .post-title {
+            font-size: 24px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .post-text {
+            color: #666;
+
+            line-height: 1.6;
+
+            white-space: pre-wrap;
+        }
+
+
+        .post-actions {
+            display: flex;
+
+            gap: 8px;
+
             margin-top: 20px;
         }
 
 
-        /* =====================================================
-           CONTACTO
-        ====================================================== */
+        .edit-button,
+        .delete-button {
+            padding: 9px 13px;
 
-        .contact-section {
-            max-width: 1400px;
+            border-radius: 7px;
 
-            margin: auto;
-
-            padding: 120px 35px;
+            font-size: 13px;
         }
 
 
-        .contact-section h2 {
-            font-size: 70px;
-
-            line-height: 1;
-
-            letter-spacing: -3px;
-
-            margin-bottom: 40px;
+        .edit-button {
+            background: #eee;
+            color: #111;
         }
 
 
-        .contact-link {
-            font-size: 18px;
-
-            border-bottom: 1px solid #111111;
-
-            padding-bottom: 5px;
+        .delete-button {
+            background: #b3261e;
+            color: white;
         }
 
 
-        /* =====================================================
-           FOOTER
-        ====================================================== */
+        /* =========================
+           EMPTY
+        ========================= */
 
-        footer {
-            border-top: 1px solid #eeeeee;
+        .empty {
+            background: white;
 
-            padding: 25px 35px;
+            padding: 50px;
+
+            border-radius: 14px;
+
+            text-align: center;
+
+            color: #888;
         }
 
 
-        .footer-inner {
-            max-width: 1400px;
+        /* =========================
+           MODAL
+        ========================= */
 
-            margin: auto;
+        .modal-overlay {
+            position: fixed;
 
+            inset: 0;
+
+            background:
+                rgba(0,0,0,0.55);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+        }
+
+
+        .modal {
+            width: 100%;
+            max-width: 600px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 30px;
+        }
+
+
+        .modal h2 {
+            margin-bottom: 25px;
+        }
+
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+        }
+
+
+        textarea {
+            min-height: 180px;
+
+            resize: vertical;
+        }
+
+
+        .preview {
+            width: 100%;
+
+            max-height: 250px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            margin-top: 10px;
+
+            display: none;
+        }
+
+
+        .modal-buttons {
             display: flex;
 
-            justify-content: space-between;
+            justify-content: flex-end;
 
-            gap: 20px;
+            gap: 10px;
 
-            color: #777777;
-
-            font-size: 12px;
+            margin-top: 25px;
         }
 
 
-        /* =====================================================
-           RESPONSIVE
-        ====================================================== */
+        .cancel-button {
+            background: #eee;
 
-        @media (max-width: 800px) {
+            color: #111;
+
+            padding: 12px 17px;
+
+            border-radius: 8px;
+        }
+
+
+        .save-button {
+            background: #111;
+
+            color: white;
+
+            padding: 12px 17px;
+
+            border-radius: 8px;
+        }
+
+
+        .error {
+            color: #b3261e;
+
+            font-size: 14px;
+
+            margin-top: 12px;
+        }
+
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .login-info {
+            background: #f5f5f5;
+
+            border-radius: 8px;
+
+            padding: 12px;
+
+            font-size: 13px;
+
+            color: #666;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #ddd;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 18px;
+            }
 
             .header-inner {
-                padding: 18px 20px;
-            }
-
-
-            .nav {
-                gap: 12px;
-            }
-
-
-            .nav a:not(.private-link) {
-                display: none;
-            }
-
-
-            .hero {
-                padding: 130px 20px 70px;
-            }
-
-
-            .hero h1 {
-                letter-spacing: -3px;
-            }
-
-
-            .hero-description {
-                font-size: 16px;
-            }
-
-
-            .portfolio-section {
-                padding: 80px 20px;
-            }
-
-
-            .section-intro {
                 flex-direction: column;
-
                 align-items: flex-start;
             }
 
-
-            .section-intro h2 {
-                font-size: 40px;
+            .header-actions {
+                width: 100%;
             }
 
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-
-                gap: 55px;
+            .header-button {
+                flex: 1;
             }
 
+            .hero {
+                padding:
+                    55px 20px
+                    45px;
+            }
 
-            .portfolio-info {
+            .portfolio-container {
+                padding:
+                    0 20px
+                    60px;
+            }
+
+            .portfolio-header {
+                align-items: flex-start;
                 flex-direction: column;
-
-                gap: 8px;
             }
 
-
-            .portfolio-date {
-                order: -1;
+            .new-button {
+                width: 100%;
             }
 
-
-            .about-inner {
-                padding: 80px 20px;
-            }
-
-
-            .about-grid {
+            #portfolio-list {
                 grid-template-columns: 1fr;
-
-                gap: 40px;
             }
 
-
-            .about-title {
-                font-size: 48px;
+            .post-image {
+                height: 250px;
             }
 
-
-            .contact-section {
-                padding: 80px 20px;
-            }
-
-
-            .contact-section h2 {
-                font-size: 48px;
-            }
-
-
-            footer {
-                padding: 20px;
-            }
-
-
-            .footer-inner {
-                flex-direction: column;
+            .modal {
+                padding: 22px;
             }
 
         }
@@ -633,283 +523,245 @@
 </head>
 
 
-
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      HEADER
-===================================================== -->
+========================= -->
 
 <header>
 
     <div class="header-inner">
 
-
-        <a
-            href="#top"
-            class="logo"
-        >
+        <div class="logo">
             MARCLASTRA
-        </a>
+        </div>
 
 
-        <nav class="nav">
+        <div class="header-actions">
 
-
-            <a href="#portfolio">
-                Portfolio
-            </a>
-
-
-            <a href="#about">
-                Sobre mí
-            </a>
-
-
-            <a href="#contact">
-                Contacto
-            </a>
-
-
-            <a
-                href="private.html"
-                class="private-link"
+            <button
+                class="header-button"
+                id="private-button"
             >
-                🔒 Private
-            </a>
+                🔒 Área privada
+            </button>
 
 
-        </nav>
+            <button
+                class="header-button admin-button"
+                id="login-button"
+                style="display:none;"
+            >
+                ✚ Nueva publicación
+            </button>
+
+        </div>
 
     </div>
 
 </header>
 
 
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-
-<main id="top">
-
-
-
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section class="hero">
 
-    <div class="hero-inner">
+    <h1>
+        Portfolio
+    </h1>
 
-
-        <div class="hero-small">
-            Event Production · Management
-        </div>
-
-
-        <h1>
-            MARCLASTRA
-        </h1>
-
-
-        <p class="hero-description">
-            Producción, gestión y coordinación de eventos.
-            Un espacio para mostrar proyectos, experiencias
-            y trabajos realizados.
-        </p>
-
-
-        <a
-            href="#portfolio"
-            class="hero-scroll"
-        >
-            Ver proyectos ↓
-        </a>
-
-
-    </div>
+    <p>
+        Una selección de trabajos, proyectos y
+        experiencias de Marc Lastra.
+    </p>
 
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================
      PORTFOLIO
-===================================================== -->
+========================= -->
 
-<section
-    id="portfolio"
-    class="portfolio-section"
->
+<main class="portfolio-container">
 
+    <div class="portfolio-header">
 
-    <div class="section-intro">
+        <div>
 
-
-        <h2>
-            Proyectos
-        </h2>
-
-
-        <p>
-            Una selección de eventos, producciones y proyectos
-            en los que he trabajado.
-        </p>
-
-
-    </div>
-
-
-
-    <div
-        id="portfolio-grid"
-        class="portfolio-grid"
-    >
-
-        <div class="portfolio-message loading">
-            Cargando proyectos...
-        </div>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section
-    id="about"
-    class="about-section"
->
-
-
-    <div class="about-inner">
-
-
-        <div class="about-grid">
-
-
-            <h2 class="about-title">
-                Sobre mí
+            <h2>
+                Trabajos
             </h2>
 
-
-            <div class="about-text">
-
-
-                <p>
-                    Soy Marc Lastra, especializado en producción,
-                    organización y gestión de eventos.
-                </p>
-
-
-                <p>
-                    Este espacio reúne algunos de los proyectos
-                    y experiencias que forman parte de mi trayectoria
-                    profesional.
-                </p>
-
-
-                <p>
-                    Desde la planificación y coordinación hasta
-                    la ejecución del evento, me interesa especialmente
-                    que cada parte del proceso funcione.
-                </p>
-
-
-            </div>
-
+            <p>
+                Proyectos y experiencias.
+            </p>
 
         </div>
 
 
+        <button
+            class="new-button"
+            id="new-post-button"
+            style="display:none;"
+        >
+            + Nueva publicación
+        </button>
+
     </div>
 
 
-</section>
+    <div id="portfolio-list">
 
+        <div class="empty">
+            Cargando portfolio...
+        </div>
 
-
-<!-- =====================================================
-     CONTACTO
-===================================================== -->
-
-<section
-    id="contact"
-    class="contact-section"
->
-
-
-    <h2>
-        ¿Trabajamos juntos?
-    </h2>
-
-
-    <a
-        href="mailto:contacto@marclastra.com"
-        class="contact-link"
-    >
-        contacto@marclastra.com
-    </a>
-
-
-</section>
-
+    </div>
 
 </main>
 
 
-
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================= -->
 
 <footer>
 
-
-    <div class="footer-inner">
-
-
-        <span>
-            © 2026 MARCLASTRA
-        </span>
-
-
-        <span>
-            Event Production
-        </span>
-
-
-        <a href="private.html">
-            Private Area →
-        </a>
-
-
-    </div>
-
+    © MARCLASTRA
 
 </footer>
 
 
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="post-modal"
+>
+
+    <div class="modal">
+
+        <h2 id="modal-title">
+            Nueva publicación
+        </h2>
+
+
+        <div class="login-info">
+
+            Esta publicación será visible
+            públicamente en tu portfolio.
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Título
+            </label>
+
+            <input
+                type="text"
+                id="post-title"
+                placeholder="Título del proyecto"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Fecha
+            </label>
+
+            <input
+                type="date"
+                id="post-date"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Texto
+            </label>
+
+            <textarea
+                id="post-text"
+                placeholder="Escribe aquí la descripción del proyecto..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Imagen
+            </label>
+
+            <input
+                type="file"
+                id="post-image"
+                accept="image/*"
+            >
+
+
+            <img
+                id="image-preview"
+                class="preview"
+            >
+
+        </div>
+
+
+        <div
+            id="modal-error"
+            class="error"
+        ></div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel-button"
+                id="cancel-button"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                class="save-button"
+                id="save-button"
+            >
+                Publicar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
-
 
 /* =====================================================
    SUPABASE
 ===================================================== */
 
-
 const SUPABASE_URL =
     "https://xcyqbqegaklxpcbxwjia.supabase.co";
-
 
 const SUPABASE_KEY =
     "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
@@ -922,30 +774,138 @@ const supabaseClient =
     );
 
 
-
 /* =====================================================
    ELEMENTOS
 ===================================================== */
 
-
-const portfolioGrid =
+const portfolioList =
     document.getElementById(
-        "portfolio-grid"
+        "portfolio-list"
     );
 
 
+const newPostButton =
+    document.getElementById(
+        "new-post-button"
+    );
+
+
+const postModal =
+    document.getElementById(
+        "post-modal"
+    );
+
+
+const modalTitle =
+    document.getElementById(
+        "modal-title"
+    );
+
+
+const postTitle =
+    document.getElementById(
+        "post-title"
+    );
+
+
+const postDate =
+    document.getElementById(
+        "post-date"
+    );
+
+
+const postText =
+    document.getElementById(
+        "post-text"
+    );
+
+
+const postImage =
+    document.getElementById(
+        "post-image"
+    );
+
+
+const imagePreview =
+    document.getElementById(
+        "image-preview"
+    );
+
+
+const modalError =
+    document.getElementById(
+        "modal-error"
+    );
+
+
+const saveButton =
+    document.getElementById(
+        "save-button"
+    );
+
+
+let currentUser =
+    null;
+
+
+let editingPost =
+    null;
+
 
 /* =====================================================
-   CARGAR PROYECTOS
+   SESIÓN
+===================================================== */
+
+async function checkSession() {
+
+    const {
+        data
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    currentUser =
+        data.session
+            ? data.session.user
+            : null;
+
+
+    updateAdminInterface();
+
+}
+
+
+function updateAdminInterface() {
+
+    if (currentUser) {
+
+        newPostButton.style.display =
+            "block";
+
+    }
+
+    else {
+
+        newPostButton.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   CARGAR PORTFOLIO
 ===================================================== */
 
 async function loadPortfolio() {
 
-
-    portfolioGrid.innerHTML =
+    portfolioList.innerHTML =
         `
-        <div class="portfolio-message loading">
-            Cargando proyectos...
+        <div class="empty">
+            Cargando portfolio...
         </div>
         `;
 
@@ -962,7 +922,7 @@ async function loadPortfolio() {
                 true
             )
             .order(
-                "created_at",
+                "fecha",
                 {
                     ascending: false
                 }
@@ -971,20 +931,18 @@ async function loadPortfolio() {
 
     if (error) {
 
-
         console.error(
             "Error cargando portfolio:",
             error
         );
 
 
-        portfolioGrid.innerHTML =
+        portfolioList.innerHTML =
             `
-            <div class="portfolio-message error-message">
-                No se han podido cargar los proyectos.
+            <div class="empty">
+                No se ha podido cargar el portfolio.
             </div>
             `;
-
 
         return;
 
@@ -996,311 +954,753 @@ async function loadPortfolio() {
         data.length === 0
     ) {
 
-
-        portfolioGrid.innerHTML =
+        portfolioList.innerHTML =
             `
-            <div class="portfolio-message">
-                Todavía no hay proyectos publicados.
+            <div class="empty">
+                Todavía no hay publicaciones.
             </div>
             `;
-
 
         return;
 
     }
 
 
-    portfolioGrid.innerHTML =
+    portfolioList.innerHTML =
         "";
 
 
     data.forEach(
-        function(project) {
+        function(post) {
 
-            createPortfolioCard(
-                project
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   CREAR PROYECTO
-===================================================== */
-
-function createPortfolioCard(
-    project
-) {
-
-
-    const card =
-        document.createElement(
-            "article"
-        );
-
-
-    card.className =
-        "portfolio-item";
-
-
-
-    /* =================================================
-       IMAGEN
-    ================================================= */
-
-
-    const imagePath =
-        project.imagen ||
-        project.imagen_url ||
-        project.image_url ||
-        project.foto ||
-        project.image ||
-        null;
-
-
-    let imageUrl =
-        "";
-
-
-    if (imagePath) {
-
-
-        if (
-            imagePath.startsWith(
-                "http://"
-            ) ||
-            imagePath.startsWith(
-                "https://"
-            )
-        ) {
-
-
-            imageUrl =
-                imagePath;
-
-
-        } else {
-
-
-            const {
-                data
-            } =
-                supabaseClient
-                    .storage
-                    .from("portfolio")
-                    .getPublicUrl(
-                        imagePath
-                    );
-
-
-            imageUrl =
-                data.publicUrl;
-
-        }
-
-    }
-
-
-    if (!imageUrl) {
-
-        imageUrl =
-            createPlaceholder();
-
-    }
-
-
-
-    /* =================================================
-       DATOS
-    ================================================= */
-
-
-    const title =
-        project.titulo ||
-        project.title ||
-        "Sin título";
-
-
-    const description =
-        project.descripcion ||
-        project.description ||
-        project.texto ||
-        "";
-
-
-    const date =
-        project.fecha ||
-        project.date ||
-        project.created_at ||
-        null;
-
-
-    let formattedDate =
-        "";
-
-
-    if (date) {
-
-
-        const parsedDate =
-            new Date(
-                date
-            );
-
-
-        if (
-            !isNaN(
-                parsedDate.getTime()
-            )
-        ) {
-
-
-            formattedDate =
-                parsedDate.toLocaleDateString(
-                    "es-ES",
-                    {
-                        year: "numeric",
-                        month: "long"
-                    }
+            const article =
+                document.createElement(
+                    "article"
                 );
 
-        }
 
-    }
-
-
-
-    /* =================================================
-       TARJETA
-    ================================================= */
+            article.className =
+                "post";
 
 
-    card.innerHTML =
-        `
-
-        <div class="portfolio-image">
-
-            <img
-                src="${escapeHtml(imageUrl)}"
-                alt="${escapeHtml(title)}"
-                loading="lazy"
-            >
-
-        </div>
+            let imageHTML =
+                "";
 
 
-        <div class="portfolio-info">
+            if (post.imagen) {
 
-
-            <div class="portfolio-main-info">
-
-
-                <h3>
-                    ${escapeHtml(title)}
-                </h3>
-
-
-                ${
-                    description
-                        ? `
-                        <p class="portfolio-description">
-                            ${escapeHtml(description)}
-                        </p>
-                        `
-                        : ""
-                }
-
-
-            </div>
-
-
-            ${
-                formattedDate
-                    ? `
-                    <span class="portfolio-date">
-                        ${escapeHtml(
-                            formattedDate
-                        )}
-                    </span>
+                imageHTML =
                     `
-                    : ""
+                    <img
+                        class="post-image"
+                        src="${escapeHtml(
+                            post.imagen
+                        )}"
+                        alt="${escapeHtml(
+                            post.titulo
+                        )}"
+                    >
+                    `;
+
             }
 
 
-        </div>
+            const date =
+                post.fecha
+                    ? new Date(
+                        post.fecha +
+                        "T00:00:00"
+                    ).toLocaleDateString(
+                        "es-ES",
+                        {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric"
+                        }
+                    )
+                    : "";
 
-        `;
+
+            let actionsHTML =
+                "";
 
 
-    portfolioGrid.appendChild(
-        card
+            if (
+                currentUser &&
+                post.user_id ===
+                    currentUser.id
+            ) {
+
+                actionsHTML =
+                    `
+                    <div class="post-actions">
+
+                        <button
+                            class="edit-button"
+                            data-id="${post.id}"
+                        >
+                            ✏️ Editar
+                        </button>
+
+                        <button
+                            class="delete-button"
+                            data-id="${post.id}"
+                        >
+                            🗑️ Eliminar
+                        </button>
+
+                    </div>
+                    `;
+
+            }
+
+
+            article.innerHTML =
+                `
+
+                ${imageHTML}
+
+                <div class="post-content">
+
+                    <div class="post-date">
+                        ${escapeHtml(date)}
+                    </div>
+
+                    <h3 class="post-title">
+                        ${escapeHtml(
+                            post.titulo
+                        )}
+                    </h3>
+
+                    <div class="post-text">
+                        ${escapeHtml(
+                            post.texto || ""
+                        )}
+                    </div>
+
+                    ${actionsHTML}
+
+                </div>
+
+                `;
+
+
+            const editButton =
+                article.querySelector(
+                    ".edit-button"
+                );
+
+
+            if (editButton) {
+
+                editButton.addEventListener(
+                    "click",
+                    function() {
+
+                        openEditModal(
+                            post
+                        );
+
+                    }
+                );
+
+            }
+
+
+            const deleteButton =
+                article.querySelector(
+                    ".delete-button"
+                );
+
+
+            if (deleteButton) {
+
+                deleteButton.addEventListener(
+                    "click",
+                    function() {
+
+                        deletePost(
+                            post
+                        );
+
+                    }
+                );
+
+            }
+
+
+            portfolioList.appendChild(
+                article
+            );
+
+        }
     );
 
 }
 
 
-
 /* =====================================================
-   PLACEHOLDER
+   NUEVA PUBLICACIÓN
 ===================================================== */
 
-function createPlaceholder() {
+newPostButton.addEventListener(
+    "click",
+    function() {
+
+        openNewModal();
+
+    }
+);
 
 
-    const svg = `
+function openNewModal() {
 
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1200"
-            height="750"
-            viewBox="0 0 1200 750"
-        >
-
-            <rect
-                width="1200"
-                height="750"
-                fill="#eeeeee"
-            />
+    editingPost =
+        null;
 
 
-            <text
-                x="600"
-                y="375"
-                text-anchor="middle"
-                dominant-baseline="middle"
-                font-family="Arial"
-                font-size="32"
-                fill="#999999"
-            >
-                MARCLASTRA
-            </text>
-
-        </svg>
-
-    `;
+    modalTitle.textContent =
+        "Nueva publicación";
 
 
-    return (
-        "data:image/svg+xml;charset=UTF-8," +
-        encodeURIComponent(svg)
-    );
+    saveButton.textContent =
+        "Publicar";
+
+
+    postTitle.value =
+        "";
+
+
+    postDate.value =
+        new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+    postText.value =
+        "";
+
+
+    postImage.value =
+        "";
+
+
+    imagePreview.src =
+        "";
+
+
+    imagePreview.style.display =
+        "none";
+
+
+    modalError.textContent =
+        "";
+
+
+    postModal.style.display =
+        "flex";
 
 }
 
 
-
 /* =====================================================
-   SEGURIDAD
+   EDITAR
 ===================================================== */
 
-function escapeHtml(
-    text
-) {
+function openEditModal(post) {
 
+    editingPost =
+        post;
+
+
+    modalTitle.textContent =
+        "Editar publicación";
+
+
+    saveButton.textContent =
+        "Guardar cambios";
+
+
+    postTitle.value =
+        post.titulo || "";
+
+
+    postDate.value =
+        post.fecha || "";
+
+
+    postText.value =
+        post.texto || "";
+
+
+    postImage.value =
+        "";
+
+
+    if (post.imagen) {
+
+        imagePreview.src =
+            post.imagen;
+
+        imagePreview.style.display =
+            "block";
+
+    }
+
+    else {
+
+        imagePreview.style.display =
+            "none";
+
+    }
+
+
+    modalError.textContent =
+        "";
+
+
+    postModal.style.display =
+        "flex";
+
+}
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+document
+    .getElementById(
+        "cancel-button"
+    )
+    .addEventListener(
+        "click",
+        closeModal
+    );
+
+
+postModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            postModal
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+function closeModal() {
+
+    postModal.style.display =
+        "none";
+
+    editingPost =
+        null;
+
+}
+
+
+/* =====================================================
+   PREVISUALIZACIÓN
+===================================================== */
+
+postImage.addEventListener(
+    "change",
+    function() {
+
+        const file =
+            postImage.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event) {
+
+                imagePreview.src =
+                    event.target.result;
+
+                imagePreview.style.display =
+                    "block";
+
+            };
+
+
+        reader.readAsDataURL(
+            file
+        );
+
+    }
+);
+
+
+/* =====================================================
+   GUARDAR PUBLICACIÓN
+===================================================== */
+
+saveButton.addEventListener(
+    "click",
+    async function() {
+
+        modalError.textContent =
+            "";
+
+
+        if (!currentUser) {
+
+            modalError.textContent =
+                "Necesitas iniciar sesión.";
+
+            return;
+
+        }
+
+
+        const titulo =
+            postTitle.value.trim();
+
+
+        const texto =
+            postText.value.trim();
+
+
+        const fecha =
+            postDate.value;
+
+
+        if (!titulo) {
+
+            modalError.textContent =
+                "Escribe un título.";
+
+            return;
+
+        }
+
+
+        if (!texto) {
+
+            modalError.textContent =
+                "Escribe el texto.";
+
+            return;
+
+        }
+
+
+        if (!fecha) {
+
+            modalError.textContent =
+                "Selecciona una fecha.";
+
+            return;
+
+        }
+
+
+        saveButton.disabled =
+            true;
+
+
+        saveButton.textContent =
+            "Guardando...";
+
+
+        try {
+
+            let imageUrl =
+                editingPost
+                    ? editingPost.imagen
+                    : null;
+
+
+            /* =========================
+               SUBIR IMAGEN
+            ========================= */
+
+            const file =
+                postImage.files[0];
+
+
+            if (file) {
+
+                const extension =
+                    file.name
+                        .split(".")
+                        .pop()
+                        .toLowerCase();
+
+
+                const fileName =
+                    currentUser.id +
+                    "/" +
+                    Date.now() +
+                    "." +
+                    extension;
+
+
+                const {
+                    error:
+                        uploadError
+                } =
+                    await supabaseClient
+                        .storage
+                        .from("portfolio")
+                        .upload(
+                            fileName,
+                            file,
+                            {
+                                upsert: false
+                            }
+                        );
+
+
+                if (uploadError) {
+
+                    throw uploadError;
+
+                }
+
+
+                const {
+                    data:
+                        publicData
+                } =
+                    supabaseClient
+                        .storage
+                        .from("portfolio")
+                        .getPublicUrl(
+                            fileName
+                        );
+
+
+                imageUrl =
+                    publicData.publicUrl;
+
+            }
+
+
+            /* =========================
+               DATOS
+            ========================= */
+
+            const portfolioData = {
+
+                user_id:
+                    currentUser.id,
+
+                titulo:
+                    titulo,
+
+                fecha:
+                    fecha,
+
+                texto:
+                    texto,
+
+                imagen:
+                    imageUrl,
+
+                publicado:
+                    true,
+
+                updated_at:
+                    new Date().toISOString()
+
+            };
+
+
+            let result;
+
+
+            /* =========================
+               EDITAR
+            ========================= */
+
+            if (editingPost) {
+
+                result =
+                    await supabaseClient
+                        .from("portfolio")
+                        .update(
+                            portfolioData
+                        )
+                        .eq(
+                            "id",
+                            editingPost.id
+                        )
+                        .eq(
+                            "user_id",
+                            currentUser.id
+                        );
+
+            }
+
+
+            /* =========================
+               CREAR
+            ========================= */
+
+            else {
+
+                result =
+                    await supabaseClient
+                        .from("portfolio")
+                        .insert({
+
+                            ...portfolioData,
+
+                            created_at:
+                                new Date()
+                                    .toISOString()
+
+                        });
+
+            }
+
+
+            if (result.error) {
+
+                throw result.error;
+
+            }
+
+
+            closeModal();
+
+
+            await loadPortfolio();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Error guardando publicación:",
+                error
+            );
+
+
+            modalError.textContent =
+                "No se ha podido guardar la publicación. Revisa las políticas de Supabase.";
+
+        }
+
+
+        finally {
+
+            saveButton.disabled =
+                false;
+
+
+            saveButton.textContent =
+                editingPost
+                    ? "Guardar cambios"
+                    : "Publicar";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ELIMINAR PUBLICACIÓN
+===================================================== */
+
+async function deletePost(post) {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "¿Seguro que quieres eliminar esta publicación?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("portfolio")
+            .delete()
+            .eq(
+                "id",
+                post.id
+            )
+            .eq(
+                "user_id",
+                currentUser.id
+            );
+
+
+    if (error) {
+
+        console.error(
+            error
+        );
+
+
+        alert(
+            "No se ha podido eliminar la publicación."
+        );
+
+        return;
+
+    }
+
+
+    await loadPortfolio();
+
+}
+
+
+/* =====================================================
+   ÁREA PRIVADA
+===================================================== */
+
+document
+    .getElementById(
+        "private-button"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "./privado.html";
+
+        }
+    );
+
+
+/* =====================================================
+   SEGURIDAD HTML
+===================================================== */
+
+function escapeHtml(text) {
 
     const div =
         document.createElement(
@@ -1309,9 +1709,7 @@ function escapeHtml(
 
 
     div.textContent =
-        String(
-            text
-        );
+        text || "";
 
 
     return div.innerHTML;
@@ -1319,15 +1717,48 @@ function escapeHtml(
 }
 
 
-
 /* =====================================================
-   INICIAR
+   INICIO
 ===================================================== */
 
-loadPortfolio();
+async function init() {
+
+    await checkSession();
+
+    await loadPortfolio();
+
+}
+
+
+init();
+
+
+/* =====================================================
+   CAMBIOS DE SESIÓN
+===================================================== */
+
+supabaseClient
+    .auth
+    .onAuthStateChange(
+        function(
+            event,
+            session
+        ) {
+
+            currentUser =
+                session
+                    ? session.user
+                    : null;
+
+
+            updateAdminInterface();
+
+            loadPortfolio();
+
+        }
+    );
 
 </script>
-
 
 </body>
 
