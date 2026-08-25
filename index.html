@@ -13,6 +13,10 @@
 
 <style>
 
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,15 +33,12 @@ body {
     background: #fff;
 }
 
-/* =====================================================
-   SUPABASE
-===================================================== */
-
 :root {
     --black: #111;
     --gray: #777;
     --light: #f5f5f5;
 }
+
 
 /* =====================================================
    GENERAL
@@ -57,52 +58,100 @@ a {
     font-family: inherit;
 }
 
+
 /* =====================================================
-   NAV
+   NAVEGACIÓN
 ===================================================== */
 
 nav {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
+
     z-index: 100;
+
     padding: 22px 0;
+
     background: rgba(255,255,255,0.92);
+
     backdrop-filter: blur(10px);
+
     border-bottom: 1px solid #eee;
 }
 
 .nav-container {
     width: min(1150px, 90%);
+
     margin: auto;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
 .logo {
     font-size: 21px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
 }
 
 .nav-links {
     display: flex;
+
+    align-items: center;
+
     gap: 28px;
+
     list-style: none;
 }
 
 .nav-links a {
     color: #111;
+
     text-decoration: none;
+
     font-size: 14px;
 }
 
 .nav-links a:hover {
     opacity: 0.55;
 }
+
+
+/* =====================================================
+   BOTÓN ÁREA PRIVADA
+===================================================== */
+
+.private-button {
+    display: inline-block;
+
+    padding: 9px 15px;
+
+    border: 1px solid #111;
+
+    color: #111 !important;
+
+    text-decoration: none;
+
+    font-size: 13px !important;
+
+    transition: 0.2s;
+}
+
+.private-button:hover {
+    background: #111;
+
+    color: white !important;
+
+    opacity: 1 !important;
+}
+
 
 /* =====================================================
    HERO
@@ -112,6 +161,7 @@ nav {
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
 
     position: relative;
@@ -124,6 +174,7 @@ nav {
         url("");
 
     background-size: cover;
+
     background-position: center;
 
     color: white;
@@ -131,30 +182,39 @@ nav {
 
 .hero-content {
     width: min(1150px, 90%);
+
     margin: auto;
 }
 
 .hero h1 {
     font-size: clamp(55px, 10vw, 120px);
+
     line-height: 0.9;
+
     letter-spacing: -5px;
+
     margin-bottom: 30px;
 }
 
 .hero p {
     font-size: 20px;
+
     max-width: 650px;
+
     line-height: 1.5;
 }
 
 .hero-button {
     display: inline-block;
+
     margin-top: 35px;
 
     padding: 15px 24px;
 
     border: 1px solid white;
+
     color: white;
+
     text-decoration: none;
 
     transition: 0.2s;
@@ -162,8 +222,10 @@ nav {
 
 .hero-button:hover {
     background: white;
+
     color: #111;
 }
+
 
 /* =====================================================
    SOBRE MI
@@ -175,17 +237,23 @@ nav {
 
 .about-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 80px;
+
     align-items: center;
 }
 
 .about-image {
     width: 100%;
+
     aspect-ratio: 4 / 5;
 
     background-image: url("");
+
     background-size: cover;
+
     background-position: center;
 
     background-color: #eee;
@@ -193,14 +261,18 @@ nav {
 
 .about h2 {
     font-size: 55px;
+
     margin-bottom: 30px;
 }
 
 .about p {
     font-size: 19px;
+
     line-height: 1.8;
+
     color: #444;
 }
+
 
 /* =====================================================
    PORTFOLIO
@@ -208,6 +280,7 @@ nav {
 
 .portfolio {
     padding: 120px 0;
+
     background: #f5f5f5;
 }
 
@@ -217,16 +290,19 @@ nav {
 
 .section-title h2 {
     font-size: 55px;
+
     margin-bottom: 12px;
 }
 
 .section-title p {
     color: #777;
+
     font-size: 17px;
 }
 
 .portfolio-grid {
     display: grid;
+
     grid-template-columns:
         repeat(3, 1fr);
 
@@ -235,6 +311,7 @@ nav {
 
 .portfolio-card {
     background: white;
+
     overflow: hidden;
 
     cursor: pointer;
@@ -248,7 +325,9 @@ nav {
 
 .portfolio-image {
     width: 100%;
+
     aspect-ratio: 4 / 3;
+
     object-fit: cover;
 
     display: block;
@@ -260,33 +339,41 @@ nav {
 
 .portfolio-info h3 {
     font-size: 21px;
+
     margin-bottom: 8px;
 }
 
 .portfolio-date {
     color: #999;
+
     font-size: 13px;
+
     margin-bottom: 12px;
 }
 
 .portfolio-text {
     color: #555;
+
     line-height: 1.5;
+
     font-size: 14px;
 }
 
+
 /* =====================================================
-   EMPTY PORTFOLIO
+   PORTFOLIO VACÍO
 ===================================================== */
 
 .portfolio-empty {
     grid-column: 1 / -1;
 
     text-align: center;
+
     padding: 70px 20px;
 
     color: #888;
 }
+
 
 /* =====================================================
    CONTACTO
@@ -298,6 +385,7 @@ nav {
 
 .contact-box {
     background: #111;
+
     color: white;
 
     padding: 70px;
@@ -307,12 +395,15 @@ nav {
 
 .contact-box h2 {
     font-size: 55px;
+
     margin-bottom: 20px;
 }
 
 .contact-box p {
     color: #bbb;
+
     font-size: 18px;
+
     margin-bottom: 30px;
 }
 
@@ -334,25 +425,31 @@ nav {
     opacity: 0.65;
 }
 
+
 /* =====================================================
    FOOTER
 ===================================================== */
 
 footer {
     padding: 30px 0;
+
     border-top: 1px solid #eee;
 }
 
 .footer-container {
     width: min(1150px, 90%);
+
     margin: auto;
 
     display: flex;
+
     justify-content: space-between;
 
     color: #888;
+
     font-size: 13px;
 }
+
 
 /* =====================================================
    MODAL PORTFOLIO
@@ -370,6 +467,7 @@ footer {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 30px;
@@ -383,6 +481,7 @@ footer {
     background: white;
 
     max-width: 950px;
+
     width: 100%;
 
     max-height: 90vh;
@@ -392,7 +491,9 @@ footer {
 
 .modal-image {
     width: 100%;
+
     max-height: 600px;
+
     object-fit: cover;
 }
 
@@ -402,17 +503,21 @@ footer {
 
 .modal-info h2 {
     font-size: 35px;
+
     margin-bottom: 10px;
 }
 
 .modal-info .date {
     color: #888;
+
     margin-bottom: 20px;
 }
 
 .modal-info p {
     color: #444;
+
     line-height: 1.7;
+
     white-space: pre-line;
 }
 
@@ -420,9 +525,11 @@ footer {
     position: absolute;
 
     top: 20px;
+
     right: 25px;
 
     background: none;
+
     border: none;
 
     color: white;
@@ -432,18 +539,28 @@ footer {
     cursor: pointer;
 }
 
+
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
 @media (max-width: 800px) {
 
+    .nav-container {
+        align-items: flex-start;
+    }
+
     .nav-links {
         gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: flex-end;
     }
 
     .about-grid {
         grid-template-columns: 1fr;
+
         gap: 40px;
     }
 
@@ -459,10 +576,17 @@ footer {
 
 }
 
+
 @media (max-width: 550px) {
 
     nav {
         padding: 17px 0;
+    }
+
+    .nav-container {
+        flex-direction: column;
+
+        gap: 15px;
     }
 
     .logo {
@@ -470,11 +594,21 @@ footer {
     }
 
     .nav-links {
+        width: 100%;
+
         gap: 10px;
+
+        justify-content: center;
     }
 
     .nav-links a {
         font-size: 12px;
+    }
+
+    .private-button {
+        padding: 7px 11px;
+
+        font-size: 12px !important;
     }
 
     .hero h1 {
@@ -499,6 +633,7 @@ footer {
 
     .footer-container {
         flex-direction: column;
+
         gap: 10px;
     }
 
@@ -508,7 +643,9 @@ footer {
 
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      NAVEGACIÓN
@@ -518,11 +655,14 @@ footer {
 
 <div class="nav-container">
 
+
 <div class="logo">
 MARCLASTRA
 </div>
 
+
 <ul class="nav-links">
+
 
 <li>
 <a href="#inicio">
@@ -530,11 +670,13 @@ Inicio
 </a>
 </li>
 
+
 <li>
 <a href="#sobre-mi">
 Sobre mí
 </a>
 </li>
+
 
 <li>
 <a href="#portfolio">
@@ -542,17 +684,37 @@ Portfolio
 </a>
 </li>
 
+
 <li>
 <a href="#contacto">
 Contacto
 </a>
 </li>
 
+
+<!-- =================================================
+     ÁREA PRIVADA
+================================================= -->
+
+<li>
+
+<a
+    href="private.html"
+    class="private-button"
+>
+Área privada
+</a>
+
+</li>
+
+
 </ul>
+
 
 </div>
 
 </nav>
+
 
 
 <!-- =====================================================
@@ -566,14 +728,17 @@ Contacto
 
 <div class="hero-content">
 
+
 <h1>
 MARC<br>
 LASTRA
 </h1>
 
+
 <p>
 Producción y realización de eventos.
 </p>
+
 
 <a
     href="#portfolio"
@@ -582,9 +747,11 @@ Producción y realización de eventos.
 Ver portfolio
 </a>
 
+
 </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -598,52 +765,71 @@ Ver portfolio
 
 <div class="container">
 
+
 <div class="about-grid">
+
 
 <div class="about-image">
 </div>
 
+
 <div>
+
 
 <h2>
 Sobre mí
 </h2>
 
+
 <p>
 Soy Marc Lastra, realizo tareas de producción y realización de eventos.
 </p>
 
+
 <br>
+
 
 <p>
 Me adapto a las necesidades de cada proyecto y el evento es donde el cliente lo necesite.
 </p>
 
+
 <br>
+
 
 <p>
 Me gusta que las cosas salgan como tienen que salir: bien organizadas, bien ejecutadas y cuidando cada detalle.
 </p>
 
+
 <br>
+
 
 <p>
 Actualmente trabajo para Iniciatives Events, SL
 </p>
 
+
 <br>
 
+
 <p>
-<strong>+100 clientes satisfechos</strong>
+<strong>
++100 clientes satisfechos
+</strong>
 </p>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -657,32 +843,43 @@ Actualmente trabajo para Iniciatives Events, SL
 
 <div class="container">
 
+
 <div class="section-title">
+
 
 <h2>
 Portfolio
 </h2>
 
+
 <p>
 Una selección de proyectos y eventos realizados.
 </p>
 
+
 </div>
+
 
 <div
     class="portfolio-grid"
     id="portfolio-grid"
 >
 
+
 <div class="portfolio-empty">
+
 Cargando portfolio...
-</div>
 
 </div>
+
+
+</div>
+
 
 </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -696,15 +893,19 @@ Cargando portfolio...
 
 <div class="container">
 
+
 <div class="contact-box">
+
 
 <h2>
 ¿Hablamos?
 </h2>
 
+
 <p>
 Si quieres información sobre un proyecto, evento o colaboración, puedes contactar conmigo.
 </p>
+
 
 <a
     class="email"
@@ -713,11 +914,14 @@ Si quieres información sobre un proyecto, evento o colaboración, puedes contac
 lastramarc@gmail.com
 </a>
 
+
 </div>
+
 
 </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -728,17 +932,21 @@ lastramarc@gmail.com
 
 <div class="footer-container">
 
+
 <span>
 © 2026 Marc Lastra
 </span>
+
 
 <span>
 Producción · Realización · Eventos
 </span>
 
+
 </div>
 
 </footer>
+
 
 
 <!-- =====================================================
@@ -750,6 +958,7 @@ Producción · Realización · Eventos
     id="portfolio-modal"
 >
 
+
 <button
     class="modal-close"
     id="modal-close"
@@ -757,7 +966,9 @@ Producción · Realización · Eventos
 ×
 </button>
 
+
 <div class="modal-content">
+
 
 <img
     id="modal-image"
@@ -766,10 +977,15 @@ Producción · Realización · Eventos
     alt=""
 >
 
+
 <div class="modal-info">
 
-<h2 id="modal-title">
+
+<h2
+    id="modal-title"
+>
 </h2>
+
 
 <div
     class="date"
@@ -777,14 +993,20 @@ Producción · Realización · Eventos
 >
 </div>
 
-<p id="modal-text">
+
+<p
+    id="modal-text"
+>
 </p>
 
+
 </div>
+
 
 </div>
 
 </div>
+
 
 
 <script>
@@ -796,8 +1018,10 @@ Producción · Realización · Eventos
 const SUPABASE_URL =
 "https://xcyqbqegaklxpcbxwjia.supabase.co";
 
+
 const SUPABASE_KEY =
 "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
+
 
 const supabaseClient =
 window.supabase.createClient(
@@ -815,25 +1039,30 @@ document.getElementById(
     "portfolio-grid"
 );
 
+
 const portfolioModal =
 document.getElementById(
     "portfolio-modal"
 );
+
 
 const modalImage =
 document.getElementById(
     "modal-image"
 );
 
+
 const modalTitle =
 document.getElementById(
     "modal-title"
 );
 
+
 const modalDate =
 document.getElementById(
     "modal-date"
 );
+
 
 const modalText =
 document.getElementById(
@@ -846,6 +1075,7 @@ document.getElementById(
 ===================================================== */
 
 async function loadPortfolio() {
+
 
     portfolioGrid.innerHTML =
     `
@@ -873,7 +1103,12 @@ async function loadPortfolio() {
 
     if (error) {
 
-        console.error(error);
+
+        console.error(
+            "Error cargando portfolio:",
+            error
+        );
+
 
         portfolioGrid.innerHTML =
         `
@@ -882,12 +1117,17 @@ async function loadPortfolio() {
         </div>
         `;
 
+
         return;
 
     }
 
 
-    if (!data || data.length === 0) {
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
 
         portfolioGrid.innerHTML =
         `
@@ -897,6 +1137,7 @@ async function loadPortfolio() {
         </div>
         `;
 
+
         return;
 
     }
@@ -905,31 +1146,44 @@ async function loadPortfolio() {
     portfolioGrid.innerHTML = "";
 
 
-    for (const item of data) {
+    for (
+        const item of data
+    ) {
+
 
         const card =
-        document.createElement("article");
+        document.createElement(
+            "article"
+        );
+
 
         card.className =
         "portfolio-card";
 
 
+        /* =============================================
+           IMAGEN
+        ============================================= */
+
         const image =
-        document.createElement("img");
+        document.createElement(
+            "img"
+        );
+
 
         image.className =
         "portfolio-image";
 
+
         image.alt =
-        item.titulo || "Proyecto";
+        item.titulo ||
+        "Proyecto";
 
 
-        /*
-         * La imagen está en un bucket privado.
-         * Generamos una URL firmada.
-         */
+        if (
+            item.imagen
+        ) {
 
-        if (item.imagen) {
 
             const {
                 data: signedData,
@@ -949,6 +1203,7 @@ async function loadPortfolio() {
                 signedData
             ) {
 
+
                 image.src =
                 signedData.signedUrl;
 
@@ -957,25 +1212,40 @@ async function loadPortfolio() {
         }
 
 
+        /* =============================================
+           INFORMACIÓN
+        ============================================= */
+
         const info =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
         info.className =
         "portfolio-info";
 
 
         const title =
-        document.createElement("h3");
+        document.createElement(
+            "h3"
+        );
+
 
         title.textContent =
-        item.titulo || "Sin título";
+        item.titulo ||
+        "Sin título";
 
 
         const date =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
         date.className =
         "portfolio-date";
+
 
         date.textContent =
         formatDate(
@@ -984,38 +1254,67 @@ async function loadPortfolio() {
 
 
         const text =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
         text.className =
         "portfolio-text";
 
+
         text.textContent =
-        item.texto || "";
+        item.texto ||
+        "";
 
 
-        info.appendChild(title);
-        info.appendChild(date);
-        info.appendChild(text);
+        info.appendChild(
+            title
+        );
 
 
-        card.appendChild(image);
-        card.appendChild(info);
+        info.appendChild(
+            date
+        );
 
+
+        info.appendChild(
+            text
+        );
+
+
+        card.appendChild(
+            image
+        );
+
+
+        card.appendChild(
+            info
+        );
+
+
+        /* =============================================
+           ABRIR MODAL
+        ============================================= */
 
         card.addEventListener(
             "click",
             function() {
+
 
                 openPortfolioModal(
                     item,
                     image.src
                 );
 
+
             }
         );
 
 
-        portfolioGrid.appendChild(card);
+        portfolioGrid.appendChild(
+            card
+        );
 
     }
 
@@ -1023,19 +1322,29 @@ async function loadPortfolio() {
 
 
 /* =====================================================
-   FECHA
+   FORMATEAR FECHA
 ===================================================== */
 
-function formatDate(dateString) {
+function formatDate(
+    dateString
+) {
 
-    if (!dateString) {
+
+    if (
+        !dateString
+    ) {
+
         return "";
+
     }
+
 
     const date =
     new Date(
-        dateString + "T00:00:00"
+        dateString +
+        "T00:00:00"
     );
+
 
     return date.toLocaleDateString(
         "es-ES",
@@ -1050,7 +1359,7 @@ function formatDate(dateString) {
 
 
 /* =====================================================
-   MODAL
+   ABRIR MODAL
 ===================================================== */
 
 function openPortfolioModal(
@@ -1058,20 +1367,26 @@ function openPortfolioModal(
     imageUrl
 ) {
 
+
     modalTitle.textContent =
-    item.titulo || "";
+    item.titulo ||
+    "";
 
 
     modalDate.textContent =
-    formatDate(item.fecha);
+    formatDate(
+        item.fecha
+    );
 
 
     modalText.textContent =
-    item.texto || "";
+    item.texto ||
+    "";
 
 
     modalImage.src =
-    imageUrl || "";
+    imageUrl ||
+    "";
 
 
     portfolioModal.classList.add(
@@ -1081,7 +1396,12 @@ function openPortfolioModal(
 }
 
 
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
 function closePortfolioModal() {
+
 
     portfolioModal.classList.remove(
         "active"
@@ -1091,21 +1411,47 @@ function closePortfolioModal() {
 
 
 document
-.getElementById("modal-close")
-.addEventListener(
-    "click",
-    closePortfolioModal
-);
+    .getElementById(
+        "modal-close"
+    )
+    .addEventListener(
+        "click",
+        closePortfolioModal
+    );
 
 
 portfolioModal.addEventListener(
     "click",
     function(event) {
 
+
         if (
             event.target ===
             portfolioModal
         ) {
+
+
+            closePortfolioModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESC PARA CERRAR MODAL
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
 
             closePortfolioModal();
 
@@ -1122,6 +1468,7 @@ portfolioModal.addEventListener(
 loadPortfolio();
 
 </script>
+
 
 </body>
 
