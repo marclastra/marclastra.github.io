@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -77,10 +76,12 @@
             position: fixed;
             top: 0;
             left: 0;
+
             width: 100%;
+
             z-index: 100;
 
-            background: rgba(255,255,255,0.92);
+            background: rgba(255, 255, 255, 0.94);
 
             backdrop-filter: blur(10px);
 
@@ -90,33 +91,41 @@
 
         .header-inner {
             max-width: 1400px;
+
             margin: auto;
 
             padding: 22px 35px;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
         }
 
 
         .logo {
             font-size: 20px;
+
             font-weight: bold;
+
             letter-spacing: 3px;
         }
 
 
         .nav {
             display: flex;
+
             align-items: center;
+
             gap: 30px;
         }
 
 
         .nav a {
             font-size: 13px;
-            transition: opacity 0.2s;
+
+            transition: opacity 0.2s ease;
         }
 
 
@@ -127,14 +136,18 @@
 
         .private-link {
             border: 1px solid #111111;
+
             padding: 9px 15px;
+
             border-radius: 6px;
         }
 
 
         .private-link:hover {
             background: #111111;
-            color: white;
+
+            color: #ffffff;
+
             opacity: 1 !important;
         }
 
@@ -147,6 +160,7 @@
             min-height: 100vh;
 
             display: flex;
+
             align-items: center;
 
             padding: 140px 35px 80px;
@@ -157,25 +171,35 @@
 
         .hero-inner {
             width: 100%;
+
             max-width: 1400px;
+
             margin: auto;
         }
 
 
         .hero-small {
             font-size: 13px;
+
             text-transform: uppercase;
+
             letter-spacing: 3px;
+
             color: #777777;
+
             margin-bottom: 25px;
         }
 
 
         .hero h1 {
             font-size: clamp(55px, 10vw, 150px);
+
             line-height: 0.9;
+
             letter-spacing: -5px;
+
             font-weight: 700;
+
             max-width: 1000px;
         }
 
@@ -186,6 +210,7 @@
             max-width: 600px;
 
             font-size: 18px;
+
             color: #555555;
         }
 
@@ -194,11 +219,15 @@
             margin-top: 70px;
 
             display: inline-flex;
+
             align-items: center;
+
             gap: 10px;
 
             font-size: 13px;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
         }
 
@@ -209,6 +238,7 @@
 
         .portfolio-section {
             max-width: 1400px;
+
             margin: auto;
 
             padding: 120px 35px;
@@ -217,7 +247,9 @@
 
         .section-intro {
             display: flex;
+
             justify-content: space-between;
+
             align-items: flex-end;
 
             gap: 30px;
@@ -228,14 +260,18 @@
 
         .section-intro h2 {
             font-size: 48px;
+
             line-height: 1;
+
             letter-spacing: -2px;
         }
 
 
         .section-intro p {
             max-width: 400px;
+
             color: #777777;
+
             font-size: 14px;
         }
 
@@ -250,7 +286,7 @@
             grid-template-columns:
                 repeat(2, minmax(0, 1fr));
 
-            gap: 60px 30px;
+            gap: 70px 30px;
         }
 
 
@@ -274,6 +310,7 @@
 
         .portfolio-image img {
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -289,42 +326,61 @@
         }
 
 
+        /* =====================================================
+           INFORMACIÓN DEL PROYECTO
+        ====================================================== */
+
         .portfolio-info {
             padding-top: 18px;
 
             display: flex;
+
             justify-content: space-between;
+
+            align-items: flex-start;
 
             gap: 20px;
         }
 
 
-        .portfolio-info h3 {
-            font-size: 20px;
-            font-weight: 500;
+        .portfolio-main-info {
+            flex: 1;
         }
 
 
-        .portfolio-date {
-            color: #888888;
-            font-size: 13px;
-            white-space: nowrap;
+        .portfolio-info h3 {
+            font-size: 21px;
+
+            font-weight: 500;
+
+            line-height: 1.2;
         }
 
 
         .portfolio-description {
-            margin-top: 10px;
+            margin-top: 9px;
 
             color: #777777;
 
             font-size: 14px;
 
+            line-height: 1.6;
+
             max-width: 650px;
         }
 
 
+        .portfolio-date {
+            color: #888888;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+        }
+
+
         /* =====================================================
-           EMPTY / LOADING
+           MENSAJES
         ====================================================== */
 
         .portfolio-message {
@@ -354,12 +410,14 @@
 
         .about-section {
             background: #111111;
-            color: white;
+
+            color: #ffffff;
         }
 
 
         .about-inner {
             max-width: 1400px;
+
             margin: auto;
 
             padding: 120px 35px;
@@ -378,6 +436,7 @@
 
         .about-title {
             font-size: 60px;
+
             line-height: 1;
 
             letter-spacing: -3px;
@@ -399,11 +458,12 @@
 
 
         /* =====================================================
-           CONTACT
+           CONTACTO
         ====================================================== */
 
         .contact-section {
             max-width: 1400px;
+
             margin: auto;
 
             padding: 120px 35px;
@@ -412,6 +472,7 @@
 
         .contact-section h2 {
             font-size: 70px;
+
             line-height: 1;
 
             letter-spacing: -3px;
@@ -442,9 +503,11 @@
 
         .footer-inner {
             max-width: 1400px;
+
             margin: auto;
 
             display: flex;
+
             justify-content: space-between;
 
             gap: 20px;
@@ -498,6 +561,7 @@
 
             .section-intro {
                 flex-direction: column;
+
                 align-items: flex-start;
             }
 
@@ -509,7 +573,20 @@
 
             .portfolio-grid {
                 grid-template-columns: 1fr;
-                gap: 50px;
+
+                gap: 55px;
+            }
+
+
+            .portfolio-info {
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+
+            .portfolio-date {
+                order: -1;
             }
 
 
@@ -520,6 +597,7 @@
 
             .about-grid {
                 grid-template-columns: 1fr;
+
                 gap: 40px;
             }
 
@@ -555,6 +633,7 @@
 </head>
 
 
+
 <body>
 
 
@@ -577,17 +656,21 @@
 
         <nav class="nav">
 
+
             <a href="#portfolio">
                 Portfolio
             </a>
+
 
             <a href="#about">
                 Sobre mí
             </a>
 
+
             <a href="#contact">
                 Contacto
             </a>
+
 
             <a
                 href="private.html"
@@ -595,6 +678,7 @@
             >
                 🔒 Private
             </a>
+
 
         </nav>
 
@@ -605,15 +689,21 @@
 
 
 <!-- =====================================================
-     HERO
+     CONTENIDO
 ===================================================== -->
 
 <main id="top">
 
 
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
 
     <div class="hero-inner">
+
 
         <div class="hero-small">
             Event Production · Management
@@ -636,9 +726,9 @@
             href="#portfolio"
             class="hero-scroll"
         >
-            Ver proyectos
-            ↓
+            Ver proyectos ↓
         </a>
+
 
     </div>
 
@@ -658,6 +748,7 @@
 
     <div class="section-intro">
 
+
         <h2>
             Proyectos
         </h2>
@@ -668,7 +759,9 @@
             en los que he trabajado.
         </p>
 
+
     </div>
+
 
 
     <div
@@ -681,6 +774,7 @@
         </div>
 
     </div>
+
 
 </section>
 
@@ -695,6 +789,7 @@
     class="about-section"
 >
 
+
     <div class="about-inner">
 
 
@@ -707,6 +802,7 @@
 
 
             <div class="about-text">
+
 
                 <p>
                     Soy Marc Lastra, especializado en producción,
@@ -727,11 +823,15 @@
                     que cada parte del proceso funcione.
                 </p>
 
+
             </div>
+
 
         </div>
 
+
     </div>
+
 
 </section>
 
@@ -746,6 +846,7 @@
     class="contact-section"
 >
 
+
     <h2>
         ¿Trabajamos juntos?
     </h2>
@@ -757,6 +858,7 @@
     >
         contacto@marclastra.com
     </a>
+
 
 </section>
 
@@ -771,7 +873,9 @@
 
 <footer>
 
+
     <div class="footer-inner">
+
 
         <span>
             © 2026 MARCLASTRA
@@ -787,7 +891,9 @@
             Private Area →
         </a>
 
+
     </div>
+
 
 </footer>
 
@@ -830,11 +936,11 @@ const portfolioGrid =
 
 
 /* =====================================================
-   CARGAR PORTFOLIO
+   CARGAR PROYECTOS
 ===================================================== */
 
-
 async function loadPortfolio() {
+
 
     portfolioGrid.innerHTML =
         `
@@ -842,14 +948,6 @@ async function loadPortfolio() {
             Cargando proyectos...
         </div>
         `;
-
-
-    /*
-     * IMPORTANTE:
-     *
-     * Se buscan únicamente los proyectos
-     * marcados como públicos.
-     */
 
 
     const {
@@ -873,6 +971,7 @@ async function loadPortfolio() {
 
     if (error) {
 
+
         console.error(
             "Error cargando portfolio:",
             error
@@ -886,6 +985,7 @@ async function loadPortfolio() {
             </div>
             `;
 
+
         return;
 
     }
@@ -896,12 +996,14 @@ async function loadPortfolio() {
         data.length === 0
     ) {
 
+
         portfolioGrid.innerHTML =
             `
             <div class="portfolio-message">
                 Todavía no hay proyectos publicados.
             </div>
             `;
+
 
         return;
 
@@ -927,13 +1029,13 @@ async function loadPortfolio() {
 
 
 /* =====================================================
-   CREAR TARJETA
+   CREAR PROYECTO
 ===================================================== */
-
 
 function createPortfolioCard(
     project
 ) {
+
 
     const card =
         document.createElement(
@@ -945,18 +1047,10 @@ function createPortfolioCard(
         "portfolio-item";
 
 
-    /*
-     * Obtener URL de la imagen
-     *
-     * La tabla puede guardar:
-     *
-     * - imagen
-     * - imagen_url
-     * - image_url
-     * - foto
-     *
-     * El código intenta varias opciones.
-     */
+
+    /* =================================================
+       IMAGEN
+    ================================================= */
 
 
     const imagePath =
@@ -974,9 +1068,6 @@ function createPortfolioCard(
 
     if (imagePath) {
 
-        /*
-         * Si ya es una URL completa
-         */
 
         if (
             imagePath.startsWith(
@@ -987,17 +1078,13 @@ function createPortfolioCard(
             )
         ) {
 
+
             imageUrl =
                 imagePath;
 
-        }
 
-        /*
-         * Si es una ruta dentro
-         * del bucket portfolio
-         */
+        } else {
 
-        else {
 
             const {
                 data
@@ -1018,16 +1105,18 @@ function createPortfolioCard(
     }
 
 
-    /*
-     * Si no hay imagen
-     */
-
     if (!imageUrl) {
 
         imageUrl =
             createPlaceholder();
 
     }
+
+
+
+    /* =================================================
+       DATOS
+    ================================================= */
 
 
     const title =
@@ -1056,6 +1145,7 @@ function createPortfolioCard(
 
     if (date) {
 
+
         const parsedDate =
             new Date(
                 date
@@ -1067,6 +1157,7 @@ function createPortfolioCard(
                 parsedDate.getTime()
             )
         ) {
+
 
             formattedDate =
                 parsedDate.toLocaleDateString(
@@ -1080,6 +1171,12 @@ function createPortfolioCard(
         }
 
     }
+
+
+
+    /* =================================================
+       TARJETA
+    ================================================= */
 
 
     card.innerHTML =
@@ -1098,7 +1195,9 @@ function createPortfolioCard(
 
         <div class="portfolio-info">
 
-            <div>
+
+            <div class="portfolio-main-info">
+
 
                 <h3>
                     ${escapeHtml(title)}
@@ -1115,6 +1214,7 @@ function createPortfolioCard(
                         : ""
                 }
 
+
             </div>
 
 
@@ -1129,6 +1229,7 @@ function createPortfolioCard(
                     `
                     : ""
             }
+
 
         </div>
 
@@ -1147,15 +1248,11 @@ function createPortfolioCard(
    PLACEHOLDER
 ===================================================== */
 
-
 function createPlaceholder() {
 
-    /*
-     * Placeholder SVG generado directamente.
-     * No necesita ninguna imagen externa.
-     */
 
     const svg = `
+
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1200"
@@ -1168,6 +1265,7 @@ function createPlaceholder() {
                 height="750"
                 fill="#eeeeee"
             />
+
 
             <text
                 x="600"
@@ -1182,6 +1280,7 @@ function createPlaceholder() {
             </text>
 
         </svg>
+
     `;
 
 
@@ -1195,13 +1294,13 @@ function createPlaceholder() {
 
 
 /* =====================================================
-   SEGURIDAD HTML
+   SEGURIDAD
 ===================================================== */
-
 
 function escapeHtml(
     text
 ) {
+
 
     const div =
         document.createElement(
@@ -1225,7 +1324,6 @@ function escapeHtml(
    INICIAR
 ===================================================== */
 
-
 loadPortfolio();
 
 </script>
@@ -1234,4 +1332,3 @@ loadPortfolio();
 </body>
 
 </html>
-```
