@@ -3,215 +3,413 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta charset="UTF-8">
 
-    <title>MARCLASTRA — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>Marc Lastra — Producción y Realización de Eventos</title>
 
-    <style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #111;
-        }
+/* =====================================================
+   GENERAL
+===================================================== */
 
-        header {
-            background: #111;
-            color: white;
-            padding: 30px 20px;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .header-content {
-            max-width: 1100px;
-            margin: auto;
+html {
+    scroll-behavior: smooth;
+}
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+    background: #fff;
+}
 
-            gap: 20px;
-        }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        .logo h1 {
-            font-size: 26px;
-            letter-spacing: 2px;
-        }
+img {
+    max-width: 100%;
+    display: block;
+}
 
-        .logo p {
-            color: #aaa;
-            margin-top: 6px;
-            font-size: 14px;
-        }
 
-        .private-button {
-            display: inline-block;
-            padding: 11px 16px;
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
 
-            background: #333;
-            color: white;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 
-            border-radius: 8px;
+    padding: 22px 40px;
 
-            text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-            font-size: 14px;
-        }
+    color: white;
 
-        .private-button:hover {
-            background: #555;
-        }
+    background: linear-gradient(
+        rgba(0,0,0,0.45),
+        transparent
+    );
+}
 
-        main {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
 
-        .intro {
-            margin-bottom: 45px;
-        }
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
 
-        .intro h2 {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
+.nav-links a {
+    font-size: 14px;
+    transition: 0.2s;
+}
 
-        .intro p {
-            color: #777;
-            font-size: 16px;
-        }
+.nav-links a:hover {
+    opacity: 0.6;
+}
 
-        .portfolio-grid {
-            display: grid;
 
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(280px, 1fr)
-                );
+/* =====================================================
+   INICIO
+===================================================== */
 
-            gap: 25px;
-        }
+#inicio {
+    min-height: 100vh;
 
-        .portfolio-card {
-            background: white;
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.45)
+        ),
+        url("images/fondo-inicio.jpg");
 
-            border-radius: 16px;
+    background-size: cover;
+    background-position: center;
 
-            overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.08);
+    text-align: center;
 
-            transition: 0.2s;
-        }
+    color: white;
 
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-        }
+    padding: 40px;
+}
 
-        .portfolio-image {
-            width: 100%;
-            height: 240px;
+.hero-content {
+    max-width: 900px;
+}
 
-            object-fit: cover;
+.hero-content h1 {
+    font-size: clamp(50px, 9vw, 110px);
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+}
 
-            display: block;
+.hero-content p {
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 300;
+}
 
-            background: #ddd;
-        }
+.hero-button {
+    display: inline-block;
 
-        .portfolio-content {
-            padding: 24px;
-        }
+    margin-top: 35px;
 
-        .portfolio-date {
-            color: #999;
+    padding: 15px 28px;
 
-            font-size: 12px;
+    border: 1px solid white;
+    border-radius: 30px;
 
-            margin-bottom: 8px;
-        }
+    transition: 0.25s;
+}
 
-        .portfolio-title {
-            font-size: 22px;
+.hero-button:hover {
+    background: white;
+    color: #111;
+}
 
-            margin-bottom: 12px;
-        }
 
-        .portfolio-text {
-            color: #666;
+/* =====================================================
+   SECCIONES
+===================================================== */
 
-            line-height: 1.6;
+section:not(#inicio) {
+    padding: 110px 40px;
+}
 
-            white-space: pre-wrap;
-        }
+.section-container {
+    max-width: 1200px;
+    margin: auto;
+}
 
-        .empty {
-            background: white;
+.section-title {
+    font-size: 45px;
+    margin-bottom: 60px;
+}
 
-            padding: 50px;
 
-            border-radius: 14px;
+/* =====================================================
+   SOBRE MÍ
+===================================================== */
 
-            text-align: center;
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
 
-            color: #888;
-        }
+.about-image {
+    height: 600px;
 
-        .loading {
-            text-align: center;
+    background:
+        url("images/foto-marc.jpg");
 
-            color: #888;
+    background-size: cover;
+    background-position: center;
 
-            padding: 50px;
-        }
+    border-radius: 4px;
+}
 
-        footer {
-            margin-top: 70px;
+.about-text {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #444;
+}
 
-            padding: 30px 20px;
+.about-text p {
+    margin-bottom: 25px;
+}
 
-            text-align: center;
+.about-number {
+    margin-top: 40px;
 
-            color: #999;
+    font-size: 50px;
+    font-weight: bold;
 
-            font-size: 13px;
-        }
+    color: #111;
+}
 
-        @media (max-width: 600px) {
+.about-number span {
+    display: block;
 
-            .header-content {
-                flex-direction: column;
+    font-size: 14px;
+    font-weight: normal;
 
-                align-items: flex-start;
-            }
+    color: #777;
+}
 
-            .intro h2 {
-                font-size: 30px;
-            }
 
-            .portfolio-image {
-                height: 210px;
-            }
+/* =====================================================
+   PORTFOLIO
+===================================================== */
 
-        }
+#portfolio {
+    background: #f5f5f5;
+}
 
-    </style>
+.portfolio-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.portfolio-card {
+    background: white;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    transition: 0.3s;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 320px;
+
+    object-fit: cover;
+}
+
+.portfolio-content {
+    padding: 25px;
+}
+
+.portfolio-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.portfolio-date {
+    font-size: 13px;
+    color: #999;
+
+    margin-bottom: 15px;
+}
+
+.portfolio-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.portfolio-empty {
+    color: #777;
+}
+
+
+/* =====================================================
+   CONTACTO
+===================================================== */
+
+.contact {
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.contact h2 {
+    font-size: 50px;
+    margin-bottom: 25px;
+}
+
+.contact p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.email {
+    display: inline-block;
+
+    margin-top: 35px;
+
+    font-size: 24px;
+
+    border-bottom: 1px solid #111;
+
+    padding-bottom: 5px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: #111;
+    color: white;
+
+    padding: 30px 40px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    nav {
+        padding: 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    section:not(#inicio) {
+        padding: 80px 20px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image {
+        height: 450px;
+    }
+
+    .section-title {
+        font-size: 35px;
+        margin-bottom: 40px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero-content h1 {
+        letter-spacing: 4px;
+    }
+
+    .about-text {
+        font-size: 17px;
+    }
+
+    .contact h2 {
+        font-size: 38px;
+    }
+
+    .email {
+        font-size: 18px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -219,69 +417,184 @@
 <body>
 
 
-<header>
+<!-- =====================================================
+     NAVEGACIÓN
+===================================================== -->
 
-    <div class="header-content">
+<nav>
 
-        <div class="logo">
+    <div class="logo">
+        MARCLASTRA
+    </div>
 
-            <h1>
-                MARCLASTRA
-            </h1>
+    <div class="nav-links">
 
-            <p>
-                Events · Production · Portfolio
-            </p>
+        <a href="#inicio">
+            Inicio
+        </a>
 
-        </div>
+        <a href="#sobre-mi">
+            Sobre mí
+        </a>
 
+        <a href="#portfolio">
+            Portfolio
+        </a>
 
-        <!-- SOLO TÚ SABES QUE EXISTE ESTE ACCESO -->
-
-        <a
-            href="./private.html"
-            class="private-button"
-        >
-            Acceso privado
+        <a href="#contacto">
+            Contacto
         </a>
 
     </div>
 
-</header>
+</nav>
 
 
-<main>
+<!-- =====================================================
+     INICIO
+===================================================== -->
 
-    <section class="intro">
+<section id="inicio">
 
-        <h2>
+    <div class="hero-content">
+
+        <h1>
+            MARCLASTRA
+        </h1>
+
+        <p>
+            Producción y realización de eventos
+        </p>
+
+        <a
+            href="#portfolio"
+            class="hero-button"
+        >
+            Ver proyectos
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SOBRE MÍ
+===================================================== -->
+
+<section id="sobre-mi">
+
+    <div class="section-container">
+
+        <div class="about">
+
+            <div class="about-image"></div>
+
+            <div class="about-text">
+
+                <h2 class="section-title">
+                    Sobre mí
+                </h2>
+
+                <p>
+                    Soy Marc Lastra, realizo tareas de producción y realización de eventos, con más de 100 clientes satisfechos.
+                </p>
+
+                <p>
+                    Me adapto a las necesidades de cada proyecto y el evento es donde el cliente lo necesite.
+                </p>
+
+                <p>
+                    Me gusta que las cosas salgan como tienen que salir: bien organizadas, bien ejecutadas y cuidando cada detalle.
+                </p>
+
+                <div class="about-number">
+
+                    +100
+
+                    <span>
+                        clientes satisfechos
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PORTFOLIO
+===================================================== -->
+
+<section id="portfolio">
+
+    <div class="section-container">
+
+        <h2 class="section-title">
             Portfolio
         </h2>
 
-        <p>
-            Algunos de mis trabajos y proyectos.
-        </p>
+        <div
+            id="portfolio-grid"
+            class="portfolio-grid"
+        >
 
-    </section>
+            <p class="portfolio-empty">
+                Cargando proyectos...
+            </p>
 
-
-    <section
-        id="portfolio-grid"
-        class="portfolio-grid"
-    >
-
-        <div class="loading">
-            Cargando portfolio...
         </div>
 
-    </section>
+    </div>
 
-</main>
+</section>
 
+
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
+<section id="contacto">
+
+    <div class="section-container">
+
+        <div class="contact">
+
+            <h2>
+                ¿Hablamos?
+            </h2>
+
+            <p>
+                ¿Tienes un proyecto en mente o necesitas más información?
+                Ponte en contacto conmigo y hablamos sobre tu evento.
+            </p>
+
+            <a
+                class="email"
+                href="mailto:lastramarc@gmail.com"
+            >
+                lastramarc@gmail.com
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    © MARCLASTRA
+    © 2026 Marc Lastra
 
 </footer>
 
@@ -298,7 +611,6 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
     "sb_publishable_S5AlKHY4yzGiPm5M5NgeSA_JYzPyrER";
 
-
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
@@ -307,27 +619,15 @@ const supabaseClient =
 
 
 /* =====================================================
-   ELEMENTOS
+   CARGAR PORTFOLIO
 ===================================================== */
 
-const portfolioGrid =
-    document.getElementById(
-        "portfolio-grid"
-    );
+async function cargarPortfolio() {
 
-
-/* =====================================================
-   CARGAR PORTFOLIO PÚBLICO
-===================================================== */
-
-async function loadPublicPortfolio() {
-
-    portfolioGrid.innerHTML =
-        `
-        <div class="loading">
-            Cargando portfolio...
-        </div>
-        `;
+    const portfolioGrid =
+        document.getElementById(
+            "portfolio-grid"
+        );
 
 
     const {
@@ -336,9 +636,7 @@ async function loadPublicPortfolio() {
     } =
         await supabaseClient
             .from("portfolio")
-            .select(
-                "id,titulo,fecha,texto,imagen"
-            )
+            .select("*")
             .eq(
                 "publicado",
                 true
@@ -358,13 +656,11 @@ async function loadPublicPortfolio() {
             error
         );
 
-
-        portfolioGrid.innerHTML =
-            `
-            <div class="empty">
-                No se ha podido cargar el portfolio.
-            </div>
-            `;
+        portfolioGrid.innerHTML = `
+            <p class="portfolio-empty">
+                No se han podido cargar los proyectos.
+            </p>
+        `;
 
         return;
 
@@ -376,152 +672,101 @@ async function loadPublicPortfolio() {
         data.length === 0
     ) {
 
-        portfolioGrid.innerHTML =
-            `
-            <div class="empty">
-                Todavía no hay trabajos publicados.
-            </div>
-            `;
+        portfolioGrid.innerHTML = `
+            <p class="portfolio-empty">
+                Próximamente podrás ver aquí algunos de mis proyectos.
+            </p>
+        `;
 
         return;
 
     }
 
 
-    portfolioGrid.innerHTML =
-        "";
+    portfolioGrid.innerHTML = "";
 
 
     data.forEach(
-        function(item) {
+        function(proyecto) {
 
             const card =
                 document.createElement(
                     "article"
                 );
 
-
             card.className =
                 "portfolio-card";
 
 
-            /* -----------------------------------------
-               IMAGEN
-            ----------------------------------------- */
-
-            if (item.imagen) {
-
-                const image =
-                    document.createElement(
-                        "img"
-                    );
+            let imagenHTML = "";
 
 
-                image.className =
-                    "portfolio-image";
+            if (proyecto.imagen) {
 
-
-                image.alt =
-                    item.titulo || "Portfolio";
-
-
-                image.src =
-                    getPortfolioImageUrl(
-                        item.imagen
-                    );
-
-
-                card.appendChild(
-                    image
-                );
+                imagenHTML = `
+                    <img
+                        src="${proyecto.imagen}"
+                        class="portfolio-image"
+                        alt="${escapeHtml(
+                            proyecto.titulo || ""
+                        )}"
+                    >
+                `;
 
             }
 
 
-            /* -----------------------------------------
-               CONTENIDO
-            ----------------------------------------- */
-
-            const content =
-                document.createElement(
-                    "div"
-                );
+            let fechaHTML = "";
 
 
-            content.className =
-                "portfolio-content";
+            if (proyecto.fecha) {
 
-
-            if (item.fecha) {
-
-                const date =
-                    document.createElement(
-                        "div"
+                const fecha =
+                    new Date(
+                        proyecto.fecha +
+                        "T00:00:00"
                     );
 
 
-                date.className =
-                    "portfolio-date";
-
-
-                date.textContent =
-                    formatDate(
-                        item.fecha
-                    );
-
-
-                content.appendChild(
-                    date
-                );
+                fechaHTML = `
+                    <div class="portfolio-date">
+                        ${fecha.toLocaleDateString(
+                            "es-ES",
+                            {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric"
+                            }
+                        )}
+                    </div>
+                `;
 
             }
 
 
-            const title =
-                document.createElement(
-                    "h3"
-                );
+            card.innerHTML = `
 
+                ${imagenHTML}
 
-            title.className =
-                "portfolio-title";
+                <div class="portfolio-content">
 
+                    <h3>
+                        ${escapeHtml(
+                            proyecto.titulo || ""
+                        )}
+                    </h3>
 
-            title.textContent =
-                item.titulo || "";
+                    ${fechaHTML}
 
+                    <div class="portfolio-text">
+                        ${escapeHtml(
+                            proyecto.texto || ""
+                        )}
+                    </div>
 
-            content.appendChild(
-                title
-            );
+                </div>
 
-
-            if (item.texto) {
-
-                const text =
-                    document.createElement(
-                        "p"
-                    );
-
-
-                text.className =
-                    "portfolio-text";
-
-
-                text.textContent =
-                    item.texto;
-
-
-                content.appendChild(
-                    text
-                );
-
-            }
-
-
-            card.appendChild(
-                content
-            );
+            `;
 
 
             portfolioGrid.appendChild(
@@ -535,87 +780,20 @@ async function loadPublicPortfolio() {
 
 
 /* =====================================================
-   URL IMAGEN
+   SEGURIDAD HTML
 ===================================================== */
 
-function getPortfolioImageUrl(
-    imagePath
-) {
+function escapeHtml(text) {
 
-    /*
-       Si ya tenemos una URL completa,
-       la utilizamos directamente.
-    */
-
-    if (
-        imagePath.startsWith(
-            "http://"
-        ) ||
-        imagePath.startsWith(
-            "https://"
-        )
-    ) {
-
-        return imagePath;
-
-    }
-
-
-    /*
-       Si guardamos una ruta dentro
-       del bucket portfolio.
-    */
-
-    const {
-        data
-    } =
-        supabaseClient
-            .storage
-            .from("portfolio")
-            .getPublicUrl(
-                imagePath
-            );
-
-
-    return data.publicUrl;
-
-}
-
-
-/* =====================================================
-   FECHA
-===================================================== */
-
-function formatDate(
-    dateString
-) {
-
-    const date =
-        new Date(
-            dateString +
-            "T00:00:00"
+    const div =
+        document.createElement(
+            "div"
         );
 
+    div.textContent =
+        text || "";
 
-    if (
-        isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return dateString;
-
-    }
-
-
-    return date.toLocaleDateString(
-        "es-ES",
-        {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        }
-    );
+    return div.innerHTML;
 
 }
 
@@ -624,10 +802,9 @@ function formatDate(
    INICIAR
 ===================================================== */
 
-loadPublicPortfolio();
+cargarPortfolio();
 
 </script>
-
 
 </body>
 
